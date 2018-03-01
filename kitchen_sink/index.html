@@ -14,10 +14,9 @@
 <body>
   <div id="app">
     <toast type="primary" icon="mail" closeable>Aloooooooha!</toast>
-
-    <accordion v-for="(body,title,index) in accordions" :checked="0" :index="index">
-        <h1 slot="header">{{title}}</h1>
-        <p slot="body">{{body}}</p>    
+    <accordion :items="accordions" multiple>
+        <h1 slot="header" slot-scope="props">{{props.item.key}}</h1>
+        <p slot="body" slot-scope="props">{{props.item.value}}</p>    
     </accordion>
   </div>
 </body>

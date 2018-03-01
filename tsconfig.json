@@ -7,6 +7,7 @@
     "esModuleInterop": true,               
     "experimentalDecorators": true,        
     "emitDecoratorMetadata": true,
+    "noLib": false,
     "strictPropertyInitialization": false /* See more https://github.com/kaorun343/vue-property-decorator/issues/81 */
   }
 }
