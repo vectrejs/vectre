@@ -1,11 +1,9 @@
-import 'prismjs';
-import 'prismjs/themes/prism-tomorrow.css';
-
 import vue from 'vue';
 import vuePrismComponent from 'vue-prism-component';
 
 import AccordionVue from '../src/components/Accordion.vue';
 import ToastVue from '../src/components/Toast.vue';
+import './assets.ts';
 
 vue.config.devtools = true;
 
