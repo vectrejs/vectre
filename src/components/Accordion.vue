@@ -1,10 +1,10 @@
 <template>
   <div class="accordion-container">
-    <div class="accordion" v-for="(value, key, index) of items" :key="index">
+    <div class="accordion" v-for="(value, key, index) of items" :key="index || key">
       
-      <input :type="type" hidden :id="uid(index)" :name="id" :checked="isSelected(key, index)">
+      <input :type="type" hidden :id="uid(index || key)" :name="id" :checked="isSelected(key, index)">
       
-      <label class="accordion-header c-hand" :for="uid(index)">
+      <label class="accordion-header c-hand" :for="uid(index || key)">
         <slot name="header" :item="{value, key, index}"></slot>
       </label>
       

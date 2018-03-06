@@ -12,12 +12,18 @@
 </head>
 
 <body>
+
   <div id="app">
     <toast type="primary" icon="mail" closeable>Aloooooooha!</toast>
+    <prism language="html" :code="toastcode"></prism>
+
     <accordion :items="accordions" multiple>
-        <h1 slot="header" slot-scope="props">{{props.item.key}}</h1>
-        <p slot="body" slot-scope="props">{{props.item.value}}</p>    
+      <template slot="header" slot-scope="props">
+        <h1>{{props.item.value.title}}</h1>
+      </template>
+      <p slot="body" slot-scope="props">{{props.item.value.text}}</p>
     </accordion>
+
   </div>
 </body>
 

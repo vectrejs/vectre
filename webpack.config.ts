@@ -16,6 +16,7 @@ export default {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader', options: { appendTsSuffixTo: [/\.vue$/] } },
       { test: /\.vue?$/, loader: 'vue-loader' },
+      { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
     ],
   },
   output: {
