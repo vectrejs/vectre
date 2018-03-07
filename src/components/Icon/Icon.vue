@@ -5,8 +5,8 @@
 <script lang="ts">
 import { Component, Prop } from "vue-property-decorator";
 import vue from "vue";
-import Type, * as Icons from "./Type";
-import IconSize from "./Size";
+import Type, * as Names from "./Type";
+import Size from "./Size";
 
 @Component
 export default class Icon extends vue {
@@ -14,18 +14,18 @@ export default class Icon extends vue {
   private type: Type;
 
   @Prop()
-  private size: IconSize | string;
+  private size: Size | string;
 
   private get cssStyle(): object {
     return {
-      'font-size': IconSize[<any>this.size] || this.size,
+      'font-size': Size[<any>this.size] || this.size,
     }
   }
 
   private get cssClass(): [string, string] {
     return [
-      IconSize[<any>this.size] || this.size,
-      Icons.Navigation[<any>this.type] || Icons.Action[<any>this.type] || Icons.Objects[<any>this.type] || this.type,
+      Size[<any>this.size] || this.size,
+      Names.Navigation[<any>this.type] || Names.Action[<any>this.type] || Names.Objects[<any>this.type] || this.type,
     ]
   }
 }
