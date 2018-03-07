@@ -1,17 +1,15 @@
 import vue from 'vue';
 import vuePrismComponent from 'vue-prism-component';
 
-import AccordionVue from '../src/components/Accordion.vue';
-import ToastVue from '../src/components/Toast.vue';
+import * as components from '../src/components/';
 import './assets.ts';
 
 vue.config.devtools = true;
 
 export default new vue({
   components: {
-    accordion: AccordionVue,
     prism: vuePrismComponent,
-    toast: ToastVue,
+    ...components,
   },
   data: {
     accordions: [
@@ -30,7 +28,8 @@ export default new vue({
       },
       // tslint:enable:max-line-length
     ],
-    toastcode: '<toast type="primary" icon="mail" closeable>Aloooooooha!</toast>',
+    toastcode: '<toast type="primary" icon="mail" closeable>Aloooooooha!!!!!</toast>',
+    tru: true,
   },
   directives: {},
   el: '#app',

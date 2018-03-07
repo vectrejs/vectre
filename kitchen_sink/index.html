@@ -9,17 +9,19 @@
 </head>
 
 <body>
-
   <div id="app">
-    <toast type="primary" icon="mail" closeable>Aloooooooha!</toast>
-    <prism language="html" :code="toastcode"></prism>
+    <off-canvas>
+      <accordion slot="sidebar" :items="accordions" multiple>
+          <template slot="header" slot-scope="props">
+            <span>{{props.item.value.title}}</span>
+          </template>
+          <span slot="body" slot-scope="props">{{props.item.value.text}}</span>
+      </accordion>
 
-    <accordion :items="accordions" multiple>
-      <template slot="header" slot-scope="props">
-        <h1>{{props.item.value.title}}</h1>
-      </template>
-      <p slot="body" slot-scope="props">{{props.item.value.text}}</p>
-    </accordion>
+      <toast type="primary" icon="mail" closeable>Aloooooooha!</toast>
+      <prism language="html" :code="toastcode"></prism>
+      
+  </off-canvas>
 
   </div>
 </body>
