@@ -19,7 +19,6 @@
 <script lang="ts">
 import vue, { CreateElement } from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { VNode } from 'vue/types/vnode';
 
 @Component
 export default class extends vue {
@@ -34,8 +33,6 @@ export default class extends vue {
 
   @Prop([Boolean])
   private multiple: boolean;
-
-  private _id: string;
 
   public get type(): string {
     return this.multiple ? 'checkbox' : 'radio';
@@ -56,7 +53,7 @@ export default class extends vue {
     return (<string[]>this.checked).indexOf(key) !== -1;
   }
 
-  public get id(): string {
+  private get id(): string {
     return this.name ? this.name : 'accordion-' + Math.round(Math.random() * 1000)
   }
 }
