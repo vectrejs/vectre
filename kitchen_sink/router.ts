@@ -1,16 +1,19 @@
 import vue from 'vue';
 import vueRouter from 'vue-router';
-import { PositionResult } from 'vue-router/types/router';
-import routes from '../routes';
+import { routes } from './view';
 
 vue.use(vueRouter);
 
 export default new vueRouter({
   routes,
   mode: 'history',
-  scrollBehavior: (to, from, savedPosition) => {
+  scrollBehavior: (to) => {
     if (to.hash) {
       return { selector: to.hash };
     }
   },
 });
+
+export {
+  routes,
+};

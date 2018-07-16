@@ -1,2 +1,4 @@
-export { default as default } from './view.vue';
-export { default as routes } from './routes';
+import * as routes from './routes';
+
+export * from './routes';
+export { routes };

@@ -1,6 +1,10 @@
+import { routes as components } from './components';
 import { RouteConfig } from 'vue-router';
-import { routes } from './Components';
+import Parent from '../component/Parent.vue'
 
-export default [
-  ...routes,
+const routes: RouteConfig[] = [
+  { path: '/components',  title: 'Components', component: Parent, children: (<any>Object).values(components) }
 ];
+
+export default routes;
+export * from './components';

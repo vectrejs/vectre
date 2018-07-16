@@ -1,24 +1,26 @@
 <template>
-    <div>
-        <h2 id="accordion">Accordion</h2>
-        <accordion slot="sidebar" :items="accordions" multiple>
-            <template slot="header" slot-scope="props">
-              <span>{{props.item.value.title}}</span>
-            </template>
-            <span slot="body" slot-scope="props">{{props.item.value.text}}</span>
-        </accordion>
-    </div>
+  <accordion :items="items" multiple>
+    <template slot="header" slot-scope="props">
+      <span>{{props.item.value.title}}</span>
+    </template>
+    <span slot="body" slot-scope="props">{{props.item.value.text}}</span>
+  </accordion>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Component } from 'vue-property-decorator';
+import Vue from "vue";
+import Accordion from "../../../../src/components/Accordion.vue";
+import Component from "vue-class-component";
 
-@Component
+@Component({
+  components: {
+    accordion: Accordion
+  }
+})
 export default class extends Vue {
-  data() {
+  public data() {
     return {
-      accordions: [
+      items: [
         // tslint:disable:max-line-length
         {
           text:
@@ -36,7 +38,7 @@ export default class extends Vue {
           title: "Mauris"
         }
         // tslint:enable:max-line-length
-      ],
+      ]
     };
   }
 }

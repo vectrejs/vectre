@@ -1,2 +1,2 @@
-export { default as default } from './view.vue';
-export const anchors = { Accordion: '#accordion' };
+export { default as AccordionView } from './Accordion.vue';
+export { AccordionRoute } from './route';
