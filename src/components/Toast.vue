@@ -11,24 +11,21 @@
 
 <script lang="ts">
 import vue from 'vue';
-import { Component, Prop, Emit } from 'vue-property-decorator';
+import { Component, Emit, Prop } from 'vue-property-decorator';
 
 @Component
 export default class extends vue {
-  @Prop()
-  private type: string;
+  @Prop() private type: string;
 
-  @Prop({type: Number})
+  @Prop({ type: Number })
   private autoclose: number;
 
-  @Prop()
-  private closeable: boolean;
+  @Prop() private closeable: boolean;
 
-  @Prop()
-  private icon: string;
+  @Prop() private icon: string;
 
   private shown: boolean = true;
-  
+
   public get typeClass(): string {
     return 'toast-' + this.type;
   }
@@ -39,7 +36,7 @@ export default class extends vue {
 
   public mounted(): void {
     if (this.autoclose) {
-      setTimeout(() => this.shown = false, this.autoclose);
+      setTimeout(() => (this.shown = false), this.autoclose);
     }
   }
 
@@ -51,10 +48,12 @@ export default class extends vue {
 </script>
 
 <style scoped>
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop } from "vue-property-decorator";
-import vue from "vue";
-import Type, * as Names from "./Type";
-import Size from "./Size";
+import vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+import Size from './Size';
+import Type, * as Names from './Type';
 
 @Component
 export default class Icon extends vue {
