@@ -5,13 +5,14 @@
       <input :type="type" hidden :id="uid(index || key)" :name="id" :checked="isSelected(key, index)">
       
       <label class="accordion-header c-hand" :for="uid(index || key)">
+        <icon v-if="icon" :type="icon" />
         <slot name="header" :item="{value, key, index}"></slot>
       </label>
       
       <div class="accordion-body">
-        <slot name="body" :item="{value, key, index}"></slot>
+        <slot v-if="!!$scopedSlots['body']" name="body" :item="{value, key, index}"></slot>
+        <slot v-if="!$scopedSlots['body']" :item="{value, key, index}"></slot>
       </div>
-
     </div>  
   </div>
 </template>
@@ -19,8 +20,13 @@
 <script lang="ts">
 import vue, { CreateElement } from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
+import Icon, { Type as IconType } from './Icon';
 
-@Component
+@Component({
+  components: {
+    Icon
+  }
+})
 export default class extends vue {
   @Prop({ required: true, type: [Object, Array] })
   private items: object[] | object;
@@ -34,15 +40,18 @@ export default class extends vue {
   @Prop([Boolean])
   private multiple: boolean;
 
-  public get type(): string {
+  @Prop([String])
+  private icon: IconType;
+
+  private get type(): string {
     return this.multiple ? 'checkbox' : 'radio';
   }
 
-  public uid(index: number): string {
+  private uid(index: number): string {
     return this.id + '-' + index;
   }
 
-  public isSelected(key: string, index: number): boolean {
+  private isSelected(key: string, index: number): boolean {
     if (Array.isArray(this.checked) === false) {
       return !!this.checked && (this.checked == key || this.checked == index);  
     }

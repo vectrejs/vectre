@@ -8,6 +8,7 @@ export default {
     disableHostCheck: true,
     host: '0.0.0.0',
     port: 9000,
+    historyApiFallback: true,
   },
   entry: [
     resolve(__dirname, 'kitchen_sink'),
@@ -16,6 +17,7 @@ export default {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader', options: { appendTsSuffixTo: [/\.vue$/] } },
       { test: /\.vue?$/, loader: 'vue-loader' },
+      { test: /\.scss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
     ],
   },

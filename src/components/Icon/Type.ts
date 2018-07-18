@@ -2,8 +2,8 @@ type Type = Navigation | Action | Objects;
 
 enum Navigation {
   up = 'icon-arrow-up',
-  down = 'icon-icon-arrow-down',
-  right = 'icon-icon-arrow-right',
+  down = 'icon-arrow-down',
+  right = 'icon-arrow-right',
   left = 'icon-arrow-left',
 
   upward = 'icon-upward',
