@@ -2,16 +2,18 @@
   <div class="accordion-container">
     <div class="accordion" v-for="(value, key, index) of items" :key="index || key">
       
-      <input :type="type" hidden :id="uid(index || key)" :name="id" :checked="isSelected(key, index)">
+      <input :type="type" hidden :id="uid(index || key)" :name="id" :checked="isSelected(key, index, value)">
       
       <label class="accordion-header c-hand" :for="uid(index || key)">
         <icon v-if="icon" :type="icon" />
-        <slot name="header" :item="{value, key, index}"></slot>
+        <slot v-if="$scopedSlots['header']" name="header" :item="{value, key, index}"></slot>
+        <template v-else>{{ key }}</template>
       </label>
       
       <div class="accordion-body">
-        <slot v-if="!!$scopedSlots['body']" name="body" :item="{value, key, index}"></slot>
+        <slot v-if="$scopedSlots['body']" name="body" :item="{value, key, index}"></slot>
         <slot v-if="!$scopedSlots['body']" :item="{value, key, index}"></slot>
+        <template v-if="!$scopedSlots['body'] && !$slots.default">{{ value }}</template>
       </div>
     </div>  
   </div>
@@ -51,15 +53,19 @@ export default class extends vue {
     return this.id + '-' + index;
   }
 
-  private isSelected(key: string, index: number): boolean {
+  private isSelected(key: string, index: number, value: any): boolean {
     if (Array.isArray(this.checked) === false) {
-      return !!this.checked && (this.checked == key || this.checked == index);  
+      return !!this.checked && (this.checked == key || this.checked == index || this.checked == value);  
     }
 
     if ((<number[]>this.checked).indexOf(index) !== -1) {
       return true;
     }
-    return (<string[]>this.checked).indexOf(key) !== -1;
+    if ((<string[]>this.checked).indexOf(key) !== -1) {
+      return true;
+    };
+
+    return (<any[]>this.checked).indexOf(value) !== -1;
   }
 
   private get id(): string {

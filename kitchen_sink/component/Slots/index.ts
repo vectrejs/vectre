@@ -1,1 +1,2 @@
-export { default as default } from './Slots.vue';
+export { default as default } from './SlotsList.vue';
+export * from './defs';

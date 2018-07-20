@@ -3,8 +3,13 @@
     "lib": [
       "es2017"
     ],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@kitchen/*": ["kitchen_sink/*"]
+    },
     "target": "es5",                          
-    "module": "commonjs",                     
+    "module": "commonjs", 
+    "moduleResolution": "node",                    
     "strict": true,                           
     "allowSyntheticDefaultImports": true,  
     "esModuleInterop": true,               

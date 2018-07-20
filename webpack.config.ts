@@ -1,6 +1,7 @@
 import htmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
 import { Configuration, EnvironmentPlugin } from 'webpack';
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 
 export default {
   devServer: {
@@ -35,6 +36,9 @@ export default {
     alias: {
       vue$: resolve(__dirname, 'node_modules/vue/dist/vue.esm.js'),
     },
+    plugins: [
+      new TsconfigPathsPlugin(),
+    ],
     extensions: ['.ts', '.tsx', '.vue', '.js'],
   },
 } as Configuration;
