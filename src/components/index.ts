@@ -11,7 +11,7 @@ import Icon, {
 } from './Icon';
 
 import Avatar, {
-  
+  Size as AvatarSize
 } from './Avatar';
 
 // Default is all components
@@ -39,6 +39,7 @@ export {
   IconObject,
 
   // Avatar
+  AvatarSize
 }
 
 
