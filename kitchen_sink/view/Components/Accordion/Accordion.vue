@@ -4,18 +4,13 @@
     <p>Accordions are used to toggle sections of content.</p>
 
     <basic />
-
-    <h3>Multiple</h3>
-    <accordion :items="items" multiple>
-      <span slot="header" slot-scope="{ item: { key: title } }">{{ title }}</span>
-      <span slot-scope="{ item:  { value: text } }">{{ text }}</span>
-    </accordion>
-    <prism language="html" :code="multipleHtml" />
-
+    <multiple />
     <checked />
+    <reactive />
+    
     <props />
     <slots />
-
+    <events />
   </div>
 </template>
 
@@ -27,6 +22,9 @@ import Basic from './Basic.vue';
 import Checked from './Checked.vue';
 import Props from './Props.vue';
 import Slots from './Slots.vue';
+import Events from './Events.vue';
+import Reactive from './Reactive.vue';
+import Multiple from './Multiple.vue';
 
 export default Vue.extend({
   components: {
@@ -34,6 +32,9 @@ export default Vue.extend({
     Checked,
     Props,
     Slots,
+    Events,
+    Reactive,
+    Multiple
   },
   data: () => ({
     icon: Navigation.right,

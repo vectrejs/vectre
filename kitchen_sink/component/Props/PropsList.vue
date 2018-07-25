@@ -32,7 +32,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { PropDefinition } from "./defs";
 
 export default Vue.extend({
   props: {

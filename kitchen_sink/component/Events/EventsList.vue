@@ -1,6 +1,6 @@
 <template>
-  <div class="slots"> 
-    <h3>Slots</h3>
+  <div class="props"> 
+    <h3>Events</h3>
 
     <table class="table">
       <col style="width: 10%">
@@ -8,16 +8,16 @@
       <col style="width: 40%">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Event</th>
           <th>Description</th>
-          <th>Scope</th>
+          <th>Payload</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(slot, key) in slots" :key="key">
-          <td>{{ key }}<sup v-if="slot.required">*</sup></td>
-          <td v-html="slot.description"></td>
-          <td>{{ slot.scope || '-' }}</td>
+        <tr v-for="(event, key) in events" :key="key">
+          <td>{{ key }}</td>
+          <td v-html="event.description"></td>
+          <td>{{ event.payload }}</td>
         </tr>
       </tbody>
     </table>
@@ -29,10 +29,10 @@ import Vue from "vue";
 
 export default Vue.extend({
   props: {
-    slots: {
+    events: {
       type: Object,
       required: true
     }
-  },
+  }
 });
 </script>

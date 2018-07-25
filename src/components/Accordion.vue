@@ -2,7 +2,14 @@
   <div class="accordion-container">
     <div class="accordion" v-for="(value, key, index) of items" :key="index || key">
       
-      <input :type="type" hidden :id="uid(index || key)" :name="id" :checked="isSelected(key, index, value)">
+      <input 
+        :id="uid(index || key)" 
+        :name="id"
+        :type="type" 
+        :checked="isSelected(key, index)" 
+        @click="check($event, key, index)"
+        hidden 
+      />
       
       <label class="accordion-header c-hand" :for="uid(index || key)">
         <icon v-if="icon" :type="icon" />
@@ -20,9 +27,9 @@
 </template>
 
 <script lang="ts">
-import vue, { CreateElement } from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
-import Icon, { Type as IconType } from './Icon';
+import vue, { CreateElement } from "vue";
+import { Component, Prop } from "vue-property-decorator";
+import Icon, { Type as IconType } from "./Icon";
 
 @Component({
   components: {
@@ -46,30 +53,55 @@ export default class extends vue {
   private icon: IconType;
 
   private get type(): string {
-    return this.multiple ? 'checkbox' : 'radio';
+    return this.multiple ? "checkbox" : "radio";
   }
 
   private uid(index: number): string {
-    return this.id + '-' + index;
+    return this.id + "-" + index;
   }
 
-  private isSelected(key: string, index: number, value: any): boolean {
+  private isSelected(key: string, index: number): boolean {
     if (Array.isArray(this.checked) === false) {
-      return !!this.checked && (this.checked == key || this.checked == index || this.checked == value);  
+      return !!this.checked && (this.checked == key || this.checked == index);
     }
 
     if ((<number[]>this.checked).indexOf(index) !== -1) {
       return true;
     }
+
     if ((<string[]>this.checked).indexOf(key) !== -1) {
       return true;
-    };
+    }
 
-    return (<any[]>this.checked).indexOf(value) !== -1;
+    return false;
+  }
+
+  private check(event: Event, key: string, index: number) {
+    if (!this.$listeners.check) return;
+
+    event.preventDefault();
+
+    if (!this.multiple) {
+      return this.$emit("check", key || index);
+    }
+
+    let checked = Array.isArray(this.checked)
+      ? [...this.checked]
+      : [this.checked];
+
+    if ((<HTMLInputElement>event.target).checked) {
+      checked.push(key || index);
+    } else {
+      checked = checked.filter(item => item != index && item !== key);
+    }
+
+    this.$emit("check", checked);
   }
 
   private get id(): string {
-    return this.name ? this.name : 'accordion-' + Math.round(Math.random() * 1000)
+    return this.name
+      ? this.name
+      : "accordion-" + Math.round(Math.random() * 1000);
   }
 }
 </script>
