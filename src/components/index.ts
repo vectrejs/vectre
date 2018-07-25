@@ -3,22 +3,29 @@ import Toast from './Toast.vue';
 import OffCanvas from './OffCanvas.vue';
 
 import Icon, {
-  Size as IconSize, 
-  Type as IconType, 
-  Action as IconAction, 
-  Navigation as IconNavigation, 
+  Size as IconSize,
+  Type as IconType,
+  Action as IconAction,
+  Navigation as IconNavigation,
   Objects as IconObject
 } from './Icon';
 
+import Avatar, {
+  
+} from './Avatar';
+
+// Default is all components
 export default {
+  Avatar,
   Accordion,
   Toast,
   OffCanvas,
-  Icon
+  Icon,
 };
 
 export {
   // Components
+  Avatar,
   Accordion,
   Toast,
   OffCanvas,
@@ -30,6 +37,8 @@ export {
   IconAction,
   IconNavigation,
   IconObject,
+
+  // Avatar
 }
 
 
