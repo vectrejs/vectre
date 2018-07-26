@@ -22,7 +22,7 @@
           <td>{{ key }}<sup v-if="prop.required">*</sup></td>
           <td v-html="prop.description"></td>
           <td>{{ typeof prop.default != 'undefined' ? prop.default : '-' }}</td>
-          <td>{{ prop.accepted || '-' }}</td>
+          <td v-html="prop.accepted || '-'"></td>
           <td>{{ prop.type }}</td>
         </tr>
       </tbody>
