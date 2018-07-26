@@ -1,4 +1,5 @@
 import Accordion from './Accordion.vue';
+import Bar from './Bar';
 import Toast from './Toast.vue';
 import OffCanvas from './OffCanvas.vue';
 
@@ -14,22 +15,25 @@ import Avatar, {
   Size as AvatarSize
 } from './Avatar';
 
+
 // Default is all components
 export default {
-  Avatar,
   Accordion,
-  Toast,
-  OffCanvas,
+  Bar,
+  Avatar,
   Icon,
+  OffCanvas,
+  Toast,
 };
 
 export {
   // Components
-  Avatar,
   Accordion,
-  Toast,
-  OffCanvas,
+  Avatar,
+  Bar,
   Icon,
+  OffCanvas,
+  Toast,
 
   // Icon
   IconSize,
