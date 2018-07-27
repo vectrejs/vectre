@@ -1,10 +1,10 @@
 import Vue, { VueConstructor, PluginFunction } from 'vue';
 import components from './components';
-import { Component } from "vue-property-decorator";
+import layout from './layout';
 
-const all: { [name: string]: VueConstructor } = components
+const all: { [name: string]: VueConstructor } = { ...components, ...layout };
 
-export default ((vue: typeof Vue, options: { prefix?: string } = { prefix: '' }): void => {
+export default ((vue: typeof Vue, options = { prefix: '' }): void => {
   for (let component in all) {
     vue.component(options.prefix + component, all[component]);
   }
