@@ -1,5 +1,5 @@
 <template>
-  <container xl>
+  <container>
     <columns gapless>
       <column col="2">
         <bar />
