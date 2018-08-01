@@ -7,7 +7,18 @@ import Vue from "vue";
 import SlotsList, { SlotDefinitions } from "@kitchen/component/Slots";
 
 const slots: SlotDefinitions = {
-  default: { description: 'Another way to show custom data', scope: '{ crumb }' }
+  header: {
+    description: "The topmost section",
+  },
+  body: {
+    description: "Slot goes after the header",
+  },
+  footer: {
+    description: "Slot goes after the body",
+  },
+  default: {
+    description: "An alias for body"
+  }
 };
 
 export default Vue.extend({

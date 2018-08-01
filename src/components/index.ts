@@ -3,6 +3,7 @@ import Bar from './Bar';
 import Toast from './Toast.vue';
 import OffCanvas from './OffCanvas.vue';
 import { Breadcrumb } from "./Breadcrumb";
+import { Card } from "./Card";
 
 import Icon, {
   Size as IconSize,
@@ -23,6 +24,7 @@ export default {
   Avatar,
   Bar,
   Breadcrumb,
+  Card,
   Icon,
   OffCanvas,
   Toast,
@@ -34,6 +36,7 @@ export {
   Avatar,
   Bar,
   Breadcrumb,
+  Card,
   Icon,
   OffCanvas,
   Toast,
