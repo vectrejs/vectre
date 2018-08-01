@@ -2,6 +2,7 @@ import Accordion from './Accordion.vue';
 import Bar from './Bar';
 import Toast from './Toast.vue';
 import OffCanvas from './OffCanvas.vue';
+import { Breadcrumb } from "./Breadcrumb";
 
 import Icon, {
   Size as IconSize,
@@ -19,8 +20,9 @@ import Avatar, {
 // Default is all components
 export default {
   Accordion,
-  Bar,
   Avatar,
+  Bar,
+  Breadcrumb,
   Icon,
   OffCanvas,
   Toast,
@@ -31,6 +33,7 @@ export {
   Accordion,
   Avatar,
   Bar,
+  Breadcrumb,
   Icon,
   OffCanvas,
   Toast,

@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Navigation } from "@components/Icon";
 
 import Basic from './Basic.vue';
 import Checked from './Checked.vue';
@@ -36,33 +35,5 @@ export default Vue.extend({
     Reactive,
     Multiple
   },
-  data: () => ({
-    icon: Navigation.right,
-    multipleHtml: `
-<accordion :items="items" multiple>
-    `,
-    jsCode: `
-import Vue from 'vue';
-import { Accordion } from 'vectre';
-
-export default Vue.extend({
-  components: {
-    Accordion,
-  },
-  data: () => ({
-    items: {
-      Elements: "Text about elements",
-      Layout: "Layout 1",
-      Components: "Components 1",
-    }
-  })
-});
-      `,
-    items: {
-      Elements: "Text about elements",
-      Layout: "Layout 1",
-      Components: "Components 1",
-    }
-  })
 });
 </script>
