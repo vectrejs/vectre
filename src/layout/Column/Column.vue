@@ -20,22 +20,22 @@ export default class extends Vue {
 
   @Prop(Boolean) private mr: boolean;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private xs: number;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private sm: number;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private md: number;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private lg: number;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private xl: number;
 
-  @Prop({ type: Number, validator: sizeValidator })
+  @Prop({ type: [Number, String], validator: sizeValidator })
   private col: number;
 
   public get cssClass(): string[] {
