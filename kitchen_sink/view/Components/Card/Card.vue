@@ -3,7 +3,7 @@
     <h2>Cards</h2>
     <p>Cards are flexible content containers.</p>
     <columns>
-      <column col="4" xs="12">
+      <column col="4" xs="12" xl=6 lg=6>
         <card img="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg" before="header">
           <div slot="header">
             <h4>Microsoft</h4>
@@ -14,7 +14,7 @@
         </card>
       </column>
 
-      <column col="4" xs="12">
+      <column col="4" xs="12" xl=6 lg=6>
         <card img="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg" before="body">
           <div slot="header">
             <h4>Microsoft</h4>
@@ -25,7 +25,7 @@
         </card>
       </column>
 
-      <column col="4" xs="12">
+      <column col="4" xs="12" xl=6 lg=6>
         <card img="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg" after="footer">
           <div slot="header">
             <h4>Microsoft</h4>

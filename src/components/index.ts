@@ -3,10 +3,13 @@ import Bar from './Bar';
 import Toast from './Toast.vue';
 import OffCanvas from './OffCanvas.vue';
 import { Breadcrumb } from "./Breadcrumb";
+import { Btn } from "./Button";
 import { Card } from "./Card";
 import { Chip } from "./Chip";
+import { Empty } from "./Empty";
 
-import Icon, {
+import {
+  Icon,
   Size as IconSize,
   Type as IconType,
   Action as IconAction,
@@ -19,14 +22,17 @@ import Avatar, {
 } from './Avatar';
 
 
+
 // Default is all components
 export default {
   Accordion,
   Avatar,
   Bar,
   Breadcrumb,
+  Btn,
   Card,
   Chip,
+  Empty,
   Icon,
   OffCanvas,
   Toast,
@@ -38,8 +44,10 @@ export {
   Avatar,
   Bar,
   Breadcrumb,
+  Btn,
   Card,
   Chip,
+  Empty,
   Icon,
   OffCanvas,
   Toast,

@@ -13,7 +13,7 @@
 
         <a class="off-canvas-overlay" @click="hideSidebar()"></a>
 
-        <div class="off-canvas-content column col-9 col-mr-auto">
+        <div class="off-canvas-content column col-9 col-lg-12 col-mr-auto">
             <slot name="content"></slot>
             <slot></slot>
         </div>
@@ -25,7 +25,7 @@
 <script lang="ts">
 import { Component, Prop } from "vue-property-decorator";
 import vue from "vue";
-import Icon, { Navigation, Type as IconType } from "./Icon";
+import { Icon, Type as IconType, Navigation as IconNavigation } from "@components/Icon";
 
 @Component({
   components: {
@@ -33,7 +33,7 @@ import Icon, { Navigation, Type as IconType } from "./Icon";
   }
 })
 export default class extends vue {
-  @Prop({ default: Navigation.menu })
+  @Prop({ default: IconNavigation.menu })
   private icon: IconType;
 
   @Prop({ default: true, type: Boolean })
