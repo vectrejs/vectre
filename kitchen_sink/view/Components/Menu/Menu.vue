@@ -1,7 +1,7 @@
 <template>
   <container>
 
-    <h2>Menu</h2>
+    <h2>Menu <code>&lt;vs-menu&gt;</code></h2>
     Menus are vertical list of links for navigation.
 
     <h3>Base use</h3>
@@ -38,9 +38,9 @@
             message: { icon: 'message', path: '#message', text: 'Messages' },
           }"
         >
-          <router-link slot-scope="{item: { value: v, key: k }}" :to="v.path" :class="k == 'message' ? 'active' : ''">
-            <icon :type="v.icon" />
-            {{v.text}}
+          <router-link slot-scope="{ item, index }" :to="item.path" :class="index == 'message' ? 'active' : null">
+            <icon :type="item.icon" />
+            {{item.text}}
           </router-link>
         </vs-menu>
       </column>
@@ -74,18 +74,14 @@ export default Vue.extend({
 />`,
     // tslint:disable:max-line-length
     advanced: `<vs-menu :items="{
-    people: { icon: 'people', path: '#people', text: 'Contacts', badge: 2 },
-    mail: { icon: 'mail', path: '#hipchat', text: 'Mails' },
-    message: { icon: 'message', path: '#message', text: 'Messages' },
+    people: { icon: 'people', to: '#people', text: 'Contacts', badge: 2 },
+    mail: { icon: 'mail', to: '#hipchat', text: 'Mails' },
+    message: { icon: 'message', to: '#message', text: 'Messages' },
   }"
 >
-  <router-link
-    slot-scope="{item: { value, key }}"
-    :class="key == 'message' ? 'active' : ''"
-    :to="value.path"
-  >
-    <icon :type="value.icon" />
-    {{value.text}}
+  <router-link slot-scope="{ item, index }" :to="item.to" :class="index == 'message' ? 'active' : null">
+    <icon :type="item.icon" />
+    {{item.text}}
   </router-link>
 </vs-menu>`,
   // tslint:enable:max-line-length

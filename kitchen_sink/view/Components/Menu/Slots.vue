@@ -9,7 +9,7 @@ import Vue from 'vue';
 const slots: SlotDefinitions = {
   default: {
     description: 'Used to show "custom" items',
-    scope: 'item = { value, key, index }',
+    scope: '{ item, index }',
   },
 };
 

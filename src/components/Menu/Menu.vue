@@ -13,7 +13,7 @@
       >
         <badge v-if="value.badge" :value="value.badge" />
 
-        <slot v-if="$scopedSlots.default" :item="{ value, key, index }" />
+        <slot v-if="$scopedSlots.default" :item="value" :index="key || index" />
         <a v-else :href="value.path" :class="cssClassLinkItem(key || index)">
           {{ value.text }}
         </a>
