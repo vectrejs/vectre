@@ -1,0 +1,94 @@
+<template>
+  <container>
+
+    <h2>Menu</h2>
+    Menus are vertical list of links for navigation.
+
+    <h3>Base use</h3>
+    <columns>
+      <column col=4 md=12>
+        <vs-menu :items="[
+            { divider: 'LINKS' },
+            { path: '#', text: 'Slack' },
+            { divider: true },
+            { path: '#hipchat', text: 'Hipchat' },
+            { path: '#skype', text: 'Skype' },
+          ]"
+          active="3"
+        />
+      </column>
+    </columns>
+    <prism language="html" :code="basic" />
+    <p>
+      <code>items</code> prop should have a certain structure to be used in a simplified way: 
+      <pre>  Array of { path: string, text: string, badge?: string | number, divider?: string|boolean }</pre>
+      <i>Note: dividers can not be active but they are used in index count</i>
+    </p>
+
+    <h3>Advanced</h3>
+    <p>
+      <code>items</code> could be any iterable structure. In this case, you must define how to display each item using default scoped slot.
+    </p>
+
+    <columns>
+      <column col=4 sm=12>
+        <vs-menu :items="{
+            people: { icon: 'people', path: '#people', text: 'Contacts', badge: 2 },
+            mail: { icon: 'mail', path: '#hipchat', text: 'Mails' },
+            message: { icon: 'message', path: '#message', text: 'Messages' },
+          }"
+        >
+          <router-link slot-scope="{item: { value: v, key: k }}" :to="v.path" :class="k == 'message' ? 'active' : ''">
+            <icon :type="v.icon" />
+            {{v.text}}
+          </router-link>
+        </vs-menu>
+      </column>
+    </columns>
+    <prism language="html" :code="advanced" />
+     <p>
+      <i>Note: active is ignored. You have to define it by yourself. Badges still work.</i>
+    </p>
+
+    <props />
+    <slots />
+  </container>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Props from './Props.vue';
+import Slots from './Slots.vue';
+
+export default Vue.extend({
+  components: { Props, Slots },
+  data: () => ({
+    basic: `<vs-menu :items="[
+    { divider: 'LINKS' },
+    { path: '#', text: 'Slack' },
+    { divider: true },
+    { path: '#hipchat', text: 'Hipchat' },
+    { path: '#skype', text: 'Skype' },
+  ]"
+  active="3"
+/>`,
+    // tslint:disable:max-line-length
+    advanced: `<vs-menu :items="{
+    people: { icon: 'people', path: '#people', text: 'Contacts', badge: 2 },
+    mail: { icon: 'mail', path: '#hipchat', text: 'Mails' },
+    message: { icon: 'message', path: '#message', text: 'Messages' },
+  }"
+>
+  <router-link
+    slot-scope="{item: { value, key }}"
+    :class="key == 'message' ? 'active' : ''"
+    :to="value.path"
+  >
+    <icon :type="value.icon" />
+    {{value.text}}
+  </router-link>
+</vs-menu>`,
+  // tslint:enable:max-line-length
+  }),
+});
+</script>

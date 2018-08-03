@@ -1,27 +1,26 @@
 import Accordion from './Accordion.vue';
-import Bar from './Bar';
-import Toast from './Toast.vue';
+import { Bar } from './Bar';
+import { Breadcrumb } from './Breadcrumb';
+import { Btn } from './Button';
+import { Card } from './Card';
+import { Chip } from './Chip';
+import { Empty } from './Empty';
+import { Menu as VsMenu } from './Menu';
 import OffCanvas from './OffCanvas.vue';
-import { Breadcrumb } from "./Breadcrumb";
-import { Btn } from "./Button";
-import { Card } from "./Card";
-import { Chip } from "./Chip";
-import { Empty } from "./Empty";
+import Toast from './Toast.vue';
 
 import {
+  Action as IconAction,
   Icon,
+  Navigation as IconNavigation,
+  Objects as IconObject,
   Size as IconSize,
   Type as IconType,
-  Action as IconAction,
-  Navigation as IconNavigation,
-  Objects as IconObject
 } from './Icon';
 
 import Avatar, {
-  Size as AvatarSize
+  Size as AvatarSize,
 } from './Avatar';
-
-
 
 // Default is all components
 export default {
@@ -34,6 +33,7 @@ export default {
   Chip,
   Empty,
   Icon,
+  VsMenu,
   OffCanvas,
   Toast,
 };
@@ -49,6 +49,7 @@ export {
   Chip,
   Empty,
   Icon,
+  VsMenu,
   OffCanvas,
   Toast,
 
@@ -60,7 +61,5 @@ export {
   IconObject,
 
   // Avatar
-  AvatarSize
-}
-
-
+  AvatarSize,
+};

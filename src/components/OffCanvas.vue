@@ -23,14 +23,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop } from "vue-property-decorator";
-import vue from "vue";
-import { Icon, Type as IconType, Navigation as IconNavigation } from "@components/Icon";
+import {
+  Icon,
+  Navigation as IconNavigation,
+  Type as IconType,
+} from '@components/Icon';
+
+import vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
 
 @Component({
   components: {
-    icon: Icon
-  }
+    icon: Icon,
+  },
 })
 export default class extends vue {
   @Prop({ default: IconNavigation.menu })

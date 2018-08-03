@@ -1,12 +1,12 @@
-import Container, { Grid as ContainerGrid } from './Container';
-import Columns from './Columns';
 import Column from './Column';
+import Columns from './Columns';
+import Container, { Grid as ContainerGrid } from './Container';
 
 export default {
   Container,
   Columns,
   Column,
-}
+};
 
 export {
   // Layout components
@@ -14,6 +14,6 @@ export {
   Columns,
   Column,
 
-  //Container
-  ContainerGrid
-}
+  // Container
+  ContainerGrid,
+};

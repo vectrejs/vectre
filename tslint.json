@@ -4,9 +4,13 @@
         "tslint:recommended",
         "tslint-config-airbnb"
     ],
-    "jsRules": {},
+    "jsRules": {
+        "variable-name": false
+    },
     "rules": {
         "object-literal-sort-keys": false,
+        "import-name": false,
+        "variable-name": false
     },
     "rulesDirectory": []
 }
