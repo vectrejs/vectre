@@ -7,17 +7,13 @@
         class="divider" 
       />
       
-      <li v-else 
-        class="menu-item" 
-        :key="index || key" 
-      >
+      <li v-else class="menu-item" :key="index || key" >
         <badge v-if="value.badge" :value="value.badge" />
 
         <slot v-if="$scopedSlots.default" :item="value" :index="key || index" />
         <a v-else :href="value.path" :class="cssClassLinkItem(key || index)">
           {{ value.text }}
         </a>
-
       </li>
     </template>
   </ul>
