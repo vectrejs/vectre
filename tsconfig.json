@@ -9,7 +9,7 @@
     },
     "target": "es5",                          
     "module": "commonjs", 
-    "moduleResolution": "node",                    
+    "moduleResolution": "node",
     "strict": true,                           
     "allowSyntheticDefaultImports": true,  
     "esModuleInterop": true,               
@@ -17,6 +17,16 @@
     "emitDecoratorMetadata": true,
     "noLib": false,
     "baseUrl": ".",
-    "strictPropertyInitialization": false /* See more https://github.com/kaorun343/vue-property-decorator/issues/81 */
-  }
+    "strictPropertyInitialization": false
+  },
+  "exclude": [
+    "node_modules/*"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "kitchen_sink/**/*.ts",
+    "kitchen_sink/**/*.vue"
+  ]
 }

@@ -1,7 +1,8 @@
 import htmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
-import { Configuration, EnvironmentPlugin } from 'webpack';
-import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+import { VueLoaderPlugin } from 'vue-loader';
+import { Configuration } from 'webpack';
 
 export default {
   devServer: {
@@ -28,6 +29,7 @@ export default {
     publicPath: '/',
   },
   plugins: [
+    new VueLoaderPlugin(),
     new htmlWebpackPlugin({
       template: resolve(__dirname, 'kitchen_sink/index.html'),
     }),
