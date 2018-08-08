@@ -14,14 +14,15 @@
     <events />
   </container>
 </template>
+
 <script lang="ts">
-import Vue from 'vue'
-import Props from "./Props.vue";
-import Events from "./Events.vue";
+import Vue from 'vue';
+import Events from './Events.vue';
+import Props from './Props.vue';
 
 export default Vue.extend({
   components: { Props, Events },
-  
+
   data: () => ({
     alive: true,
     code: `<chip text="Arya Stark" />
@@ -29,8 +30,8 @@ export default Vue.extend({
 <chip text="John Snow" avatar="img/avatar-1.png" />
 <chip text="John Snow" initials="JS" />
 <chip v-if="alive" text="Ned Stark" @close="alive = false" />
-`
-  })  
-})
+`,
+  }),
+});
 </script>
 

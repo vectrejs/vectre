@@ -30,7 +30,7 @@ export default class extends vue {
   @Prop({ type: [Array, Object], required: true })
   private items: object[];
 
-  @Prop([String, Number])
+  @Prop({ type: [String, Number], default: '' })
   private active: string | number;
 
   public normalizeDivider(divider: string | boolean): string {

@@ -10,7 +10,12 @@ code[class*="language-"] {
   padding: .4rem;
 }
 
-.off-canvas-content.col-9 {
-  // width: 100%;
-  // padding: 0;
+@media (max-width: 960px) {
+  .off-canvas-content.col-9 {
+    padding: 0;
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
 }

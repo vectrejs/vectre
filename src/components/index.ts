@@ -4,6 +4,7 @@ import { Breadcrumb } from './Breadcrumb';
 import { Btn } from './Button';
 import { Card } from './Card';
 import { Chip } from './Chip';
+import { DropdownMenu } from './DropdownMenu';
 import { Empty } from './Empty';
 import { Menu as VsMenu } from './Menu';
 import OffCanvas from './OffCanvas.vue';
@@ -31,6 +32,7 @@ export default {
   Btn,
   Card,
   Chip,
+  DropdownMenu,
   Empty,
   Icon,
   VsMenu,
@@ -47,6 +49,7 @@ export {
   Btn,
   Card,
   Chip,
+  DropdownMenu,
   Empty,
   Icon,
   VsMenu,

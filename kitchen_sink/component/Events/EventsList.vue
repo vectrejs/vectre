@@ -1,5 +1,5 @@
 <template>
-  <div class="props"> 
+  <div class="props table-responsive"> 
     <h3>Events</h3>
 
     <table class="table">

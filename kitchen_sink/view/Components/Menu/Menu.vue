@@ -7,15 +7,15 @@
     <h3>Base use</h3>
     <columns>
       <column col=4 md=12>
-        <vs-menu :items="[
-            { divider: 'LINKS' },
-            { path: '#', text: 'Slack' },
-            { divider: true },
-            { path: '#hipchat', text: 'Hipchat' },
-            { path: '#skype', text: 'Skype' },
-          ]"
-          active="3"
-        />
+          <vs-menu :items="[
+              { divider: 'LINKS' },
+              { path: '#', text: 'Slack' },
+              { divider: true },
+              { path: '#hipchat', text: 'Hipchat' },
+              { path: '#skype', text: 'Skype' },
+            ]"
+            active="3"
+          />
       </column>
     </columns>
     <prism language="html" :code="basic" />
@@ -84,7 +84,7 @@ export default Vue.extend({
     {{item.text}}
   </router-link>
 </vs-menu>`,
-  // tslint:enable:max-line-length
+    // tslint:enable:max-line-length
   }),
 });
 </script>

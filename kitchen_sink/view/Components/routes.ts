@@ -6,3 +6,4 @@ export { CardRoute } from './Card';
 export { ChipRoute } from './Chip';
 export { EmptyRoute } from './Empty';
 export { MenuRoute } from './Menu';
+export { DropdownMenuRoute } from './DropdownMenu';

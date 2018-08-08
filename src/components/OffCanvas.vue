@@ -1,11 +1,12 @@
 <template>
-  <div class="container">
     <div class="off-canvas columns" :class="{ 'off-canvas-sidebar-show': sidebarShow }" >
         
-        <a class="off-canvas-toggle btn btn-primary btn-action" @click="showSidebar()">
-          <slot v-if="$slots.icon" name="icon"></slot>
-          <icon v-else :type="icon"></icon>
-        </a>
+        <div class="off-canvas-toggle">
+          <a class="btn btn-primary btn-action" @click="showSidebar()">
+            <slot v-if="$slots.icon" name="icon"></slot>
+            <icon v-else :type="icon"></icon>
+          </a>
+        </div>
 
         <div class="off-canvas-sidebar column col-2" :class="{ 'active': active }">
             <slot name="sidebar"></slot>
@@ -19,7 +20,6 @@
         </div>
 
     </div>
-  </div>
 </template>
 
 <script lang="ts">

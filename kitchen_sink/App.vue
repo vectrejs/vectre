@@ -7,10 +7,10 @@
 
 <script lang="ts">
 import vue from 'vue';
-import { Component } from 'vue-property-decorator';
-import { AnchoredMenu } from "vue-anchored-menu";
-import router, { routes } from './router';
+import { AnchoredMenu } from 'vue-anchored-menu';
 import Prism from 'vue-prism-component';
+import { Component } from 'vue-property-decorator';
+import router, { routes } from './router';
 
 import VectrePlugin from '../src/main';
 
@@ -20,16 +20,12 @@ vue.component('prism', Prism);
 vue.use(VectrePlugin);
 
 @Component({
-  router: router,
+  router,
   components: {
     AnchoredMenu,
   },
 })
 export default class extends vue {
-  public data() {
-    return {
-      routes
-    };
-  }
+  private routes = routes;
 }
 </script>

@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
-import { Size } from "./Size";
-import { Presence } from "./Presence";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import { Size } from './Size';
+import { Presence } from './Presence';
 
 @Component
 export default class extends Vue {

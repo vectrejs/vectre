@@ -1,5 +1,5 @@
 <template>
-  <div class="slots"> 
+  <div class="slots table-responsive"> 
     <h3>Slots</h3>
 
     <table class="table">
@@ -25,14 +25,14 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   props: {
     slots: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 });
 </script>

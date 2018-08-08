@@ -3,19 +3,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import EventsList, { EventDefinitions } from "@kitchen/component/Events";
+import EventsList, { EventDefinitions } from '@kitchen/component/Events';
+import Vue from 'vue';
 
 const events: EventDefinitions = {
-  close: { description: "Emitted when close button is clicked" }
+  close: { description: 'Emitted when close button is clicked' },
 };
 
 export default Vue.extend({
   components: {
-    EventsList
+    EventsList,
   },
   data: () => ({
-    events
-  })
+    events,
+  }),
 });
 </script>

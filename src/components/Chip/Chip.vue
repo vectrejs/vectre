@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Emit } from 'vue-property-decorator';
 import  Avatar, { Size as AvatarSize } from '@components/Avatar'

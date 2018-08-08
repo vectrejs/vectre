@@ -1,5 +1,5 @@
 <template>
-  <div class="props"> 
+  <div class="props table-responsive"> 
     <h3>Props</h3>
 
     <table class="table">
@@ -31,14 +31,14 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   props: {
     props: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 });
 </script>
