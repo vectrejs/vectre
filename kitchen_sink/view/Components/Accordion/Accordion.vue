@@ -15,15 +15,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 import Basic from './Basic.vue';
 import Checked from './Checked.vue';
-import Props from './Props.vue';
-import Slots from './Slots.vue';
 import Events from './Events.vue';
-import Reactive from './Reactive.vue';
 import Multiple from './Multiple.vue';
+import Props from './Props.vue';
+import Reactive from './Reactive.vue';
+import Slots from './Slots.vue';
 
 export default Vue.extend({
   components: {
@@ -33,7 +33,7 @@ export default Vue.extend({
     Slots,
     Events,
     Reactive,
-    Multiple
+    Multiple,
   },
 });
 </script>

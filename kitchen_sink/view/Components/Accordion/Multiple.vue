@@ -7,17 +7,17 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Navigation } from "@components/Icon";
+import { Navigation } from '@components/Icon';
+import Vue from 'vue';
 
 export default Vue.extend({
   data: () => ({
     html: `<accordion :items="items" multiple>`,
     items: {
-      Elements: "Text about elements",
-      Layout: "Layout 1",
-      Components: "Components 1",
-    }
-  })
+      Elements: 'Text about elements',
+      Layout: 'Layout 1',
+      Components: 'Components 1',
+    },
+  }),
 });
 </script>
