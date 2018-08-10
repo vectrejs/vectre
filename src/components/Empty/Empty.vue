@@ -21,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Icon, Size as IconSize, Type as IconType } from '@components/Icon';
 import { Prop } from 'vue-property-decorator';
-import { Icon, Type as IconType, Size as IconSize } from '@components/Icon';
 
 @Component({
-  components: { Icon }
+  components: { Icon },
 })
-export default class extends Vue{
+export default class extends Vue {
   @Prop(String)
   private title: string;
 
@@ -40,7 +40,5 @@ export default class extends Vue{
   private icon: IconType;
 
   private iconSizes = IconSize;
-
-
 }
 </script>

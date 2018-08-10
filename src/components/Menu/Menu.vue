@@ -1,17 +1,18 @@
 <template>
   <ul class="menu">
-    <template v-for="(value, key, index) in items">
+    <template v-for="(value, key) in items">
       <li v-if="value.divider" 
-        :key="index || key" 
+        :key="key" 
         :data-content="normalizeDivider(value.divider)" 
         class="divider" 
       />
       
-      <li v-else class="menu-item" :key="index || key" >
+      <li v-else class="menu-item" :key="key" >
         <badge v-if="value.badge" :value="value.badge" />
 
-        <slot v-if="$scopedSlots.default" :item="value" :index="key || index" />
-        <a v-else :href="value.path" :class="cssClassLinkItem(key || index)">
+        <slot v-if="$scopedSlots.default" :item="value" :index="key" />
+        
+        <a v-else :href="value.path" :class="cssClassLinkItem(key)">
           {{ value.text }}
         </a>
       </li>

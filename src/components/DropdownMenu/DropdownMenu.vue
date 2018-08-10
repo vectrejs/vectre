@@ -1,16 +1,31 @@
 <template>
   <div class="dropdown" :class="cssClass">
-    <a class="btn btn-link dropdown-toggle" tabindex="0" @focus="open" @blur="close">
-      dropdown menu <i class="icon icon-caret"></i>
-    </a>
-    <vs-menu :items="items" />
+    <btn
+      class="dropdown-toggle" :class="btnCssClass"
+      tabindex="0"
+      :icon="btnIcon"
+      :state="state"
+      @focus="open"
+      @blur="close"
+    >
+      {{ btnText }}
+    </btn> 
+    
+    <vs-menu v-if="$scopedSlots.default" :items="items">
+      <template  slot-scope="{item, index}" >
+        <slot :item="item" :index="index" />
+      </template>
+    </vs-menu>
+    <vs-menu v-else :items="items" />
   </div>
 </template>
 
 <script lang="ts">
 import vue from 'vue';
 import { Component, Prop, Emit } from 'vue-property-decorator';
-import { Menu } from '../Menu';
+import { Menu } from '@components/Menu';
+import { BtnType, BtnState } from '@components/Button';
+import { Type as IconType, Navigation as IconNavigation } from '@components/Icon';
 
 @Component({
   components: { 'vs-menu': Menu },
@@ -22,16 +37,34 @@ export default class extends vue {
   @Prop(Boolean)
   private right: boolean;
 
+  @Prop(String)
+  private btnType: BtnType;
+
+  @Prop(String)
+  private btnText: string;
+
+  @Prop({ type: String, default: IconNavigation.caret })
+  private btnIcon: IconType;
+
+  @Prop()
+  private state: BtnState;
+
   public get cssClass(): string[] {
     return [
       this.right ? 'dropdown-right' : '',
     ];
   }
 
+  public get btnCssClass(): string[] {
+    return [
+      BtnType[this.btnType as any],
+    ];
+  }
+
   @Emit('opened')
-  private open(): void {}
+  private open(): void { }
 
   @Emit('closed')
-  private close(): void {}
+  private close(): void { }
 }
 </script>
