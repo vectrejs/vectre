@@ -3,4 +3,5 @@ export enum Type {
   link = 'btn-link',
   success = 'btn-success',
   error = 'btn-error',
+  clear = 'btn-clear',
 }

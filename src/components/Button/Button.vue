@@ -38,9 +38,9 @@ export default class extends vue {
 
   get cssClass(): string[] {
     return [
-      Type[this.type as any],
-      Size[this.size as any],
-      State[this.state as any],
+      Type[this.type as any] || this.type,
+      Size[this.size as any] || this.size,
+      State[this.state as any] || this.state,
     ];
   }
 }

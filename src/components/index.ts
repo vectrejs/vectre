@@ -7,6 +7,7 @@ import { Chip } from './Chip';
 import { DropdownMenu } from './DropdownMenu';
 import { Empty } from './Empty';
 import { Menu as VsMenu } from './Menu';
+import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
 import Toast from './Toast.vue';
 
@@ -36,6 +37,7 @@ export default {
   Empty,
   Icon,
   VsMenu,
+  Modal,
   OffCanvas,
   Toast,
 };
@@ -53,6 +55,7 @@ export {
   Empty,
   Icon,
   VsMenu,
+  Modal,
   OffCanvas,
   Toast,
 
