@@ -1,8 +1,8 @@
 <template>
-  <container>
+  <component-view :props="props" :slots="slots">
 
     <h2>Menu <code>&lt;vs-menu&gt;</code></h2>
-    Menus are vertical list of links for navigation.
+    <p>Menus are vertical list of links for navigation.</p>
 
     <h3>Base use</h3>
     <columns>
@@ -49,20 +49,18 @@
      <p>
       <i>Note: active is ignored. You have to define it by yourself. Badges still work.</i>
     </p>
-
-    <props />
-    <slots />
-  </container>
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Props from './Props.vue';
-import Slots from './Slots.vue';
+import { props } from './props';
+import { slots } from './slots';
 
 export default Vue.extend({
-  components: { Props, Slots },
   data: () => ({
+    props,
+    slots,
     basic: `<vs-menu :items="[
     { divider: 'LINKS' },
     { path: '#', text: 'Slack' },

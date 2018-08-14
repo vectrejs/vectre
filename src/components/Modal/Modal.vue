@@ -1,9 +1,9 @@
 <template>
   <div class="modal" :class="cssClass">
-    <a @click="close" class="modal-overlay" aria-label="Close" />
+    <a v-if="overlay" @click="closeOverlay && close()" class="modal-overlay" aria-label="Close" />
     <div class="modal-container">
       <div class="modal-header">
-        <btn @click="close" :type="btnType" class="float-right" aria-label="Close" />
+        <btn v-if="closeBtn" @click="close" :type="btnType" class="float-right" aria-label="Close" />
         <slot name="header" />
       </div>
       <div class="modal-body">
@@ -29,22 +29,31 @@ import { Size } from './Size';
 })
 export default class extends vue {
   @Prop(Boolean)
-  private active: boolean;
+  private show: boolean;
 
   @Prop(String)
   private size: Size;
+
+  @Prop({ type: Boolean, default: true })
+  private closeBtn: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  private overlay: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  private closeOverlay: boolean;
 
   private btnType = BtnType.clear;
 
   private get cssClass(): string[] {
     return [
-      this.active ? 'active' : '',
+      this.show ? 'active' : '',
       Size[this.size as any] || this.size,
     ];
   }
 
   @Emit('close')
   // tslint:disable-next-line:no-empty
-  public close() {}
+  public close() { }
 }
 </script>
