@@ -10,6 +10,7 @@ import { Menu as VsMenu } from './Menu';
 import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
 import Toast from './Toast.vue';
+import { Nav as VsNav } from './Nav';
 
 import {
   Action as IconAction,
@@ -36,10 +37,11 @@ export default {
   DropdownMenu,
   Empty,
   Icon,
-  VsMenu,
   Modal,
   OffCanvas,
   Toast,
+  VsMenu,
+  VsNav,
 };
 
 export {
@@ -54,10 +56,11 @@ export {
   DropdownMenu,
   Empty,
   Icon,
-  VsMenu,
   Modal,
   OffCanvas,
   Toast,
+  VsMenu,
+  VsNav,
 
   // Icon
   IconSize,

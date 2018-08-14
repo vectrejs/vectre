@@ -8,3 +8,4 @@ export { EmptyRoute } from './Empty';
 export { MenuRoute } from './Menu';
 export { DropdownMenuRoute } from './DropdownMenu';
 export { ModalRoute } from './Modal';
+export { NavRoute } from './Nav';
