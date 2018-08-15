@@ -10,7 +10,7 @@
     <modal :show="modal" @close="modal = false" >
       <h5 slot="header">Default modal</h5>
       <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.</p>
-      <btn type="primary" @click="modal = false" slot="footer">Ok</btn>
+      <btn slot="footer" type="primary" @click="modal = false" >Ok</btn>
     </modal>
     
     <modal :show="small" size="sm" @close="small = false" :closeOverlay="false">

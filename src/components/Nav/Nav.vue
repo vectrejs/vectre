@@ -1,34 +1,19 @@
 <template>
   <ul class="nav">
-    <li class="nav-item" v-for="(item, index) in items" :key="index">
-      <a :href="item.path">{{item.text}}</a>
-    </li>
+    <li class="nav-item" v-for="(item, index) in items" :key="index" :class="itemCssClass(item)">
+      <slot v-if="$scopedSlots.default" :item="item" :index="index" />
+      <a v-else :href="item.path">{{item.text}}</a>
 
-    <li class="nav-item">
-      <a href="#">Elements</a>
-    </li>
-    <li class="nav-item active">
-      <a href="#">Layout</a>
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="#">Flexbox grid</a>
-        </li>
-        <li class="nav-item">
-          <a href="#">Responsive</a>
-        </li>
-        <li class="nav-item">
-          <a href="#">Navbar</a>
-        </li>
-        <li class="nav-item">
-          <a href="#">Empty states</a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a href="#">Components</a>
-    </li>
-    <li class="nav-item">
-      <a href="#">Utilities</a>
+      <template v-if="Array.isArray(item.items) && level != 0">
+
+        <vs-nav v-if="$scopedSlots.default" :items="item.items" :level="level - 1">
+          <template slot-scope="{item, index}">
+            <slot :item="item" :index="index" />
+          </template>
+        </vs-nav>
+
+        <vs-nav v-else :items="item.items" :level="level - 1" />
+      </template>
     </li>
   </ul>
 </template>
@@ -37,10 +22,21 @@
 import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
-@Component
+@Component({
+  name: 'vs-nav',
+})
 export default class extends vue {
   @Prop({ type: Array, required: true })
-  private items: object[];
+  private items: any[];
+
+  @Prop({ type: Number, default: -1 })
+  private level: number;
+
+  private itemCssClass({ active = false }: { active: boolean }): string[] {
+    return [
+      active ? 'active' : '',
+    ];
+  }
 }
 </script>
 
