@@ -9,3 +9,4 @@ export { MenuRoute } from './Menu';
 export { DropdownMenuRoute } from './DropdownMenu';
 export { ModalRoute } from './Modal';
 export { NavRoute } from './Nav';
+export { PaginationRoute } from './Pagination';

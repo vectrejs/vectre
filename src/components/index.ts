@@ -9,6 +9,7 @@ import { Empty } from './Empty';
 import { Menu as VsMenu } from './Menu';
 import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
+import { Pagination } from './Pagination';
 import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
@@ -40,6 +41,7 @@ export default {
   Modal,
   OffCanvas,
   Toast,
+  Pagination,
   VsMenu,
   VsNav,
 };
@@ -58,6 +60,7 @@ export {
   Icon,
   Modal,
   OffCanvas,
+  Pagination,
   Toast,
   VsMenu,
   VsNav,
