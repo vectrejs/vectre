@@ -6,7 +6,7 @@
     <h3>Base use</h3>
     <p>
       <code>items</code> prop should have a certain structure to be used in a simplified way:
-      <pre>Array of { path: string, text: string, active?: boolean }</pre>
+      <pre>  Array of { path: string, text: string, active?: boolean }</pre>
     </p>
     
     <vs-nav :items="items" />

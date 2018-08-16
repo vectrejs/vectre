@@ -21,7 +21,6 @@
     <modal :show="large" size="lg" @close="large = false" :closeBtn="false">
       <h2 slot="header">Big without close button</h2>
       <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.</p>
-      <btn type="error" @click="large = false" slot="footer">Close</btn>
     </modal>
 
     <prism language="html" :code="html" />

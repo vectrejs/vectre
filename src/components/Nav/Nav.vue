@@ -29,8 +29,8 @@ export default class extends vue {
   @Prop({ type: Array, required: true })
   private items: any[];
 
-  @Prop({ type: Number, default: -1 })
-  private level: number;
+  @Prop({ type: [Number, String], default: -1 })
+  private level: number | string;
 
   private itemCssClass({ active = false }: { active: boolean }): string[] {
     return [
