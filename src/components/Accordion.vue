@@ -27,14 +27,14 @@
 </template>
 
 <script lang="ts">
-import vue, { CreateElement } from "vue";
-import { Component, Prop } from "vue-property-decorator";
-import { Icon, Type as IconType } from "@components/Icon";
+import vue, { CreateElement } from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
+import { Icon, IconType } from '@components/Icon';
 
 @Component({
   components: {
-    Icon
-  }
+    Icon,
+  },
 })
 export default class extends vue {
   @Prop({ required: true, type: [Object, Array] })
@@ -53,11 +53,11 @@ export default class extends vue {
   private icon: IconType;
 
   private get type(): string {
-    return this.multiple ? "checkbox" : "radio";
+    return this.multiple ? 'checkbox' : 'radio';
   }
 
   private uid(index: number): string {
-    return this.id + "-" + index;
+    return this.id + '-' + index;
   }
 
   private isSelected(key: string, index: number): boolean {
@@ -65,11 +65,11 @@ export default class extends vue {
       return !!this.checked && (this.checked == key || this.checked == index);
     }
 
-    if ((<number[]>this.checked).indexOf(index) !== -1) {
+    if ((this.checked as number[]).indexOf(index) !== -1) {
       return true;
     }
 
-    if ((<string[]>this.checked).indexOf(key) !== -1) {
+    if ((this.checked as string[]).indexOf(key) !== -1) {
       return true;
     }
 
@@ -82,26 +82,26 @@ export default class extends vue {
     event.preventDefault();
 
     if (!this.multiple) {
-      return this.$emit("check", key || index);
+      return this.$emit('check', key || index);
     }
 
     let checked = Array.isArray(this.checked)
       ? [...this.checked]
       : [this.checked];
 
-    if ((<HTMLInputElement>event.target).checked) {
+    if ((event.target as HTMLInputElement).checked) {
       checked.push(key || index);
     } else {
-      checked = checked.filter(item => item != index && item !== key);
+      checked = checked.filter(item => item !== index && item !== key);
     }
 
-    this.$emit("check", checked);
+    this.$emit('check', checked);
   }
 
   private get id(): string {
     return this.name
       ? this.name
-      : "accordion-" + Math.round(Math.random() * 1000);
+      : 'accordion-' + Math.round(Math.random() * 1000);
   }
 }
 </script>

@@ -23,7 +23,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Icon, Size as IconSize, Type as IconType } from '@components/Icon';
+import { Icon, IconSize, IconType } from '@components/Icon';
 import { Prop } from 'vue-property-decorator';
 
 @Component({

@@ -25,7 +25,7 @@ import vue from 'vue';
 import { Component, Prop, Emit } from 'vue-property-decorator';
 import { Menu } from '@components/Menu';
 import { BtnType, BtnState } from '@components/Button';
-import { Type as IconType, Navigation as IconNavigation } from '@components/Icon';
+import { IconType, Navigation as IconNavigation } from '@components/Icon';
 
 @Component({
   components: { 'vs-menu': Menu },

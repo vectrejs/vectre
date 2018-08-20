@@ -1,2 +1,2 @@
-export { default as default } from './Avatar.vue';
-export * from './Size';
+export { default as Avatar } from './Avatar.vue';
+export { Size as AvatarSize } from './Size';

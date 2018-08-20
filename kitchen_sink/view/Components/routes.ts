@@ -10,3 +10,5 @@ export { DropdownMenuRoute } from './DropdownMenu';
 export { ModalRoute } from './Modal';
 export { NavRoute } from './Nav';
 export { PaginationRoute } from './Pagination';
+export { PanelRoute } from './Panel';
+export { TileRoute } from './Tile';

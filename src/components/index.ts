@@ -10,6 +10,8 @@ import { Menu as VsMenu } from './Menu';
 import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
 import { Pagination } from './Pagination';
+import { Panel } from './Panel';
+import { Tile } from './Tile';
 import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
@@ -18,12 +20,13 @@ import {
   Icon,
   Navigation as IconNavigation,
   Objects as IconObject,
-  Size as IconSize,
-  Type as IconType,
+  IconSize,
+  IconType,
 } from './Icon';
 
-import Avatar, {
-  Size as AvatarSize,
+import {
+  Avatar,
+  AvatarSize,
 } from './Avatar';
 
 // Default is all components
@@ -40,8 +43,10 @@ export default {
   Icon,
   Modal,
   OffCanvas,
+  Tile,
   Toast,
   Pagination,
+  Panel,
   VsMenu,
   VsNav,
 };
@@ -61,6 +66,8 @@ export {
   Modal,
   OffCanvas,
   Pagination,
+  Panel,
+  Tile,
   Toast,
   VsMenu,
   VsNav,

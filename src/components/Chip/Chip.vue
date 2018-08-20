@@ -21,13 +21,13 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Emit } from 'vue-property-decorator';
-import  Avatar, { Size as AvatarSize } from '@components/Avatar'
+import { Avatar, AvatarSize } from '@components/Avatar';
 
 @Component({
-  components: { Avatar }
+  components: { Avatar },
 })
 export default class extends Vue {
-  @Prop({type: String, required: true })
+  @Prop({ type: String, required: true })
   private text: string;
 
   @Prop(String)
@@ -44,11 +44,11 @@ export default class extends Vue {
   public get cssClass(): string[] {
     return [
       this.active ? 'active' : '',
-    ]
+    ];
   }
 
   @Emit('close')
-  public close(): void {}
+  public close(): void { }
 
   protected showClose() {
     return !!this.$listeners.close;

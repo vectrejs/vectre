@@ -34,12 +34,12 @@ export default class extends Vue {
   private get cssStyle() {
     return {
       color: this.color,
-      background: this.background
+      background: this.background,
     };
   }
 
   private get cssClass() {
-    return [Size[<any>this.size] || this.size];
+    return [Size[this.size as any] || this.size];
   }
 }
 </script>

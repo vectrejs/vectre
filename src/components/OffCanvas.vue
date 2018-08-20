@@ -26,7 +26,7 @@
 import {
   Icon,
   Navigation as IconNavigation,
-  Type as IconType,
+  IconType,
 } from '@components/Icon';
 
 import vue from 'vue';
