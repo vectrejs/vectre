@@ -27,7 +27,7 @@ export default class Pager extends vue {
   @Prop({ type: [Number], default: 1 })
   private current: number;
 
-  @Prop({ type: Number, default: 10 })
+  @Prop({ type: Number, default: 6 })
   private show: number;
 
   public get items(): PagerItem[] {

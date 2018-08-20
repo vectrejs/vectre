@@ -37,3 +37,20 @@ export default class extends vue {
   }
 }
 </script>
+
+<style>
+.page-item-num {
+  min-width: 1.4rem;
+}
+
+@media (min-width: 640px) {
+  .page-item-num {
+    min-width: 1.7rem;
+  }
+}
+
+.page-item a {
+  cursor: pointer;
+  user-select: none;
+}
+</style>

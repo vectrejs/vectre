@@ -24,7 +24,7 @@ export default class extends vue {
   @Prop({ type: Array, required: true })
   private pages: string[];
 
-  @Prop()
+  @Prop({ default: 0 })
   private current: string;
 
   public get previous(): string {
