@@ -1,5 +1,5 @@
 <template>
-  <component-view :slots="slots" :props="props">
+  <component-view>
     <h2>Nav <code>&lt;vs-nav&gt;</code></h2>
     <p>Simple way to show navigation as a vertical hierarchical list</p>
     

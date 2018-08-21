@@ -11,4 +11,5 @@ export { ModalRoute } from './Modal';
 export { NavRoute } from './Nav';
 export { PaginationRoute } from './Pagination';
 export { PanelRoute } from './Panel';
+export { PopoverRoute } from './Popover';
 export { TileRoute } from './Tile';

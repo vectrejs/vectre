@@ -1,12 +1,12 @@
 <template>
-  <component-view :slots="slots">
+  <component-view>
     <h2>Panels</h2>
     <p>Panels are flexible view container with auto-expand content section.</p>
     <columns>
       <column col=5 xl=6 sm=12>
         <panel>
           <h5 slot="header">Recently Watched</h5>
-          <tile slot="body" 
+          <tile slot="body"
             v-for="(tile, i) in tiles" 
             :key="i"
             :avatar="tile.avatar"
@@ -26,6 +26,7 @@
 import { slots } from "./slots";
 
 export default {
+  methods: {click() { console.log('clicked') }},
   data: () => ({
     slots,
     tiles: [
@@ -45,7 +46,7 @@ export default {
   <btn slot="footer" size="block" type="primary">Hide</btn>
 </panel>`,
     js: `export default {
-data: () => ({
+  data: () => ({
     tiles: [
       { avatar: 'img/avatar-1.png', title: 'Academy Awards', subtitle: 'A set of 25 awards for ...' },
       { avatar: 'img/avatar-2.png', title: 'Avengers', subtitle: 'The Avengers and their allies must ...' },

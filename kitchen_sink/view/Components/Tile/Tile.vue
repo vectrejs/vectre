@@ -1,5 +1,5 @@
 <template>
-  <component-view :slots="slots" :props="props">
+  <component-view>
     <h2>Tiles</h2>
     <p>Tiles are repeatable or embeddable information blocks.</p>
 

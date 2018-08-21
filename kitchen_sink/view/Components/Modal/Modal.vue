@@ -1,5 +1,5 @@
 <template>
-  <component-view :props="props" :slots="slots">
+  <component-view>
     <h3>Modals</h3>
     <p>Modals are flexible dialog prompts.</p>
     

@@ -1,5 +1,5 @@
 <template>
-  <component-view :props="props" :events="events">
+  <component-view>
     <h2>Pagination</h2>
     <h3>Classic</h3>
     <pagination :pages="20" :current.sync="current"/>

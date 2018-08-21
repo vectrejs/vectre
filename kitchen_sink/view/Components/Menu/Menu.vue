@@ -1,5 +1,5 @@
 <template>
-  <component-view :props="props" :slots="slots">
+  <component-view>
 
     <h2>Menu <code>&lt;vs-menu&gt;</code></h2>
     <p>Menus are vertical list of links for navigation.</p>

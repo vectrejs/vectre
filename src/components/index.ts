@@ -11,6 +11,7 @@ import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
 import { Pagination } from './Pagination';
 import { Panel } from './Panel';
+import { Popover, PopoverSide } from './Popover';
 import { Tile } from './Tile';
 import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
@@ -43,10 +44,11 @@ export default {
   Icon,
   Modal,
   OffCanvas,
-  Tile,
-  Toast,
   Pagination,
   Panel,
+  Popover,
+  Tile,
+  Toast,
   VsMenu,
   VsNav,
 };
@@ -67,6 +69,7 @@ export {
   OffCanvas,
   Pagination,
   Panel,
+  Popover,
   Tile,
   Toast,
   VsMenu,
@@ -81,4 +84,7 @@ export {
 
   // Avatar
   AvatarSize,
+
+  // Popover
+  PopoverSide,
 };
