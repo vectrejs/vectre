@@ -2,7 +2,16 @@
   <container>
     <slot />
 
-    <props-list v-if="$parent.$data.props" :props="$parent.$data.props" />
+    <template v-if="$parent.$data.props">
+      <props-list v-if="Array.isArray($parent.$data.props)" 
+        v-for="(prop, name) in $parent.$data.props" 
+        :key="name"  
+        :props="prop"
+        :name="name" 
+      />
+      <props-list v-else :props="$parent.$data.props" />
+    </template>
+
     <slots-list v-if="$parent.$data.slots" :slots="$parent.$data.slots" />
     <events-list v-if="$parent.$data.events" :events="$parent.$data.events" />
   </container>  

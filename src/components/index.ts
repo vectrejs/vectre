@@ -12,6 +12,7 @@ import OffCanvas from './OffCanvas.vue';
 import { Pagination } from './Pagination';
 import { Panel } from './Panel';
 import { Popover, PopoverSide } from './Popover';
+import { Steps, Step } from './Steps';
 import { Tile } from './Tile';
 import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
@@ -47,6 +48,8 @@ export default {
   Pagination,
   Panel,
   Popover,
+  Step,
+  Steps,
   Tile,
   Toast,
   VsMenu,
@@ -70,6 +73,8 @@ export {
   Pagination,
   Panel,
   Popover,
+  Step,
+  Steps,
   Tile,
   Toast,
   VsMenu,
