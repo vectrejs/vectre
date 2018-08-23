@@ -4,10 +4,10 @@
 
     <template v-if="$parent.$data.props">
       <props-list v-if="Array.isArray($parent.$data.props)" 
-        v-for="(prop, name) in $parent.$data.props" 
+        v-for="(list, name) in $parent.$data.props" 
         :key="name"  
-        :props="prop"
-        :name="name" 
+        :props="list.props"
+        :name="list.name" 
       />
       <props-list v-else :props="$parent.$data.props" />
     </template>

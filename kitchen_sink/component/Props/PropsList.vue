@@ -1,6 +1,6 @@
 <template>
   <div class="props table-responsive"> 
-    <h3>Props</h3>
+    <h3>{{ name }} Props</h3>
 
     <table class="table">
       <col style="width: 20%">
@@ -38,6 +38,9 @@ export default Vue.extend({
     props: {
       type: Object,
       required: true,
+    },
+    name: {
+      type: String,
     },
   },
 });
