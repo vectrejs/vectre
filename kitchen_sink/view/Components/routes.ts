@@ -14,3 +14,4 @@ export { PanelRoute } from './Panel';
 export { PopoverRoute } from './Popover';
 export { TileRoute } from './Tile';
 export { StepsRoute } from './Steps';
+export { TabsRoute } from './Tabs';

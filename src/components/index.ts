@@ -13,6 +13,7 @@ import { Pagination } from './Pagination';
 import { Panel } from './Panel';
 import { Popover, PopoverSide } from './Popover';
 import { Steps, Step } from './Steps';
+import { Tabs, Tab } from './Tab';
 import { Tile } from './Tile';
 import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
@@ -50,6 +51,8 @@ export default {
   Popover,
   Step,
   Steps,
+  Tab,
+  Tabs,
   Tile,
   Toast,
   VsMenu,
@@ -75,6 +78,8 @@ export {
   Popover,
   Step,
   Steps,
+  Tab,
+  Tabs,
   Tile,
   Toast,
   VsMenu,
