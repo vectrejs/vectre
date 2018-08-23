@@ -3,12 +3,14 @@
     <slot />
 
     <template v-if="$parent.$data.props">
-      <props-list v-if="Array.isArray($parent.$data.props)" 
-        v-for="(list, name) in $parent.$data.props" 
-        :key="name"  
-        :props="list.props"
-        :name="list.name" 
-      />
+      <template v-if="isMultiplePropsLists()">
+        <props-list 
+          v-for="(list, name) in $parent.$data.props" 
+          :key="name"  
+          :props="list.props"
+          :name="list.name" 
+        />
+      </template>
       <props-list v-else :props="$parent.$data.props" />
     </template>
 
@@ -25,5 +27,10 @@ import SlotsList, { SlotDefinitions } from '@kitchen/component/Slots';
 
 export default vue.extend({
   components: { EventsList, PropsList, SlotsList },
+  methods: {
+    isMultiplePropsLists(): boolean {
+      return Array.isArray(this.$parent.$data.props);
+    },
+  },
 });
 </script>
