@@ -31,7 +31,7 @@
           <tab>Radio</tab>
           <tab>Podcasts</tab>
           <tab-actions v-if="advancedCurrent != 'music'">
-            <btn @click="badge--, advancedCurrent = 'music'" size="lg">Return to Music</btn>
+            <btn @click="badge--, advancedCurrent = 'music'" size="sm">Return to Music</btn>
           </tab-actions>
         </tabs>
         Current Tab: {{ advancedCurrent }}
@@ -62,12 +62,12 @@ export default {
 `,
     block: `<tabs block :current.sync="current" :items="['Music', 'Radio', 'Podcasts']" />
  Current Tab: {{ current }}`,
-    advanced: `<tabs :current.sync="advancedCurrent">
+    advanced: `<tabs :current.sync="current">
   <tab key="music" :badge="badge">Music</tab>
   <tab>Radio</tab>
   <tab>Podcasts</tab>
-  <tab-actions v-if="advancedCurrent != 'music'">
-    <btn @click="badge--, advancedCurrent = 'music'" size="sm">
+  <tab-actions v-if="current != 'music'">
+    <btn @click="badge--, current = 'music'" size="sm">
         Return to Music
     </btn>
   </tab-actions>
