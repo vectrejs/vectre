@@ -1,7 +1,7 @@
 import Accordion from './Accordion.vue';
 import { Bar } from './Bar';
 import { Breadcrumb } from './Breadcrumb';
-import { Btn } from './Button';
+import { Btn, BtnGroup, BtnType, BtnSize, BtnState } from './Button';
 import { Card } from './Card';
 import { Chip } from './Chip';
 import { DropdownMenu } from './DropdownMenu';
@@ -39,6 +39,7 @@ export default {
   Bar,
   Breadcrumb,
   Btn,
+  BtnGroup,
   Card,
   Chip,
   DropdownMenu,
@@ -66,6 +67,7 @@ export {
   Bar,
   Breadcrumb,
   Btn,
+  BtnGroup,
   Card,
   Chip,
   DropdownMenu,
@@ -84,6 +86,11 @@ export {
   Toast,
   VsMenu,
   VsNav,
+
+  // Button
+  BtnSize,
+  BtnState,
+  BtnType,
 
   // Icon
   IconSize,
