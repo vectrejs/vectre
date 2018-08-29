@@ -19,10 +19,20 @@ import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
 import {
+  FormInput,
+  FormGroup,
+  FormLabel,
+  FormHorizontal,
+  FormSelect,
+  FormSwtich,
+} from './Form';
+
+import {
   Action as IconAction,
   Icon,
   Navigation as IconNavigation,
   Objects as IconObject,
+  All as IconAll,
   IconSize,
   IconType,
 } from './Icon';
@@ -58,6 +68,13 @@ export default {
   Toast,
   VsMenu,
   VsNav,
+
+  FormGroup,
+  FormInput,
+  FormLabel,
+  FormHorizontal,
+  FormSelect,
+  FormSwtich,
 };
 
 export {
@@ -86,6 +103,14 @@ export {
   Toast,
   VsMenu,
   VsNav,
+
+  // Form components
+  FormGroup,
+  FormInput,
+  FormLabel,
+  FormHorizontal,
+  FormSelect,
+  FormSwtich,
 
   // Button
   BtnSize,
