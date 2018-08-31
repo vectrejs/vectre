@@ -32,6 +32,7 @@ import { setInterval } from 'timers';
 
 export default Vue.extend({
   methods: {
+    // tslint:disable-next-line:no-console
     log(...args: any[]) { console.log(...args); },
   },
   data: () => ({

@@ -1,6 +1,6 @@
 import vue, { CreateElement, VNode } from 'vue';
 import { All as IconAll, IconSize } from '@components/Icon';
-import { Size } from './Size';
+import { Size } from '@components/Form/Input/Size';
 
 enum IconSide {
   left = 'has-icon-left',
@@ -8,21 +8,34 @@ enum IconSide {
 }
 
 const createIcon = (h: CreateElement, icon: string): VNode => {
-  return h('i', { class: ['form-icon', 'icon', IconAll[icon as any]] });
+  return <i class={['form-icon', 'icon', IconAll[icon as any]]} />;
 };
 
 const createLoading = (h: CreateElement): VNode => {
-  return h('i', { class: ['form-icon', 'loading'] });
+  return <i class="form-icon loading" />;
 };
 
 // tslint:disable-next-line:max-line-length
 const wrapWithIconContainer = (h: CreateElement, input: VNode, side = 'right'): VNode => {
-  return h('div', { class: [IconSide[side as any]] }, [input]);
+  return <div class={IconSide[side as any]}>{ input }</div>;
 };
 
-const createInput = (h: CreateElement, domProps: Record<string, string>, size = ''): VNode => {
-  return h('input', { domProps, class: ['form-input', Size[size as any]] });
+const createInput = (h: CreateElement, attrs: Record<string, string>, size = ''): VNode => {
+  return <input class={['form-input', Size[size as any]]} {...attrs} />;
 };
+
+// TODO: REMOVE IT
+const Inpt = vue.extend({
+  props: {
+    foo: {
+      type: Boolean,
+    },
+  },
+
+  render(h) {
+    return <input class={this.foo} />;
+  },
+});
 
 export const Input = vue.extend({
   props: {
@@ -44,6 +57,7 @@ export const Input = vue.extend({
 
   render(h) {
     const { icon, iconSide, loading, size } = this.$props;
+    const test = <Inpt foo={false} />; //TODO REMOVE IT
     let input = createInput(h, this.$attrs, size);
 
     if (icon || loading) {
