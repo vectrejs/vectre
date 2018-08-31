@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
     "lib": [
-      "es2017", "dom"
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ],
     "paths": {
       "@components/*": ["src/components/*"],
       "@kitchen/*": ["kitchen_sink/*"]
     },
-    "target": "es5",                          
-    "module": "commonjs", 
+    "target": "esnext",
+    "module": "esnext",
+    "importHelpers": true,
     "moduleResolution": "node",
+    "jsx": "preserve",
     "strict": true,                           
     "allowSyntheticDefaultImports": true,  
     "esModuleInterop": true,               
@@ -27,6 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "kitchen_sink/**/*.ts",
+    "kitchen_sink/**/*.tsx",
     "kitchen_sink/**/*.vue"
   ]
 }

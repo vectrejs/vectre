@@ -32,10 +32,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
-import { Positions, Slots } from "./Image";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import { Positions, Slots } from './Image';
 
 @Component
 export default class extends Vue {

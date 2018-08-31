@@ -38,16 +38,16 @@
     </columns>
 
     <prism language="html" :code="code" />
-    
+
     <props />
     <slots />
   </container>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Slots from "./Slots.vue";
-import Props from "./Props.vue";
+import Vue from 'vue';
+import Slots from './Slots.vue';
+import Props from './Props.vue';
 
 export default Vue.extend({
   components: { Slots, Props },
@@ -67,9 +67,7 @@ export default Vue.extend({
 
 <card img="img/osx-el-capitan.jpg" after="footer">
   <!-- ... -->
-</card>
-
-`,
-  })
-})
+</card>`,
+  }),
+});
 </script>

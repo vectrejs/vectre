@@ -9,15 +9,15 @@
 
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
-import { Crumb } from './Crumb';
+import { ICrumb } from './Crumb';
 
 @Component
 export default class extends Vue {
-  @Prop({type: Array, required: true})
-  private crumbs: Crumb[] | any[];
+  @Prop({ type: Array, required: true })
+  private crumbs: ICrumb[] | any[];
 }
 </script>

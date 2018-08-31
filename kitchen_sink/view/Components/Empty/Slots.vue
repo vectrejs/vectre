@@ -3,24 +3,24 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import SlotsList, { SlotDefinitions } from "@kitchen/component/Slots";
+import Vue from 'vue';
+import SlotsList, { SlotDefinitions } from '@kitchen/component/Slots';
 
 const slots: SlotDefinitions = {
   default: {
-    description: "Any additional content. E.g., can be used instead of subtitle"
+    description: 'Any additional content. E.g., can be used instead of subtitle',
   },
   action: {
-    description: "The section with actions after default section"
-  }
+    description: 'The section with actions after default section',
+  },
 };
 
 export default Vue.extend({
   components: {
-    SlotsList
+    SlotsList,
   },
   data: () => ({
-    slots
-  })
+    slots,
+  }),
 });
 </script>

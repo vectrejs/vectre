@@ -15,9 +15,9 @@
   </component-view>
 </template>
 
-<script>
+<script lang="ts">
 import { props } from './props';
-import { events } from "./events";
+import { events } from './events';
 
 export default {
   data: () => ({
@@ -39,9 +39,6 @@ export default {
     current: 'Accordion',
   })
 }`,
-  })
-}
+  }),
+};
 </script>
-
-
-

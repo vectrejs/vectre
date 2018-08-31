@@ -1,4 +1,4 @@
-import { RouteConfig } from "vue-router";
+import { RouteConfig } from 'vue-router';
 import Breadcrumb from './Breadcrumb.vue';
 
 export const BreadcrumbRoute = {

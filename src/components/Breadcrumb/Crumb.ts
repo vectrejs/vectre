@@ -1,4 +1,4 @@
-export interface Crumb {
-  path: string,
-  title: string,
+export interface ICrumb {
+  path: string;
+  title: string;
 }

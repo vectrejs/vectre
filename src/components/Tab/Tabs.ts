@@ -54,10 +54,12 @@ export const Tabs = vue.extend({
     const { items, current, block } = this.$props;
     const cssClass = { tab: true, 'tab-block': block };
 
+    let tabs = [];
+
     if (items.length) {
-      const tabs = items.map((item: string) => {
+      tabs = items.map((item: string) => {
         const isActive = current === item;
-        return createSimpleTab(this, item, item === current);
+        return createSimpleTab(this, item, isActive);
       });
 
       return h('div', { class: cssClass }, tabs);
@@ -65,7 +67,7 @@ export const Tabs = vue.extend({
 
     const { default: children } = this.$slots;
 
-    const tabs = children
+    tabs = children
       .filter((child: VNode) =>
         child.componentOptions !== undefined && child.componentOptions.tag!.includes('tab'),
       )

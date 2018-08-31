@@ -10,7 +10,7 @@
           title="You have no new messages"
           sub="Click the button to start a conversation"
         >
-          <btn slot="action">Send a message</btn> 
+          <btn slot="action">Send a message</btn>
         </empty>
       </column>
       <column col=7 xs=12 mx>
@@ -19,11 +19,11 @@
           title="You are not following anyone"
         >
           <span>Start to meet new friends</span>
-          <btn slot="action">Search</btn> 
+          <btn slot="action">Search</btn>
         </empty>
       </column>
     </columns>
-    
+
     <prism language="html" :code="code" />
     <props />
     <slots />
@@ -43,14 +43,14 @@ export default Vue.extend({
   title="You have no new messages"
   sub="Click the button to start a conversation"
 >
-  <btn slot="action">Send a message</btn> 
+  <btn slot="action">Send a message</btn>
 </empty>
 
 <empty icon="people" title="You are not following anyone">
   <span>Start to meet new friends</span>
-  <btn slot="action">Search</btn> 
+  <btn slot="action">Search</btn>
 </empty>
-`
-  }),  
-})
+`,
+  }),
+});
 </script>

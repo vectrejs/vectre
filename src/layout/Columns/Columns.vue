@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component
 export default class extends Vue {
@@ -17,8 +17,8 @@ export default class extends Vue {
 
   public get cssClass(): string[] {
     return [
-      this.gapless ? "col-gapless" : "",
-      this.oneline ? "col-oneline" : ""
+      this.gapless ? 'col-gapless' : '',
+      this.oneline ? 'col-oneline' : '',
     ];
   }
 }

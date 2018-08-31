@@ -47,8 +47,9 @@ export default class extends Vue {
     ];
   }
 
-  @Emit('close')
-  public close(): void { }
+  public close(): void {
+    this.$emit('close');
+  }
 
   protected showClose() {
     return !!this.$listeners.close;
