@@ -10,22 +10,21 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   data: () => ({
-    checkedNumber: "One",
-    html: `<accordion 
-  :items="{One: 'Uno', Two: 'Dos'}" 
-  :checked="checkedNumber" 
-  @check="checkedNumber = $event" 
+    checkedNumber: 'One',
+    html: `<accordion
+  :items="{One: 'Uno', Two: 'Dos'}"
+  :checked="checkedNumber"
+  @check="checkedNumber = $event"
 />`,
     js: `export default Vue.extend({
   data: () => ({
     checkedNumber: ['One'],
   }),
-});
-`
-  })
+});`,
+  }),
 });
 </script>

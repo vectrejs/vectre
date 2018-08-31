@@ -37,8 +37,8 @@
     <prism language="html" :code="code" />
   </component-view>
 </template>
-<script>
-import { props } from "./props";
+<script lang="ts">
+import { props } from './props';
 
 export default {
   data: () => ({
@@ -61,8 +61,8 @@ export default {
 <popover side="right">
   <btn>Right</btn>
   <card>...r</card>
-</popover>`
-  })
+</popover>`,
+  }),
 };
 </script>
 

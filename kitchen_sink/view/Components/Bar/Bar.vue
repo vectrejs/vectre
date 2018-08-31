@@ -2,11 +2,11 @@
   <container>
     <h2>Bars</h2>
     <p>Bars represent the progress of a task or the value within the known range.</p>
-    
+
     <h3>Basic use</h3>
     <bar :value=25 tooltip="%" />
     <prism language="html" :code="basic" />
-    
+
     <h3>Advanced</h3>
     <bar :value="now" :min="min" :max="max" :tooltip="tooltip"/>
     <prism language="html" :code="advancedHtml" />
@@ -21,28 +21,28 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { setInterval, clearInterval } from "timers";
-import Props from "./Props.vue";
+import Vue from 'vue';
+import { setInterval, clearInterval } from 'timers';
+import Props from './Props.vue';
 
 export default Vue.extend({
   components: {
-    Props
+    Props,
   },
 
-  mounted: function() {
+  mounted() {
     const interval = setInterval(() => {
       if (this.now >= this.max) return clearInterval(interval);
 
       this.now += 1;
-    }, 1000);
+    },                           1000);
   },
 
   data: () => ({
     now: 10,
     min: 5,
     max: 400,
-    tooltip: function(v: number) {
+    tooltip(v: number) {
       return `${v} steps of ${this.max}`;
     },
     basic: `<bar :value="25" tooltip="%" />`,
@@ -52,7 +52,7 @@ export default Vue.extend({
     const interval = setInterval(() => {
       if (this.now >= this.max) return clearInterval(interval)
 
-      this.now += 1 
+      this.now += 1
     }, 1000);
   },
 
@@ -64,7 +64,7 @@ export default Vue.extend({
       return \`\${v} steps of \${this.max}\`
     }
   })
-});`
-  })
+});`,
+  }),
 });
 </script>

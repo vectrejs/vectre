@@ -1,5 +1,5 @@
 <template>
-  <div class="props table-responsive"> 
+  <div class="props table-responsive">
     <h3>Events</h3>
 
     <table class="table">
@@ -25,14 +25,14 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
   props: {
     events: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 });
 </script>

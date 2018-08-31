@@ -18,15 +18,18 @@ export default class Icon extends vue {
 
   private get cssStyle(): object {
     return {
-      'font-size': Size[<any>this.size] || this.size,
-    }
+      'font-size': Size[this.size as any] || this.size,
+    };
   }
 
   private get cssClass(): [string, string] {
     return [
-      Size[<any>this.size] || this.size,
-      Names.Navigation[<any>this.type] || Names.Action[<any>this.type] || Names.Objects[<any>this.type] || this.type,
-    ]
+      Size[this.size as any] || this.size,
+      Names.Navigation[this.type as any]
+      || Names.Action[this.type as any]
+      || Names.Objects[this.type as any]
+      || this.type,
+    ];
   }
 }
 </script>

@@ -42,20 +42,20 @@
   </component-view>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data: () => ({
-    badge: "999",
-    current: "Radio",
-    blockCurrent: "Music",
-    advancedCurrent: "music",
+    badge: 999,
+    current: 'Radio',
+    blockCurrent: 'Music',
+    advancedCurrent: 'music',
     basic: `<tabs :current.sync="current" :items="['Music', 'Radio', 'Podcasts']" />
  Current Tab: {{ current }}
 
 <script>
 export default {
   data: () => ({
-    current: "Radio",
+    current: 'Radio',
   }),
 };
 <\/script>
@@ -76,12 +76,11 @@ export default {
 <script>
 export default {
   data: () => ({
-    current: "music",
-    badge: "999",
+    current: 'music',
+    badge: 999,
   }),
 };
 <\/script>`,
-  })
-  
+  }),
 };
 </script>

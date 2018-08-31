@@ -1,4 +1,4 @@
-import { RouteConfig } from "vue-router";
+import { RouteConfig } from 'vue-router';
 import Tile from './Tile.vue';
 
 export const TileRoute = {

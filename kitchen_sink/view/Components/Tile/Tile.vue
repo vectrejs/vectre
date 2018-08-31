@@ -43,13 +43,13 @@
       <column col=5 md=8 sm=12>
         <tile compact 
           initials="L" 
-          title="Logan" 
+          title="Logan"
           subtitle="Offline · Last seen: 3 March 2017"
         >
           <dropdown-menu right
             slot="actions" 
             btn-icon="icon-more-vert" 
-            btn-type="link" 
+            btn-type="link"
             :items="[{text: 'Call'}]" />
         </tile>
       </column>
@@ -58,52 +58,50 @@
   </component-view>
 </template>
 
-<script>
-import { slots } from "./slots";
-import { props } from "./props";
+<script lang="ts">
+import { slots } from './slots';
+import { props } from './props';
 
 export default {
   data: () => ({
     props,
     slots,
-    baseHtml: `<tile 
-  icon="people" 
+    baseHtml: `<tile
+  icon="people"
   title="Academy Awards"
   subtitle="A set of 25 awards for artistic..."
 />
 
-<tile 
-  avatar="img/avatar-1.png" 
+<tile
+  avatar="img/avatar-1.png"
   title="Avengers: Infinity War"
   subtitle="The Avengers and their allies must be willing..."
 >
   <template slot="actions">
-    <btn type="primary">Watch</btn> 
+    <btn type="primary">Watch</btn>
     <btn>Skip</btn>
   </template>
 </tile>
 
-<tile 
-  initials="X" 
+<tile
+  initials="X"
   title="X-Men"
   subtitle="Two mutants come to a private academy for their kind..."
 >
-  <btn type="primary">Watch</btn> 
+  <btn type="primary">Watch</btn>
   <btn>Skip</btn>
-</tile>
-`,
-    compactHtml: `<tile compact 
-  initials="L" 
-  title="Logan" 
+</tile>`,
+    compactHtml: `<tile compact
+  initials="L"
+  title="Logan"
   subtitle="Offline · Last seen: 3 March 2017"
 >
   <dropdown-menu right
-    slot="actions" 
-    btn-icon="icon-more-vert" 
-    btn-type="link" 
+    slot="actions"
+    btn-icon="icon-more-vert"
+    btn-type="link"
     :items="[{text: 'Call'}]" />
 </tile>`,
-
   }),
 };
 </script>

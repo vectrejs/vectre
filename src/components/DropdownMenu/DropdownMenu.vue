@@ -61,10 +61,12 @@ export default class extends vue {
     ];
   }
 
-  @Emit('opened')
-  private open(): void { }
+  private open(): void {
+    this.$emit('opened');
+  }
 
-  @Emit('closed')
-  private close(): void { }
+  private close(): void {
+    this.$emit('closed');
+  }
 }
 </script>

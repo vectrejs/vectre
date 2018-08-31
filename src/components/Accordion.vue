@@ -61,8 +61,9 @@ export default class extends vue {
   }
 
   private isSelected(key: string, index: number): boolean {
-    if (Array.isArray(this.checked) === false) {
-      return !!this.checked && (this.checked == key || this.checked == index);
+    if (!Array.isArray(this.checked)) {
+      return !!this.checked
+        && (this.checked === key || this.checked.toString() === index.toString());
     }
 
     if ((this.checked as number[]).indexOf(index) !== -1) {

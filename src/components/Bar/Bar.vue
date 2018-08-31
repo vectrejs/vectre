@@ -13,9 +13,9 @@
     </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component
 export default class extends Vue {
@@ -34,11 +34,11 @@ export default class extends Vue {
   private tooltip: ((value: number) => string) | string | undefined;
 
   get dataTooltip(): string | undefined {
-    if (typeof this.tooltip === "undefined") {
+    if (typeof this.tooltip === 'undefined') {
       return;
     }
 
-    if (typeof this.tooltip === "function") {
+    if (typeof this.tooltip === 'function') {
       return this.tooltip(this.value);
     }
 
@@ -46,16 +46,16 @@ export default class extends Vue {
   }
 
   get barCssClass(): string[] {
-    return [this.sm ? "bar-sm" : ""];
+    return [this.sm ? 'bar-sm' : ''];
   }
 
   get barItemCssClass(): string[] {
-    return [this.tooltip ? "tooltip" : ""];
+    return [this.tooltip ? 'tooltip' : ''];
   }
 
   get cssStyle(): object {
     return {
-      width: this.value / this.max * 100 + "%"
+      width: this.value / this.max * 100 + '%',
     };
   }
 }

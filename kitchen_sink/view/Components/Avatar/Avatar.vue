@@ -17,7 +17,7 @@
     <avatar initials="MY" size="sm" />
     <avatar initials="MY" size="xs" />
     <prism language="html" :code="initialsHtml" />
-    
+
     <h3>Icon</h3>
     <avatar src="https://picturepan2.github.io/spectre/img/avatar-1.png" icon="https://picturepan2.github.io/spectre/img/avatar-2.png" size="xl" />
     <avatar src="https://picturepan2.github.io/spectre/img/avatar-1.png" icon="https://picturepan2.github.io/spectre/img/avatar-3.png" size="lg" />
@@ -34,14 +34,14 @@
     <avatar src="https://picturepan2.github.io/spectre/img/avatar-1.png" presence="away" size="sm" />
     <avatar src="https://picturepan2.github.io/spectre/img/avatar-1.png" size="xs" />
     <prism language="html" :code="presenceHtml" />
-    
+
     <props />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Props from "./Props.vue";
+import Vue from 'vue';
+import Props from './Props.vue';
 
 export default Vue.extend({
   components: { Props },
@@ -50,26 +50,22 @@ export default Vue.extend({
 <avatar src="img/avatar-1.png" size="lg" />
 <avatar src="img/avatar-1.png" />
 <avatar src="img/avatar-1.png" size="sm" />
-<avatar src="img/avatar-1.png" size="xs" />
-`,
+<avatar src="img/avatar-1.png" size="xs" />`,
     initialsHtml: `<avatar initials="MY" size="xl" />
 <avatar initials="MY" background="#000" size="lg" />
 <avatar initials="MY" color="yellow" />
 <avatar initials="MY" size="sm" />
-<avatar initials="MY" size="xs" />
-`,
+<avatar initials="MY" size="xs" />`,
     presenceHtml: `<avatar src="img/avatar-1.png" presence="online" size="xl" />
 <avatar src="img/avatar-1.png" presence="offline" size="lg" />
 <avatar src="img/avatar-1.png" presence="busy" />
 <avatar src="img/avatar-1.png" presence="away" size="sm" />
-<avatar src="img/avatar-1.png" size="xs" />
-`,
+<avatar src="img/avatar-1.png" size="xs" />`,
     iconHtml: `<avatar src="img/avatar-1.png" icon="img/avatar-2.png" size="xl" />
 <avatar src="img/avatar-1.png" icon="img/avatar-3.png" size="lg" />
 <avatar initials="XZ" icon="img/avatar-1.png" />
 <avatar src="img/avatar-1.png" size="sm" />
-<avatar src="img/avatar-1.png" size="xs" />
-`
-  })
+<avatar src="img/avatar-1.png" size="xs" />`,
+  }),
 });
 </script>
