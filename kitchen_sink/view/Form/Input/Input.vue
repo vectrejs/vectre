@@ -1,26 +1,30 @@
 <template>
   <component-view>
+    
     <h2>Input</h2>
     <form-group>
       <form-label for="name-1">Name</form-label>
       <form-input id="name-1" placeholder="Your Name" />
     </form-group>
+
     <h3>Size</h3>
-      <form-group>
-        <form-input placeholder="Small" size="sm" />
-      </form-group>
-      
-      <form-group>
-        <form-input placeholder="Default" />
-      </form-group>
-      
-      <form-group>
-        <form-input placeholder="Large" size="lg" />
-      </form-group>
-    </columns>
+    <form-group>
+      <form-input placeholder="Small" size="sm" />
+    </form-group>
+    <form-group>
+      <form-input placeholder="Default" />
+    </form-group>
+    <form-group>
+      <form-input placeholder="Large" size="lg" />
+    </form-group>
+
     <h3>Icon</h3>
     <form-group>
-      <form-input placeholder="Small" id="test" size="lg" :loading="loading" icon="mail" icon-side="left"/>
+      <form-input @change="log" placeholder="First Name" :loading="loading" icon="people" icon-side="right"/>
+    </form-group>
+    <form-group>
+      <form-input @blur="log" v-model="val" placeholder="Email" size="lg" :loading="loading" icon="mail" icon-side="left"/>
+      {{ val }}
     </form-group>
     
   </component-view>
@@ -37,9 +41,10 @@ export default Vue.extend({
   },
   data: () => ({
     loading: false,
+    val: '',
   }),
-  beforeMount() {
-    setInterval(() => this.loading = !this.loading, 1000);
+  created() {
+    // setInterval(() => this.loading = !this.loading, 1000);
   },
 });
 </script>
