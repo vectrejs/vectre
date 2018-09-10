@@ -25,6 +25,7 @@ import {
   FormHorizontal,
   FormSelect,
   FormSwtich,
+  FormTextarea,
 } from './Form';
 
 import {
@@ -75,6 +76,7 @@ export default {
   FormHorizontal,
   FormSelect,
   FormSwtich,
+  FormTextarea,
 };
 
 export {
@@ -111,6 +113,7 @@ export {
   FormHorizontal,
   FormSelect,
   FormSwtich,
+  FormTextarea,
 
   // Button
   BtnSize,

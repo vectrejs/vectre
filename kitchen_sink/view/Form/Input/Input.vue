@@ -26,7 +26,21 @@
       <form-input @blur="log" v-model="val" placeholder="Email" size="lg" :loading="loading" icon="mail" icon-side="left"/>
       {{ val }}
     </form-group>
+
+    <form-group>
+      <form-textarea v-model="val" placeholder="Textarea" />
+      {{ val }}
+    </form-group>
     
+    <h3>Select</h3>
+    <form-group>
+      <form-select v-model="selected" placeholder="Choose your option" :options="['1', '2', '3']" />
+    </form-group>
+    <form-group>
+      <form-select v-model="selected" :options="{one: 1, two: 2, three: 3}" multiple />
+    </form-group>
+    Selected value: {{ selected }}
+
   </component-view>
 </template>
 
@@ -42,6 +56,7 @@ export default Vue.extend({
   data: () => ({
     loading: false,
     val: '',
+    selected: ['1'],
   }),
   created() {
     // setInterval(() => this.loading = !this.loading, 1000);
