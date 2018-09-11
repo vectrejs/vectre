@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
 
-interface IProps {
+export interface IOptionProps {
   value?: string;
   label?: string;
   disabled?: boolean;
@@ -10,7 +10,7 @@ interface IProps {
 }
 
 @Component
-export default class extends VueComponent<IProps> {
+export class Option extends VueComponent<IOptionProps> {
   @Prop(Boolean)
   public disabled: boolean;
 

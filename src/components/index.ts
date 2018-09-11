@@ -26,6 +26,9 @@ import {
   FormSelect,
   FormSwtich,
   FormTextarea,
+  FormOption,
+  FormRadioGroup,
+  FormRadio,
 } from './Form';
 
 import {
@@ -74,9 +77,12 @@ export default {
   FormInput,
   FormLabel,
   FormHorizontal,
+  FormOption,
   FormSelect,
   FormSwtich,
   FormTextarea,
+  FormRadioGroup,
+  FormRadio,
 };
 
 export {
@@ -114,6 +120,9 @@ export {
   FormSelect,
   FormSwtich,
   FormTextarea,
+  FormOption,
+  FormRadioGroup,
+  FormRadio,
 
   // Button
   BtnSize,

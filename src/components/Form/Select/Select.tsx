@@ -1,6 +1,6 @@
 import { VNode } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import { default as Option } from './SelectOption';
+import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
 
 interface InputEvent {
@@ -17,17 +17,17 @@ interface IProps {
   value?: string | string[];
 }
 
-interface IOptionData {
+interface INormalizedOption {
   label: string;
   value: any;
 }
 
 @Component
-export default class extends VueComponent<IProps> {
+export class Select extends VueComponent<IProps> {
   @Prop()
   public options: { [label: string]: any } | string[];
 
-  @Prop()
+  @Prop({ default: '' })
   public value: string | string[];
 
   @Prop(Boolean)
@@ -45,60 +45,72 @@ export default class extends VueComponent<IProps> {
   public render(): VNode {
     let options: VNode[] = [];
 
-    if (this.placeholder) {
-      options.push(<Option>{this.placeholder}</Option>);
+    if (this.options) {
+      options = this
+        .normalizeOptions(this.options)
+        .map(({ label, value }: INormalizedOption) => {
+          return <Option
+            selected={this.isSelected(label, value)}
+            label={label}
+            value={value}
+          />;
+        });
+    } else {
+      options = (this.$slots.default || [])
+        .filter(({ componentOptions }) => {
+          return componentOptions
+            && componentOptions.tag
+            && componentOptions.tag.includes('form-option');
+        })
+        .map((option: VNode) => {
+          const props = option.componentOptions!.propsData as IOptionProps;
+          const value = props.value || (option.componentOptions!.children![0] as VNode).text;
+
+          props.selected = props.selected !== undefined
+            ? props.selected
+            : this.isSelected(props.label, value);
+
+          return option;
+        });
     }
 
-    if (this.options) {
-      options = options.concat(
-        this
-          .normalizeOptions(this.options)
-          .map(({ label, value }: IOptionData) => {
-            return <Option
-              selected={this.isSelected(label, value)}
-              label={label}
-              value={value}
-            />;
-          }),
-      );
-    } else {
-      options = this.$slots.default;
+    if (this.placeholder && !this.multiple) {
+      options.unshift(<Option>{this.placeholder}</Option>);
     }
 
     return <select class="form-select" multiple={this.multiple} {...{ on: this.listeners }}>
       {options}
-    </select>;
+    </select >;
   }
 
   private get listeners() {
     return { ...this.$listeners, input: this.onInput };
   }
 
-  private onInput({ target: { value, selectedOptions } }: InputEvent): void {
+  private onInput({ target: { selectedOptions } }: InputEvent): void {
     if (this.multiple) {
       const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
         return option.value || option.innerHTML;
       });
       this.$emit('input', selected);
     } else {
-      this.$emit('input', value);
+      this.$emit('input', selectedOptions[0].value || selectedOptions[0].innerHTML);
     }
   }
 
-  private isSelected(label: string, value: string): boolean {
-    if (Array.isArray(this.value)) {
-      return this.value.includes(label) || this.value.includes(value);
+  // tslint:disable-next-line:max-line-length
+  private isSelected(label: string | number | undefined, value: string | number | undefined, current = this.value): boolean {
+    if (current instanceof Array) {
+      return current.some((v: string) => this.isSelected(label, value, v));
     }
 
-    return this.value.toString() === label || this.value.toString() === value;
+    return (label !== undefined && current.toString() === label.toString())
+      || (value !== undefined && current.toString() === value.toString());
   }
 
-  private normalizeOptions(options: { [label: string]: any } | string[]): IOptionData[] {
+  private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {
     if (Array.isArray(options)) {
-      return options.reduce(
-        (normal: IOptionData[], value) => normal.concat({ value, label: value }),
-        [],
-      );
+      return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
     }
 
     const normalized = [];

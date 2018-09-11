@@ -39,7 +39,20 @@
     <form-group>
       <form-select v-model="selected" :options="{one: 1, two: 2, three: 3}" multiple />
     </form-group>
+    <form-group>
+      <form-select multiple v-model="selected">
+        <form-option value="1" >One</form-option>
+        <form-option value="2" label="Two" />
+        <form-option>three</form-option>
+      </form-select>
+    </form-group>
     Selected value: {{ selected }}
+
+    <h3>Radio</h3>
+    <form-group>
+      <form-label for="name-1">Gender</form-label>
+      <form-radio-group :options="['Male', 'Female']" />
+    </form-group>
 
   </component-view>
 </template>
@@ -56,7 +69,7 @@ export default Vue.extend({
   data: () => ({
     loading: false,
     val: '',
-    selected: ['1'],
+    selected: ['1', 'three'],
   }),
   created() {
     // setInterval(() => this.loading = !this.loading, 1000);
