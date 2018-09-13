@@ -50,9 +50,12 @@
 
     <h3>Radio</h3>
     <form-group>
-      <form-label for="name-1">Gender</form-label>
-      <form-radio-group :options="['Male', 'Female']" />
+      <form-label for="gender">Gender</form-label>
+      <form-radio v-for="(gender, i) in ['Male', 'Female']" :key="i" name="gender" :value="gender" v-model="selectedRadio">
+        {{gender}}
+      </form-radio>
     </form-group>
+    Selected radio: {{ selectedRadio }}
 
   </component-view>
 </template>
@@ -70,6 +73,7 @@ export default Vue.extend({
     loading: false,
     val: '',
     selected: ['1', 'three'],
+    selectedRadio: [],
   }),
   created() {
     // setInterval(() => this.loading = !this.loading, 1000);

@@ -8,7 +8,12 @@ export interface IRadioProps {
   checked?: boolean;
 }
 
-@Component
+@Component({
+  model: {
+    prop: 'model',
+    event: 'update',
+  },
+})
 export class Radio extends VueComponent<IRadioProps> {
   @Prop([String, Number])
   public value: string | number;
@@ -22,10 +27,17 @@ export class Radio extends VueComponent<IRadioProps> {
   @Prop(Boolean)
   public checked?: boolean;
 
+  @Prop([String, Boolean, Object, Number, Array])
+  protected model: any;
+
+  public onChecked(e: any): void {
+    this.$emit('update', this.value || e.target);
+  }
+
   public render() {
     return (
       <label class="form-radio">
-        <input type="radio" name={this.name} />
+        <input type="radio" name={this.name} onChange={this.onChecked} />
         <i class="form-icon"></i> {this.$slots.default || this.label}
       </label>
     );
