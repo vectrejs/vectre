@@ -11,7 +11,7 @@ export interface IRadioProps {
 @Component({
   model: {
     prop: 'model',
-    event: 'update',
+    event: 'change',
   },
 })
 export class Radio extends VueComponent<IRadioProps> {
@@ -31,15 +31,28 @@ export class Radio extends VueComponent<IRadioProps> {
   protected model: any;
 
   public onChecked(e: any): void {
-    this.$emit('update', this.value || e.target);
+    this.$emit('change', this._value);
   }
 
   public render() {
     return (
       <label class="form-radio">
-        <input type="radio" name={this.name} onChange={this.onChecked} />
-        <i class="form-icon"></i> {this.$slots.default || this.label}
+        <input
+          type="radio"
+          checked={this.checked || this.model === this._value}
+          name={this.name}
+          onChange={this.onChecked}
+        />
+        <i class="form-icon"></i> {this._label}
       </label>
     );
+  }
+
+  private get _label() {
+    return this.$slots.default || this.label;
+  }
+
+  private get _value() {
+    return this.value || this.$slots.default[0].text;
   }
 }
