@@ -19,6 +19,8 @@ import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
 import {
+  FormCheckbox,
+  FormCheckboxGroup,
   FormInput,
   FormGroup,
   FormLabel,
@@ -73,6 +75,8 @@ export default {
   VsMenu,
   VsNav,
 
+  FormCheckbox,
+  FormCheckboxGroup,
   FormGroup,
   FormInput,
   FormLabel,
@@ -113,6 +117,8 @@ export {
   VsNav,
 
   // Form components
+  FormCheckbox,
+  FormCheckboxGroup,
   FormGroup,
   FormInput,
   FormLabel,

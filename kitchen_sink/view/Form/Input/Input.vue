@@ -61,8 +61,7 @@
         <form-radio>Male</form-radio>
         <form-radio>Female</form-radio>
       </form-radio-group>
-    </form-group>
-    
+    </form-group>    
     
     <form-group>
       <form-label for="gender">Gender</form-label>
@@ -73,6 +72,41 @@
 
     Selected radio: {{ selectedRadio }}
 
+
+    <h3>Checkboxes</h3>
+    <form-group>
+      <form-checkbox label="Check" />
+      <form-checkbox label="Tres" v-model="checked" />
+      <form-checkbox label="Check" />
+    </form-group>
+    
+
+    <form-group>
+      <form-checkbox value="1" v-model="checkedArray" />
+      <form-checkbox value="2" v-model="checkedArray" />
+      <form-checkbox value="3" v-model="checkedArray" />
+    </form-group>
+
+    Checked array: {{ checkedArray }}
+
+
+    <form-group>
+      <form-checkbox-group :options="['1', '2', '3']" v-model="checkedArray" />
+    </form-group>
+
+    <form-group>
+      <form-checkbox-group :options="{un: '1', dos: '2', tres: '3'}" v-model="checkedArray" />
+    </form-group>
+
+    <form-group>
+      <form-checkbox-group v-model="checkedArray">
+        <form-checkbox label="Un" value="1" />
+        <form-checkbox label="Dos" value="2" />
+        <form-checkbox label="Tres" value="3" />
+      </form-checkbox-group>
+    </form-group>
+      
+    Checked: {{ checked }}
   </component-view>
 </template>
 
@@ -90,6 +124,8 @@ export default Vue.extend({
     val: '',
     selected: ['1', 'three'],
     selectedRadio: 'Male',
+    checked: '',
+    checkedArray: [],
   }),
   created() {
     // setInterval(() => this.loading = !this.loading, 1000);
