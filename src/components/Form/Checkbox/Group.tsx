@@ -1,7 +1,8 @@
 import { Prop, Component } from 'vue-property-decorator';
-import { default as Checkbox } from './Checkbox';
+import { default as Checkbox, ICheckboxProps } from './Checkbox';
 import { VueComponent } from 'vue-tsx-helper';
 import { VNode } from 'vue';
+import { CheckboxType } from '@components/Form/Checkbox/CheckboxType';
 
 interface INormalizedOption {
   label: string;
@@ -11,6 +12,7 @@ interface INormalizedOption {
 interface ICheckboxGroup {
   options?: any[] | { [label: string]: any };
   value?: any[];
+  type: keyof typeof CheckboxType;
 }
 
 @Component({
@@ -47,12 +49,12 @@ export class Group extends VueComponent<ICheckboxGroup> {
             && componentOptions.tag.includes('form-checkbox');
         })
         .map((option: VNode) => {
+          (option.componentOptions!.propsData as ICheckboxProps).model = this.value;
+
           option.componentOptions!.listeners = {
             ...option.componentOptions!.listeners,
             input: this.update,
           };
-
-          (option.componentOptions!.propsData as any).model = this.value;
 
           return option;
         });

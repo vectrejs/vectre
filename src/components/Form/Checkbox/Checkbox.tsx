@@ -1,10 +1,12 @@
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
+import { CheckboxType } from './CheckboxType';
 
-interface IProps {
+export interface ICheckboxProps {
   label?: string | number;
   value?: any;
   model?: any;
+  type?: keyof typeof CheckboxType;
 }
 
 @Component({
@@ -13,7 +15,7 @@ interface IProps {
     prop: 'model',
   },
 })
-export default class extends VueComponent<IProps> {
+export default class extends VueComponent<ICheckboxProps> {
   @Prop([String, Number])
   public label: string | number;
 
@@ -25,6 +27,12 @@ export default class extends VueComponent<IProps> {
 
   @Prop(Boolean)
   public disabled: boolean;
+
+  @Prop({
+    type: String,
+    validator: v => Object.keys(CheckboxType).includes(v),
+  })
+  public type: keyof typeof CheckboxType;
 
   @Prop()
   protected model: any;
@@ -43,7 +51,7 @@ export default class extends VueComponent<IProps> {
 
   public render() {
     return (
-      <label class="form-checkbox">
+      <label class={CheckboxType[this.type] || 'form-checkbox'}>
         <input
           type="checkbox"
           onChange={this.update}

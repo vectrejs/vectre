@@ -99,7 +99,7 @@
     </form-group>
 
     <form-group>
-      <form-checkbox-group v-model="checkedArray">
+      <form-checkbox-group v-model="checkedArray" type="">
         <form-checkbox label="Un" value="1" />
         <form-checkbox label="Dos" value="2" />
         <form-checkbox label="Tres" value="3" />
@@ -107,6 +107,14 @@
     </form-group>
       
     Checked: {{ checked }}
+
+
+    <h3>Switch</h3>
+    <form-group>
+      <form-checkbox type="switch" v-model="light">Light</form-checkbox>
+    </form-group>
+    Ligth: {{ light ? 'ON' : 'OFF' }}
+
   </component-view>
 </template>
 
@@ -126,9 +134,10 @@ export default Vue.extend({
     selectedRadio: 'Male',
     checked: '',
     checkedArray: [],
+    light: false,
   }),
   created() {
-    // setInterval(() => this.loading = !this.loading, 1000);
+    setInterval(() => this.loading = !this.loading, 1000);
   },
 });
 </script>
