@@ -22,15 +22,18 @@ import {
   FormCheckbox,
   FormCheckboxGroup,
   FormInput,
+  FormInputSize,
   FormGroup,
   FormLabel,
   FormHorizontal,
   FormSelect,
-  FormSwtich,
   FormTextarea,
   FormOption,
   FormRadioGroup,
   FormRadio,
+
+  FormLabelSize,
+  FormSelectSize,
 } from './Form';
 
 import {
@@ -83,7 +86,6 @@ export default {
   FormHorizontal,
   FormOption,
   FormSelect,
-  FormSwtich,
   FormTextarea,
   FormRadioGroup,
   FormRadio,
@@ -124,11 +126,15 @@ export {
   FormLabel,
   FormHorizontal,
   FormSelect,
-  FormSwtich,
   FormTextarea,
   FormOption,
   FormRadioGroup,
   FormRadio,
+
+  // Form sizes
+  FormInputSize,
+  FormLabelSize,
+  FormSelectSize,
 
   // Button
   BtnSize,

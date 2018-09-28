@@ -2,6 +2,7 @@ import { VNode } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
+import { Size } from './Size';
 
 interface InputEvent {
   target: {
@@ -15,6 +16,7 @@ interface IProps {
   multiple?: boolean;
   placeholder?: string;
   value?: string | string[];
+  size?: keyof typeof Size;
 }
 
 interface INormalizedOption {
@@ -35,6 +37,9 @@ export class Select extends VueComponent<IProps> {
 
   @Prop(String)
   public placeholder: string;
+
+  @Prop(String)
+  public size: keyof typeof Size;
 
   public mounted() {
     if (!this.options && !this.$slots.default) {
@@ -78,7 +83,9 @@ export class Select extends VueComponent<IProps> {
       options.unshift(<Option>{this.placeholder}</Option>);
     }
 
-    return <select class="form-select" multiple={this.multiple} {...{ on: this.listeners }}>
+    const cssClass = ['form-select', Size[this.size] || ''];
+
+    return <select class={cssClass} multiple={this.multiple} {...{ on: this.listeners }}>
       {options}
     </select >;
   }

@@ -1,11 +1,14 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
+import { Sizes, Size } from './Size';
 
 export interface IRadioProps {
   value?: string;
   label?: string;
   name?: string;
   checked?: boolean;
+  inline?: boolean;
+  size?: Sizes;
 }
 
 @Component({
@@ -27,6 +30,12 @@ export class Radio extends VueComponent<IRadioProps> {
   @Prop(Boolean)
   public checked?: boolean;
 
+  @Prop(Boolean)
+  public inline: boolean;
+
+  @Prop(String)
+  public size: Sizes;
+
   @Prop([String, Boolean, Object, Number, Array])
   protected model: any;
 
@@ -35,8 +44,14 @@ export class Radio extends VueComponent<IRadioProps> {
   }
 
   public render() {
+    const cssClass = [
+      'form-radio',
+      this.inline ? 'form-inline' : false,
+      Size[this.size] || '',
+    ];
+
     return (
-      <label class="form-radio">
+      <label class={cssClass}>
         <input
           type="radio"
           checked={this.checked || this.model === this._value}

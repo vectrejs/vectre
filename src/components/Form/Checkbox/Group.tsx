@@ -2,7 +2,8 @@ import { Prop, Component } from 'vue-property-decorator';
 import { default as Checkbox, ICheckboxProps } from './Checkbox';
 import { VueComponent } from 'vue-tsx-helper';
 import { VNode } from 'vue';
-import { CheckboxType } from '@components/Form/Checkbox/CheckboxType';
+import { CheckboxType, CheckboxTypes } from '@components/Form/Checkbox/Type';
+import { Sizes } from './Size';
 
 interface INormalizedOption {
   label: string;
@@ -13,19 +14,26 @@ interface ICheckboxGroup {
   options?: any[] | { [label: string]: any };
   value?: any[];
   type: keyof typeof CheckboxType;
+  inline?: boolean;
+  size?: Sizes;
 }
 
-@Component({
-  model: {
-    prop: 'value',
-  },
-})
+@Component
 export class Group extends VueComponent<ICheckboxGroup> {
   @Prop([Array, Object])
   public options?: any[] | { [label: string]: any };
 
   @Prop({ type: Array, default: () => [] })
   public value: any[];
+
+  @Prop(Boolean)
+  public inline: boolean;
+
+  @Prop(String)
+  public type: CheckboxTypes;
+
+  @Prop(String)
+  public size: Sizes;
 
   public render() {
     let group;
@@ -39,6 +47,9 @@ export class Group extends VueComponent<ICheckboxGroup> {
             value={value}
             model={this.value}
             onInput={this.update}
+            inline={this.inline}
+            type={this.type}
+            size={this.size}
           />;
         });
     } else {
@@ -49,7 +60,11 @@ export class Group extends VueComponent<ICheckboxGroup> {
             && componentOptions.tag.includes('form-checkbox');
         })
         .map((option: VNode) => {
-          (option.componentOptions!.propsData as ICheckboxProps).model = this.value;
+          const props: ICheckboxProps = option.componentOptions!.propsData || {};
+          props.model = this.value;
+          props.inline = this.inline || props.inline;
+          props.type = this.type || props.type;
+          props.size = props.size || this.size;
 
           option.componentOptions!.listeners = {
             ...option.componentOptions!.listeners,

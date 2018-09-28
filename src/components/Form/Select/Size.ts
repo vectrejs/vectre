@@ -1,6 +1,6 @@
 export type Sizes = keyof typeof Size;
 
 export enum Size {
-  sm = 'input-sm',
-  lg = 'input-lg',
+  sm = 'select-sm',
+  lg = 'select-lg',
 }

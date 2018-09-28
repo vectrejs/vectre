@@ -1,8 +1,7 @@
-export { Input as FormInput } from './Input';
-export { default as FormGroup } from './Group.vue';
-export { default as FormLabel } from './Label.vue';
-export { Select as FormSelect, Option as FormOption } from './Select';
-export { default as FormSwtich } from './Switch.vue';
+export { Input as FormInput, InputSize as FormInputSize } from './Input';
+export { Group as FormGroup } from './Group';
+export { Label as FormLabel, LabelSize as FormLabelSize } from './Label';
+export { Select as FormSelect, Option as FormOption, SelectSize as FormSelectSize } from './Select';
 export { default as FormHorizontal } from './Horizontal.vue';
 export { default as FormTextarea } from './Textarea.vue';
 export { Group as FormRadioGroup, Radio as FormRadio } from './Radio';

@@ -1,12 +1,17 @@
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
-import { CheckboxType } from './CheckboxType';
+import { CheckboxType, CheckboxTypes } from '@components/Form/Checkbox/Type';
+import { Size, Sizes } from './Size';
 
 export interface ICheckboxProps {
+  checked?: boolean;
+  disabled?: boolean;
+  inline?: boolean;
   label?: string | number;
-  value?: any;
   model?: any;
   type?: keyof typeof CheckboxType;
+  value?: any;
+  size?: Sizes;
 }
 
 @Component({
@@ -32,7 +37,13 @@ export default class extends VueComponent<ICheckboxProps> {
     type: String,
     validator: v => Object.keys(CheckboxType).includes(v),
   })
-  public type: keyof typeof CheckboxType;
+  public type: CheckboxTypes;
+
+  @Prop(Boolean)
+  public inline: boolean;
+
+  @Prop(String)
+  public size: Sizes;
 
   @Prop()
   protected model: any;
@@ -50,8 +61,14 @@ export default class extends VueComponent<ICheckboxProps> {
   }
 
   public render() {
+    const cssClass = [
+      CheckboxType[this.type] || 'form-checkbox',
+      this.inline ? 'form-inline' : '',
+      Size[this.size] || '',
+    ];
+
     return (
-      <label class={CheckboxType[this.type] || 'form-checkbox'}>
+      <label class={cssClass}>
         <input
           type="checkbox"
           onChange={this.update}

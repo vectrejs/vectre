@@ -2,6 +2,7 @@ import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
 import { Radio, IRadioProps } from './Radio';
 import { VNode } from 'vue';
+import { Sizes } from './Size';
 
 interface INormalizedOption {
   label: string;
@@ -12,6 +13,8 @@ export interface IRadioGroup {
   options?: any[] | { [label: string]: any };
   name?: string;
   value?: any;
+  inline?: boolean;
+  size?: Sizes;
 }
 
 @Component
@@ -24,6 +27,12 @@ export class Group extends VueComponent<IRadioGroup> {
 
   @Prop()
   public value: any;
+
+  @Prop(Boolean)
+  public inline: boolean;
+
+  @Prop(String)
+  public size: Sizes;
 
   public render() {
     const name = this.name || this.$vnode.tag;
@@ -39,6 +48,8 @@ export class Group extends VueComponent<IRadioGroup> {
             value={value}
             checked={this.isChecked(label, value)}
             onChange={this.update}
+            inline={this.inline}
+            size={this.size}
           />;
         });
     } else {
@@ -49,11 +60,12 @@ export class Group extends VueComponent<IRadioGroup> {
             && componentOptions.tag.includes('form-radio');
         })
         .map((option: VNode) => {
-          const props = option.componentOptions!.propsData as IRadioProps;
+          const props: IRadioProps = option.componentOptions!.propsData || {};
           const value = props.value || (option.componentOptions!.children![0] as VNode).text;
 
           props.name = name;
-
+          props.size = props.size || this.size;
+          props.inline = this.inline || props.inline;
           props.checked = props.checked !== undefined
             ? props.checked
             : this.isChecked(props.label, value);

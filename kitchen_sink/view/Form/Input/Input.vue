@@ -77,7 +77,7 @@
     <form-group>
       <form-checkbox label="Check" />
       <form-checkbox label="Tres" v-model="checked" />
-      <form-checkbox label="Check" />
+      <form-checkbox label="Check"/>
     </form-group>
     
 
@@ -112,6 +112,8 @@
     <h3>Switch</h3>
     <form-group>
       <form-checkbox type="switch" v-model="light">Light</form-checkbox>
+      <form-checkbox type="switch" v-model="light">Light</form-checkbox>
+      <form-checkbox type="switch" v-model="light">Light</form-checkbox>
     </form-group>
     Ligth: {{ light ? 'ON' : 'OFF' }}
 
@@ -137,7 +139,7 @@ export default Vue.extend({
     light: false,
   }),
   created() {
-    setInterval(() => this.loading = !this.loading, 1000);
+    // setInterval(() => this.loading = !this.loading, 1000);
   },
 });
 </script>
