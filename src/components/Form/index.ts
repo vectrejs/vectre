@@ -6,3 +6,4 @@ export { default as FormHorizontal } from './Horizontal.vue';
 export { default as FormTextarea } from './Textarea.vue';
 export { Group as FormRadioGroup, Radio as FormRadio } from './Radio';
 export { Group as FormCheckboxGroup, Checkbox as FormCheckbox } from './Checkbox';
+export { default as FormHint } from './Hint.vue';

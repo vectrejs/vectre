@@ -17,6 +17,12 @@ export class Group extends VueComponent<IGroupProps> {
   })
   public size: 'lg' | 'sm';
 
+  @Prop(Boolean)
+  public error: boolean;
+
+  @Prop(Boolean)
+  public success: boolean;
+
   public render() {
     if (this.size) {
       (this.$slots.default || []).map((v: VNode) => {
@@ -25,23 +31,17 @@ export class Group extends VueComponent<IGroupProps> {
           (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size =
               (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size || this.size;
         }
-        // switch (v.componentOptions!.tag) {
-        //   case 'form-label':
-        //   case 'form-input':
-        //   case 'form-select':
-        //   case 'form-checkbox':
-        //   case 'form-checkbox-group':
-        //   case 'form-radio':
-        //   case 'form-radio':
-        //     (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size =
-        //       (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size || this.size;
-        //     break;
-        // }
       });
     }
 
+    const cssClass = [
+      'form-group',
+      this.error ? 'has-error' : '',
+      this.success ? 'has-success' : '',
+    ];
+
     return (
-      <div class="form-group">
+      <div class={cssClass}>
         {this.$slots.default}
       </div>
     );
