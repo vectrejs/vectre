@@ -7,31 +7,47 @@ import { Sizes } from './Sizes';
 type fn = (...args: any[]) => void;
 
 interface InptProps {
-  size: Sizes;
+  value?: string;
   attrs: { [name: string]: string };
   on: Record<string, fn | fn[]>;
-  value: string;
+  error?: boolean;
+  size?: Sizes;
+  success?: boolean;
 }
 
 @Component
 export class Input extends VueComponent<InptProps> {
   @Prop({
     type: String,
+    validator: size => Object.keys(Size).includes(size),
   })
   public size: Sizes;
 
   @Prop()
   public attrs: { [name: string]: string };
 
-  @Prop()
+  @Prop(String)
   public value: string;
 
   @Prop()
   public on: Record<string, fn | fn[]>;
 
+  @Prop(Boolean)
+  public error: boolean;
+
+  @Prop(Boolean)
+  public success: boolean;
+
   public render(h: CreateElement) {
+    const cssClass = [
+      'form-input',
+      this.error ? 'is-error' : false,
+      this.success ? 'is-success' : false,
+      Size[this.size],
+    ];
+
     return (<input
-      class={['form-input', Size[this.size]]}
+      class={cssClass}
       {...{
         domProps: { value: this.value },
         on: this.on,

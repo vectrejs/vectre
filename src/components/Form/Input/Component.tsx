@@ -7,22 +7,18 @@ import { Loading } from './Loading';
 
 export const Component = vue.extend({
   props: {
-    icon: {
-      type: String,
-    },
+    value: String,
+    error: Boolean,
+    loading: Boolean,
+    success: Boolean,
+    icon: String,
     iconSide: {
       type: String,
       validator: (side: string) => Object.keys(IconSide).includes(side),
     },
-    loading: {
-      type: Boolean,
-    },
     size: {
       type: String,
       validator: (size: string) => Object.keys(Size).includes(size),
-    },
-    value: {
-      type: String,
     },
   },
   inheritAttrs: false,
@@ -40,6 +36,8 @@ export const Component = vue.extend({
       size={size}
       attrs={this.$attrs}
       value={this.value}
+      error={this.error}
+      success={this.success}
       on={{ ...this.$listeners, ...{ input: this.onInput } }}
     />;
 
