@@ -3,6 +3,7 @@ import { Prop, Component } from 'vue-property-decorator';
 import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
 import { Size } from './Size';
+import { Sizes } from './Sizes';
 
 interface InputEvent {
   target: {
@@ -16,7 +17,9 @@ interface IProps {
   multiple?: boolean;
   placeholder?: string;
   value?: string | string[];
-  size?: keyof typeof Size;
+  size?: Sizes;
+  error?: boolean;
+  success?: boolean;
 }
 
 interface INormalizedOption {
@@ -26,7 +29,7 @@ interface INormalizedOption {
 
 @Component
 export class Select extends VueComponent<IProps> {
-  @Prop()
+  @Prop([Array, Object])
   public options: { [label: string]: any } | string[];
 
   @Prop({ default: '' })
@@ -38,8 +41,17 @@ export class Select extends VueComponent<IProps> {
   @Prop(String)
   public placeholder: string;
 
-  @Prop(String)
-  public size: keyof typeof Size;
+  @Prop({
+    type: String,
+    validator: size => Object.keys(Size).includes(size),
+  })
+  public size: Sizes;
+
+  @Prop(Boolean)
+  public error: boolean;
+
+  @Prop(Boolean)
+  public success: boolean;
 
   public mounted() {
     if (!this.options && !this.$slots.default) {
@@ -83,7 +95,12 @@ export class Select extends VueComponent<IProps> {
       options.unshift(<Option>{this.placeholder}</Option>);
     }
 
-    const cssClass = ['form-select', Size[this.size] || ''];
+    const cssClass = [
+      'form-select',
+      Size[this.size] || '',
+      this.error ? 'is-error' : '',
+      this.success ? 'is-success' : '',
+    ];
 
     return <select class={cssClass} multiple={this.multiple} {...{ on: this.listeners }}>
       {options}
