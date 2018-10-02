@@ -10,6 +10,7 @@ export interface IRadioProps {
   checked?: boolean;
   inline?: boolean;
   size?: Sizes;
+  error?: boolean;
 }
 
 @Component({
@@ -34,6 +35,9 @@ export class Radio extends VueComponent<IRadioProps> {
   @Prop(Boolean)
   public inline: boolean;
 
+  @Prop(Boolean)
+  public error: boolean;
+
   @Prop({
     type: String,
     validator: size => Object.keys(Size).includes(size),
@@ -51,7 +55,8 @@ export class Radio extends VueComponent<IRadioProps> {
     const cssClass = [
       'form-radio',
       this.inline ? 'form-inline' : false,
-      Size[this.size] || '',
+      Size[this.size] || false,
+      this.error ? 'is-error' : false,
     ];
 
     return (

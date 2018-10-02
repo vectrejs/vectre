@@ -61,7 +61,7 @@
         <form-radio>Male</form-radio>
         <form-radio>Female</form-radio>
       </form-radio-group>
-    </form-group>    
+    </form-group>
     
     <form-group>
       <form-label for="gender">Gender</form-label>
@@ -105,7 +105,7 @@
         <form-checkbox label="Tres" value="3" />
       </form-checkbox-group>
     </form-group>
-      
+
     Checked: {{ checked }}
 
 

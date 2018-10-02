@@ -15,6 +15,7 @@ export interface IRadioGroup {
   value?: any;
   inline?: boolean;
   size?: Sizes;
+  error?: boolean;
 }
 
 @Component
@@ -34,6 +35,9 @@ export class Group extends VueComponent<IRadioGroup> {
   @Prop(String)
   public size: Sizes;
 
+  @Prop(Boolean)
+  public error: boolean;
+
   public render() {
     const name = this.name || this.$vnode.tag;
     let group;
@@ -46,6 +50,7 @@ export class Group extends VueComponent<IRadioGroup> {
             name={name}
             label={label}
             value={value}
+            error={this.error}
             checked={this.isChecked(label, value)}
             onChange={this.update}
             inline={this.inline}
@@ -66,6 +71,7 @@ export class Group extends VueComponent<IRadioGroup> {
           props.name = name;
           props.size = props.size || this.size;
           props.inline = this.inline || props.inline;
+          props.error = this.error || props.error;
           props.checked = props.checked !== undefined
             ? props.checked
             : this.isChecked(props.label, value);
