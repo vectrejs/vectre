@@ -98,7 +98,7 @@
       <form-checkbox-group :options="{un: '1', dos: '2', tres: '3'}" v-model="checkedArray" />
     </form-group>
 
-    <form-group>
+    <form-group disabled>
       <form-checkbox-group v-model="checkedArray" type="">
         <form-checkbox label="Un" value="1" />
         <form-checkbox label="Dos" value="2" />

@@ -10,12 +10,13 @@ interface INormalizedOption {
 }
 
 export interface IRadioGroup {
+  disabled?: boolean;
+  error?: boolean;
+  inline?: boolean;
   options?: any[] | { [label: string]: any };
   name?: string;
-  value?: any;
-  inline?: boolean;
   size?: Sizes;
-  error?: boolean;
+  value?: any;
 }
 
 @Component
@@ -38,6 +39,9 @@ export class Group extends VueComponent<IRadioGroup> {
   @Prop(Boolean)
   public error: boolean;
 
+  @Prop(Boolean)
+  public disabled: boolean;
+
   public render() {
     const name = this.name || this.$vnode.tag;
     let group;
@@ -55,6 +59,7 @@ export class Group extends VueComponent<IRadioGroup> {
             onChange={this.update}
             inline={this.inline}
             size={this.size}
+            disabled={this.disabled}
           />;
         });
     } else {
@@ -70,8 +75,9 @@ export class Group extends VueComponent<IRadioGroup> {
 
           props.name = name;
           props.size = props.size || this.size;
-          props.inline = this.inline || props.inline;
           props.error = this.error || props.error;
+          props.disabled = this.disabled || props.disabled;
+          props.inline = this.inline || props.inline;
           props.checked = props.checked !== undefined
             ? props.checked
             : this.isChecked(props.label, value);

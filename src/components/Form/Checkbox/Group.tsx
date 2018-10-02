@@ -11,11 +11,12 @@ interface INormalizedOption {
 }
 
 interface ICheckboxGroup {
-  options?: any[] | { [label: string]: any };
-  value?: any[];
-  type: Types;
+  disabled?: boolean;
   inline?: boolean;
+  options?: any[] | { [label: string]: any };
   size?: Sizes;
+  type: Types;
+  value?: any[];
 }
 
 @Component
@@ -35,6 +36,9 @@ export class Group extends VueComponent<ICheckboxGroup> {
   @Prop(String)
   public size: Sizes;
 
+  @Prop(Boolean)
+  public disabled: boolean;
+
   public render() {
     let group;
 
@@ -50,6 +54,7 @@ export class Group extends VueComponent<ICheckboxGroup> {
             inline={this.inline}
             type={this.type}
             size={this.size}
+            disabled={this.disabled}
           />;
         });
     } else {
@@ -65,6 +70,7 @@ export class Group extends VueComponent<ICheckboxGroup> {
           props.inline = this.inline || props.inline;
           props.type = this.type || props.type;
           props.size = props.size || this.size;
+          props.disabled = props.disabled || this.disabled;
 
           option.componentOptions!.listeners = {
             ...option.componentOptions!.listeners,

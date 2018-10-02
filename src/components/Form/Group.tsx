@@ -4,6 +4,7 @@ import { VNode } from 'vue';
 
 interface IGroupProps {
   size?: 'lg' | 'sm';
+  disabled?: boolean;
 }
 
 @Component
@@ -15,6 +16,9 @@ export class Group extends VueComponent<IGroupProps> {
   public size: 'lg' | 'sm';
 
   @Prop(Boolean)
+  public disabled: boolean;
+
+  @Prop(Boolean)
   public error: boolean;
 
   @Prop(Boolean)
@@ -24,9 +28,21 @@ export class Group extends VueComponent<IGroupProps> {
     if (this.size) {
       (this.$slots.default || []).map((v: VNode) => {
         // tslint:disable-next-line:max-line-length
-        if (/^.*form-(label|input|select|checkbox|checkbox-group|radio|radio-group)$/.test(v.componentOptions!.tag!)) {
+        if (/^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions!.tag!)) {
           (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size =
-              (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size || this.size;
+            (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size || this.size;
+        }
+      });
+    }
+
+    if (this.disabled) {
+      (this.$slots.default || []).map((v: VNode) => {
+        // tslint:disable-next-line:max-line-length
+        if (/^.*form-(input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions!.tag!)) {
+          (v.componentOptions!.propsData as { disabled: boolean }).disabled =
+            this.disabled || (v.componentOptions!.propsData as { disabled: boolean }).disabled;
+          // tslint:disable-next-line:no-console
+          console.log(v);
         }
       });
     }

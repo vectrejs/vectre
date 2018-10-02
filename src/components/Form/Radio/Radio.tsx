@@ -4,13 +4,14 @@ import { Size } from './Size';
 import { Sizes } from './Sizes';
 
 export interface IRadioProps {
-  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  error?: boolean;
+  inline?: boolean;
   label?: string;
   name?: string;
-  checked?: boolean;
-  inline?: boolean;
   size?: Sizes;
-  error?: boolean;
+  value?: string;
 }
 
 @Component({
@@ -44,6 +45,9 @@ export class Radio extends VueComponent<IRadioProps> {
   })
   public size: Sizes;
 
+  @Prop(Boolean)
+  public disabled: boolean;
+
   @Prop([String, Boolean, Object, Number, Array])
   protected model: any;
 
@@ -64,6 +68,7 @@ export class Radio extends VueComponent<IRadioProps> {
         <input
           type="radio"
           checked={this.checked || this.model === this._value}
+          disabled={this.disabled}
           name={this.name}
           onChange={this.onChecked}
         />
