@@ -1,6 +1,4 @@
-export type CheckboxTypes = keyof typeof CheckboxType;
-
-export enum CheckboxType {
+export enum Type {
   switch = 'form-switch',
   checkbox = 'form-checkbox',
 }

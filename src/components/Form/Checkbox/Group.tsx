@@ -2,8 +2,8 @@ import { Prop, Component } from 'vue-property-decorator';
 import { default as Checkbox, ICheckboxProps } from './Checkbox';
 import { VueComponent } from 'vue-tsx-helper';
 import { VNode } from 'vue';
-import { CheckboxType, CheckboxTypes } from '@components/Form/Checkbox/Type';
-import { Sizes } from './Size';
+import { Types } from './Types';
+import { Sizes } from './Sizes';
 
 interface INormalizedOption {
   label: string;
@@ -13,7 +13,7 @@ interface INormalizedOption {
 interface ICheckboxGroup {
   options?: any[] | { [label: string]: any };
   value?: any[];
-  type: keyof typeof CheckboxType;
+  type: Types;
   inline?: boolean;
   size?: Sizes;
 }
@@ -30,7 +30,7 @@ export class Group extends VueComponent<ICheckboxGroup> {
   public inline: boolean;
 
   @Prop(String)
-  public type: CheckboxTypes;
+  public type: Types;
 
   @Prop(String)
   public size: Sizes;

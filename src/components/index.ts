@@ -33,6 +33,7 @@ import {
   FormRadioGroup,
   FormRadio,
 
+  FormCheckboxSize,
   FormLabelSize,
   FormSelectSize,
 } from './Form';
@@ -135,6 +136,7 @@ export {
   FormRadio,
 
   // Form sizes
+  FormCheckboxSize,
   FormInputSize,
   FormLabelSize,
   FormSelectSize,

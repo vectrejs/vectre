@@ -1,9 +1,6 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
 import { VNode } from 'vue';
-import { LabelSizes, LabelSize } from '@components/Form/Label';
-import { InputSize, InputSizes } from '@components/Form/Input';
-import { SelectSizes, SelectSize } from '@components/Form/Select';
 
 interface IGroupProps {
   size?: 'lg' | 'sm';
