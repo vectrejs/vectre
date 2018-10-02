@@ -50,12 +50,12 @@ enum Objects {
   emoji = 'icon-emoji',
 }
 
-const All = { ...Navigation, ...Objects, ...Action };
+const Icons = { ...Navigation, ...Objects, ...Action };
 
 export default Type;
 export {
   Navigation,
   Action,
   Objects,
-  All,
+  Icons,
 };

@@ -43,7 +43,7 @@ import {
   Icon,
   Navigation as IconNavigation,
   Objects as IconObject,
-  All as IconAll,
+  Icons,
   IconSize,
   IconType,
 } from './Icon';
@@ -152,6 +152,7 @@ export {
   IconAction,
   IconNavigation,
   IconObject,
+  Icons,
 
   // Avatar
   AvatarSize,
