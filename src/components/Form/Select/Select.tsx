@@ -97,7 +97,7 @@ export class Select extends VueComponent<IProps> {
 
     const cssClass = [
       'form-select',
-      Size[this.size] || '',
+      Size[this.size],
       this.error ? 'is-error' : '',
       this.success ? 'is-success' : '',
     ];

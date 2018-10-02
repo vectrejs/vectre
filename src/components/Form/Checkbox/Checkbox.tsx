@@ -66,7 +66,7 @@ export default class extends VueComponent<ICheckboxProps> {
     const cssClass = [
       Type[this.type] || 'form-checkbox',
       this.inline ? 'form-inline' : '',
-      Size[this.size] || '',
+      Size[this.size],
     ];
 
     return (

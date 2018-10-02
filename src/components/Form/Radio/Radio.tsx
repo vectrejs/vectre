@@ -55,8 +55,8 @@ export class Radio extends VueComponent<IRadioProps> {
     const cssClass = [
       'form-radio',
       this.inline ? 'form-inline' : false,
-      Size[this.size] || false,
       this.error ? 'is-error' : false,
+      Size[this.size],
     ];
 
     return (
