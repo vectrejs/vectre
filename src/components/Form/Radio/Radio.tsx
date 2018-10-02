@@ -1,6 +1,7 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
-import { Sizes, Size } from './Size';
+import { Size } from './Size';
+import { Sizes } from './Sizes';
 
 export interface IRadioProps {
   value?: string;
@@ -33,7 +34,10 @@ export class Radio extends VueComponent<IRadioProps> {
   @Prop(Boolean)
   public inline: boolean;
 
-  @Prop(String)
+  @Prop({
+    type: String,
+    validator: size => Object.keys(Size).includes(size),
+  })
   public size: Sizes;
 
   @Prop([String, Boolean, Object, Number, Array])

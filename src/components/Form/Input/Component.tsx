@@ -1,5 +1,5 @@
 import vue, { VNode } from 'vue';
-import { Size } from '@components/Form/Input/Size';
+import { Size } from './Size';
 import { Input } from './Input';
 import { Icon } from './Icon';
 import { IconContainer, IconSide } from './IconContainer';

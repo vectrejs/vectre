@@ -2,7 +2,7 @@ import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
 import { Radio, IRadioProps } from './Radio';
 import { VNode } from 'vue';
-import { Sizes } from './Size';
+import { Sizes } from './Sizes';
 
 interface INormalizedOption {
   label: string;

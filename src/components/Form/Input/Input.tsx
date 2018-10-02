@@ -1,12 +1,13 @@
 import { Component, Prop } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
 import { CreateElement } from 'vue';
-import { Size } from '@components/Form/Input/Size';
+import { Size } from './Size';
+import { Sizes } from './Sizes';
 
 type fn = (...args: any[]) => void;
 
 interface InptProps {
-  size: Size;
+  size: Sizes;
   attrs: { [name: string]: string };
   on: Record<string, fn | fn[]>;
   value: string;
@@ -14,8 +15,10 @@ interface InptProps {
 
 @Component
 export class Input extends VueComponent<InptProps> {
-  @Prop()
-  public size: Size;
+  @Prop({
+    type: String,
+  })
+  public size: Sizes;
 
   @Prop()
   public attrs: { [name: string]: string };
@@ -28,7 +31,7 @@ export class Input extends VueComponent<InptProps> {
 
   public render(h: CreateElement) {
     return (<input
-      class={['form-input', Size[this.size as any]]}
+      class={['form-input', Size[this.size]]}
       {...{
         domProps: { value: this.value },
         on: this.on,
