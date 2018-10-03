@@ -41,8 +41,6 @@ export class Group extends VueComponent<IGroupProps> {
         if (/^.*form-(input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions!.tag!)) {
           (v.componentOptions!.propsData as { disabled: boolean }).disabled =
             this.disabled || (v.componentOptions!.propsData as { disabled: boolean }).disabled;
-          // tslint:disable-next-line:no-console
-          console.log(v);
         }
       });
     }
