@@ -21,7 +21,12 @@
     <prism language="html" :code="basic" />
     <p>
       <code>items</code> prop should have a certain structure to be used in a simplified way: 
-      <pre>  Array of { path: string, text: string, badge?: string | number, divider?: string|boolean }</pre>
+      <pre>  Array of { 
+        path: string, 
+        text: string, 
+        badge?: string | number, 
+        divider?: string|boolean 
+    }</pre>
       <i>Note: dividers can not be active but they are used in index count</i>
     </p>
 

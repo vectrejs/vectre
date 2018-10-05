@@ -7,9 +7,9 @@ import Vue from 'vue';
 import SlotsList, { SlotDefinitions } from '@kitchen/component/Slots';
 
 const slots: SlotDefinitions = {
-  header: { scope: 'item = { value, key, index }' },
-  body: { scope: 'item = { value, key, index }' },
-  default: { scope: 'item = { value, key, index }' },
+  header: { scope: '{ item, key, index }' },
+  body: { scope: '{ item, key, index }' },
+  default: { scope: '{ item, key, index }' },
 };
 
 export default Vue.extend({

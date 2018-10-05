@@ -4,7 +4,7 @@
       <div class="logo">
         <img :src="require('@kitchen/img/logo.svg')" />
       </div>
-      <mnu :routes="routes" @checked="closeSidebar" />
+      <mnu :routes="routes" @select="closeSidebar" />
     </template>
 
     <router-view slot="content" />
@@ -40,7 +40,6 @@ export default class extends vue {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 @media (max-width: 960px) {

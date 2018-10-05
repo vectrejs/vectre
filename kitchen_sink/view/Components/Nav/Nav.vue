@@ -4,29 +4,28 @@
     <p>Simple way to show navigation as a vertical hierarchical list</p>
 
     <h3>Base use</h3>
-    <p>
-      <code>items</code> prop should have a certain structure to be used in a simplified way:
-      <pre>  Array of { path: string, text: string, active?: boolean }</pre>
-    </p>
-
     <vs-nav :items="items" />
     <prism language="html" :code="baseHtml" />
     <prism language="js" :code="baseJs" />
+    <p>
+      <code>items</code> prop should have a certain structure to be used in a simplified way:
+      <pre>  Array of { 
+        path: string,
+        text: string,
+        active?: boolean
+    }</pre>
+    </p>
 
     <h3>Advanced</h3>
+    <vs-nav :items="items" level="1">
+      <span slot-scope="{item, index}"> <icon type="right"/> {{ item.text }} </span>
+    </vs-nav>
+    <prism language="html" :code="advancedHtml" />  
     <p>
       <code>items</code> could be any iterable structure. In this case,
       you have to define how to display each item using default scoped slot.
-      <br />
-      E.g. let's take the same data as for the basic usage and make a nav with
-      non clickable items and a max level of 1
     </p>
 
-    <vs-nav :items="items" level="1">
-      <span slot-scope="{item, index}"> {{ item.text }} </span>
-    </vs-nav>
-
-    <prism language="html" :code="advancedHtml" />
   </component-view>
 </template>
 
@@ -66,7 +65,10 @@ export default {
   })
 }`,
     advancedHtml: `<vs-nav :items="items" level="1">
-  <span slot-scope="{item, index}"> {{ item.text }} </span>
+  <span slot-scope="{item, index}">
+    <icon type="right"/>
+    {{ item.text }}
+  </span>
 </vs-nav>`,
   }),
 };

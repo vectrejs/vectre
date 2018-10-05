@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <container>
     <h2>Avatars</h2>
     <p>Avatars are user profile pictures. </p>
     <avatar src="https://picturepan2.github.io/spectre/img/avatar-1.png" size="xl" />
@@ -36,7 +36,7 @@
     <prism language="html" :code="presenceHtml" />
 
     <props />
-  </div>
+  </container>
 </template>
 
 <script lang="ts">

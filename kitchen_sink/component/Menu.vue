@@ -6,13 +6,22 @@
       @check="checked = $event" 
       multiple
     >
+      <!-- Menu item -->
       <div slot="header" slot-scope="{item: route, index}">
-        <router-link tag="div" class="router-link" v-if="!route.children" :to="route.path" @click.native="onSelect"> 
+        <router-link 
+          v-if="!route.children" 
+          :to="route.path" 
+          @click.native="onSelect"
+          tag="div" 
+          class="router-link" 
+        > 
           {{route.title}} 
         </router-link>
+
         <template v-else>{{ route.title }}</template>
       </div>
 
+      <!-- Submenu items -->
       <vs-menu 
         v-if="parent.children" 
         slot-scope="{item: parent, index}" 
