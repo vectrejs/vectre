@@ -11,6 +11,8 @@ export default new vueRouter({
     if (to.hash) {
       return { selector: to.hash };
     }
+
+    return { x: 0, y: 0 };
   },
 });
 

@@ -1,9 +1,8 @@
 <template>
   <div class="accordion-container">
-    <div class="accordion" v-for="(value, key, index) of items" :key="index || key">
-      
+    <div class="accordion" v-for="(value, key, index) of items" :key="index || key || 0">
       <input 
-        :id="uid(index || key)" 
+        :id="uid(index || key || 0)" 
         :name="id"
         :type="type" 
         :checked="isSelected(key, index)" 
@@ -11,15 +10,15 @@
         hidden 
       />
       
-      <label class="accordion-header c-hand" :for="uid(index || key)">
+      <label class="accordion-header c-hand" :for="uid(index || key || 0)">
         <icon v-if="icon" :type="icon" />
-        <slot v-if="$scopedSlots['header']" name="header" :item="{value, key, index}"></slot>
+        <slot v-if="$scopedSlots['header']" name="header" :item="value" :index="key || index || 0"></slot>
         <template v-else>{{ key }}</template>
       </label>
       
       <div class="accordion-body">
-        <slot v-if="$scopedSlots['body']" name="body" :item="{value, key, index}"></slot>
-        <slot v-if="!$scopedSlots['body']" :item="{value, key, index}"></slot>
+        <slot v-if="$scopedSlots['body']" name="body" :item="value" :index="key || index || 0"></slot>
+        <slot v-if="!$scopedSlots['body']" :item="value"  :index="key || index || 0"></slot>
         <template v-if="!$scopedSlots['body'] && !$slots.default">{{ value }}</template>
       </div>
     </div>  
@@ -83,15 +82,17 @@ export default class extends vue {
     event.preventDefault();
 
     if (!this.multiple) {
-      return this.$emit('check', key || index);
+      return this.$emit('check', key || index || 0);
     }
 
     let checked = Array.isArray(this.checked)
       ? [...this.checked]
-      : [this.checked];
+      : this.checked !== undefined
+        ? [this.checked]
+        : [];
 
     if ((event.target as HTMLInputElement).checked) {
-      checked.push(key || index);
+      checked.push(key || index || 0);
     } else {
       checked = checked.filter(item => item !== index && item !== key);
     }

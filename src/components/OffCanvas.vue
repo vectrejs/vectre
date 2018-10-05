@@ -1,6 +1,6 @@
 <template>
-    <div class="off-canvas columns" :class="{ 'off-canvas-sidebar-show': sidebarShow }" >
-        
+    <div class="off-canvas" :class="{ 'off-canvas-sidebar-show': sidebarShow }" >
+
         <div class="off-canvas-toggle">
           <a class="btn btn-primary btn-action" @click="showSidebar()">
             <slot v-if="$slots.icon" name="icon"></slot>
@@ -8,7 +8,7 @@
           </a>
         </div>
 
-        <div class="off-canvas-sidebar column col-2" :class="{ 'active': active }">
+        <div class="off-canvas-sidebar" :class="{ 'active': active }">
             <slot name="sidebar"></slot>
         </div>
 
