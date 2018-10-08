@@ -1,6 +1,6 @@
 <template>
   <div class="props table-responsive">
-    <h3>Events</h3>
+    <h3 class="subtitle">Events</h3>
 
     <table class="table">
       <col style="width: 10%">

@@ -1,9 +1,9 @@
 <template>
-  <container>
-    <h2>Breadcrumbs</h2>
+  <component-view>
+    <h2 class="title">Breadcrumbs</h2>
     <p>Breadcrumbs can greatly enhance the way users find their way around</p>
 
-    <h3>Basic use</h3>
+    <h3 class="subtitle">Basic use</h3>
     <p>
       There is a required prop <code>crumbs</code>. It's any iterable structure.
       If you want to use a simplified version, you have to use an array of objects with the following
@@ -18,7 +18,7 @@
     />
     <prism language="html" :code="basic" />
 
-    <h3>Advanced</h3>
+    <h3 class="subtitle">Advanced</h3>
     <p>
       It is possible to display any object using an unnamed slot. For example, let's take a case where
       we want to display <code>router-link</code> instead of &lt;a&gt;
@@ -35,20 +35,18 @@
       </router-link>
     </breadcrumb>
     <prism language="html" :code="advanced" />
-
-    <props />
-    <slots />
-  </container>
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Props from './Props.vue';
-import Slots from './Slots.vue';
+import { props } from './props';
+import { slots } from './slots';
 
 export default Vue.extend({
-  components: { Props, Slots },
   data: () => ({
+    props,
+    slots,
     basic: `<breadcrumb
   :crumbs="[
     { path: '/', title: 'Home' },

@@ -1,12 +1,6 @@
-<template>
-  <props-list :props="props" />
-</template>
+import { PropDefinitions } from '@kitchen/component/Props';
 
-<script lang="ts">
-import Vue from 'vue';
-import PropsList, { PropDefinitions } from '@kitchen/component/Props';
-
-const props: PropDefinitions = {
+export const props: PropDefinitions = {
   value: {
     type: 'Number',
     description: 'The current value',
@@ -31,9 +25,3 @@ const props: PropDefinitions = {
     description: 'The flag to make a bar thinner',
   },
 };
-
-export default Vue.extend({
-  components: { PropsList },
-  data: () => ({ props }),
-});
-</script>

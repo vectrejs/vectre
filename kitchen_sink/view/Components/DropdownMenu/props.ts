@@ -1,12 +1,6 @@
-<template>
-  <props-list :props="props" />
-</template>
+import { PropDefinitions } from '@kitchen/component/Props';
 
-<script lang="ts">
-import PropsList, { PropDefinitions } from '@kitchen/component/Props';
-import Vue from 'vue';
-
-const props: PropDefinitions = {
+export const props: PropDefinitions = {
   items: { type: 'Iterable', description: 'Menu items', required: true },
   'btn-text': { type: 'String', description: 'Button text' },
   'btn-icon': { type: 'String', description: 'Button icon', default: 'caret' },
@@ -22,9 +16,3 @@ const props: PropDefinitions = {
   },
   right: { type: 'Boolean', description: 'Align right to prevent it appearing off screen' },
 };
-
-export default Vue.extend({
-  components: { PropsList },
-  data: () => ({ props }),
-});
-</script>

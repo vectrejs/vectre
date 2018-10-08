@@ -1,9 +1,9 @@
 <template>
   <component-view>
-    <h2>Nav <code>&lt;vs-nav&gt;</code></h2>
+    <h2 class="title">Nav <code>&lt;vs-nav&gt;</code></h2>
     <p>Simple way to show navigation as a vertical hierarchical list</p>
 
-    <h3>Base use</h3>
+    <h3 class="subtitle">Base use</h3>
     <vs-nav :items="items" />
     <prism language="html" :code="baseHtml" />
     <prism language="js" :code="baseJs" />
@@ -16,7 +16,7 @@
     }</pre>
     </p>
 
-    <h3>Advanced</h3>
+    <h3 class="subtitle">Advanced</h3>
     <vs-nav :items="items" level="1">
       <span slot-scope="{item, index}"> <icon type="right"/> {{ item.text }} </span>
     </vs-nav>

@@ -1,6 +1,6 @@
 <template>
-  <container>
-    <h2>Chips</h2>
+  <component-view>
+    <h2 class="title">Chips</h2>
     <p>Chips are complex entities in small blocks.</p>
     
     <chip text="Arya Stark" />
@@ -10,20 +10,18 @@
     <chip v-if="alive" text="Ned Stark" @close="alive = false" />
 
     <prism language="html" :code="code" />
-    <props />
-    <events />
-  </container>
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Events from './Events.vue';
-import Props from './Props.vue';
+import { events } from './events';
+import { props } from './props';
 
 export default Vue.extend({
-  components: { Props, Events },
-
   data: () => ({
+    props,
+    events,
     alive: true,
     code: `<chip text="Arya Stark" />
 <chip text="Tyrion Lannister" active />

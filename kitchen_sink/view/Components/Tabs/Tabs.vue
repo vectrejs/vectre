@@ -1,9 +1,9 @@
 <template>
   <component-view>
-    <h2>Tabs</h2>
+    <h2 class="title">Tabs</h2>
     <p>Tabs allow you to quickly switch between different views.</p>
 
-    <h3>Basic use</h3>
+    <h3 class="subtitle">Basic use</h3>
     <columns>
       <column col=5 sm=8 xs=12>
         <tabs :current.sync="current" :items="['Music', 'Radio', 'Podcasts']" />
@@ -23,7 +23,7 @@
     </columns>
     <prism language="html" :code="block" />
 
-    <h3>Advanced</h3>
+    <h3 class="subtitle">Advanced</h3>
     <columns>
       <column col=6 xl=8 xs=12>
         <tabs :current.sync="advancedCurrent">
@@ -31,7 +31,7 @@
           <tab>Radio</tab>
           <tab>Podcasts</tab>
           <tab-actions v-if="advancedCurrent != 'music'">
-            <btn @click="badge--, advancedCurrent = 'music'" size="sm">Return to Music</btn>
+            <btn @click="badge--, advancedCurrent = 'music'" size="sm">To music</btn>
           </tab-actions>
         </tabs>
         Current Tab: {{ advancedCurrent }}
@@ -68,7 +68,7 @@ export default {
   <tab>Podcasts</tab>
   <tab-actions v-if="current != 'music'">
     <btn @click="badge--, current = 'music'" size="sm">
-        Return to Music
+        To music
     </btn>
   </tab-actions>
 </tabs>

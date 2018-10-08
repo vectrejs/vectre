@@ -1,4 +1,5 @@
 <template>
+  <container grid="xl">
   <off-canvas ref="offCanvas">
     <template slot="sidebar">
       <div class="logo">
@@ -9,6 +10,7 @@
 
     <router-view slot="content" />
   </off-canvas>
+  </container>
 </template>
 
 <script lang="ts">
@@ -41,10 +43,39 @@ export default class extends vue {
 }
 </script>
 
+<style lang="scss">
+h2.title, h3.subtitle {
+  margin: 2.5rem 0 0.5rem;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 480px) {
+ code[class*="language-"], pre[class*="language-"] {
+   font-size: 0.5rem;
+   line-height: 1.2;
+ }
+}
+</style>
+
+
 <style lang="scss" scoped>
 @media (max-width: 960px) {
-  /deep/ .off-canvas-content.col-9 {
-    padding-top: 3rem;
+  /deep/ .off-canvas {
+    display: inherit;
+
+    &-content {
+      padding: 0rem;
+      // margin-top: 3.5rem;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  /deep/ h2.title {
+    margin-top: 0.5rem;
   }
 }
 
@@ -52,11 +83,24 @@ export default class extends vue {
   &-toggle {
     top: 0;
     left: 0;
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     position: fixed;
     width: 100%;
     background: rgba(248, 249, 250, 0.65);
     z-index: 100;
+
+    background-image: url('img/logo.svg');
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position-y: 7px;
+    background-position-x: calc(100vw - 110px);
+
+    .btn {
+      width: 1.4rem;
+      font-size: .7rem;
+      height: 1.4rem;
+      padding: .05rem .3rem;
+    }
   }
 
   &-sidebar {
@@ -86,9 +130,9 @@ export default class extends vue {
     }
 
     .logo {
-      left: 1.5rem;
+      margin-left: 1.5rem;
       position: fixed;
-      top: 0.85rem;
+      margin-top: 0.85rem;
 
       img {
         display: inline-block;
@@ -99,7 +143,7 @@ export default class extends vue {
   }
 
   &-content {
-    padding-top: 1.45rem;
+    padding-top: 0.85rem;
   }
 }
 </style>

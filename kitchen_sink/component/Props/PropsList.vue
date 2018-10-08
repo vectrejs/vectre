@@ -1,6 +1,6 @@
 <template>
   <div class="props table-responsive"> 
-    <h3>{{ name }} Props</h3>
+    <h3 class="subtitle">{{ name }} Props</h3>
 
     <table class="table">
       <col style="width: 20%">

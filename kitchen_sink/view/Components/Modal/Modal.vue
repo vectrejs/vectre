@@ -1,6 +1,6 @@
 <template>
   <component-view>
-    <h3>Modals</h3>
+    <h3 class="subtitle">Modals</h3>
     <p>Modals are flexible dialog prompts.</p>
     
     <btn @click="modal = true">Default</btn>
@@ -19,7 +19,7 @@
     </modal>
     
     <modal :show="large" size="lg" @close="large = false" :closeBtn="false">
-      <h2 slot="header">Big without close button</h2>
+      <h2 class="title" slot="header">Big without close button</h2>
       <p slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus leo, dictum in vehicula sit amet, feugiat tempus tellus. Duis quis sodales risus. Etiam euismod ornare consequat.</p>
     </modal>
 

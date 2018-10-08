@@ -1,9 +1,9 @@
 <template>
   <component-view>
-    <h2>Tiles</h2>
+    <h2 class="title">Tiles</h2>
     <p>Tiles are repeatable or embeddable information blocks.</p>
 
-    <h3>Basic usage</h3>
+    <h3 class="subtitle">Basic usage</h3>
     <columns>
       <column col=7 xl=9 sm=12>
         <tile 
@@ -37,7 +37,7 @@
     </columns>
     <prism language="html" :code="baseHtml" />
 
-    <h3>Compact</h3>
+    <h3 class="subtitle">Compact</h3>
     <p>Compact version of Tiles component</p>
     <columns>
       <column col=5 md=8 sm=12>

@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h3>Basic use</h3>
+    <h3 class="subtitle">Basic use</h3>
     <accordion :items="{One: 'Uno', Two: 'Dos', Three: 'Tres'}" icon="icon-arrow-right" multiple :checked="checked" @check="checked = $event" />
     <prism language="html" :code="html" />
   </div>

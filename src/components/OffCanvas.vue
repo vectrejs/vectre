@@ -14,7 +14,7 @@
 
         <a class="off-canvas-overlay" @click="hideSidebar()"></a>
 
-        <div class="off-canvas-content column col-9 col-lg-12 col-mr-auto">
+        <div class="off-canvas-content">
             <slot name="content"></slot>
             <slot></slot>
         </div>

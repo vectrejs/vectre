@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h3>Stateless component</h3>
+    <h3 class="subtitle">Stateless component</h3>
     <p></p>
 
     <accordion :items="{One: 'Uno', Two: 'Dos'}" :checked="checkedNumber" @check="checkedNumber = $event" />

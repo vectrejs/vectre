@@ -1,6 +1,6 @@
 <template>
-  <container>
-    <h2>Empty states</h2>
+  <component-view>
+    <h2 class="title">Empty states</h2>
     <p>Empty states/blank slates are commonly used as placeholders for first time use, empty data and error screens.</p>
 
     <columns>
@@ -25,19 +25,18 @@
     </columns>
 
     <prism language="html" :code="code" />
-    <props />
-    <slots />
-  </container>
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Props from './Props.vue';
-import Slots from './Slots.vue';
+import { props } from './props';
+import { slots } from './slots';
 
 export default Vue.extend({
-  components: { Props, Slots },
   data: () => ({
+    props,
+    slots,
     code: `<empty
   icon="mail"
   title="You have no new messages"

@@ -1,6 +1,6 @@
 <template>
   <component-view>
-    <h2>Panels</h2>
+    <h2 class="title">Panels</h2>
     <p>Panels are flexible view container with auto-expand content section.</p>
     <columns>
       <column col=5 xl=6 sm=12>

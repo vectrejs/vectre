@@ -43,3 +43,10 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+figure.avatar + figure.avatar {
+  margin-left: 0.4rem;
+}
+</style>
+

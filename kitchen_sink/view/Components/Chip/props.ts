@@ -1,12 +1,6 @@
-<template>
-  <props-list :props="props" />
-</template>
+import { PropDefinitions } from '@kitchen/component/Props';
 
-<script lang="ts">
-import PropsList, { PropDefinitions } from '@kitchen/component/Props';
-import Vue from 'vue';
-
-const props: PropDefinitions = {
+export const props: PropDefinitions = {
   text: { type: 'String', description: 'Text', required: true },
   avatar: { type: 'String', description: 'URL of an avatar image' },
   initials: {
@@ -17,9 +11,3 @@ const props: PropDefinitions = {
   },
   active: { type: 'Boolean', description: 'Alters colors of chip' },
 };
-
-export default Vue.extend({
-  components: { PropsList },
-  data: () => ({ props }),
-});
-</script>

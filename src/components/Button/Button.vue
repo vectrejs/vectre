@@ -45,3 +45,9 @@ export default class extends vue {
   }
 }
 </script>
+
+<style lang="scss">
+.btn + .btn {
+  margin-left: 0.4rem;
+}
+</style>

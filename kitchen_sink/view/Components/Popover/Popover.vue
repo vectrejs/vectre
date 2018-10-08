@@ -1,6 +1,6 @@
 <template>
   <component-view>
-    <h2>Popovers</h2>
+    <h2 class="title">Popovers</h2>
     <p>
       Popovers are small overlay content containers. 
       Wrap elements by <code>popover</code> component. 
@@ -66,3 +66,8 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+/deep/ .popover + .popover { 
+  margin-left: 0.4rem;
+}
+</style>

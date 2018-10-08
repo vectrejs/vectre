@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h3>Opened by default</h3>
+    <h3 class="subtitle">Opened by default</h3>
 
     <accordion :items="{One: 'Uno', Two: 'Dos'}" checked="1" />
     <prism language="html" :code="indexHtml" />

@@ -1,22 +1,25 @@
 <template>
-  <container>
-    <slot />
+  
+      <column col=9 lg=12 mr>
+        <slot />
 
-    <template v-if="$parent.$data.props">
-      <template v-if="isMultiplePropsLists()">
-        <props-list 
-          v-for="(list, name) in $parent.$data.props" 
-          :key="name"  
-          :props="list.props"
-          :name="list.name" 
-        />
-      </template>
-      <props-list v-else :props="$parent.$data.props" />
-    </template>
+        <template v-if="$parent.$data.props">
+          <template v-if="isMultiplePropsLists()">
+            <props-list 
+              v-for="(list, name) in $parent.$data.props" 
+              :key="name"  
+              :props="list.props"
+              :name="list.name" 
+            />
+          </template>
+          <props-list v-else :props="$parent.$data.props" />
+        </template>
 
-    <slots-list v-if="$parent.$data.slots" :slots="$parent.$data.slots" />
-    <events-list v-if="$parent.$data.events" :events="$parent.$data.events" />
-  </container>  
+        <slots-list v-if="$parent.$data.slots" :slots="$parent.$data.slots" />
+        <events-list v-if="$parent.$data.events" :events="$parent.$data.events" />
+      </column>
+ 
+  
 </template>
 
 <script lang="ts">

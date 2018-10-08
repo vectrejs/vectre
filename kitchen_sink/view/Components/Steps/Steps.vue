@@ -1,6 +1,6 @@
 <template>
   <component-view>
-    <h2>Steps</h2>
+    <h2 class="title">Steps</h2>
     <p>Steps are progress indicators of a sequence of task steps.</p>
     <columns>
       <column col=8 xs=12>

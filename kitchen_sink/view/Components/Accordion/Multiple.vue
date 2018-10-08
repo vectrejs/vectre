@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h3>Multiple</h3>
+    <h3 class="subtitle">Multiple</h3>
     <accordion :items="items" multiple />
     <prism language="html" :code="html" />
   </div>

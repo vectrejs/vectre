@@ -1,6 +1,6 @@
 <template>
   <div class="slots table-responsive"> 
-    <h3>Slots</h3>
+    <h3 class="subtitle">Slots</h3>
 
     <table class="table">
       <col style="width: 10%">

@@ -1,12 +1,6 @@
-<template>
-  <props-list :props="props" />
-</template>
+import { PropDefinitions } from '@kitchen/component/Props';
 
-<script lang="ts">
-import Vue from 'vue';
-import PropsList, { PropDefinitions } from '@kitchen/component/Props';
-
-const props: PropDefinitions = {
+export const props: PropDefinitions = {
   items: { required: true, type: 'Any[]', description: 'shown items' },
   checked: { type: 'Number[], String[], Number, String' },
   name: {
@@ -20,13 +14,3 @@ const props: PropDefinitions = {
   },
   icon: { type: 'String' },
 };
-
-export default Vue.extend({
-  components: {
-    PropsList,
-  },
-  data: () => ({
-    props,
-  }),
-});
-</script>

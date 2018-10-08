@@ -1,9 +1,9 @@
 <template>
-  <container>
-    <h2>Dropdown menu</h2>
+  <component-view>
+    <h2 class="title">Dropdown menu</h2>
     <p>The dropdown is a combination of button and menu.</p>
 
-    <h3>Base use</h3>
+    <h3 class="subtitle">Base use</h3>
     <dropdown-menu 
       btn-text="Click"
 
@@ -15,7 +15,7 @@
     />
     <prism language="html" :code="base" />
 
-    <h3>Advanced use</h3>
+    <h3 class="subtitle">Advanced use</h3>
     <p>As in the case of the menu, you can specify how to display the menu items</p>
     <dropdown-menu 
       btn-text="Menu"
@@ -34,20 +34,18 @@
       </router-link>
     </dropdown-menu>
     <prism language="html" :code="advanced" />
-
-    <props />
-    <events />
-  </container>
+  </component-view>
 </template>
 
 <script lang="js">
 import Vue from 'vue';
-import Events from './Events.vue';
-import Props from './Props.vue';
+import { events } from './events';
+import { props } from './props';
 
 export default Vue.extend({
-  components: { Events, Props },
   data: () => ({
+    events,
+    props,
     base: `<dropdown-menu
   btn-text="Click"
 

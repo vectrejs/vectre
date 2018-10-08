@@ -1,10 +1,10 @@
 <template>
   <component-view>
 
-    <h2>Menu <code>&lt;vs-menu&gt;</code></h2>
+    <h2 class="title">Menu <code>&lt;vs-menu&gt;</code></h2>
     <p>Menus are vertical list of links for navigation.</p>
 
-    <h3>Base use</h3>
+    <h3 class="subtitle">Base use</h3>
     <columns>
       <column col=4 md=12>
           <vs-menu :items="[
@@ -30,7 +30,7 @@
       <i>Note: dividers can not be active but they are used in index count</i>
     </p>
 
-    <h3>Advanced</h3>
+    <h3 class="subtitle">Advanced</h3>
     <p>
       <code>items</code> could be any iterable structure. In this case, you must define how to display each item using default scoped slot.
     </p>

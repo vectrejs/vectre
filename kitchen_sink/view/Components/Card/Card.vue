@@ -1,6 +1,6 @@
 <template>
-  <container>
-    <h2>Cards</h2>
+  <component-view>
+    <h2 class="title">Cards</h2>
     <p>Cards are flexible content containers.</p>
     <columns>
       <column col="4" xs="12" xl=6 lg=6>
@@ -38,20 +38,18 @@
     </columns>
 
     <prism language="html" :code="code" />
-
-    <props />
-    <slots />
-  </container>
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Slots from './Slots.vue';
-import Props from './Props.vue';
+import { slots } from './slots';
+import { props } from './props';
 
 export default Vue.extend({
-  components: { Slots, Props },
   data: () => ({
+    props,
+    slots,
     code: `<card img="img/osx-el-capitan.jpg" before="header">
   <div slot="header">
     <h4>Microsoft</h4>
