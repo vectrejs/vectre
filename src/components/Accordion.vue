@@ -19,7 +19,7 @@
       <div class="accordion-body">
         <slot v-if="$scopedSlots['body']" name="body" :item="value" :index="key || index || 0"></slot>
         <slot v-if="!$scopedSlots['body']" :item="value"  :index="key || index || 0"></slot>
-        <template v-if="!$scopedSlots['body'] && !$slots.default">{{ value }}</template>
+        <span v-if="!$scopedSlots['body'] && !$slots.default" v-html="value" />
       </div>
     </div>  
   </div>

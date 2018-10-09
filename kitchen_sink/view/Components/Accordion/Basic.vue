@@ -1,7 +1,17 @@
 <template>
   <div class="section">
     <h3 class="subtitle">Basic use</h3>
-    <accordion :items="{One: 'Uno', Two: 'Dos', Three: 'Tres'}" icon="icon-arrow-right" multiple :checked="checked" @check="checked = $event" />
+    <columns>
+      <column col=4 xs=8>
+        <accordion
+          :items="items"
+          :checked="checked"
+          @check="checked = $event"
+          icon="icon-arrow-right"
+          multiple
+        />
+      </column>
+    </columns>
     <prism language="html" :code="html" />
   </div>
 </template>
@@ -12,18 +22,18 @@ import { Navigation } from '@components/Icon';
 
 export default Vue.extend({
   data: () => ({
-    checked: [0, 'Three'],
+    checked: ['Fact 1'],
     icon: Navigation.right,
     html: `<accordion
-  :items="{One: 'Uno', Two: 'Dos', Three: 'Tres'}"
-  :checked="[0, 'Three']"
+  :items="{'Fact 1': '...', 'Fact 2': '...', 'Fact 3': '...'}"
+  checked="Fact 1"
   icon="icon-arrow-right"
   multiple
  />`,
     items: {
-      Elements: 'Text about elements',
-      Layout: 'Layout 1',
-      Components: 'Components 1',
+      'Fact 1': `The term "astronaut" comes from greek words that mean "star" and "sailor"`,
+      'Fact 2': `In 1889, the queen of italy, margherita savoy, ordered the first pizza delivery.`,
+      'Fact 3': `A cat's tail contains nearly 10 percent of all the bones in its body.`,
     },
   }),
 });

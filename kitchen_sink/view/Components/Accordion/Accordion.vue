@@ -36,3 +36,22 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+/deep/ .accordion {
+  &-header {
+    font-size: large;
+    font-weight: 600;
+
+    .icon {
+      margin-right: 0.2rem;
+    }
+  }
+
+  &-body {
+    margin-left: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+}
+</style>
+
