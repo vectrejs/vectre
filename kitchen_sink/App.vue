@@ -44,7 +44,7 @@ export default class extends vue {
 </script>
 
 <style lang="scss">
-h2.title, h3.subtitle {
+.title, .subtitle {
   margin: 2.5rem 0 0.5rem;
 }
 

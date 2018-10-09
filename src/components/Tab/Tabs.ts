@@ -1,4 +1,4 @@
-import vue, { PropOptions, CreateElement, VNode } from 'vue';
+import vue, { PropOptions, VNode } from 'vue';
 import Tab from './Tab.vue';
 
 type EmitFunction = (event: string, ...args: any[]) => {};

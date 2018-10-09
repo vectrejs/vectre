@@ -13,7 +13,7 @@
     <prism language="html" :code="basic" />
 
 
-    <h5>Block</h5>
+    <h5 class="subtitle">Block</h5>
     <p>You can add the <code>block</code> property for a full-width tab.</p>
     <columns>
       <column col=5 sm=8 xs=12>
@@ -50,7 +50,7 @@ export default {
     blockCurrent: 'Music',
     advancedCurrent: 'music',
     basic: `<tabs :current.sync="current" :items="['Music', 'Radio', 'Podcasts']" />
- Current Tab: {{ current }}
+Current Tab: {{ current }}
 
 <script>
 export default {
