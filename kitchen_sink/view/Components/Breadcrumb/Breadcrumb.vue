@@ -11,9 +11,9 @@
     </p>
     <breadcrumb
       :crumbs="[
-        { path: '/', title: 'Home' },
-        { path: '/settings', title: 'Settings' },
-        { path: '/settings/avatar', title: 'Change avatar' }
+        { path: '#/home', title: 'Home' },
+        { path: '#/home/settings', title: 'Settings' },
+        { path: '#/home/settings/avatar', title: 'Change avatar' }
       ]"
     />
     <prism language="html" :code="basic" />
@@ -26,13 +26,11 @@
 
     <breadcrumb
       :crumbs="[
-        { to: '', customTitle: 'Home' },
-        { to: 'settings', customTitle: 'Settings' },
-        { to: 'settings/avatar', customTitle: 'Change avatar' }
+        { to: '#/home', customTitle: 'Home' },
+        { to: '#/home/settings', customTitle: 'Settings' },
+        { to: '#/home/settings/avatar', customTitle: 'Change avatar' }
       ]">
-      <router-link slot-scope="{ crumb }" :to="crumb.to">
-          {{ crumb.customTitle }}
-      </router-link>
+      <router-link slot-scope="{ crumb }" :to="crumb.to">{{ crumb.customTitle }}</router-link>
     </breadcrumb>
     <prism language="html" :code="advanced" />
   </component-view>
@@ -57,9 +55,9 @@ export default Vue.extend({
     `,
     advanced: `<breadcrumb
   :crumbs="[
-    { to: '', customTitle: 'Home' },
-    { to: 'settings', customTitle: 'Settings' },
-    { to: 'settings/avatar', customTitle: 'Change avatar' }
+    { to: '/', customTitle: 'Home' },
+    { to: '/settings', customTitle: 'Settings' },
+    { to: '/settings/avatar', customTitle: 'Change avatar' }
   ]">
   <router-link slot-scope="{ crumb }" :to="crumb.to">
     {{ crumb.customTitle }}
