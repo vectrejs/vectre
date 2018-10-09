@@ -41,8 +41,8 @@ export default Vue.extend({
     now: 10,
     min: 5,
     max: 400,
-    tooltip(v: number) {
-      return `${v} steps of ${this.max}`;
+    tooltip(currentStep: number) {
+      return `${currentStep} steps of ${this.max}`;
     },
     basic: `<bar :value="25" tooltip="%" />`,
     advancedHtml: `<bar :value="now" :max="max" :tooltip="tooltip"/>`,
@@ -59,8 +59,8 @@ export default Vue.extend({
     now: 10,
     min: 5,
     max: 400,
-    tooltip: function(v: number) {
-      return \`\${v} steps of \${this.max}\`
+    tooltip: function(currentStep) {
+      return \`\${currentStep} steps of \${this.max}\`
     }
   })
 });`,
