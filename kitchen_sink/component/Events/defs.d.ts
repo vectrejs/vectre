@@ -6,3 +6,4 @@ export interface EventDefinition {
 export interface EventDefinitions {
   [key: string]: EventDefinition,
 }
+export type EventsLists = { name: string, events: EventDefinitions}[];

@@ -1,6 +1,6 @@
 <template>
   <div class="slots table-responsive"> 
-    <h3 class="subtitle">Slots</h3>
+    <h3 class="subtitle">{{ name }} Slots</h3>
 
     <table class="table">
       <col style="width: 10%">
@@ -29,6 +29,9 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
+    name: {
+      type: String,
+    },
     slots: {
       type: Object,
       required: true,

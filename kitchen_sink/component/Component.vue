@@ -1,25 +1,33 @@
 <template>
-  
       <column col=9 lg=12 mr>
+
         <slot />
 
-        <template v-if="$parent.$data.props">
-          <template v-if="isMultiplePropsLists()">
-            <props-list 
-              v-for="(list, name) in $parent.$data.props" 
-              :key="name"  
-              :props="list.props"
-              :name="list.name" 
-            />
-          </template>
-          <props-list v-else :props="$parent.$data.props" />
-        </template>
+        <props-list
+          v-if="props" 
+          v-for="(list, k) in props" 
+          :key="'props' + k"  
+          :props="list.props"
+          :name="list.name" 
+        />
 
-        <slots-list v-if="$parent.$data.slots" :slots="$parent.$data.slots" />
-        <events-list v-if="$parent.$data.events" :events="$parent.$data.events" />
+        <slots-list
+          v-if="slots"
+          v-for="(list, k) in slots"
+          :key="'slots' + k"
+          :slots="list.slots"
+          :name="list.name"
+        />
+
+        <events-list
+          v-if="events"
+          v-for="(list, k) in events"
+          :key="'events' + k"
+          :name="list.name"
+          :events="list.events"
+        />
+
       </column>
- 
-  
 </template>
 
 <script lang="ts">
@@ -30,9 +38,39 @@ import SlotsList, { SlotDefinitions } from '@kitchen/component/Slots';
 
 export default vue.extend({
   components: { EventsList, PropsList, SlotsList },
+  computed: {
+    props(): any[] | undefined {
+      const props = this.$parent.$data.props;
+      if (this.isMultipleLists(props)) {
+        return props;
+      }
+
+      return props ? [{ props }] : void(0);
+    },
+
+    slots(): any[] | undefined {
+      const slots = this.$parent.$data.slots;
+
+      if (this.isMultipleLists(slots)) {
+        return slots;
+      }
+
+      return slots ? [{ slots }] : void(0);
+    },
+
+    events(): any[] | undefined {
+      const events = this.$parent.$data.events;
+
+      if (this.isMultipleLists(events)) {
+        return events;
+      }
+
+      return events ? [{ events }] : void(0);
+    },
+  },
   methods: {
-    isMultiplePropsLists(): boolean {
-      return Array.isArray(this.$parent.$data.props);
+    isMultipleLists(list: any[]): boolean {
+      return Array.isArray(list);
     },
   },
 });
