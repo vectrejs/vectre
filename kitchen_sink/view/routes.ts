@@ -7,13 +7,13 @@ import { routes as formRoutes } from './Form';
 const routes = [
   {
     path: '/form',
-    title: 'Form',
+    title:  'Form',
     component: Parent,
     children: Object.values(formRoutes),
   },
   {
     path: '/components',
-    title: 'Components',
+    title:  'Components',
     component: Parent,
     children: Object.values(componentRoutes),
   },

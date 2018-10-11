@@ -117,8 +117,6 @@
     </form-group>
     Ligth: {{ light ? 'ON' : 'OFF' }}
 
-
-
     <h3>Validation</h3>
     
     <form-group :error="!!errorPassword || !!errorPassword2">
