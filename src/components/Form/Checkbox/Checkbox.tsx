@@ -14,6 +14,7 @@ export interface ICheckboxProps {
   type?: Types;
   value?: any;
   size?: Sizes;
+  error?: boolean;
 }
 
 @Component({
@@ -47,12 +48,15 @@ export default class extends VueComponent<ICheckboxProps> {
   @Prop(String)
   public size: Sizes;
 
+  @Prop(Boolean)
+  public error: boolean;
+
   @Prop()
   protected model: any;
 
   public onChange({ target: { checked } }: any) {
     if (this.model === undefined || !Array.isArray(this.model)) {
-      return this.$emit('input', checked ? this.value : undefined);
+      return this.$emit('input', checked ? this.value : false);
     }
 
     if (checked) {
@@ -66,6 +70,7 @@ export default class extends VueComponent<ICheckboxProps> {
     const cssClass = [
       Type[this.type] || 'form-checkbox',
       this.inline ? 'form-inline' : '',
+      this.error ? 'is-error' : false,
       Size[this.size],
     ];
 

@@ -39,6 +39,9 @@ export class Group extends VueComponent<ICheckboxGroup> {
   @Prop(Boolean)
   public disabled: boolean;
 
+  @Prop(Boolean)
+  public error: boolean;
+
   public render() {
     let group;
 
@@ -55,6 +58,7 @@ export class Group extends VueComponent<ICheckboxGroup> {
             type={this.type}
             size={this.size}
             disabled={this.disabled}
+            error={this.error}
           />;
         });
     } else {
@@ -69,8 +73,9 @@ export class Group extends VueComponent<ICheckboxGroup> {
           props.model = this.value;
           props.inline = this.inline || props.inline;
           props.type = this.type || props.type;
-          props.size = props.size || this.size;
-          props.disabled = props.disabled || this.disabled;
+          props.size = props.size !== undefined ? props.size : this.size;
+          props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
+          props.error = props.error !== undefined ? props.error : this.error;
 
           option.componentOptions!.listeners = {
             ...option.componentOptions!.listeners,
