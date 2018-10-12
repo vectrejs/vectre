@@ -23,9 +23,9 @@
     <prism language="html" code='<form-checkbox label="Option A" disabled />' />
 
     <h5 class="subtitle">Size</h5>
-    <form-checkbox label="Small" size="sm" />
-    <form-checkbox label="Normal" />
-    <form-checkbox label="Large" size="lg" />
+    <form-checkbox label="Text" size="sm" />
+    <form-checkbox label="Text" />
+    <form-checkbox label="Text" size="lg" />
     <prism language="html" :code="sizeHtml" />
 
     <h5 class="subtitle">Inline</h5>
@@ -149,25 +149,25 @@ export default Vue.extend({
 
 0-6: {{ option1 }} 6-12: {{ option2 }} 12-20: {{ option3 }}`,
     basicJs: `export default {
-      data: () => ({
-        option1: false,
+  data: () => ({
+    option1: false,
     option2: false,
     option3: false,
   }),
 }`,
 
-    sizeHtml: `<form-checkbox label="Small" size="sm" />
-<form-checkbox label="Normal" />
-<form-checkbox label="Large" size="lg" />`,
+    sizeHtml: `<form-checkbox label="Text" size="sm" />
+<form-checkbox label="Text" />
+<form-checkbox label="Text" size="lg" />`,
 
-    vmodelHtml: `<form-checkbox v-model="arr" value="A">A</form-checkbox>
-<form-checkbox v-model="arr" value="B">B</form-checkbox>
-<form-checkbox v-model="arr" value="C">C</form-checkbox>
-Your choice: {{ arr }}
+    vmodelHtml: `<form-checkbox v-model="checked" value="A">A</form-checkbox>
+<form-checkbox v-model="checked" value="B">B</form-checkbox>
+<form-checkbox v-model="checked" value="C">C</form-checkbox>
+Your choice: {{ checked }}
     `,
     vmodelJs: `export default {
   data: () => ({
-    arr: [], // v-model should be an array
+    checked: [], // v-model should be an array
   }),
 }`,
 
