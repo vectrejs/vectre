@@ -16,7 +16,7 @@
     <h5 class="subtitle">Checked</h5>
     <form-checkbox label="Option A" checked />
     <prism language="html" code='<form-checkbox label="Option A" checked />' />
-    
+
 
     <h5 class="subtitle">Disabled</h5>
     <form-checkbox label="Option A" disabled />
@@ -76,7 +76,7 @@
     <p>
       It's a good way to customize each option of the group. 
       Nested options have higher priority and can take theirs own
-      <code>size</code> and <code>disable</code> props.
+      <code>size</code>,<code>error</code> and <code>disabled</code> props.
       <code>checked</code> prop is ignored when a checkbox is in a group
     </p>
     <form-checkbox-group v-model="nested">
@@ -113,14 +113,11 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { events } from './events';
 import { props } from './props';
 import { slots } from './slots';
 
 export default Vue.extend({
-  methods: { log(...args: any[]) { console.log(args); } },
   data: () => ({
-    events,
     props,
     slots,
 

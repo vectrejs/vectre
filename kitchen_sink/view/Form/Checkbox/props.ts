@@ -52,7 +52,7 @@ export const props: PropsLists = [
     props: {
       options: {
         type: 'Object | Any[]',
-        description: 'All netsted checkboxes are ignored if the options were given',
+        description: 'All netsted checkboxes are ignored if the options are given',
       },
       disabled: {
         type: 'Bolean',

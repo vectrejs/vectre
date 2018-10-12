@@ -11,7 +11,7 @@ export interface IRadioProps {
   label?: string;
   name?: string;
   size?: Sizes;
-  value?: string;
+  value?: any;
 }
 
 @Component({
@@ -21,8 +21,8 @@ export interface IRadioProps {
   },
 })
 export class Radio extends VueComponent<IRadioProps> {
-  @Prop([String, Number])
-  public value: string | number;
+  @Prop()
+  public value: any;
 
   @Prop(String)
   public label: string;
@@ -78,10 +78,10 @@ export class Radio extends VueComponent<IRadioProps> {
   }
 
   private get _label() {
-    return this.$slots.default || this.label;
+    return this.$slots.default || this.label || this._value;
   }
 
   private get _value() {
-    return this.value || this.$slots.default[0].text;
+    return this.value || (this.$slots.default && this.$slots.default[0].text);
   }
 }

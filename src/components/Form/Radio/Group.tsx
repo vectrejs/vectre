@@ -43,7 +43,7 @@ export class Group extends VueComponent<IRadioGroup> {
   public disabled: boolean;
 
   public render() {
-    const name = this.name || this.$vnode.tag;
+    const name = this.name || this.uid;
     let group;
 
     if (this.options) {
@@ -71,12 +71,15 @@ export class Group extends VueComponent<IRadioGroup> {
         })
         .map((option: VNode) => {
           const props: IRadioProps = option.componentOptions!.propsData || {};
-          const value = props.value || (option.componentOptions!.children![0] as VNode).text;
+          const value = props.value
+            || props.label
+            || (option.componentOptions!.children![0] as VNode).text
+          ;
 
           props.name = name;
-          props.size = props.size || this.size;
-          props.error = this.error || props.error;
-          props.disabled = this.disabled || props.disabled;
+          props.size = props.size !== undefined ? props.size : this.size;
+          props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
+          props.error = props.error !== undefined ? props.error : this.error;
           props.inline = this.inline || props.inline;
           props.checked = props.checked !== undefined
             ? props.checked
@@ -98,10 +101,14 @@ export class Group extends VueComponent<IRadioGroup> {
     this.$emit('input', value);
   }
 
+  private get uid() {
+    return 'radio-group-' + Math.round(Math.random() * 1000);
+  }
+
   // tslint:disable-next-line:max-line-length
   private isChecked(label: string | number | undefined, value: string | number | undefined): boolean {
-    return (label !== undefined && this.value.toString() === label.toString())
-      || (value !== undefined && this.value.toString() === value.toString());
+    return (label !== undefined && this.value && this.value.toString() === label.toString())
+      || (value !== undefined && this.value && this.value.toString() === value.toString());
   }
 
   private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {
