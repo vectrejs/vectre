@@ -32,13 +32,17 @@ export const props: PropsLists = [
       value: {
         type: 'Any',
         // tslint:disable-next-line:max-line-length
-        description:'The value of checkbox when it\'s checked. Can act as a label if it is not set.',
+        description:'The value of checkbox when it\'s checked. Can act as a label if it is not set',
         default: true,
       },
       size: {
         type: 'String',
         description: 'The size of checkbox',
         accepted: 'sm, lg',
+      },
+      error: {
+        type: 'Boolean',
+        description: 'Indicates that there is an error',
       },
     },
   },
@@ -69,6 +73,10 @@ export const props: PropsLists = [
         type: 'String',
         description: 'The size of checkboxes',
         accepted: 'sm, lg',
+      },
+      error: {
+        type: 'Boolean',
+        description: 'Makes the whole group invalid',
       },
     },
   },
