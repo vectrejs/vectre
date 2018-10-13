@@ -55,11 +55,11 @@ export class Group extends VueComponent<IRadioGroup> {
             label={label}
             value={value}
             error={this.error}
-            checked={this.isChecked(label, value)}
             onChange={this.update}
             inline={this.inline}
             size={this.size}
             disabled={this.disabled}
+            model={this.value}
           />;
         });
     } else {
@@ -71,19 +71,13 @@ export class Group extends VueComponent<IRadioGroup> {
         })
         .map((option: VNode) => {
           const props: IRadioProps = option.componentOptions!.propsData || {};
-          const value = props.value
-            || props.label
-            || (option.componentOptions!.children![0] as VNode).text
-          ;
 
           props.name = name;
           props.size = props.size !== undefined ? props.size : this.size;
           props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
           props.error = props.error !== undefined ? props.error : this.error;
           props.inline = this.inline || props.inline;
-          props.checked = props.checked !== undefined
-            ? props.checked
-            : this.isChecked(props.label, value);
+          props.model = this.value;
 
           option.componentOptions!.listeners = {
             ...option.componentOptions!.listeners,
@@ -103,12 +97,6 @@ export class Group extends VueComponent<IRadioGroup> {
 
   private get uid() {
     return 'radio-group-' + Math.round(Math.random() * 1000);
-  }
-
-  // tslint:disable-next-line:max-line-length
-  private isChecked(label: string | number | undefined, value: string | number | undefined): boolean {
-    return (label !== undefined && this.value && this.value.toString() === label.toString())
-      || (value !== undefined && this.value && this.value.toString() === value.toString());
   }
 
   private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {

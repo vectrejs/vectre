@@ -12,6 +12,7 @@ export interface IRadioProps {
   name?: string;
   size?: Sizes;
   value?: any;
+  model?: any;
 }
 
 @Component({
@@ -82,6 +83,6 @@ export class Radio extends VueComponent<IRadioProps> {
   }
 
   private get _value() {
-    return this.value || (this.$slots.default && this.$slots.default[0].text);
+    return this.value || (this.$slots.default && this.$slots.default[0].text) || this.label;
   }
 }
