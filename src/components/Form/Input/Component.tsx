@@ -43,7 +43,7 @@ export const Component = vue.extend({
 
     if (icon || loading) {
       return (
-        <IconContainer side={iconSide}>
+        <IconContainer side={iconSide || 'right'}>
           {input}
           {loading && <Loading />}
           {!loading && <Icon icon={icon} />}

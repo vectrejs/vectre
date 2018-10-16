@@ -1,7 +1,7 @@
 <template>
-  <p class="form-input-hint">
+  <div class="form-input-hint">
     <slot />
-  </p>
+  </div>
 </template>
 
 <script lang="ts">
