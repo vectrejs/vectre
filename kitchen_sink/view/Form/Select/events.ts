@@ -1,3 +1,13 @@
-import { EventDefinitions } from '@kitchen/component/Events';
+import { EventDefinitions, EventsLists } from '@kitchen/component/Events';
 
-export const events: EventDefinitions = {};
+export const events: EventsLists = [
+  {
+    name: 'Select',
+    events: {
+      input: {
+        description: 'Fires after an option has been selected',
+        payload: 'string, string[], number',
+      },
+    },
+  },
+];

@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
 
@@ -28,7 +27,7 @@ export class Option extends VueComponent<IOptionProps> {
 
     return (
       <option selected={selected} disabled={disabled} value={value}>
-        {this.$slots.default || label}
+        {this.$slots.default || label || value}
       </option>
     );
   }

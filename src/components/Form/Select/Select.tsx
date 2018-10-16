@@ -4,6 +4,7 @@ import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
 import { Size } from './Size';
 import { Sizes } from './Sizes';
+import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
 
 interface InputEvent {
   target: {
@@ -12,14 +13,15 @@ interface InputEvent {
   };
 }
 
-interface IProps {
+interface IProps extends SelectHTMLAttributes {
   options?: { [label: string]: string } | string[];
   multiple?: boolean;
   placeholder?: string;
   value?: string | string[];
-  size?: Sizes;
+  scale?: Sizes;
   error?: boolean;
   success?: boolean;
+  disabled?: boolean;
 }
 
 interface INormalizedOption {
@@ -45,13 +47,16 @@ export class Select extends VueComponent<IProps> {
     type: String,
     validator: size => Object.keys(Size).includes(size),
   })
-  public size: Sizes;
+  public scale: Sizes;
 
   @Prop(Boolean)
   public error: boolean;
 
   @Prop(Boolean)
   public success: boolean;
+
+  @Prop(Boolean)
+  public disabled: boolean;
 
   public mounted() {
     if (!this.options && !this.$slots.default) {
@@ -92,23 +97,30 @@ export class Select extends VueComponent<IProps> {
     }
 
     if (this.placeholder && !this.multiple) {
-      options.unshift(<Option>{this.placeholder}</Option>);
+      options.unshift(<Option value="" disabled selected>{this.placeholder}</Option>);
     }
 
     const cssClass = [
       'form-select',
-      Size[this.size],
+      Size[this.scale],
       this.error ? 'is-error' : '',
       this.success ? 'is-success' : '',
     ];
 
-    return <select class={cssClass} multiple={this.multiple} {...{ on: this.listeners }}>
-      {options}
-    </select >;
+    return (
+      <select
+        class={cssClass}
+        multiple={this.multiple}
+        disabled={this.disabled}
+        {...{ on: this.listeners }}
+      >
+        {options}
+      </select >
+    );
   }
 
   private get listeners() {
-    return { ...this.$listeners, input: this.onInput };
+    return { ...this.$listeners, change: this.onInput };
   }
 
   private onInput({ target: { selectedOptions } }: InputEvent): void {
@@ -118,7 +130,7 @@ export class Select extends VueComponent<IProps> {
       });
       this.$emit('input', selected);
     } else {
-      this.$emit('input', selectedOptions[0].value || selectedOptions[0].innerHTML);
+      this.$emit('input', selectedOptions[0].value);
     }
   }
 
