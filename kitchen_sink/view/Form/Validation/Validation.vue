@@ -1,44 +1,31 @@
 <template>
-  <container>
+  <component-view>
     <h2 class="title">Validation</h2>
-    
-    <form-group :error="!!errorPassword || !!errorPassword2">
-      <form-label>Password</form-label>
-      <form-input type="password" placeholder="Password" v-model="password" />
-      <form-hint v-if="errorPassword">{{ errorPassword }}</form-hint>
-    </form-group>
+    <p>
+      Vectre mainly focuses on UI components. Following "Single responsibility principle", 
+      implementing of validation is outside the scope. But there is always the possibility 
+      to add "by hand" or select one of great Vue libraries that will handle a lot of 
+      this for you.
+    </p>
+    <p>Below you will find examples of using several popular libraries.</p>
 
-    <form-group :error="!!errorPassword2">
-      <form-input type="password" placeholder="Repeat" v-model="password2" />
-      <form-hint v-if="errorPassword2">{{ errorPassword2 }}</form-hint>
-    </form-group>
-  </container>
+    <vee-validate />
+    <vuelidate />
+    <manual />
+  </component-view>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import VeeValidate from './VeeValidate.vue';
+import Vuelidate from './Vuelidate.vue';
+import Manual from './Manual.vue';
 
 export default Vue.extend({
-  data: () => ({
-    password: undefined,
-    password2: undefined,
-  }),
-  computed: {
-    errorPassword(): string | void {
-      if (this.password === undefined) {
-        return;
-      }
-
-      if ((this.password! as string).length < 4) {
-        return 'At least 4 chars';
-      }
-    },
-
-    errorPassword2(): string | void {
-      if (this.password && this.password2 && this.password !== this.password2) {
-        return 'Passwords not matched';
-      }
-    },
+  components: {
+    Manual,
+    VeeValidate,
+    Vuelidate,
   },
 });
 </script>
