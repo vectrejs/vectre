@@ -1,5 +1,5 @@
 <template>
-  <textarea v-on="listeners" class="form-input" @input="onInput">
+  <textarea v-on="listeners" class="form-input" @input="onInput" v-model="value">
   </textarea>
 </template>
 
