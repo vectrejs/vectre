@@ -180,8 +180,8 @@ export default Vue.extend({
   }),
 }`,
     nestedHtml: `<form-radio-group v-model="nested">
-  <form-radio disabled>Male</form-radio>
-  <form-radio error>Female</form-radio>
+  <form-radio value="M">Male</form-radio>
+  <form-radio label="Female" error></form-radio>
 </form-radio-group>`,
     disabledGroupHtml: `<form-radio-group
   :options="['Option A', 'Option B', 'Option C']"
