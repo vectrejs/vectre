@@ -12,6 +12,7 @@ export const Component = vue.extend({
     loading: Boolean,
     success: Boolean,
     icon: String,
+    disabled: Boolean,
     iconSide: {
       type: String,
       validator: (side: string) => Object.keys(IconSide).includes(side),
@@ -30,11 +31,11 @@ export const Component = vue.extend({
   },
 
   render(): VNode {
-    const { icon, iconSide, loading, size } = this.$props;
+    const { icon, iconSide, loading, size, disabled } = this.$props;
 
     const input = <Input
       size={size}
-      attrs={this.$attrs}
+      attrs={{ ...this.$attrs, disabled }}
       value={this.value}
       error={this.error}
       success={this.success}

@@ -1,5 +1,11 @@
 <template>
-  <textarea v-on="listeners" class="form-input" @input="onInput" v-model="value">
+  <textarea 
+    v-on="listeners" 
+    :value="value"
+    :disabled="disabled" 
+    class="form-input" 
+    @input="onInput" 
+  >
   </textarea>
 </template>
 
@@ -8,14 +14,12 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
-    value: {
-      type: String,
-    },
+    value: String,
+    disabled: Boolean,
   },
   data: () => ({
     listeners: {},
   }),
-
   methods: {
     onInput({ target: { value } }: { target: { value: string } }) {
       this.$emit('input', value);

@@ -28,19 +28,18 @@ export class Group extends VueComponent<IGroupProps> {
     if (this.size) {
       (this.$slots.default || []).map((v: VNode) => {
         // tslint:disable-next-line:max-line-length
-        if (/^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions!.tag!)) {
+        if (v.componentOptions && /^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag!)) {
           (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size =
             (v.componentOptions!.propsData as { size: 'sm' | 'lg' }).size || this.size;
         }
       });
     }
 
-    if (this.disabled) {
+    if (this.disabled !== undefined) {
       (this.$slots.default || []).map((v: VNode) => {
         // tslint:disable-next-line:max-line-length
-        if (/^.*form-(input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions!.tag!)) {
-          (v.componentOptions!.propsData as { disabled: boolean }).disabled =
-            this.disabled || (v.componentOptions!.propsData as { disabled: boolean }).disabled;
+        if (v.componentOptions && /^.*form-(input|textarea|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag!)) {
+          (v.componentOptions!.propsData as { disabled: boolean }).disabled = this.disabled;
         }
       });
     }
