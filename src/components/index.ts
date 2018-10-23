@@ -19,10 +19,31 @@ import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
 import {
+  FormCheckbox,
+  FormCheckboxGroup,
+  FormInput,
+  FormInputSize,
+  FormGroup,
+  FormLabel,
+  FormHint,
+  FormHorizontal,
+  FormSelect,
+  FormTextarea,
+  FormOption,
+  FormRadioGroup,
+  FormRadio,
+
+  FormCheckboxSize,
+  FormLabelSize,
+  FormSelectSize,
+} from './Form';
+
+import {
   Action as IconAction,
   Icon,
   Navigation as IconNavigation,
   Objects as IconObject,
+  Icons,
   IconSize,
   IconType,
 } from './Icon';
@@ -58,6 +79,19 @@ export default {
   Toast,
   VsMenu,
   VsNav,
+
+  FormCheckbox,
+  FormCheckboxGroup,
+  FormGroup,
+  FormInput,
+  FormLabel,
+  FormHint,
+  FormHorizontal,
+  FormOption,
+  FormSelect,
+  FormTextarea,
+  FormRadioGroup,
+  FormRadio,
 };
 
 export {
@@ -87,6 +121,26 @@ export {
   VsMenu,
   VsNav,
 
+  // Form components
+  FormCheckbox,
+  FormCheckboxGroup,
+  FormGroup,
+  FormInput,
+  FormLabel,
+  FormHint,
+  FormHorizontal,
+  FormSelect,
+  FormTextarea,
+  FormOption,
+  FormRadioGroup,
+  FormRadio,
+
+  // Form sizes
+  FormCheckboxSize,
+  FormInputSize,
+  FormLabelSize,
+  FormSelectSize,
+
   // Button
   BtnSize,
   BtnState,
@@ -98,6 +152,7 @@ export {
   IconAction,
   IconNavigation,
   IconObject,
+  Icons,
 
   // Avatar
   AvatarSize,

@@ -104,6 +104,7 @@ code[class*="language-"], pre[class*="language-"] {
   }
 
   &-sidebar {
+    min-height: 100vh;
     width: 12rem;
 
     .main-menu {

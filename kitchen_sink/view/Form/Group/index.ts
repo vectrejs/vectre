@@ -1,0 +1,1 @@
+export { FormGroupRoute } from './route';

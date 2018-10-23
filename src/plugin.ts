@@ -3,7 +3,7 @@ import components from './components';
 import layout from './layout';
 import directives from './directive';
 
-const all: { [name: string]: VueConstructor } = { ...components, ...layout };
+const all: { [name: string]: any } = { ...components, ...layout };
 
 export default ((vue: typeof Vue, options = { prefix: '' }): void => {
   for (const component of Object.keys(all)) {
