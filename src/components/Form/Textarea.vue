@@ -1,6 +1,7 @@
 <template>
   <textarea 
     v-on="listeners" 
+    :placeholder="placeholder"
     :value="value"
     :disabled="disabled" 
     class="form-input" 
@@ -23,6 +24,11 @@ export default Vue.extend({
   methods: {
     onInput({ target: { value } }: { target: { value: string } }) {
       this.$emit('input', value);
+    },
+  },
+  computed: {
+    placeholder(): string | undefined {
+      return this.$attrs.placeholder || this.$slots.default && this.$slots.default[0].text;
     },
   },
   created() {
