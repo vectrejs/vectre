@@ -1,10 +1,12 @@
 import 'vue-anchored-menu';
 import { RouteConfig } from 'vue-router';
 import Parent from '../component/Parent.vue';
+import { LayoutRoute } from './Layout';
 import { routes as componentRoutes } from './Components';
 import { routes as formRoutes } from './Form';
 
 const routes = [
+  LayoutRoute,
   {
     path: '/form',
     title:  'Form',
