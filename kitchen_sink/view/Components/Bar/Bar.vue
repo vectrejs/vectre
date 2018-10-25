@@ -16,7 +16,6 @@
     <p>There is <code>sm</code> prop for thinner Bars</p>
     <bar :value=76 sm />
     <prism language="html" :code="`<bar :value=76 sm />`" />
-    <props />
   </component-view>
 </template>
 
