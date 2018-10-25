@@ -7,7 +7,7 @@ import { Sizes } from './Sizes';
 type fn = (...args: any[]) => void;
 
 interface InptProps {
-  value?: string;
+  value?: string | number;
   attrs: { [name: string]: string };
   on: Record<string, fn | fn[]>;
   error?: boolean;
@@ -26,8 +26,8 @@ export class Input extends VueComponent<InptProps> {
   @Prop()
   public attrs: { [name: string]: string };
 
-  @Prop(String)
-  public value: string;
+  @Prop([String, Number])
+  public value: string | number;
 
   @Prop()
   public on: Record<string, fn | fn[]>;

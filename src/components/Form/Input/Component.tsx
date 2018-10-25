@@ -7,7 +7,7 @@ import { Loading } from './Loading';
 
 export const Component = vue.extend({
   props: {
-    value: String,
+    value: [String, Number],
     error: Boolean,
     loading: Boolean,
     success: Boolean,
