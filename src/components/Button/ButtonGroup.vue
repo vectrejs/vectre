@@ -9,9 +9,7 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
-    block: {
-      type: Boolean,
-    },
+    block: Boolean,
   },
   computed: {
     cssClass(): string[] {

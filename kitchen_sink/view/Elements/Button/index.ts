@@ -1,0 +1,1 @@
+export { ButtonRoute } from './route';
