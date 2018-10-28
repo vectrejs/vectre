@@ -6,6 +6,7 @@ import { Card } from './Card';
 import { Chip } from './Chip';
 import { DropdownMenu } from './DropdownMenu';
 import { Empty } from './Empty';
+import { Label as VsLabel } from './Label';
 import { Menu as VsMenu } from './Menu';
 import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
@@ -77,6 +78,7 @@ export default {
   Tabs,
   Tile,
   Toast,
+  VsLabel,
   VsMenu,
   VsNav,
 
@@ -118,6 +120,7 @@ export {
   Tabs,
   Tile,
   Toast,
+  VsLabel,
   VsMenu,
   VsNav,
 
