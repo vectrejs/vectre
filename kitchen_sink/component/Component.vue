@@ -1,33 +1,31 @@
 <template>
-      <column col=9 lg=10 sm=11 xs=12 mr>
+  <column col=10 lg=10 sm=11 xs=12 mr>
+    <slot />
 
-        <slot />
+    <props-list
+      v-if="props" 
+      v-for="(list, k) in props" 
+      :key="'props' + k"  
+      :props="list.props"
+      :name="list.name" 
+    />
 
-        <props-list
-          v-if="props" 
-          v-for="(list, k) in props" 
-          :key="'props' + k"  
-          :props="list.props"
-          :name="list.name" 
-        />
+    <slots-list
+      v-if="slots"
+      v-for="(list, k) in slots"
+      :key="'slots' + k"
+      :slots="list.slots"
+      :name="list.name"
+    />
 
-        <slots-list
-          v-if="slots"
-          v-for="(list, k) in slots"
-          :key="'slots' + k"
-          :slots="list.slots"
-          :name="list.name"
-        />
-
-        <events-list
-          v-if="events"
-          v-for="(list, k) in events"
-          :key="'events' + k"
-          :name="list.name"
-          :events="list.events"
-        />
-
-      </column>
+    <events-list
+      v-if="events"
+      v-for="(list, k) in events"
+      :key="'events' + k"
+      :name="list.name"
+      :events="list.events"
+    />
+  </column>
 </template>
 
 <script lang="ts">
