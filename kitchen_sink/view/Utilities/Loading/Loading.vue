@@ -26,7 +26,7 @@
     <h5 class="subtitle">Async loading</h5>
     <p>You can pass <b>Promises</b> as value to handle async actions</p>
     <btn @click="remoteRequest">Find out</btn>
-    &nbsp; your lucky number is &nbsp;&nbsp;<span class="h2" v-loading="request">{{ result || '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' }}</span>
+    &nbsp; your lucky number is <span class="h2" v-loading="request">{{ result || 'XXX' }}</span>
     <prism language="html" :code="promiseHtml" />
     <prism language="javascript" :code="promiseJs" />
 

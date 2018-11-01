@@ -4,6 +4,7 @@ import { Breadcrumb } from './Breadcrumb';
 import { Btn, BtnGroup, BtnType, BtnSize, BtnState } from './Button';
 import { Card } from './Card';
 import { Chip } from './Chip';
+import { Divider } from './Divider';
 import { DropdownMenu } from './DropdownMenu';
 import { Empty } from './Empty';
 import { Label as VsLabel } from './Label';
@@ -64,6 +65,7 @@ export default {
   BtnGroup,
   Card,
   Chip,
+  Divider,
   DropdownMenu,
   Empty,
   Icon,
@@ -106,6 +108,7 @@ export {
   BtnGroup,
   Card,
   Chip,
+  Divider,
   DropdownMenu,
   Empty,
   Icon,
