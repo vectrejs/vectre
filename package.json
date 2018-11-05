@@ -2,7 +2,6 @@
   "name": "vectre",
   "version": "1.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve kitchen_sink/index.ts",
     "build": "vue-cli-service build --target lib src/main.ts && npm run bundleDts",
     "bundleDts": "vue-cli-service bundle-dts"
   },
@@ -13,11 +12,9 @@
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-typescript": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
-    "jest": "^22.4.2",
     "node-sass": "^4.9.0",
     "prismjs": "^1.11.0",
     "sass-loader": "^7.0.1",
-    "spectre.css": "github:picturepan2/spectre",
     "ts-loader": "^4.4.2",
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
@@ -25,17 +22,13 @@
     "typescript": "^3.1.6",
     "vee-validate": "^2.1.0-beta.11",
     "vue": "^2.5.16",
-    "vue-anchored-menu": "github:vatson/vue-anchored-menu",
     "vue-class-component": "^6.0.0",
     "vue-cli-plugin-ts-bundler": "0.0.3",
     "vue-cli-plugin-ts-paths": "0.0.4",
     "vue-loader": "^15.3.0",
-    "vue-prism-component": "^1.0.1",
     "vue-property-decorator": "^7.0.0",
-    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
-    "vue-tsx-helper": "^0.1.2",
-    "vuelidate": "^0.7.4"
+    "vue-tsx-helper": "^0.1.2"
   },
   "description": "",
   "main": "dist/vectre.common.js",

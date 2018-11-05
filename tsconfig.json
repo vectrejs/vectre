@@ -7,8 +7,9 @@
       "scripthost"
     ],
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@kitchen/*": ["kitchen_sink/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
     },
     "target": "es5",
     "module": "esnext",
@@ -32,9 +33,6 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "kitchen_sink/**/*.ts",
-    "kitchen_sink/**/*.tsx",
-    "kitchen_sink/**/*.vue"
+    "src/**/*.vue"
   ]
 }
