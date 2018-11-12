@@ -1,6 +1,6 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
-import { VNode } from 'vue';
+import { VNode, CreateElement } from 'vue';
 
 interface IGroupProps {
   size?: 'lg' | 'sm';
@@ -24,7 +24,7 @@ export class Group extends VueComponent<IGroupProps> {
   @Prop(Boolean)
   public success: boolean;
 
-  public render() {
+  public render(h: CreateElement): VNode {
     if (this.size) {
       (this.$slots.default || []).map((v: VNode) => {
         // tslint:disable-next-line:max-line-length

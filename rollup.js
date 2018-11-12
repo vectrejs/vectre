@@ -16,10 +16,7 @@ const dest = resolve(__dirname, 'dist/');
 const input = {
   input: resolve(source, 'main.ts'),
   plugins: [
-    css({
-      output: resolve(dest, 'vectre.css'),
-    }),
-    vue({ css: false }),
+    vue({ css: true }),
     typescript(),
     buble({
       jsx: 'h',
@@ -30,7 +27,7 @@ const input = {
     }),
     nodeResolve(),
     commonjs(),
-    terser(),
+    // terser(),
   ],
   external: [
     'vue',

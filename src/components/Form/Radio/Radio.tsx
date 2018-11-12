@@ -56,7 +56,7 @@ export class Radio extends VueComponent<IRadioProps> {
     this.$emit('change', this._value);
   }
 
-  public render() {
+  public render(h: CreateElement): VNode {
     const cssClass = [
       'form-radio',
       this.inline ? 'form-inline' : false,

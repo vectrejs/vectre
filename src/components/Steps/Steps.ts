@@ -1,4 +1,4 @@
-import vue, { VNode } from 'vue';
+import vue, { VNode, CreateElement } from 'vue';
 import Step from './Step.vue';
 
 export const Steps = vue.extend({
@@ -9,7 +9,7 @@ export const Steps = vue.extend({
     },
   },
 
-  render(h) {
+  render(h: CreateElement): VNode {
     const steps = (this.$slots.default || [])
       .filter((n: VNode) => {
         return n.componentOptions !== undefined && n.componentOptions.tag!.includes('step');

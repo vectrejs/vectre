@@ -1,5 +1,6 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
+import { VNode, CreateElement } from 'vue';
 
 type IconSides = keyof typeof IconSide;
 
@@ -20,7 +21,7 @@ export class IconContainer extends VueComponent<IProps> {
   })
   public side: IconSides;
 
-  public render() {
+  public render(h: CreateElement): VNode {
     return <div class={IconSide[this.side as any]}>{this.$slots.default}</div>;
   }
 }

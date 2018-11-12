@@ -42,7 +42,7 @@ export class Group extends VueComponent<ICheckboxGroup> {
   @Prop(Boolean)
   public error: boolean;
 
-  public render() {
+  public render(h: CreateElement): VNode {
     let group;
 
     if (this.options) {

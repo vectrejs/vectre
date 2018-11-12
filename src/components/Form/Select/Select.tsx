@@ -1,4 +1,4 @@
-import { VNode } from 'vue';
+import { VNode, CreateElement } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
@@ -63,7 +63,7 @@ export class Select extends VueComponent<IProps> {
     }
   }
 
-  public render(): VNode {
+  public render(h: CreateElement): VNode {
     let options: VNode[] = [];
 
     if (this.options) {
@@ -124,10 +124,10 @@ export class Select extends VueComponent<IProps> {
 
   private onInput({ target: { selectedOptions } }: InputEvent): void {
     if (this.multiple) {
-      const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
-        return option.value || option.innerHTML;
-      });
-      this.$emit('input', selected);
+      // const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
+      //   return option.value || option.innerHTML;
+      // });
+      // this.$emit('input', selected);
     } else {
       this.$emit('input', selectedOptions[0].value);
     }
