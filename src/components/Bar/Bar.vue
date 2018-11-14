@@ -19,21 +19,22 @@ import { Prop } from 'vue-property-decorator';
 
 @Component
 export default class extends Vue {
-  @Prop(Boolean) private sm: boolean;
+  @Prop(Boolean)
+  public sm: boolean;
 
   @Prop({ type: Number, default: 0 })
-  private min: number;
+  public min: number;
 
   @Prop({ type: Number, default: 100 })
-  private max: number;
+  public max: number;
 
   @Prop({ type: Number, default: 0 })
-  private value: number;
+  public value: number;
 
   @Prop([Function, String])
-  private tooltip: ((value: number) => string) | string | undefined;
+  public tooltip: ((value: number) => string) | string | undefined;
 
-  get dataTooltip(): string | undefined {
+  public get dataTooltip(): string | undefined {
     if (typeof this.tooltip === 'undefined') {
       return;
     }
@@ -45,15 +46,15 @@ export default class extends Vue {
     return this.value.toString() + this.tooltip;
   }
 
-  get barCssClass(): string[] {
+  public get barCssClass(): string[] {
     return [this.sm ? 'bar-sm' : ''];
   }
 
-  get barItemCssClass(): string[] {
+  public get barItemCssClass(): string[] {
     return [this.tooltip ? 'tooltip' : ''];
   }
 
-  get cssStyle(): object {
+  public get cssStyle(): object {
     return {
       width: this.value / this.max * 100 + '%',
     };

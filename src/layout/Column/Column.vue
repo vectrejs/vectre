@@ -14,29 +14,32 @@ const sizeValidator = (size: number) =>
 
 @Component
 export default class extends Vue {
-  @Prop(Boolean) private ml: boolean;
+  @Prop(Boolean)
+  public ml: boolean;
 
-  @Prop(Boolean) private mx: boolean;
+  @Prop(Boolean)
+  public mx: boolean;
 
-  @Prop(Boolean) private mr: boolean;
-
-  @Prop({ type: [Number, String], validator: sizeValidator })
-  private xs: number;
-
-  @Prop({ type: [Number, String], validator: sizeValidator })
-  private sm: number;
+  @Prop(Boolean)
+  public mr: boolean;
 
   @Prop({ type: [Number, String], validator: sizeValidator })
-  private md: number;
+  public xs: number;
 
   @Prop({ type: [Number, String], validator: sizeValidator })
-  private lg: number;
+  public sm: number;
 
   @Prop({ type: [Number, String], validator: sizeValidator })
-  private xl: number;
+  public md: number;
 
   @Prop({ type: [Number, String], validator: sizeValidator })
-  private col: number;
+  public lg: number;
+
+  @Prop({ type: [Number, String], validator: sizeValidator })
+  public xl: number;
+
+  @Prop({ type: [Number, String], validator: sizeValidator })
+  public col: number;
 
   public get cssClass(): string[] {
     return [

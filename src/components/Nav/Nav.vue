@@ -27,12 +27,12 @@ import { Prop, Component } from 'vue-property-decorator';
 })
 export default class extends vue {
   @Prop({ type: Array, required: true })
-  private items: any[];
+  public items: any[];
 
   @Prop({ type: [Number, String], default: -1 })
-  private level: number | string;
+  public level: number | string;
 
-  private itemCssClass({ active = false }: { active: boolean }): string[] {
+  private itemCssClass({ active = false }): string[] {
     return [
       active ? 'active' : '',
     ];

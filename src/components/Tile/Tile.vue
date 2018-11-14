@@ -19,34 +19,33 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import { Avatar, AvatarSize } from '@components/Avatar';
-import { Icon, IconType, IconSize } from '@components/Icon';
+import { Avatar, AvatarSizes } from '@components/Avatar';
+import { Icon, IconType, IconSizes } from '@components/Icon';
 
 @Component({
   components: { Icon, Avatar },
 })
 export default class extends vue {
   @Prop(String)
-  private title: string;
+  public title: string;
 
   @Prop(String)
-  private subtitle: string;
+  public subtitle: string;
 
   @Prop(String)
-  private avatar: string;
-
-  private avatarSize = AvatarSize.lg;
+  public avatar: string;
 
   @Prop(String)
-  private initials: string;
+  public initials: string;
 
   @Prop(String)
-  private icon: IconType;
-
-  private iconSize = IconSize.x2;
+  public icon: IconType;
 
   @Prop({ type: Boolean, default: false })
-  private compact: boolean;
+  public compact: boolean;
+
+  private iconSize = IconSizes.x2;
+  private avatarSize = AvatarSizes.lg;
 }
 </script>
 

@@ -39,10 +39,10 @@ import { Component, Prop } from 'vue-property-decorator';
 })
 export default class extends vue {
   @Prop({ default: IconNavigation.menu })
-  private icon: IconType;
+  public icon: IconType;
 
   @Prop({ default: true, type: Boolean })
-  private sidebarShow: boolean;
+  public sidebarShow: boolean;
 
   private active: boolean = false;
 

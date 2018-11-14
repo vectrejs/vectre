@@ -21,25 +21,25 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Emit } from 'vue-property-decorator';
-import { Avatar, AvatarSize } from '@components/Avatar';
+import { Avatar, AvatarSizes } from '@components/Avatar';
 
 @Component({
   components: { Avatar },
 })
 export default class extends Vue {
   @Prop({ type: String, required: true })
-  private text: string;
+  public text: string;
 
   @Prop(String)
-  private avatar: string;
+  public avatar: string;
 
   @Prop(String)
-  private initials: string;
+  public initials: string;
 
   @Prop(Boolean)
-  private active: boolean;
+  public active: boolean;
 
-  private avatarSizes = AvatarSize;
+  private avatarSizes = AvatarSizes;
 
   public get cssClass(): string[] {
     return [
@@ -51,7 +51,7 @@ export default class extends Vue {
     this.$emit('close');
   }
 
-  protected showClose() {
+  public showClose(): boolean {
     return !!this.$listeners.close;
   }
 }

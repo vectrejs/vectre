@@ -1,6 +1,6 @@
-export type Sizes = keyof typeof Size;
+export type Size = keyof typeof Sizes;
 
-export enum Size {
+export enum Sizes {
   sm = 'input-sm',
   lg = 'input-lg',
 }

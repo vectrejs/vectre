@@ -1,8 +1,8 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
 import { Radio, IRadioProps } from './Radio';
-import { VNode } from 'vue';
-import { Sizes } from './Sizes';
+import { VNode, CreateElement } from 'vue';
+import { Size } from './Size';
 
 interface INormalizedOption {
   label: string;
@@ -15,7 +15,7 @@ export interface IRadioGroup {
   inline?: boolean;
   options?: any[] | { [label: string]: any };
   name?: string;
-  size?: Sizes;
+  size?: Size;
   value?: any;
 }
 
@@ -34,7 +34,7 @@ export class Group extends VueComponent<IRadioGroup> {
   public inline: boolean;
 
   @Prop(String)
-  public size: Sizes;
+  public size: Size;
 
   @Prop(Boolean)
   public error: boolean;

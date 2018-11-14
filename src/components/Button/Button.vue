@@ -12,9 +12,9 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import { Type } from './Type';
-import { Size } from './Size';
-import { State } from './State';
+import { Type, Types } from './Type';
+import { Size, Sizes } from './Size';
+import { State, States } from './State';
 import { Icon, IconType } from '@components/Icon';
 
 @Component({
@@ -22,31 +22,31 @@ import { Icon, IconType } from '@components/Icon';
 })
 export default class extends vue {
   @Prop(String)
-  private type: keyof typeof Type;
+  public type: Type;
 
   @Prop(String)
-  private size: Size;
+  public size: Size;
 
   @Prop(String)
-  private icon: IconType;
+  public icon: IconType;
 
   @Prop(String)
-  private state: State;
+  public state: State;
 
   @Prop(Boolean)
-  private left: boolean;
+  public left: boolean;
 
   @Prop(Boolean)
-  private circle: boolean;
+  public circle: boolean;
 
   @Prop(Boolean)
-  private action: boolean;
+  public action: boolean;
 
   get cssClass(): string[] {
     return [
-      Type[this.type as any] || this.type,
-      Size[this.size as any] || this.size,
-      State[this.state as any] || this.state,
+      Types[this.type] || this.type,
+      Sizes[this.size] || this.size,
+      States[this.state] || this.state,
       this.action && this.circle ? 's-circle' : '',
       this.action ? 'btn-action' : '',
     ];

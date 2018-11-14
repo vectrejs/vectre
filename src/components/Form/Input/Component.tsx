@@ -1,5 +1,5 @@
-import vue, { VNode } from 'vue';
-import { Size } from './Size';
+import vue, { VNode, CreateElement } from 'vue';
+import { Sizes } from './Size';
 import { Input } from './Input';
 import { Icon } from './Icon';
 import { IconContainer, IconSide } from './IconContainer';
@@ -19,7 +19,7 @@ export const Component = vue.extend({
     },
     size: {
       type: String,
-      validator: (size: string) => Object.keys(Size).includes(size),
+      validator: (size: string) => Object.keys(Sizes).includes(size),
     },
   },
   inheritAttrs: false,

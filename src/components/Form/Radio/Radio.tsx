@@ -1,7 +1,7 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
-import { Size } from './Size';
-import { Sizes } from './Sizes';
+import { Size, Sizes } from './Size';
+import { VNode, CreateElement } from 'vue';
 
 export interface IRadioProps {
   checked?: boolean;
@@ -10,7 +10,7 @@ export interface IRadioProps {
   inline?: boolean;
   label?: string;
   name?: string;
-  size?: Sizes;
+  size?: Size;
   value?: any;
   model?: any;
 }
@@ -42,9 +42,9 @@ export class Radio extends VueComponent<IRadioProps> {
 
   @Prop({
     type: String,
-    validator: size => Object.keys(Size).includes(size),
+    validator: size => Object.keys(Sizes).includes(size),
   })
-  public size: Sizes;
+  public size: Size;
 
   @Prop(Boolean)
   public disabled: boolean;
@@ -61,7 +61,7 @@ export class Radio extends VueComponent<IRadioProps> {
       'form-radio',
       this.inline ? 'form-inline' : false,
       this.error ? 'is-error' : false,
-      Size[this.size],
+      Sizes[this.size],
     ];
 
     return (

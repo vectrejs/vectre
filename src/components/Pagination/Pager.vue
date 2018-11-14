@@ -16,19 +16,19 @@
 import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
-type PagerItem = number | string;
+export type PagerItem = number | string;
 const SEPARATOR = '...';
 
 @Component
 export default class Pager extends vue {
   @Prop({ type: [Number], required: true })
-  private pages: number;
+  public pages: number;
 
   @Prop({ type: [Number], default: 1 })
-  private current: number;
+  public current: number;
 
   @Prop({ type: Number, default: 6 })
-  private show: number;
+  public show: number;
 
   public get items(): PagerItem[] {
     const half = Math.round((this.show + 1) / 2);

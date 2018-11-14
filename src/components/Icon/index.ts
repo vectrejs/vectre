@@ -1,5 +1,4 @@
-export { default as Icon  } from './Icon.vue';
-export { default as IconType } from './Type';
-export { default as IconSize } from './Size';
+export { default as Icon } from './Icon.vue';
+export { Size as IconSize, Sizes as IconSizes } from './Size';
+export { Type as IconType } from './Type';
 export * from './Type';
-export * from './Size';

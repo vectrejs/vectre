@@ -21,18 +21,18 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component, Emit } from 'vue-property-decorator';
-import { Btn, BtnType } from '@components/Button';
-import { Size } from './Size';
+import { Btn, BtnTypes } from '@components/Button';
+import { Size, Sizes } from './Size';
 
 @Component({
   components: { Btn },
 })
 export default class extends vue {
   @Prop(Boolean)
-  private show: boolean;
+  public show: boolean;
 
   @Prop(String)
-  private size: Size;
+  public size: Size;
 
   @Prop({ type: Boolean, default: true })
   private closeBtn: boolean;
@@ -43,12 +43,12 @@ export default class extends vue {
   @Prop({ type: Boolean, default: true })
   private closeOverlay: boolean;
 
-  private btnType = BtnType.clear;
+  private btnType = BtnTypes.clear;
 
   private get cssClass(): string[] {
     return [
       this.show ? 'active' : '',
-      Size[this.size as any] || this.size,
+      Sizes[this.size] || this.size,
     ];
   }
 

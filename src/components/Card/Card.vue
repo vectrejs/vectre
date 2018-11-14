@@ -35,21 +35,24 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { Positions, Slots } from './Image';
+import { Position, Positions, Slot, Slots } from './Image';
 
 @Component
 export default class extends Vue {
-  @Prop(String) private img: string;
+  @Prop(String)
+  public img: string;
 
-  @Prop(String) private before: Slots;
+  @Prop(String)
+  public before: Slot;
 
-  @Prop(String) private after: Slots;
+  @Prop(String)
+  public after: Slot;
 
   private positions = Positions;
   private slots = Slots;
 
-  public showImg(pos: Positions, slot: Slots) {
-    return !!this.$props[pos] && this.$props[pos] === Slots[slot];
+  public showImg(pos: Position, slot: Slot) {
+    return this.$props[pos] && this.$props[pos] === Slots[slot];
   }
 }
 </script>

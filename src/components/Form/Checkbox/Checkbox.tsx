@@ -1,9 +1,8 @@
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
-import { Type } from './Type';
-import { Types } from './Types';
-import { Size } from './Size';
-import { Sizes } from './Sizes';
+import { Type, Types } from './Type';
+import { Size, Sizes } from './Size';
+import { CreateElement, VNode } from 'vue';
 
 export interface ICheckboxProps {
   checked?: boolean;
@@ -11,9 +10,9 @@ export interface ICheckboxProps {
   inline?: boolean;
   label?: string | number;
   model?: any;
-  type?: Types;
+  type?: Type;
   value?: any;
-  size?: Sizes;
+  size?: Size;
   error?: boolean;
 }
 
@@ -38,15 +37,15 @@ export default class extends VueComponent<ICheckboxProps> {
 
   @Prop({
     type: String,
-    validator: v => Object.keys(Type).includes(v),
+    validator: v => Object.keys(Types).includes(v),
   })
-  public type: Types;
+  public type: Type;
 
   @Prop(Boolean)
   public inline: boolean;
 
   @Prop(String)
-  public size: Sizes;
+  public size: Size;
 
   @Prop(Boolean)
   public error: boolean;
@@ -54,24 +53,12 @@ export default class extends VueComponent<ICheckboxProps> {
   @Prop()
   protected model: any;
 
-  public onChange({ target: { checked } }: any) {
-    if (this.model === undefined || !Array.isArray(this.model)) {
-      return this.$emit('input', checked ? this.value : false);
-    }
-
-    if (checked) {
-      this.$emit('input', [...this.model, this.value]);
-    } else {
-      this.$emit('input', this.model.filter((option: any) => option !== this.value));
-    }
-  }
-
-  public render() {
+  public render(h: CreateElement): VNode {
     const cssClass = [
-      Type[this.type] || 'form-checkbox',
+      Types[this.type] || 'form-checkbox',
       this.inline ? 'form-inline' : '',
       this.error ? 'is-error' : false,
-      Size[this.size],
+      Sizes[this.size],
     ];
 
     return (
@@ -87,6 +74,18 @@ export default class extends VueComponent<ICheckboxProps> {
         {this.$slots.default || this.label || this.value}
       </label>
     );
+  }
+
+  public onChange({ target: { checked } }: any) {
+    if (this.model === undefined || !Array.isArray(this.model)) {
+      return this.$emit('input', checked ? this.value : false);
+    }
+
+    if (checked) {
+      this.$emit('input', [...this.model, this.value]);
+    } else {
+      this.$emit('input', this.model.filter((option: any) => option !== this.value));
+    }
   }
 
   private get _checked(): boolean {

@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="shown" class="toast" :class="typeClass">
-      <i v-if="icon" class="icon" :class="iconClass"></i>
+      <icon v-if="icon" :type="icon" />
       <button v-if="closeable" class="btn btn-clear float-right" @click="close()"></button>
       <slot></slot>
     </div>
@@ -12,17 +12,21 @@
 <script lang="ts">
 import vue from 'vue';
 import { Component, Emit, Prop } from 'vue-property-decorator';
+import { IconType } from '@components/Icon';
 
 @Component
 export default class extends vue {
-  @Prop() private type: string;
+  @Prop(String)
+  public type: string;
 
-  @Prop({ type: Number })
-  private autoclose: number;
+  @Prop(Number)
+  public autoclose: number;
 
-  @Prop() private closeable: boolean;
+  @Prop(Boolean)
+  public closeable: boolean;
 
-  @Prop() private icon: string;
+  @Prop(String)
+  public icon: IconType;
 
   private shown: boolean = true;
 

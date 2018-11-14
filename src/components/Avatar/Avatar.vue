@@ -10,36 +10,46 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { Size } from './Size';
-import { Presence } from './Presence';
+import { Size, Sizes } from './Size';
+import { Presence, Presences } from './Presence';
 
 @Component
 export default class extends Vue {
-  @Prop(String) private size: Size | string;
+  @Prop(String)
+  public size: Size;
 
-  @Prop(String) private src: string;
+  @Prop(String)
+  public src: string;
 
-  @Prop(String) private initials: string;
+  @Prop(String)
+  public initials: string;
 
-  @Prop(String) private background: string;
+  @Prop(String)
+  public background: string;
 
-  @Prop(String) private color: string;
+  @Prop(String)
+  public color: string;
 
-  @Prop(String) private alt: string;
+  @Prop(String)
+  public alt: string;
 
-  @Prop(String) private presence: Presence;
+  @Prop(String)
+  public presence: Presence;
 
-  @Prop(String) private icon: string;
+  @Prop(String)
+  public icon: string;
 
-  private get cssStyle() {
+  public get cssStyle() {
     return {
       color: this.color,
       background: this.background,
     };
   }
 
-  private get cssClass() {
-    return [Size[this.size as any] || this.size];
+  public get cssClass() {
+    return [
+      Sizes[this.size],
+    ];
   }
 }
 </script>

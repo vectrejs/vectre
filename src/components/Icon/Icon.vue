@@ -5,30 +5,27 @@
 <script lang="ts">
 import vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import Size from './Size';
-import Type, * as Names from './Type';
+import { Size, Sizes } from './Size';
+import { Type, Icons } from './Type';
 
 @Component
 export default class Icon extends vue {
-  @Prop({ required: true })
-  private type: Type;
+  @Prop({ type: String, required: true })
+  public type: string;
 
-  @Prop()
-  private size: Size | string;
+  @Prop(String)
+  public size: string;
 
-  private get cssStyle(): object {
+  public get cssStyle(): object {
     return {
-      'font-size': Size[this.size as any] || this.size,
+      'font-size': Sizes[this.size as any] || this.size,
     };
   }
 
-  private get cssClass(): [string, string] {
+  public get cssClass(): string[] {
     return [
-      Size[this.size as any] || this.size,
-      Names.Navigation[this.type as any]
-      || Names.Action[this.type as any]
-      || Names.Objects[this.type as any]
-      || this.type,
+      Sizes[this.size as any] || this.size,
+      Icons[this.type as any] || this.type,
     ];
   }
 }

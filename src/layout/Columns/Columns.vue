@@ -11,9 +11,11 @@ import { Prop } from 'vue-property-decorator';
 
 @Component
 export default class extends Vue {
-  @Prop(Boolean) private gapless: boolean;
+  @Prop(Boolean)
+  public gapless: boolean;
 
-  @Prop(Boolean) private oneline: boolean;
+  @Prop(Boolean)
+  public oneline: boolean;
 
   public get cssClass(): string[] {
     return [

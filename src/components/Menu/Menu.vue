@@ -29,16 +29,16 @@ import Badge from './Badge.vue';
 })
 export default class extends vue {
   @Prop({ type: [Array, Object], required: true })
-  private items: object[];
+  public items: object[];
 
   @Prop({ type: [String, Number], default: '' })
-  private active: string | number;
+  public active: string | number;
 
-  public normalizeDivider(divider: string | boolean): string {
+  protected normalizeDivider(divider: string | boolean): string {
     return typeof divider === 'string' ? divider : '';
   }
 
-  public cssClassLinkItem(current: string | number): string[] {
+  protected cssClassLinkItem(current: string | number): string[] {
     return [
       this.active.toString() === current.toString() ? 'active' : '',
     ];

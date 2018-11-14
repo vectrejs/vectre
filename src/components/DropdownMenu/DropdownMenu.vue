@@ -24,7 +24,7 @@
 import vue from 'vue';
 import { Component, Prop, Emit } from 'vue-property-decorator';
 import { Menu } from '@components/Menu';
-import { BtnType, BtnState } from '@components/Button';
+import { BtnType, BtnState, BtnTypes } from '@components/Button';
 import { IconType, Navigation as IconNavigation } from '@components/Icon';
 
 @Component({
@@ -32,22 +32,22 @@ import { IconType, Navigation as IconNavigation } from '@components/Icon';
 })
 export default class extends vue {
   @Prop({ type: [Object, Array], required: true })
-  private items: IterableIterator<any>;
+  public items: IterableIterator<any>;
 
   @Prop(Boolean)
-  private right: boolean;
+  public right: boolean;
 
   @Prop(String)
-  private btnType: BtnType;
+  public btnType: BtnType;
 
   @Prop(String)
-  private btnText: string;
+  public btnText: string;
 
   @Prop({ type: String, default: IconNavigation.caret })
-  private btnIcon: IconType;
+  public btnIcon: IconType;
 
   @Prop()
-  private state: BtnState;
+  public state: BtnState;
 
   public get cssClass(): string[] {
     return [
@@ -57,7 +57,7 @@ export default class extends vue {
 
   public get btnCssClass(): string[] {
     return [
-      BtnType[this.btnType as any],
+      BtnTypes[this.btnType],
     ];
   }
 

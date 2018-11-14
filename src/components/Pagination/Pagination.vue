@@ -24,13 +24,13 @@ import Pager from './Pager.vue';
 })
 export default class extends vue {
   @Prop({ type: [Number, Array], required: true })
-  private pages: number | string[];
+  public pages: number | string[];
 
   @Prop({ type: [Number, String] })
-  private current: number | string;
+  public current: number | string;
 
   @Prop({ type: Number })
-  private show: number;
+  public show: number;
 
   public change(current: number): void {
     this.$emit('update:current', current);

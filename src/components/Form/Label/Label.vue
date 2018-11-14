@@ -5,20 +5,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { LabelSize } from './LabelSize';
+import Vue, { VueConstructor } from 'vue';
+import { LabelSizes, LabelSize } from './LabelSize';
 
 export default Vue.extend({
   props: {
     size: {
       type: String,
-      validator: (v: string) => !v || Object.keys(LabelSize).includes(v),
+      validator: (v: string) => !v || Object.keys(LabelSizes).includes(v),
     },
   },
 
   computed: {
     cssClass(): string[] {
-      return ['form-label', LabelSize[this.size as keyof typeof LabelSize] || ''];
+      return ['form-label', LabelSizes[this.size as LabelSize] || ''];
     },
   },
 });

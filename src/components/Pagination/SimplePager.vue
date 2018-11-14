@@ -22,10 +22,10 @@ import { Prop, Component } from 'vue-property-decorator';
 @Component
 export default class extends vue {
   @Prop({ type: Array, required: true })
-  private pages: string[];
+  public pages: string[];
 
   @Prop({ default: 0 })
-  private current: string;
+  public current: string;
 
   public get previous(): string {
     return this.pages[this.curIndex - 1];
@@ -35,12 +35,12 @@ export default class extends vue {
     return this.pages[this.curIndex + 1];
   }
 
-  public change(page: string): void {
-    this.$emit('change', page);
-  }
-
   private get curIndex(): number {
     return this.pages.indexOf(this.current);
+  }
+
+  public change(page: string): void {
+    this.$emit('change', page);
   }
 }
 </script>

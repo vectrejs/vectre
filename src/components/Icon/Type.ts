@@ -1,4 +1,4 @@
-type Type = Navigation | Action | Objects;
+type Type = keyof typeof Icons;
 
 enum Navigation {
   up = 'icon-arrow-up',
@@ -52,8 +52,8 @@ enum Objects {
 
 const Icons = { ...Navigation, ...Objects, ...Action };
 
-export default Type;
 export {
+  Type,
   Navigation,
   Action,
   Objects,

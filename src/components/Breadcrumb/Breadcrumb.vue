@@ -18,6 +18,6 @@ import { ICrumb } from './Crumb';
 @Component
 export default class extends Vue {
   @Prop({ type: Array, required: true })
-  private crumbs: ICrumb[] | any[];
+  public crumbs: ICrumb[] | any[];
 }
 </script>

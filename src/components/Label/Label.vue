@@ -17,7 +17,7 @@ export default class extends Vue {
   @Prop(Boolean)
   public rounded: boolean;
 
-  get cssClass(): string[] {
+  public get cssClass(): string[] {
     return [
       Types[this.type],
       this.rounded ? 'label-rounded' : '',

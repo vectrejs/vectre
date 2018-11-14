@@ -37,21 +37,21 @@ import { Icon, IconType } from '@components/Icon';
 })
 export default class extends vue {
   @Prop({ required: true, type: [Object, Array] })
-  private items: object[] | object;
+  public items: object[] | object;
 
   @Prop([String, Number, Array])
-  private checked: string | number | string[] | number[];
+  public checked: string | number | string[] | number[];
 
   @Prop([String])
-  private name: string;
+  public name: string;
 
   @Prop([Boolean])
-  private multiple: boolean;
+  public multiple: boolean;
 
   @Prop([String])
-  private icon: IconType;
+  public icon: IconType;
 
-  private get type(): string {
+  public get type(): string {
     return this.multiple ? 'checkbox' : 'radio';
   }
 

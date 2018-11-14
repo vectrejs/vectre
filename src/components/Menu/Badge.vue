@@ -11,6 +11,6 @@ import { Component, Prop } from 'vue-property-decorator';
 @Component
 export default class extends Vue {
   @Prop([String, Number])
-  private value: string | number;
+  public value: string | number;
 }
 </script>

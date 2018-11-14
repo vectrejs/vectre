@@ -12,7 +12,6 @@
     <div v-if="$slots.default" class="empty-content">
       <slot />
     </div>
-    
 
     <div v-if="$slots.action" class="empty-action">
       <slot name="action" />
@@ -23,7 +22,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Icon, IconSize, IconType } from '@components/Icon';
+import { Icon, IconSizes, IconType } from '@components/Icon';
 import { Prop } from 'vue-property-decorator';
 
 @Component({
@@ -31,14 +30,14 @@ import { Prop } from 'vue-property-decorator';
 })
 export default class extends Vue {
   @Prop(String)
-  private title: string;
+  public title: string;
 
   @Prop(String)
-  private sub: string;
+  public sub: string;
 
   @Prop(String)
-  private icon: IconType;
+  public icon: IconType;
 
-  private iconSizes = IconSize;
+  private iconSizes = IconSizes;
 }
 </script>

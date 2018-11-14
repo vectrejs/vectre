@@ -2,8 +2,7 @@ import { VNode } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
-import { Size } from './Size';
-import { Sizes } from './Sizes';
+import { Size, Sizes } from './Size';
 import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
 
 interface InputEvent {
@@ -18,7 +17,7 @@ interface IProps extends SelectHTMLAttributes {
   multiple?: boolean;
   placeholder?: string;
   value?: string | string[];
-  scale?: Sizes;
+  scale?: Size;
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
@@ -45,9 +44,9 @@ export class Select extends VueComponent<IProps> {
 
   @Prop({
     type: String,
-    validator: size => Object.keys(Size).includes(size),
+    validator: size => Object.keys(Sizes).includes(size),
   })
-  public scale: Sizes;
+  public scale: Size;
 
   @Prop(Boolean)
   public error: boolean;
@@ -102,7 +101,7 @@ export class Select extends VueComponent<IProps> {
 
     const cssClass = [
       'form-select',
-      Size[this.scale],
+      Sizes[this.scale],
       this.error ? 'is-error' : '',
       this.success ? 'is-success' : '',
     ];

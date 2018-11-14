@@ -1,6 +1,10 @@
-import Column from './Column';
-import Columns from './Columns';
-import Container, { Grid as ContainerGrid } from './Container';
+import { Column } from './Column';
+import { Columns } from './Columns';
+import {
+  Container,
+  Grid as ContainerGrid,
+  Grids as ContainerGrids,
+} from './Container';
 
 export default {
   Container,

@@ -8,14 +8,17 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { Grid } from './Grid';
+import { Grids, Grid } from './Grid';
 
 @Component
 export default class extends Vue {
-  @Prop(String) private grid: Grid;
+  @Prop(String)
+  public grid: Grid;
 
   get cssClass(): string[] {
-    return [Grid[this.grid as any]];
+    return [
+      Grids[this.grid],
+    ];
   }
 }
 </script>

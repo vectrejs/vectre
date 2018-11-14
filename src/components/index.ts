@@ -1,19 +1,14 @@
 import Accordion from './Accordion.vue';
 import { Bar } from './Bar';
 import { Breadcrumb } from './Breadcrumb';
-import { Btn, BtnGroup, BtnType, BtnSize, BtnState } from './Button';
-import { Card } from './Card';
 import { Chip } from './Chip';
 import { Divider } from './Divider';
 import { DropdownMenu } from './DropdownMenu';
 import { Empty } from './Empty';
-import { Label as VsLabel } from './Label';
 import { Menu as VsMenu } from './Menu';
-import { Modal } from './Modal';
 import OffCanvas from './OffCanvas.vue';
 import { Pagination } from './Pagination';
 import { Panel } from './Panel';
-import { Popover, PopoverSide } from './Popover';
 import { Steps, Step } from './Steps';
 import { Tabs, Tab } from './Tab';
 import { Tile } from './Tile';
@@ -21,10 +16,34 @@ import Toast from './Toast.vue';
 import { Nav as VsNav } from './Nav';
 
 import {
+  Avatar,
+  AvatarSize,
+  AvatarSizes,
+  AvatarPresence,
+  AvatarPresences,
+} from './Avatar';
+
+import {
+  Btn,
+  BtnGroup,
+  BtnSize,
+  BtnSizes,
+  BtnState,
+  BtnStates,
+  BtnType,
+  BtnTypes,
+} from './Button';
+
+import {
+  Card,
+  CardImageSlot,
+  CardImageSlots,
+} from './Card';
+
+import {
   FormCheckbox,
   FormCheckboxGroup,
   FormInput,
-  FormInputSize,
   FormGroup,
   FormLabel,
   FormHint,
@@ -35,9 +54,12 @@ import {
   FormRadioGroup,
   FormRadio,
 
-  FormCheckboxSize,
-  FormLabelSize,
+  FormCheckboxSizes,
+  FormInputSizes,
+  FormLabelSizes,
   FormSelectSize,
+
+  FormCheckboxTypes,
 } from './Form';
 
 import {
@@ -51,9 +73,22 @@ import {
 } from './Icon';
 
 import {
-  Avatar,
-  AvatarSize,
-} from './Avatar';
+  Label as VsLabel,
+  LabelType,
+  LabelTypes,
+} from './Label';
+
+import {
+  Modal,
+  ModalSize,
+  ModalSizes,
+} from './Modal';
+
+import {
+  Popover,
+  PopoverSide,
+  PopoverSides,
+} from './Popover';
 
 // Default is all components
 export default {
@@ -142,15 +177,31 @@ export {
   FormRadio,
 
   // Form sizes
-  FormCheckboxSize,
-  FormInputSize,
-  FormLabelSize,
+  FormCheckboxSizes,
+  FormInputSizes,
+  FormLabelSizes,
   FormSelectSize,
+
+  // Checkbox
+  FormCheckboxTypes,
+
+  // Avatar
+  AvatarSize,
+  AvatarSizes,
+  AvatarPresence,
+  AvatarPresences,
 
   // Button
   BtnSize,
+  BtnSizes,
   BtnState,
+  BtnStates,
   BtnType,
+  BtnTypes,
+
+  // Card
+  CardImageSlot,
+  CardImageSlots,
 
   // Icon
   IconSize,
@@ -160,9 +211,15 @@ export {
   IconObject,
   Icons,
 
-  // Avatar
-  AvatarSize,
+  // Label
+  LabelType,
+  LabelTypes,
+
+  // Modal
+  ModalSize,
+  ModalSizes,
 
   // Popover
   PopoverSide,
+  PopoverSides,
 };
