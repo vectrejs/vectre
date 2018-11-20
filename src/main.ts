@@ -1,2 +1,2 @@
-export { default as default } from './plugin';
+export { VectrePlugin } from './plugin';
 export * from './components';
