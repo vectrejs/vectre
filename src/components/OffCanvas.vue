@@ -27,7 +27,7 @@ import {
   Icon,
   Navigation as IconNavigation,
   IconType,
-} from '@components/Icon';
+} from './Icon';
 
 import vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';

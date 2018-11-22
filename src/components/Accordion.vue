@@ -28,7 +28,7 @@
 <script lang="ts">
 import vue, { CreateElement } from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { Icon, IconType } from '@components/Icon';
+import { Icon, IconType } from './Icon';
 
 @Component({
   components: {

@@ -12,7 +12,7 @@
 <script lang="ts">
 import vue from 'vue';
 import { Component, Emit, Prop } from 'vue-property-decorator';
-import { IconType } from '@components/Icon';
+import { IconType } from './Icon';
 
 @Component
 export default class extends vue {

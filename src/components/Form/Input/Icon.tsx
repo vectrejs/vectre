@@ -1,6 +1,6 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
-import { Icons } from '@components/Icon';
+import { Icons } from '../../Icon';
 
 interface IconProps {
   icon: string;

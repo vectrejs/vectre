@@ -4,10 +4,11 @@
   "scripts": {
     "serve": "vue-cli-service serve kitchen_sink/index.ts",
     "build": "vue-cli-service build --target lib src/main.ts && npm run bundleDts",
-    "bundleDts": "vue-cli-service bundle-dts --removeSource"
+    "bundleDts": "vue-cli-service bundle-dts"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/node": "^10.12.9",
     "@types/prismjs": "^1.9.0",
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-typescript": "^3.0.1",
@@ -21,7 +22,7 @@
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.7.0",
-    "typescript": "^2.9.1",
+    "typescript": "^3.1.6",
     "vee-validate": "^2.1.0-beta.11",
     "vue": "^2.5.16",
     "vue-anchored-menu": "github:vatson/vue-anchored-menu",
@@ -37,7 +38,7 @@
     "vuelidate": "^0.7.4"
   },
   "description": "",
-  "main": "dist/vectre.umd.js",
+  "main": "dist/vectre.common.js",
   "types": "dist/vectre.d.ts",
   "keywords": [],
   "author": "",

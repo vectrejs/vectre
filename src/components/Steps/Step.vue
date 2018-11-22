@@ -5,9 +5,7 @@
 </template>
 
 <script lang="tsx">
-import Vue, { VueConstructor } from 'vue';
-
-export default Vue.extend({ });
+export default {};
 </script>
 
 <style>

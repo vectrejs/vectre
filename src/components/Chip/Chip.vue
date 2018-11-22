@@ -21,7 +21,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop, Emit } from 'vue-property-decorator';
-import { Avatar, AvatarSizes } from '@components/Avatar';
+import { Avatar, AvatarSizes } from '../Avatar';
 
 @Component({
   components: { Avatar },

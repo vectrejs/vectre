@@ -23,9 +23,9 @@
 <script lang="ts">
 import vue from 'vue';
 import { Component, Prop, Emit } from 'vue-property-decorator';
-import { Menu } from '@components/Menu';
-import { BtnType, BtnState, BtnTypes } from '@components/Button';
-import { IconType, Navigation as IconNavigation } from '@components/Icon';
+import { Menu } from '../Menu';
+import { BtnType, BtnState, BtnTypes } from '../Button';
+import { IconType, Navigation as IconNavigation } from '../Icon';
 
 @Component({
   components: { 'vs-menu': Menu },

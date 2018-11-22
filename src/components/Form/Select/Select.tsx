@@ -23,7 +23,7 @@ interface IProps extends SelectHTMLAttributes {
   disabled?: boolean;
 }
 
-interface INormalizedOption {
+export interface INormalizedOption {
   label: string;
   value: any;
 }

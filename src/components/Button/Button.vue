@@ -15,7 +15,7 @@ import { Prop, Component } from 'vue-property-decorator';
 import { Type, Types } from './Type';
 import { Size, Sizes } from './Size';
 import { State, States } from './State';
-import { Icon, IconType } from '@components/Icon';
+import { Icon, IconType } from '../Icon';
 
 @Component({
   components: { Icon },

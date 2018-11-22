@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 
 export default Vue.extend({
   props: {

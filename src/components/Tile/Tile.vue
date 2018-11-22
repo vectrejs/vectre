@@ -19,8 +19,8 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import { Avatar, AvatarSizes } from '@components/Avatar';
-import { Icon, IconType, IconSizes } from '@components/Icon';
+import { Avatar, AvatarSizes } from '../Avatar';
+import { Icon, IconType, IconSizes } from '../Icon';
 
 @Component({
   components: { Icon, Avatar },

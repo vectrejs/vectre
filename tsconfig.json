@@ -23,7 +23,8 @@
     "noLib": false,
     "baseUrl": ".",
     "strictPropertyInitialization": false,
-    "declarationDir": "dist/src"
+    "declarationDir": "src",
+    "downlevelIteration": true
   },
   "exclude": [
     "node_modules/*"

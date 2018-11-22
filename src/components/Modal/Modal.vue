@@ -21,7 +21,7 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component, Emit } from 'vue-property-decorator';
-import { Btn, BtnTypes } from '@components/Button';
+import { Btn, BtnTypes } from '../Button';
 import { Size, Sizes } from './Size';
 
 @Component({
