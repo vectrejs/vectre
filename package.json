@@ -4,7 +4,7 @@
   "scripts": {
     "prebuild": "wotan",
     "build": "NODE_ENV=production ./rollup.js && npm run build-dts && npm run build-cleanup",
-    "build-dts": "dts-bundle --name vectre --main ./dist/main.d.ts --removeSource",
+    "build-dts": "dts-bundle --name vectre --main dist/main.d.ts --removeSource",
     "build-cleanup": "find ./dist -empty -type d -delete"
   },
   "dependencies": {},
@@ -13,6 +13,7 @@
     "@fimbul/ve": "^0.15.0",
     "@fimbul/wotan": "^0.15.0",
     "dts-bundle": "^0.7.3",
+    "minimist": "^1.2.0",
     "node-sass": "^4.10.0",
     "postcss": "^7.0.5",
     "rollup": "^0.66.6",
@@ -29,10 +30,10 @@
     "vue": "^2.5.16",
     "vue-property-decorator": "^7.0.0",
     "vue-template-compiler": "^2.5.16",
-    "vue-tsx-helper": "^0.1.2"
+    "vue-tsx-helper": "^0.1.3"
   },
   "description": "",
-  "main": "dist/vectre.esm.js",
+  "main": "dist/vectre.js",
   "types": "dist/vectre.d.ts",
   "keywords": [],
   "author": "",

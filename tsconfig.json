@@ -24,7 +24,7 @@
     "noLib": false,
     "baseUrl": ".",
     "strictPropertyInitialization": false,
-    "declarationDir": "src",
+    "declaration": true,
     "downlevelIteration": true
   },
   "exclude": [
