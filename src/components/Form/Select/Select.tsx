@@ -124,10 +124,10 @@ export class Select extends VueComponent<IProps> {
 
   private onInput({ target: { selectedOptions } }: InputEvent): void {
     if (this.multiple) {
-      // const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
-      //   return option.value || option.innerHTML;
-      // });
-      // this.$emit('input', selected);
+      const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
+        return option.value || option.innerHTML;
+      });
+      this.$emit('input', selected);
     } else {
       this.$emit('input', selectedOptions[0].value);
     }
