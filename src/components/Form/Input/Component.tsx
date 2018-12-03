@@ -30,7 +30,7 @@ export const Component = vue.extend({
     },
   },
 
-  render(): VNode {
+  render(h: CreateElement): VNode {
     const { icon, iconSide, loading, size, disabled } = this.$props;
 
     const input = <Input

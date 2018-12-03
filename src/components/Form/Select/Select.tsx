@@ -1,4 +1,4 @@
-import { VNode } from 'vue';
+import { VNode, CreateElement } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { Option, IOptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
@@ -63,7 +63,7 @@ export class Select extends VueComponent<IProps> {
     }
   }
 
-  public render(): VNode {
+  public render(h: CreateElement): VNode {
     let options: VNode[] = [];
 
     if (this.options) {

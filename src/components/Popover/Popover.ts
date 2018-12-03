@@ -12,7 +12,7 @@ export const Popover = Vue.extend({
       validator: (side: string) => Object.keys(Sides).includes(side),
     },
   },
-  render(h) {
+  render(h: CreateElement): VNode {
     const elements = this.$slots.default || [];
     return h('div', { class: ['popover', Sides[this.side as any]] }, [
       elements.slice(0, 1),

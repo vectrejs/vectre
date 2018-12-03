@@ -42,7 +42,7 @@ export class Group extends VueComponent<IRadioGroup> {
   @Prop(Boolean)
   public disabled: boolean;
 
-  public render() {
+  public render(h: CreateElement): VNode {
     const name = this.name || this.uid;
     let group;
 

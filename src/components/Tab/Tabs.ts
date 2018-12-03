@@ -1,4 +1,4 @@
-import vue, { PropOptions, VNode } from 'vue';
+import vue, { PropOptions, VNode, CreateElement } from 'vue';
 import Tab from './Tab.vue';
 
 type EmitFunction = (event: string, ...args: any[]) => {};
@@ -50,7 +50,7 @@ export const Tabs = vue.extend({
     },
   },
 
-  render(h) {
+  render(h: CreateElement): VNode {
     const { items, current, block } = this.$props;
     const cssClass = { tab: true, 'tab-block': block };
 

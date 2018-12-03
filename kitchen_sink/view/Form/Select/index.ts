@@ -1,1 +1,0 @@
-export { FormSelectRoute } from './route';

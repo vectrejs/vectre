@@ -1,7 +1,7 @@
-import Vue from 'vue';
+import Vue, { VNode, CreateElement } from 'vue';
 
 export const Loading = Vue.extend({
-  render() {
+  render(h: CreateElement): VNode {
     return <i class="form-icon loading" />;
   },
 });

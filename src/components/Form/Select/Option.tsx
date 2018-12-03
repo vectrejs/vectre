@@ -1,5 +1,6 @@
 import { Prop, Component } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
+import { VNode, CreateElement } from 'vue';
 
 export interface IOptionProps {
   value?: string;
@@ -22,7 +23,7 @@ export class Option extends VueComponent<IOptionProps> {
   @Prop()
   public selected: boolean;
 
-  public render() {
+  public render(h: CreateElement): VNode {
     const { selected, disabled, value, label } = this.$props;
 
     return (

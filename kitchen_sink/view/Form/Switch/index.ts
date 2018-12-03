@@ -1,1 +1,0 @@
-export { FormSwitchRoute } from './route';
