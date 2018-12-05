@@ -5,17 +5,23 @@
 	"main": "dist/vectre.js",
 	"module": "dist/vectre.esm.js",
 	"types": "dist/vectre.d.ts",
-	"keywords": [ "vue", "spectre", "ui", "css", "framework" ],
+	"keywords": [
+		"vue",
+		"spectre",
+		"ui",
+		"css",
+		"framework"
+	],
 	"author": "Vadim Tiukov",
-  "license": "MIT",
-  "files": [
-    "dist/*.js",
-    "dist/*.d.ts"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vectrejs/vectre.git"
-  },
+	"license": "MIT",
+	"files": [
+		"dist/*.js",
+		"dist/*.d.ts"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vectrejs/vectre.git"
+	},
 	"bugs": {
 		"url": "https://github.com/vectrejs/vectre/issues"
 	},
@@ -44,6 +50,7 @@
 		"rollup-plugin-commonjs": "^9.2.0",
 		"rollup-plugin-css-only": "^0.4.0",
 		"rollup-plugin-node-resolve": "^3.4.0",
+		"rollup-plugin-replace": "^2.1.0",
 		"rollup-plugin-terser": "^3.0.0",
 		"rollup-plugin-typescript2": "^0.17.2",
 		"rollup-plugin-vue": "^4.3.2",
