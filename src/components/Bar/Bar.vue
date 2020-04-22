@@ -1,16 +1,16 @@
 <template>
-    <div class="bar" :class="barCssClass">
-      <div 
-        class="bar-item" 
-        :class="barItemCssClass" 
-        :style="cssStyle" 
-        :data-tooltip="dataTooltip" 
-        :aria-valuenow="value" 
-        :aria-valuemin="min" 
-        :aria-valuemax="max"
-        role="progressbar" 
-      />
-    </div>
+  <div class="bar" :class="barCssClass">
+    <div
+      class="bar-item"
+      :class="barItemCssClass"
+      :style="cssStyle"
+      :data-tooltip="dataTooltip"
+      :aria-valuenow="value"
+      :aria-valuemin="min"
+      :aria-valuemax="max"
+      role="progressbar"
+    />
+  </div>
 </template>
 <script lang="ts">
 import Vue from 'vue';
@@ -18,7 +18,7 @@ import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 @Component
-export default class extends Vue {
+export default class Bar extends Vue {
   @Prop(Boolean)
   public sm: boolean;
 
@@ -56,7 +56,7 @@ export default class extends Vue {
 
   public get cssStyle(): object {
     return {
-      width: this.value / this.max * 100 + '%',
+      width: (this.value / this.max) * 100 + '%',
     };
   }
 }

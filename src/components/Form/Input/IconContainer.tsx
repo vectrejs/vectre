@@ -22,6 +22,6 @@ export class IconContainer extends VueComponent<IProps> {
   public side: IconSides;
 
   public render(h: CreateElement): VNode {
-    return <div class={IconSide[this.side as any]}>{this.$slots.default}</div>;
+    return <div class={IconSide[this.side as IconSides]}>{this.$slots.default}</div>;
   }
 }

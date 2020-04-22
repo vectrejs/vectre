@@ -5,10 +5,11 @@
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 import { LabelSizes, LabelSize } from './LabelSize';
 
 export default Vue.extend({
+  name: 'FormLabel',
   props: {
     size: {
       type: String,

@@ -36,6 +36,7 @@ const updateCurrent = (current: string | number, emit: EmitFunction) => {
 };
 
 export const Tabs = vue.extend({
+  name: 'tabs',
   props: {
     current: {
       type: [String, Number],
@@ -65,7 +66,7 @@ export const Tabs = vue.extend({
       return h('div', { class: cssClass }, tabs);
     }
 
-    const { default: children } = this.$slots;
+    const { default: children = [] } = this.$slots;
 
     tabs = children
       .filter((child: VNode) =>

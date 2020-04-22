@@ -27,7 +27,7 @@ import { Size, Sizes } from './Size';
 @Component({
   components: { Btn },
 })
-export default class extends vue {
+export default class Modal extends vue {
   @Prop(Boolean)
   public show: boolean;
 

@@ -38,7 +38,7 @@ import { Prop } from 'vue-property-decorator';
 import { Position, Positions, Slot, Slots } from './Image';
 
 @Component
-export default class extends Vue {
+export default class Card extends Vue {
   @Prop(String)
   public img: string;
 

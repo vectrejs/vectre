@@ -28,7 +28,7 @@ import { Prop } from 'vue-property-decorator';
 @Component({
   components: { Icon },
 })
-export default class extends Vue {
+export default class Empty extends Vue {
   @Prop(String)
   public title: string;
 

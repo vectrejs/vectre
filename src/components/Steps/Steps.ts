@@ -2,6 +2,7 @@ import vue, { VNode, CreateElement } from 'vue';
 import Step from './Step.vue';
 
 export const Steps = vue.extend({
+  name: 'Steps',
   props: {
     active: {
       type: Number,

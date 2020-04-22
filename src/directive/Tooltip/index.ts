@@ -1,2 +1,2 @@
 export { Tooltip } from './Tooltip';
-export { Side as TooltipSide } from './Side';
+export { Sides as TooltipSides } from './Side';

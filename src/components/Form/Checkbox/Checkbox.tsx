@@ -22,7 +22,7 @@ export interface ICheckboxProps {
     prop: 'model',
   },
 })
-export default class extends VueComponent<ICheckboxProps> {
+export default class Checkbox extends VueComponent<ICheckboxProps> {
   @Prop([String, Number])
   public label: string | number;
 

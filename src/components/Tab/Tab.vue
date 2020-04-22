@@ -1,13 +1,16 @@
 <template>
   <span class="tab-item">
-    <a v-badge="badge"><slot /></a>
+    <a v-badge="badge">
+      <slot />
+    </a>
   </span>
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 
 export default Vue.extend({
+  name: 'Tab',
   props: {
     badge: {
       type: [String, Number],

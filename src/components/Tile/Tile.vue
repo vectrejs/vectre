@@ -25,7 +25,7 @@ import { Icon, IconType, IconSizes } from '../Icon';
 @Component({
   components: { Icon, Avatar },
 })
-export default class extends vue {
+export default class Tile extends vue {
   @Prop(String)
   public title: string;
 

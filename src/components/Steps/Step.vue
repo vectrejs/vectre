@@ -1,11 +1,17 @@
 <template>
   <span class="step-item">
-    <a><slot /></a>
+    <a>
+      <slot />
+    </a>
   </span>
 </template>
 
-<script lang="tsx">
-export default {};
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
+  name: 'Step',
+});
 </script>
 
 <style>

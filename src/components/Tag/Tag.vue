@@ -9,8 +9,10 @@ import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import { Type, Types } from './Type';
 
-@Component
-export default class extends Vue {
+@Component({
+  name: 'tag',
+})
+export default class Label extends Vue {
   @Prop(String)
   public type: Type;
 
@@ -18,16 +20,13 @@ export default class extends Vue {
   public rounded: boolean;
 
   public get cssClass(): string[] {
-    return [
-      Types[this.type],
-      this.rounded ? 'label-rounded' : '',
-    ];
+    return [Types[this.type], this.rounded ? 'label-rounded' : ''];
   }
 }
 </script>
 
 <style lang="scss">
 .label + .label {
-  margin-left: .3rem;
+  margin-left: 0.3rem;
 }
 </style>

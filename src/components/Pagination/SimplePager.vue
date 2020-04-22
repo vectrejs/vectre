@@ -20,7 +20,7 @@ import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
 @Component
-export default class extends vue {
+export default class SimplePager extends vue {
   @Prop({ type: Array, required: true })
   public pages: string[];
 

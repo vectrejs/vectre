@@ -1,22 +1,23 @@
 import { PluginFunction } from 'vue';
-import components from './components';
+import { addPrefix } from './utils/prefix';
+import { default as components } from './components';
 import layout from './layout';
 import directives from './directive';
 
-const all: { [name: string]: any } = { ...components, ...layout };
+const allComponents: { [name: string]: any } = { ...components, ...layout };
 
-interface IPluginOptions {
+export interface IPluginOptions {
   prefix?: string;
 }
 
-export const VectrePlugin: PluginFunction<IPluginOptions> = (vue, options): void => {
-  const prefix = options && options.prefix ? options.prefix : '';
-
-  for (const component of Object.keys(all)) {
-    vue.component(prefix + component, all[component]);
+const VectrePlugin: PluginFunction<IPluginOptions> = (vue, options = { prefix: '' }): void => {
+  for (const component of Object.keys(allComponents)) {
+    vue.component(addPrefix(component, options.prefix), allComponents[component]);
   }
 
   for (const directive of Object.keys(directives)) {
-    vue.directive(prefix + directive, (directives as any)[directive]);
+    vue.directive(addPrefix(directive, options.prefix, '-'), (directives as any)[directive]);
   }
 };
+
+export default Object.assign(VectrePlugin, { components, layout, directives });

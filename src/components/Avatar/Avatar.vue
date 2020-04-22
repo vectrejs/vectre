@@ -1,8 +1,13 @@
 <template>
-  <figure class="avatar" :class="cssClass" :style="cssStyle" :data-initial="initials && initials.trim().substring(0, 2)">
+  <figure
+    class="avatar"
+    :class="cssClass"
+    :style="cssStyle"
+    :data-initial="initials && initials.trim().substring(0, 2)"
+  >
     <img v-if="src" :src="src" :alt="alt" />
     <img v-if="icon" :src="icon" class="avatar-icon" />
-    <i v-if="presence && !icon" :class="presence" class="avatar-presence" /> 
+    <i v-if="presence && !icon" :class="presence" class="avatar-presence" />
   </figure>
 </template>
 
@@ -14,7 +19,7 @@ import { Size, Sizes } from './Size';
 import { Presence, Presences } from './Presence';
 
 @Component
-export default class extends Vue {
+export default class Avatar extends Vue {
   @Prop(String)
   public size: Size;
 
@@ -47,9 +52,7 @@ export default class extends Vue {
   }
 
   public get cssClass() {
-    return [
-      Sizes[this.size],
-    ];
+    return [Sizes[this.size] || this.size];
   }
 }
 </script>

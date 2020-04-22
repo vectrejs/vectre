@@ -1,20 +1,3 @@
-import Accordion from './Accordion.vue';
-import { Bar } from './Bar';
-import { Breadcrumb } from './Breadcrumb';
-import { Chip } from './Chip';
-import { Divider } from './Divider';
-import { DropdownMenu } from './DropdownMenu';
-import { Empty } from './Empty';
-import { Menu as VsMenu } from './Menu';
-import OffCanvas from './OffCanvas.vue';
-import { Pagination } from './Pagination';
-import { Panel } from './Panel';
-import { Steps, Step } from './Steps';
-import { Tabs, Tab } from './Tab';
-import { Tile } from './Tile';
-import Toast from './Toast.vue';
-import { Nav as VsNav } from './Nav';
-
 import {
   Avatar,
   AvatarSize,
@@ -22,8 +5,69 @@ import {
   AvatarPresence,
   AvatarPresences,
 } from './Avatar';
+import { Accordion } from './Accordion';
+import { Card } from './Card';
+import { Bar } from './Bar';
+import { Breadcrumb } from './Breadcrumb';
+import { Btn, BtnGroup } from './Button';
+import { Chip } from './Chip';
+import { Divider } from './Divider';
+import { DropdownMenu } from './DropdownMenu';
+import { Empty } from './Empty';
+import { Icon } from './Icon';
+import { Tag } from './Tag';
+import { VerticalMenu } from './VerticalMenu';
+import { Modal } from './Modal';
+import { OffCanvas } from './OffCanvas';
+import { Pagination } from './Pagination';
+import { Panel } from './Panel';
+import { Popover } from './Popover';
+import { Steps, Step } from './Steps';
+import { Tabs, Tab } from './Tab';
+import { Tile } from './Tile';
+import { Toast } from './Toast';
+import { Navigation } from './Navigation';
 
 import {
+  FormCheckbox,
+  FormCheckboxGroup,
+  FormInput,
+  FormGroup,
+  FormLabel,
+  FormHint,
+  FormHorizontal,
+  FormSelect,
+  FormTextarea,
+  FormOption,
+  FormRadioGroup,
+  FormRadio,
+} from './Form';
+
+export {
+  Accordion,
+  Avatar,
+  AvatarSize,
+  AvatarSizes,
+  AvatarPresence,
+  AvatarPresences,
+};
+export { Bar } from './Bar';
+export { Breadcrumb } from './Breadcrumb';
+export { Chip } from './Chip';
+export { Divider } from './Divider';
+export { DropdownMenu } from './DropdownMenu';
+export { Empty } from './Empty';
+export { VerticalMenu } from './VerticalMenu';
+export { OffCanvas } from './OffCanvas';
+export { Pagination } from './Pagination';
+export { Panel } from './Panel';
+export { Steps, Step } from './Steps';
+export { Tabs, Tab } from './Tab';
+export { Tile } from './Tile';
+export { Toast } from './Toast';
+export { Navigation } from './Navigation';
+
+export {
   Btn,
   BtnGroup,
   BtnSize,
@@ -34,13 +78,13 @@ import {
   BtnTypes,
 } from './Button';
 
-import {
+export {
   Card,
   CardImageSlot,
   CardImageSlots,
 } from './Card';
 
-import {
+export {
   FormCheckbox,
   FormCheckboxGroup,
   FormInput,
@@ -62,7 +106,7 @@ import {
   FormCheckboxTypes,
 } from './Form';
 
-import {
+export {
   Action as IconAction,
   Icon,
   Navigation as IconNavigation,
@@ -72,19 +116,19 @@ import {
   IconType,
 } from './Icon';
 
-import {
-  Label as VsLabel,
-  LabelType,
-  LabelTypes,
-} from './Label';
+export {
+  Tag,
+  TagType,
+  TagTypes,
+} from './Tag';
 
-import {
+export {
   Modal,
   ModalSize,
   ModalSizes,
 } from './Modal';
 
-import {
+export {
   Popover,
   PopoverSide,
   PopoverSides,
@@ -92,8 +136,8 @@ import {
 
 // Default is all components
 export default {
-  Accordion,
   Avatar,
+  Accordion,
   Bar,
   Breadcrumb,
   Btn,
@@ -115,9 +159,9 @@ export default {
   Tabs,
   Tile,
   Toast,
-  VsLabel,
-  VsMenu,
-  VsNav,
+  Tag,
+  Navigation,
+  VerticalMenu,
 
   FormCheckbox,
   FormCheckboxGroup,
@@ -131,95 +175,4 @@ export default {
   FormTextarea,
   FormRadioGroup,
   FormRadio,
-};
-
-export {
-  // Components
-  Accordion,
-  Avatar,
-  Bar,
-  Breadcrumb,
-  Btn,
-  BtnGroup,
-  Card,
-  Chip,
-  Divider,
-  DropdownMenu,
-  Empty,
-  Icon,
-  Modal,
-  OffCanvas,
-  Pagination,
-  Panel,
-  Popover,
-  Step,
-  Steps,
-  Tab,
-  Tabs,
-  Tile,
-  Toast,
-  VsLabel,
-  VsMenu,
-  VsNav,
-
-  // Form components
-  FormCheckbox,
-  FormCheckboxGroup,
-  FormGroup,
-  FormInput,
-  FormLabel,
-  FormHint,
-  FormHorizontal,
-  FormSelect,
-  FormTextarea,
-  FormOption,
-  FormRadioGroup,
-  FormRadio,
-
-  // Form sizes
-  FormCheckboxSizes,
-  FormInputSizes,
-  FormLabelSizes,
-  FormSelectSize,
-
-  // Checkbox
-  FormCheckboxTypes,
-
-  // Avatar
-  AvatarSize,
-  AvatarSizes,
-  AvatarPresence,
-  AvatarPresences,
-
-  // Button
-  BtnSize,
-  BtnSizes,
-  BtnState,
-  BtnStates,
-  BtnType,
-  BtnTypes,
-
-  // Card
-  CardImageSlot,
-  CardImageSlots,
-
-  // Icon
-  IconSize,
-  IconType,
-  IconAction,
-  IconNavigation,
-  IconObject,
-  Icons,
-
-  // Label
-  LabelType,
-  LabelTypes,
-
-  // Modal
-  ModalSize,
-  ModalSizes,
-
-  // Popover
-  PopoverSide,
-  PopoverSides,
 };

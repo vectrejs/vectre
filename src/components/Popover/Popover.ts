@@ -1,11 +1,12 @@
 import Vue, { CreateElement, VNode } from 'vue';
-import { Sides } from './Side';
+import { Sides, Side } from './Side';
 
 const createPopoverContainer = (h: CreateElement, nodes: VNode[]) => {
   return h('div', { class: 'popover-container' }, nodes);
 };
 
 export const Popover = Vue.extend({
+  name: 'Popover',
   props: {
     side: {
       type: String,
@@ -14,7 +15,7 @@ export const Popover = Vue.extend({
   },
   render(h: CreateElement): VNode {
     const elements = this.$slots.default || [];
-    return h('div', { class: ['popover', Sides[this.side as any]] }, [
+    return h('div', { class: ['popover', Sides[this.side as Side]] }, [
       elements.slice(0, 1),
       createPopoverContainer(h, elements.slice(1)),
     ]);

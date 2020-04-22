@@ -5,7 +5,7 @@ import { VueComponent } from 'vue-tsx-helper';
 import { Size, Sizes } from './Size';
 import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
 
-interface InputEvent {
+interface IInputEvent {
   target: {
     value: string,
     selectedOptions: HTMLCollectionOf<HTMLOptionElement>,
@@ -122,7 +122,7 @@ export class Select extends VueComponent<IProps> {
     return { ...this.$listeners, change: this.onInput };
   }
 
-  private onInput({ target: { selectedOptions } }: InputEvent): void {
+  private onInput({ target: { selectedOptions } }: IInputEvent): void {
     if (this.multiple) {
       const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
         return option.value || option.innerHTML;

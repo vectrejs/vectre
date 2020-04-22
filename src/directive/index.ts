@@ -1,6 +1,6 @@
 import { Badge } from './Badge';
 import { Loading } from './Loading';
-import { Tooltip, TooltipSide } from './Tooltip';
+import { Tooltip, TooltipSides } from './Tooltip';
 
 // Directives
 export default {
@@ -13,5 +13,5 @@ export {
   Badge,
   Loading,
   Tooltip,
-  TooltipSide,
+  TooltipSides,
 };

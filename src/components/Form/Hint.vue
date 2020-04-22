@@ -5,9 +5,10 @@
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 
 export default Vue.extend({
+  name: 'Hint',
   props: {
     error: Boolean,
     success: Boolean,
@@ -16,8 +17,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.form-input-hint.error { 
-  display: none; 
+.form-input-hint.error {
+  display: none;
 }
 
 // Hides all hints on error
@@ -29,7 +30,6 @@ export default Vue.extend({
 .form-group.has-error .form-input-hint.error {
   display: initial;
 }
-
 
 .form-group.has-success .form-input-hint.success {
   display: initial;

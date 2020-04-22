@@ -1,36 +1,35 @@
 <template>
   <div class="dropdown" :class="cssClass">
     <btn
-      class="dropdown-toggle" :class="btnCssClass"
+      class="dropdown-toggle"
+      :class="btnCssClass"
       tabindex="0"
       :icon="btnIcon"
       :state="state"
       @focus="open"
       @blur="close"
-    >
-      {{ btnText }}
-    </btn> 
-    
-    <vs-menu v-if="$scopedSlots.default" :items="items">
-      <template  slot-scope="{item, index}" >
+    >{{ btnText }}</btn>
+
+    <vertical-menu v-if="$scopedSlots.default" :items="items">
+      <template slot-scope="{item, index}">
         <slot :item="item" :index="index" />
       </template>
-    </vs-menu>
-    <vs-menu v-else :items="items" />
+    </vertical-menu>
+    <vertical-menu v-else :items="items" />
   </div>
 </template>
 
 <script lang="ts">
 import vue from 'vue';
 import { Component, Prop, Emit } from 'vue-property-decorator';
-import { Menu } from '../Menu';
+import { VerticalMenu } from '../VerticalMenu';
 import { BtnType, BtnState, BtnTypes } from '../Button';
 import { IconType, Navigation as IconNavigation } from '../Icon';
 
 @Component({
-  components: { 'vs-menu': Menu },
+  components: { VerticalMenu },
 })
-export default class extends vue {
+export default class DropdownMenu extends vue {
   @Prop({ type: [Object, Array], required: true })
   public items: IterableIterator<any>;
 
@@ -50,15 +49,11 @@ export default class extends vue {
   public state: BtnState;
 
   public get cssClass(): string[] {
-    return [
-      this.right ? 'dropdown-right' : '',
-    ];
+    return [this.right ? 'dropdown-right' : ''];
   }
 
   public get btnCssClass(): string[] {
-    return [
-      BtnTypes[this.btnType],
-    ];
+    return [BtnTypes[this.btnType]];
   }
 
   private open(): void {

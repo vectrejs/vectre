@@ -5,7 +5,6 @@
       <a v-else :href="item.path">{{item.text}}</a>
 
       <template v-if="Array.isArray(item.items) && level != 0">
-
         <vs-nav v-if="$scopedSlots.default" :items="item.items" :level="level - 1">
           <template slot-scope="{item, index}">
             <slot :item="item" :index="index" />
@@ -23,9 +22,9 @@ import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
 @Component({
-  name: 'vs-nav',
+  name: 'navigation',
 })
-export default class extends vue {
+export default class Navigation extends vue {
   @Prop({ type: Array, required: true })
   public items: any[];
 
@@ -33,9 +32,7 @@ export default class extends vue {
   public level: number | string;
 
   private itemCssClass({ active = false }): string[] {
-    return [
-      active ? 'active' : '',
-    ];
+    return [active ? 'active' : ''];
   }
 }
 </script>

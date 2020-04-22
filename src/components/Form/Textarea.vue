@@ -1,19 +1,19 @@
 <template>
-  <textarea 
-    v-on="listeners" 
+  <textarea
+    v-on="listeners"
     :placeholder="placeholder"
     :value="value"
-    :disabled="disabled" 
-    class="form-input" 
-    @input="onInput" 
-  >
-  </textarea>
+    :disabled="disabled"
+    class="form-input"
+    @input="onInput"
+  ></textarea>
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 
 export default Vue.extend({
+  name: 'Textarea',
   props: {
     value: String,
     disabled: Boolean,
@@ -28,7 +28,10 @@ export default Vue.extend({
   },
   computed: {
     placeholder(): string | undefined {
-      return this.$attrs.placeholder || this.$slots.default && this.$slots.default[0].text;
+      return (
+        this.$attrs.placeholder ||
+        (this.$slots.default && this.$slots.default[0].text)
+      );
     },
   },
   created() {

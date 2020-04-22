@@ -20,7 +20,7 @@ import { Icon, IconType } from '../Icon';
 @Component({
   components: { Icon },
 })
-export default class extends vue {
+export default class Button extends vue {
   @Prop(String)
   public type: Type;
 

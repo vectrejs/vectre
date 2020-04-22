@@ -9,7 +9,7 @@ import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class extends Vue {
+export default class MenuBadge extends Vue {
   @Prop([String, Number])
   public value: string | number;
 }

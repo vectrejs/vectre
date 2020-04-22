@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { VueConstructor } from 'vue';
-export default Vue.extend({});
+import Vue from 'vue';
+export default Vue.extend({
+  name: 'FormHorizontal',
+});
 </script>

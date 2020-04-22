@@ -16,7 +16,7 @@ import { Prop } from 'vue-property-decorator';
 import { ICrumb } from './Crumb';
 
 @Component
-export default class extends Vue {
+export default class Breadcrumb extends Vue {
   @Prop({ type: Array, required: true })
   public crumbs: ICrumb[] | any[];
 }

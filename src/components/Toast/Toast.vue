@@ -12,10 +12,10 @@
 <script lang="ts">
 import vue from 'vue';
 import { Component, Emit, Prop } from 'vue-property-decorator';
-import { IconType } from './Icon';
+import { IconType } from '../Icon';
 
 @Component
-export default class extends vue {
+export default class Toast extends vue {
   @Prop(String)
   public type: string;
 

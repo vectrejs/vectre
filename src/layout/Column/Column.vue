@@ -41,6 +41,12 @@ export default class extends Vue {
   @Prop({ type: [Number, String], validator: sizeValidator })
   public col: number;
 
+  @Prop({ type: [Number, String], validator: sizeValidator })
+  public hide: number;
+
+  @Prop({ type: [Number, String], validator: sizeValidator })
+  public show: number;
+
   public get cssClass(): string[] {
     return [
       this.mr ? 'col-mr-auto' : '',
@@ -52,6 +58,8 @@ export default class extends Vue {
       this.lg ? `col-lg-${this.lg}` : '',
       this.xl ? `col-xl-${this.xl}` : '',
       this.col ? `col-${this.col}` : '',
+      this.hide ? `hide-${this.hide}` : '',
+      this.show ? `show-${this.show}` : '',
     ];
   }
 }

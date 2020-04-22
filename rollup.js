@@ -5,7 +5,7 @@ const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const repalce = require('rollup-plugin-replace');
 const typescript = require('rollup-plugin-typescript2');
-const { default: vue } = require('rollup-plugin-vue');
+const vue = require('rollup-plugin-vue');
 const { terser } = require('rollup-plugin-terser');
 const { rollup, watch } = require('rollup');
 const { resolve } = require('path');
@@ -16,76 +16,126 @@ const source = resolve(__dirname, 'src/');
 const dest = resolve(__dirname, 'dist/');
 
 const package = require('./package.json');
-const allDeps = Object.keys({ ...package.devDependencies, ...package.dependencies });
-const requiredDeps = ['vue-class-component', 'vue-tsx-helper', 'vue-property-decorator']
-const external = allDeps.filter((dep) => !requiredDeps.includes(dep));
+const allDeps = Object.keys({
+  ...package.devDependencies,
+  ...package.dependencies,
+});
+const requiredDeps = [
+  'vue-class-component',
+  'vue-tsx-helper',
+  'vue-property-decorator',
+  '@vue/babel-helper-vue-jsx-merge-props',
+];
 
-const input = {
-  external,
-  input: resolve(source, 'main.ts'),
+const browserInput = {
+  input: resolve(source, 'plugin.ts'),
+  external: allDeps.filter(dep => !requiredDeps.includes(dep)),
   plugins: [
-    vue({ css: true }),
-    typescript({ useTsconfigDeclarationDir: false }),
+    vue(),
+    typescript({
+      verbosity: 1,
+      clean: false,
+      objectHashIgnoreUnknownHack: true,
+      tsconfigOverride: { compilerOptions: { declaration: false } },
+    }),
     nodeResolve(),
     commonjs(),
     babel({
       runtimeHelpers: true,
       exclude: 'node_modules/**',
-      extensions: ['.js', '.jsx', '.tsx', '.ts']
+      extensions: ['.js', '.jsx', '.tsx', '.ts'],
     }),
   ],
 };
 
 if (process.env.NODE_ENV === 'production') {
-  input.plugins.push(
+  browserInput.plugins.unshift(
     repalce({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   );
 }
 
-const outs = [
+const browserOut = {
+  globals: { vue: 'Vue' },
+  format: 'umd',
+  name: 'Vectre',
+  file: resolve(dest, 'vectre.js'),
+  exports: 'default',
+};
+
+const moduleInput = {
+  input: resolve(source, 'main.ts'),
+  external: allDeps,
+  plugins: [
+    vue(),
+    typescript({
+      verbosity: 1,
+      clean: false,
+      objectHashIgnoreUnknownHack: true,
+      useTsconfigDeclarationDir: true,
+    }),
+    nodeResolve(),
+    commonjs(),
+    babel({
+      runtimeHelpers: true,
+      exclude: 'node_modules/**',
+      extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    }),
+  ],
+};
+
+const moduleOuts = [
   {
-    file: 'vectre.esm.js',
+    file: resolve(dest, 'vectre.esm.js'),
     format: 'esm',
   },
   {
-    file: 'vectre.cjs.js',
+    file: resolve(dest, 'vectre.cjs.js'),
     format: 'cjs',
   },
-  {
-    globals: { vue: 'Vue' },
-    format: 'umd',
-    name: 'vectre',
-    file: 'vectre.js',
-  }
 ];
 
-async function build() {
-  const minInput = { ...input, plugins: [...input.plugins, terser()] };
+async function buildBrowser() {
+  const browserBundle = await rollup(browserInput);
+  const minBrowserBundle = await rollup({
+    ...browserInput,
+    plugins: [...browserInput.plugins, terser()],
+  });
 
-  const bundle = await rollup(input);
-  const minBundle = await rollup(minInput);
+  await browserBundle.write(browserOut);
+  await minBrowserBundle.write({
+    ...browserOut,
+    file: browserOut.file.replace('.js', '.min.js'),
+  });
+}
 
-  for (const out of outs) {
-    await bundle.write({ ...out, file: resolve(dest, out.file) });
-    await minBundle.write({ ...out, file: resolve(dest, out.file.replace('.js', '.min.js')) });
+async function buildModules() {
+  const moduleBundle = await rollup(moduleInput);
+  for (const out of moduleOuts) {
+    await moduleBundle.write(out);
   }
 }
 
+async function build() {
+  buildModules();
+  buildBrowser();
+}
+
 function rebuildOnChanges() {
+  browserInput.plugins.unshift(
+    repalce({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+  );
+
   const watcher = watch({
-    ...input,
-    output: {
-      globals: { vue: 'Vue' },
-      format: 'umd',
-      name: 'vectre',
-      file: resolve(dest, 'vectre.js'),
-    },
+    ...browserInput,
+    output: browserOut,
     watch: {
       inclued: 'src/**',
       chokidar: true,
-    }
+    },
   });
 
   watcher.on('event', ({ code, error }) => {
@@ -106,7 +156,7 @@ function rebuildOnChanges() {
 if (argv.watch) {
   rebuildOnChanges();
 } else {
-  build().catch((err) => {
+  build().catch(err => {
     console.error(err);
     process.exitCode = 1;
   });

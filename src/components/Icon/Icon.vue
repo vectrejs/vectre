@@ -18,14 +18,14 @@ export default class Icon extends vue {
 
   public get cssStyle(): object {
     return {
-      'font-size': Sizes[this.size as any] || this.size,
+      'font-size': Sizes[this.size as Size] || this.size,
     };
   }
 
   public get cssClass(): string[] {
     return [
-      Sizes[this.size as any] || this.size,
-      Icons[this.type as any] || this.type,
+      Sizes[this.size as Size] || this.size,
+      Icons[this.type as Type] || this.type,
     ];
   }
 }

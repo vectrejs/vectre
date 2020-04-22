@@ -6,6 +6,7 @@ import { IconContainer, IconSide } from './IconContainer';
 import { Loading } from './Loading';
 
 export const Component = vue.extend({
+  name: 'FormInput',
   props: {
     value: [String, Number],
     error: Boolean,

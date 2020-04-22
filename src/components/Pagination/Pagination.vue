@@ -22,7 +22,7 @@ import Pager from './Pager.vue';
 @Component({
   components: { SimplePager, Pager },
 })
-export default class extends vue {
+export default class Pagination extends vue {
   @Prop({ type: [Number, Array], required: true })
   public pages: number | string[];
 

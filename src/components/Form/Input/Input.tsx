@@ -5,7 +5,7 @@ import { Size, Sizes } from './Size';
 
 type fn = (...args: any[]) => void;
 
-interface InptProps {
+interface IInptProps {
   value?: string | number;
   attrs: { [name: string]: string };
   on: Record<string, fn | fn[]>;
@@ -15,7 +15,7 @@ interface InptProps {
 }
 
 @Component
-export class Input extends VueComponent<InptProps> {
+export class Input extends VueComponent<IInptProps> {
   @Prop({
     type: String,
     validator: size => Object.keys(Sizes).includes(size),
@@ -45,12 +45,15 @@ export class Input extends VueComponent<InptProps> {
       Sizes[this.size],
     ];
 
-    return (<input
-      class={cssClass}
-      {...{
-        domProps: { value: this.value },
-        on: this.on,
-        attrs: this.attrs,
-      }} />);
+    return (
+      <input
+        class={cssClass}
+        {...{
+          domProps: { value: this.value },
+          on: this.on,
+          attrs: this.attrs,
+        }}
+      />
+    );
   }
 }
