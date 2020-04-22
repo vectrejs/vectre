@@ -1,0 +1,39 @@
+import { VNode, CreateElement } from 'vue';
+import { VueComponent } from 'vue-tsx-helper';
+import { Size } from './Size';
+import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
+interface IProps extends SelectHTMLAttributes {
+    options?: {
+        [label: string]: string;
+    } | string[];
+    multiple?: boolean;
+    placeholder?: string;
+    value?: string | string[];
+    scale?: Size;
+    error?: boolean;
+    success?: boolean;
+    disabled?: boolean;
+}
+export interface INormalizedOption {
+    label: string;
+    value: any;
+}
+export declare class Select extends VueComponent<IProps> {
+    options: {
+        [label: string]: any;
+    } | string[];
+    value: string | string[];
+    multiple: boolean;
+    placeholder: string;
+    scale: Size;
+    error: boolean;
+    success: boolean;
+    disabled: boolean;
+    mounted(): void;
+    render(h: CreateElement): VNode;
+    private get listeners();
+    private onInput;
+    private isSelected;
+    private normalizeOptions;
+}
+export {};
