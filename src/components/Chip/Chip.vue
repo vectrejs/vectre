@@ -6,7 +6,7 @@
       :size="small ? avatarSizes.sm : undefined"
       :initials="initials"
     />
-    {{text}}
+    {{ text }}
     <a
       v-if="showClose()"
       @click="close"
@@ -19,8 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Prop, Emit } from 'vue-property-decorator';
+import { Component, Prop, Emit } from 'vue-property-decorator';
 import { Avatar, AvatarSizes } from '../Avatar';
 
 @Component({

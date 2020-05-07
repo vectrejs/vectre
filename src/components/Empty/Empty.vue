@@ -1,14 +1,13 @@
 <template>
   <div class="empty">
-  
     <div v-if="icon" class="empty-icon">
       <icon :type="icon" :size="iconSizes.x3" />
     </div>
 
-    <p v-if="title" class="empty-title h5">{{title}}</p>
-  
-    <p v-if="sub" class="empty-subtitle">{{sub}}</p>
-  
+    <p v-if="title" class="empty-title h5">{{ title }}</p>
+
+    <p v-if="sub" class="empty-subtitle">{{ sub }}</p>
+
     <div v-if="$slots.default" class="empty-content">
       <slot />
     </div>
@@ -21,9 +20,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component, Prop } from 'vue-property-decorator';
 import { Icon, IconSizes, IconType } from '../Icon';
-import { Prop } from 'vue-property-decorator';
 
 @Component({
   components: { Icon },

@@ -6,8 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 
 const sizeValidator = (size: number) =>
   size % 1 === 0 && size > 0 && size <= 12;

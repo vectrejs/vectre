@@ -6,8 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import { Grids, Grid } from './Grid';
 
 @Component
@@ -16,9 +15,7 @@ export default class extends Vue {
   public grid: Grid;
 
   get cssClass(): string[] {
-    return [
-      Grids[this.grid],
-    ];
+    return [Grids[this.grid]];
   }
 }
 </script>

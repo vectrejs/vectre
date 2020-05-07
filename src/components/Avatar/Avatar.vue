@@ -13,8 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import { Size, Sizes } from './Size';
 import { Presence, Presences } from './Presence';
 
@@ -62,4 +61,3 @@ figure.avatar + figure.avatar {
   margin-left: 0.4rem;
 }
 </style>
-

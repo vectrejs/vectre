@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const repalce = require('rollup-plugin-replace');
+const { babel } = require('@rollup/plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const replace = require('@rollup/plugin-replace');
 const typescript = require('rollup-plugin-typescript2');
 const vue = require('rollup-plugin-vue');
 const { terser } = require('rollup-plugin-terser');
+
 const { rollup, watch } = require('rollup');
 const { resolve } = require('path');
 
@@ -21,7 +22,7 @@ const allDeps = Object.keys({
   ...package.dependencies,
 });
 const requiredDeps = [
-  'vue-class-component',
+  'core-js',
   'vue-tsx-helper',
   'vue-property-decorator',
   '@vue/babel-helper-vue-jsx-merge-props',
@@ -31,6 +32,8 @@ const browserInput = {
   input: resolve(source, 'plugin.ts'),
   external: allDeps.filter(dep => !requiredDeps.includes(dep)),
   plugins: [
+    nodeResolve(),
+    commonjs(),
     vue(),
     typescript({
       verbosity: 1,
@@ -38,31 +41,55 @@ const browserInput = {
       objectHashIgnoreUnknownHack: true,
       tsconfigOverride: { compilerOptions: { declaration: false } },
     }),
-    nodeResolve(),
-    commonjs(),
     babel({
-      runtimeHelpers: true,
+      babelrc: false,
+      babelHelpers: 'runtime',
       exclude: 'node_modules/**',
-      extensions: ['.js', '.jsx', '.tsx', '.ts'],
+      extensions: ['.js', '.jsx', '.tsx', '.ts', '.vue'],
+      presets: [
+        "@vue/app",
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+            useBuiltIns: 'usage',
+            corejs: { version: '3.6' },
+            targets: {
+              ie: '10',
+            },
+          },
+        ],
+      ],
+      plugins: ["transform-vue-jsx"],
     }),
   ],
 };
 
 if (process.env.NODE_ENV === 'production') {
   browserInput.plugins.unshift(
-    repalce({
+    replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   );
 }
 
-const browserOut = {
-  globals: { vue: 'Vue' },
-  format: 'umd',
-  name: 'Vectre',
-  file: resolve(dest, 'vectre.js'),
-  exports: 'default',
-};
+const browserOuts = [
+  {
+    globals: { vue: 'Vue' },
+    format: 'umd',
+    name: 'Vectre',
+    file: resolve(dest, 'vectre.js'),
+    exports: 'default',
+  },
+  {
+    globals: { vue: 'Vue' },
+    format: 'umd',
+    name: 'Vectre',
+    file: resolve(dest, 'vectre.min.js'),
+    exports: 'default',
+    plugins: [terser()]
+  },
+];
 
 const moduleInput = {
   input: resolve(source, 'main.ts'),
@@ -78,7 +105,7 @@ const moduleInput = {
     nodeResolve(),
     commonjs(),
     babel({
-      runtimeHelpers: true,
+      babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.tsx', '.ts'],
     }),
@@ -98,23 +125,12 @@ const moduleOuts = [
 
 async function buildBrowser() {
   const browserBundle = await rollup(browserInput);
-  const minBrowserBundle = await rollup({
-    ...browserInput,
-    plugins: [...browserInput.plugins, terser()],
-  });
-
-  await browserBundle.write(browserOut);
-  await minBrowserBundle.write({
-    ...browserOut,
-    file: browserOut.file.replace('.js', '.min.js'),
-  });
+  browserOuts.map(out => browserBundle.write(out));
 }
 
 async function buildModules() {
   const moduleBundle = await rollup(moduleInput);
-  for (const out of moduleOuts) {
-    await moduleBundle.write(out);
-  }
+  moduleOuts.map(out => moduleBundle.write(out));
 }
 
 async function build() {
@@ -124,14 +140,14 @@ async function build() {
 
 function rebuildOnChanges() {
   browserInput.plugins.unshift(
-    repalce({
+    replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   );
 
   const watcher = watch({
     ...browserInput,
-    output: browserOut,
+    output: browserOuts,
     watch: {
       inclued: 'src/**',
       chokidar: true,
