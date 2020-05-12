@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { babel } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const nodeResolve = require('@rollup/plugin-node-resolve');
@@ -21,12 +23,7 @@ const allDeps = Object.keys({
   ...package.devDependencies,
   ...package.dependencies,
 });
-const requiredDeps = [
-  'core-js',
-  'vue-tsx-helper',
-  'vue-property-decorator',
-  '@vue/babel-helper-vue-jsx-merge-props',
-];
+const requiredDeps = ['core-js', 'vue-tsx-helper', 'vue-property-decorator', '@vue/babel-helper-vue-jsx-merge-props'];
 
 const browserInput = {
   input: resolve(source, 'plugin.ts'),
@@ -47,7 +44,7 @@ const browserInput = {
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.tsx', '.ts', '.vue'],
       presets: [
-        "@vue/app",
+        '@vue/app',
         [
           '@babel/preset-env',
           {
@@ -60,7 +57,7 @@ const browserInput = {
           },
         ],
       ],
-      plugins: ["transform-vue-jsx"],
+      plugins: ['transform-vue-jsx'],
     }),
   ],
 };
@@ -87,7 +84,7 @@ const browserOuts = [
     name: 'Vectre',
     file: resolve(dest, 'vectre.min.js'),
     exports: 'default',
-    plugins: [terser()]
+    plugins: [terser()],
   },
 ];
 
@@ -102,7 +99,6 @@ const moduleInput = {
       objectHashIgnoreUnknownHack: true,
       useTsconfigDeclarationDir: true,
     }),
-    nodeResolve(),
     commonjs(),
     babel({
       babelHelpers: 'runtime',

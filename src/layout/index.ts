@@ -1,10 +1,6 @@
 import { Column } from './Column';
 import { Columns } from './Columns';
-import {
-  Container,
-  Grid as ContainerGrid,
-  Grids as ContainerGrids,
-} from './Container';
+import { Container, Grid as ContainerGrid, Grids as ContainerGrids } from './Container';
 
 export default {
   Container,
@@ -17,7 +13,7 @@ export {
   Container,
   Columns,
   Column,
-
   // Container
   ContainerGrid,
+  ContainerGrids,
 };

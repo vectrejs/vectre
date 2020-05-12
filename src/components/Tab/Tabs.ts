@@ -69,9 +69,7 @@ export const Tabs = vue.extend({
     const { default: children = [] } = this.$slots;
 
     tabs = children
-      .filter((child: VNode) =>
-        child.componentOptions !== undefined && child.componentOptions.tag!.includes('tab'),
-      )
+      .filter((child: VNode) => child.componentOptions !== undefined && child.componentOptions.tag!.includes('tab'))
       .map((tab: VNode, i) => {
         const key = tab.key || i + 1;
         const isActive = current === key;
@@ -80,12 +78,8 @@ export const Tabs = vue.extend({
       });
 
     const tabsActions = children
-      .filter((child: VNode) =>
-        child.tag !== undefined && child.tag.includes('tab-actions'),
-      )
-      .map((n: VNode, i) =>
-        h('span', { class: ['tab-item', 'tab-action'] }, n.children),
-      );
+      .filter((child: VNode) => child.tag !== undefined && child.tag.includes('tab-actions'))
+      .map((n: VNode, i) => h('span', { class: ['tab-item', 'tab-action'] }, n.children));
 
     return h('div', { class: cssClass }, [tabs, tabsActions]);
   },

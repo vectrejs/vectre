@@ -17,10 +17,7 @@ export default class extends Vue {
   public oneline: boolean;
 
   public get cssClass(): string[] {
-    return [
-      this.gapless ? 'col-gapless' : '',
-      this.oneline ? 'col-oneline' : '',
-    ];
+    return [this.gapless ? 'col-gapless' : '', this.oneline ? 'col-oneline' : ''];
   }
 }
 </script>

@@ -5690,15 +5690,13 @@ var __vue_staticRenderFns__$v = [];
     undefined
   );
 
-var Grids;
-
 (function (Grids) {
   Grids["xs"] = "grid-xs";
   Grids["sm"] = "grid-sm";
   Grids["md"] = "grid-md";
   Grids["lg"] = "grid-lg";
   Grids["xl"] = "grid-xl";
-})(Grids || (Grids = {}));
+})(exports.ContainerGrids || (exports.ContainerGrids = {}));
 
 var default_1$2 =
 /** @class */
@@ -5711,7 +5709,7 @@ function (_super) {
 
   Object.defineProperty(default_1.prototype, "cssClass", {
     get: function get() {
-      return [Grids[this.grid]];
+      return [exports.ContainerGrids[this.grid]];
     },
     enumerable: true,
     configurable: true
