@@ -1,0 +1,17 @@
+{
+  "eslint.options": {
+    "ext": [
+      ".ts",
+      ".tsx",
+      ".vue",
+      ".js"
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ]
+}
