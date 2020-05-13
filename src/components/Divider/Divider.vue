@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center" :class="{'divider': !vert, 'divider-vert': vert}" :data-content="dataContent"></div>
+  <div class="text-center" :class="{ divider: !vert, 'divider-vert': vert }" :data-content="dataContent"></div>
 </template>
 <script lang="ts">
 import Vue from 'vue';
@@ -18,4 +18,3 @@ export default class Divider extends Vue {
   }
 }
 </script>
-

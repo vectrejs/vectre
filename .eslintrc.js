@@ -19,6 +19,8 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    'getter-return': ['error', { allowImplicit: true }],
     'vue/html-indent': [
       'error',
       2,
@@ -30,6 +32,7 @@ module.exports = {
         ignores: [],
       },
     ],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: 'h' }],
   },
   ignorePatterns: ['dist/*.*', 'node_modules/**/*.*', 'types/**/*.*'],
 };

@@ -1,8 +1,5 @@
 <template>
-  <button 
-    class="btn" :class="cssClass"
-    v-on="$listeners"
-  >
+  <button class="btn" :class="cssClass" v-on="$listeners">
     <icon v-if="icon && left" class="left" :type="icon" />
     <slot v-if="!action" />
     <icon v-if="icon && !left" :type="icon" />
@@ -52,7 +49,7 @@ export default class Button extends vue {
     ];
   }
 
-  public created() {
+  public created(): void {
     if (this.action && !this.icon) {
       throw new Error('Action button should have icon');
     }

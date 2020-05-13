@@ -1,4 +1,3 @@
-export declare type Type = keyof typeof Types;
 export declare enum Types {
     primary = "btn-primary",
     link = "btn-link",
@@ -6,3 +5,4 @@ export declare enum Types {
     error = "btn-error",
     clear = "btn-clear"
 }
+export declare type Type = keyof typeof Types;

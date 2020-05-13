@@ -7,4 +7,4 @@ declare const _default: {
     Tooltip: import("vue").DirectiveFunction;
 };
 export default _default;
-export { Badge, Loading, Tooltip, TooltipSides, };
+export { Badge, Loading, Tooltip, TooltipSides };

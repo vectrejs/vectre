@@ -1,12 +1,14 @@
 <template>
-  <div class="tile" :class="{'tile-centered': compact}">
+  <div class="tile" :class="{ 'tile-centered': compact }">
     <div class="tile-icon">
       <slot v-if="$slots.icon" />
       <avatar v-else-if="avatar || initials" :src="avatar" :initials="initials" :size="avatarSize" />
       <icon v-else-if="icon" :size="iconSize" :type="icon" />
     </div>
     <div class="tile-content">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <p v-if="title" class="tile-title" v-html="title" />
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <p v-if="subtitle" class="tile-subtitle text-gray" v-html="subtitle" />
       <p v-if="$slots.default"><slot /></p>
     </div>
@@ -56,4 +58,3 @@ export default class Tile extends vue {
   width: 2rem;
 }
 </style>
-

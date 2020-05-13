@@ -1,14 +1,9 @@
 <template>
   <ul class="menu">
     <template v-for="(value, key) in items">
-      <li
-        v-if="value.divider"
-        :key="key"
-        :data-content="normalizeDivider(value.divider)"
-        class="divider"
-      />
+      <li v-if="value.divider" :key="key" :data-content="normalizeDivider(value.divider)" class="divider" />
 
-      <li v-else class="menu-item" :key="key">
+      <li v-else :key="key" class="menu-item">
         <badge v-if="value.badge" :value="value.badge" />
 
         <slot v-if="$scopedSlots.default" :item="value" :index="key" />

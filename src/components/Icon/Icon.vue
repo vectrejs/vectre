@@ -23,10 +23,7 @@ export default class Icon extends vue {
   }
 
   public get cssClass(): string[] {
-    return [
-      Sizes[this.size as Size] || this.size,
-      Icons[this.type as Type] || this.type,
-    ];
+    return [Sizes[this.size as Size] || this.size, Icons[this.type as Type] || this.type];
   }
 }
 </script>

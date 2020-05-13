@@ -3,7 +3,7 @@ import { Prop, Component } from 'vue-property-decorator';
 import { Size, Sizes } from './Size';
 import { VNode, CreateElement } from 'vue';
 
-export interface IRadioProps {
+export interface RadioProps {
   checked?: boolean;
   disabled?: boolean;
   error?: boolean;
@@ -21,7 +21,7 @@ export interface IRadioProps {
     event: 'change',
   },
 })
-export class Radio extends VueComponent<IRadioProps> {
+export class Radio extends VueComponent<RadioProps> {
   @Prop()
   public value: any;
 
@@ -52,7 +52,7 @@ export class Radio extends VueComponent<IRadioProps> {
   @Prop([String, Boolean, Object, Number, Array])
   protected model: any;
 
-  public onChecked(e: any): void {
+  public onChecked(): void {
     this.$emit('change', this._value);
   }
 
@@ -73,16 +73,16 @@ export class Radio extends VueComponent<IRadioProps> {
           name={this.name}
           onChange={this.onChecked}
         />
-        <i class="form-icon"></i> {this._label}
+        <i class="form-icon" /> {this._label}
       </label>
     );
   }
 
-  private get _label() {
+  private get _label(): string | VNode | any {
     return this.$slots.default || this.label || this._value;
   }
 
-  private get _value() {
+  private get _value(): any {
     return this.value || (this.$slots.default && this.$slots.default[0].text) || this.label;
   }
 }

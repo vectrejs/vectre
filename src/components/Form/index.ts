@@ -12,27 +12,10 @@ export {
   Types as FormCheckboxTypes,
 } from './Checkbox';
 
-export {
-  Input as FormInput,
-  InputSize as FormInputSize,
-  InputSizes as FormInputSizes,
-} from './Input';
+export { Input as FormInput, InputSize as FormInputSize, InputSizes as FormInputSizes } from './Input';
 
-export {
-  Label as FormLabel,
-  LabelSize as FormLabelSize,
-  LabelSizes as FormLabelSizes,
-} from './Label';
+export { Label as FormLabel, LabelSize as FormLabelSize, LabelSizes as FormLabelSizes } from './Label';
 
-export {
-  Group as FormRadioGroup,
-  Radio as FormRadio,
-  Size as FormRadioSize,
-  Sizes as FormRadioSizes,
-} from './Radio';
+export { Group as FormRadioGroup, Radio as FormRadio, Size as FormRadioSize, Sizes as FormRadioSizes } from './Radio';
 
-export {
-  Select as FormSelect,
-  Option as FormOption,
-  SelectSize as FormSelectSize,
-} from './Select';
+export { Select as FormSelect, Option as FormOption, SelectSize as FormSelectSize } from './Select';

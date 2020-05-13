@@ -1,7 +1,7 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Size } from './Size';
 import { VNode, CreateElement } from 'vue';
-export interface IRadioProps {
+export interface RadioProps {
     checked?: boolean;
     disabled?: boolean;
     error?: boolean;
@@ -12,7 +12,7 @@ export interface IRadioProps {
     value?: any;
     model?: any;
 }
-export declare class Radio extends VueComponent<IRadioProps> {
+export declare class Radio extends VueComponent<RadioProps> {
     value: any;
     label: string;
     name: string;
@@ -22,7 +22,7 @@ export declare class Radio extends VueComponent<IRadioProps> {
     size: Size;
     disabled: boolean;
     protected model: any;
-    onChecked(e: any): void;
+    onChecked(): void;
     render(h: CreateElement): VNode;
     private get _label();
     private get _value();

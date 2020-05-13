@@ -2,7 +2,7 @@ import { VNode, CreateElement } from 'vue';
 import { VueComponent } from 'vue-tsx-helper';
 import { Size } from './Size';
 import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
-interface IProps extends SelectHTMLAttributes {
+interface Props extends SelectHTMLAttributes {
     options?: {
         [label: string]: string;
     } | string[];
@@ -14,11 +14,11 @@ interface IProps extends SelectHTMLAttributes {
     success?: boolean;
     disabled?: boolean;
 }
-export interface INormalizedOption {
+export interface NormalizedOption {
     label: string;
     value: any;
 }
-export declare class Select extends VueComponent<IProps> {
+export declare class Select extends VueComponent<Props> {
     options: {
         [label: string]: any;
     } | string[];

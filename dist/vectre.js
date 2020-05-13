@@ -1498,7 +1498,7 @@
 
 	var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-05d8bc2e_0", {
+	  inject("data-v-7b0fef51_0", {
 	    source: "figure.avatar+figure.avatar{margin-left:.4rem}",
 	    map: undefined,
 	    media: undefined
@@ -2500,7 +2500,8 @@
 	    event.preventDefault();
 
 	    if (!this.multiple) {
-	      return this.$emit('check', key || index || 0);
+	      this.$emit('check', key || index || 0);
+	      return;
 	    }
 
 	    var checked = Array.isArray(this.checked) ? __spread(this.checked) : this.checked !== undefined ? [this.checked] : [];
@@ -3031,7 +3032,7 @@
 
 	var __vue_inject_styles__$6 = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-57a62aae_0", {
+	  inject("data-v-17febcca_0", {
 	    source: ".btn+.btn{margin-left:.4rem}.btn:not(.btn-action) .icon{margin:0 0 0 .2rem}.btn:not(.btn-action) .icon.left{margin:0 .2rem 0 0}",
 	    map: undefined,
 	    media: undefined
@@ -3257,7 +3258,7 @@
 	  return _c('div', {
 	    staticClass: "text-center",
 	    "class": {
-	      'divider': !_vm.vert,
+	      divider: !_vm.vert,
 	      'divider-vert': _vm.vert
 	    },
 	    attrs: {
@@ -3474,7 +3475,7 @@
 	  __decorate([Prop({
 	    type: [Object, Array],
 	    required: true
-	  }), __metadata("design:type", Object)], DropdownMenu.prototype, "items", void 0);
+	  }), __metadata("design:type", Array)], DropdownMenu.prototype, "items", void 0);
 
 	  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], DropdownMenu.prototype, "right", void 0);
 
@@ -3523,7 +3524,7 @@
 	      "focus": _vm.open,
 	      "blur": _vm.close
 	    }
-	  }, [_vm._v(_vm._s(_vm.btnText))]), _vm._v(" "), _vm.$scopedSlots["default"] ? _c('vertical-menu', {
+	  }, [_vm._v("\n    " + _vm._s(_vm.btnText) + "\n  ")]), _vm._v(" "), _vm.$scopedSlots["default"] ? _c('vertical-menu', {
 	    attrs: {
 	      "items": _vm.items
 	    },
@@ -3930,7 +3931,7 @@
 	  })], 2)]), _vm._v(" "), _c('div', {
 	    staticClass: "off-canvas-sidebar",
 	    "class": {
-	      'active': _vm.active
+	      active: _vm.active
 	    }
 	  }, [_vm._t("sidebar")], 2), _vm._v(" "), _c('a', {
 	    staticClass: "off-canvas-overlay",
@@ -4613,7 +4614,7 @@
 
 	var __vue_inject_styles__$j = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-2798e5fd_0", {
+	  inject("data-v-0733e93d_0", {
 	    source: ".page-item-num{min-width:1.4rem}@media (min-width:640px){.page-item-num{min-width:1.7rem}}.page-item a{cursor:pointer;user-select:none}",
 	    map: undefined,
 	    media: undefined
@@ -4778,6 +4779,7 @@
 	  props: {
 	    side: {
 	      type: String,
+	      "default": undefined,
 	      validator: function validator(side) {
 	        return Object.keys(Sides).includes(side);
 	      }
@@ -4868,12 +4870,12 @@
 	    var _this = this;
 
 	    var steps = (this.$slots["default"] || []).filter(function (n) {
-	      return n.componentOptions !== undefined && n.componentOptions.tag.includes('step');
+	      return n.componentOptions && n.componentOptions.tag && n.componentOptions.tag.includes('step');
 	    }).map(function (n, i) {
 	      return h(Step, {
-	        directives: n.data.directives,
+	        directives: n.data && n.data.directives,
 	        "class": [i + 1 === _this.$props.active ? 'active' : '']
-	      }, n.componentOptions.children);
+	      }, n.componentOptions && n.componentOptions.children);
 	    });
 	    return h('div', {
 	      "class": 'step'
@@ -4915,7 +4917,8 @@
 	  name: 'Tab',
 	  props: {
 	    badge: {
-	      type: [String, Number]
+	      type: [String, Number],
+	      "default": undefined
 	    }
 	  }
 	});
@@ -4948,7 +4951,7 @@
 
 	var __vue_inject_styles__$m = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-3d85d89c_0", {
+	  inject("data-v-0ab344d1_0", {
 	    source: ".tab .tab-item{cursor:pointer;user-select:none}",
 	    map: undefined,
 	    media: undefined
@@ -4971,22 +4974,26 @@
 	  staticRenderFns: __vue_staticRenderFns__$m
 	}, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, browser, undefined);
 
+	var updateCurrent = function updateCurrent(current, emit) {
+	  emit('update:current', current);
+	};
+
 	var createTab = function createTab(v, origin, key, isActive) {
 	  if (isActive === void 0) {
 	    isActive = false;
 	  }
 
 	  return v.$createElement(Tab, {
-	    props: origin.componentOptions.propsData,
+	    props: origin.componentOptions && origin.componentOptions.propsData,
 	    "class": {
 	      active: isActive
 	    },
 	    nativeOn: {
 	      click: function click() {
-	        return !isActive && updateCurrent(key, v.$emit.bind(v));
+	        !isActive && updateCurrent(key, v.$emit.bind(v));
 	      }
 	    }
-	  }, origin.componentOptions.children);
+	  }, origin.componentOptions && origin.componentOptions.children);
 	};
 
 	var createSimpleTab = function createSimpleTab(v, item, isActive) {
@@ -4996,14 +5003,12 @@
 	    },
 	    nativeOn: {
 	      click: function click() {
-	        return !isActive && updateCurrent(item, v.$emit.bind(v));
+	        if (!isActive) {
+	          updateCurrent(item, v.$emit.bind(v));
+	        }
 	      }
 	    }
 	  }, [item]);
-	};
-
-	var updateCurrent = function updateCurrent(current, emit) {
-	  emit('update:current', current);
 	};
 
 	var Tabs = Vue.extend({
@@ -5049,7 +5054,7 @@
 	    var _b = this.$slots["default"],
 	        children = _b === void 0 ? [] : _b;
 	    tabs = children.filter(function (child) {
-	      return child.componentOptions !== undefined && child.componentOptions.tag.includes('tab');
+	      return child.componentOptions && child.componentOptions.tag && child.componentOptions.tag.includes('tab');
 	    }).map(function (tab, i) {
 	      var key = tab.key || i + 1;
 	      var isActive = current === key;
@@ -5057,7 +5062,7 @@
 	    });
 	    var tabsActions = children.filter(function (child) {
 	      return child.tag !== undefined && child.tag.includes('tab-actions');
-	    }).map(function (n, i) {
+	    }).map(function (n) {
 	      return h('span', {
 	        "class": ['tab-item', 'tab-action']
 	      }, n.children);
@@ -5156,7 +5161,7 @@
 
 	var __vue_inject_styles__$n = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-103a03d4_0", {
+	  inject("data-v-edcad7d0_0", {
 	    source: ".tile .tile-icon .icon{display:flex;height:2rem;width:2rem}",
 	    map: undefined,
 	    media: undefined
@@ -5296,8 +5301,8 @@
 
 	var __vue_inject_styles__$o = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-72565cea_0", {
-	    source: ".fade-enter-active[data-v-72565cea],.fade-leave-active[data-v-72565cea]{transition:opacity .5s}.fade-enter[data-v-72565cea],.fade-leave-to[data-v-72565cea]{opacity:0}",
+	  inject("data-v-eb7518dc_0", {
+	    source: ".fade-enter-active[data-v-eb7518dc],.fade-leave-active[data-v-eb7518dc]{transition:opacity .5s}.fade-enter[data-v-eb7518dc],.fade-leave-to[data-v-eb7518dc]{opacity:0}",
 	    map: undefined,
 	    media: undefined
 	  });
@@ -5305,7 +5310,7 @@
 	/* scoped */
 
 
-	var __vue_scope_id__$o = "data-v-72565cea";
+	var __vue_scope_id__$o = "data-v-eb7518dc";
 	/* module identifier */
 
 	var __vue_module_identifier__$o = undefined;
@@ -5374,7 +5379,7 @@
 	      attrs: {
 	        "href": item.path
 	      }
-	    }, [_vm._v(_vm._s(item.text))]), _vm._v(" "), Array.isArray(item.items) && _vm.level != 0 ? [_vm.$scopedSlots["default"] ? _c('vs-nav', {
+	    }, [_vm._v(_vm._s(item.text))]), _vm._v(" "), Array.isArray(item.items) && _vm.level != 0 ? [_vm.$scopedSlots["default"] ? _c('navigation', {
 	      attrs: {
 	        "items": item.items,
 	        "level": _vm.level - 1
@@ -5382,15 +5387,15 @@
 	      scopedSlots: _vm._u([{
 	        key: "default",
 	        fn: function fn(ref) {
-	          var item = ref.item;
-	          var index = ref.index;
+	          var subitem = ref.item;
+	          var subindex = ref.index;
 	          return [_vm._t("default", null, {
-	            "item": item,
-	            "index": index
+	            "item": subitem,
+	            "index": subindex
 	          })];
 	        }
 	      }], null, true)
-	    }) : _c('vs-nav', {
+	    }) : _c('navigation', {
 	      attrs: {
 	        "items": item.items,
 	        "level": _vm.level - 1
@@ -5449,8 +5454,11 @@
 
 	    if (this.size) {
 	      (this.$slots["default"] || []).map(function (v) {
-	        // tslint:disable-next-line:max-line-length
-	        if (v.componentOptions && /^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag)) {
+	        if (v.componentOptions && /^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag || '')) {
+	          if (!v.componentOptions.propsData) {
+	            v.componentOptions.propsData = {};
+	          }
+
 	          v.componentOptions.propsData.size = v.componentOptions.propsData.size || _this.size;
 	        }
 	      });
@@ -5458,8 +5466,11 @@
 
 	    if (this.disabled !== undefined) {
 	      (this.$slots["default"] || []).map(function (v) {
-	        // tslint:disable-next-line:max-line-length
-	        if (v.componentOptions && /^.*form-(input|textarea|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag)) {
+	        if (v.componentOptions && /^.*form-(input|textarea|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag || '')) {
+	          if (!v.componentOptions.propsData) {
+	            v.componentOptions.propsData = {};
+	          }
+
 	          v.componentOptions.propsData.disabled = _this.disabled;
 	        }
 	      });
@@ -5521,7 +5532,7 @@
 
 	var __vue_inject_styles__$q = function __vue_inject_styles__(inject) {
 	  if (!inject) return;
-	  inject("data-v-0355522b_0", {
+	  inject("data-v-ebd537ce_0", {
 	    source: ".form-input-hint.error{display:none}.form-group.has-error .form-input-hint{display:none}.form-group.has-error .form-input-hint.error{display:initial}.form-group.has-success .form-input-hint.success{display:initial}",
 	    map: undefined,
 	    media: undefined
@@ -5589,19 +5600,19 @@
 	var script$6 = Vue.extend({
 	  name: 'Textarea',
 	  props: {
-	    value: String,
-	    disabled: Boolean
+	    value: {
+	      type: String,
+	      "default": undefined
+	    },
+	    disabled: {
+	      type: Boolean,
+	      "default": false
+	    }
 	  },
 	  data: function data() {
 	    return {
 	      listeners: {}
 	    };
-	  },
-	  methods: {
-	    onInput: function onInput(_a) {
-	      var value = _a.target.value;
-	      this.$emit('input', value);
-	    }
 	  },
 	  computed: {
 	    placeholder: function placeholder() {
@@ -5612,6 +5623,12 @@
 	    this.listeners = __assign(__assign({}, this.$listeners), {
 	      input: this.onInput
 	    });
+	  },
+	  methods: {
+	    onInput: function onInput(_a) {
+	      var value = _a.target.value;
+	      this.$emit('input', value);
+	    }
 	  }
 	});
 
@@ -5763,7 +5780,8 @@
 	    var checked = _a.target.checked;
 
 	    if (this.model === undefined || !Array.isArray(this.model)) {
-	      return this.$emit('input', checked ? this.value : false);
+	      this.$emit('input', checked ? this.value : false);
+	      return;
 	    }
 
 	    if (checked) {
@@ -5911,7 +5929,15 @@
 	        var componentOptions = _a.componentOptions;
 	        return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-checkbox');
 	      }).map(function (option) {
-	        var props = option.componentOptions.propsData || {};
+	        if (!option.componentOptions) {
+	          option.componentOptions = {};
+	        }
+
+	        if (!option.componentOptions.propsData) {
+	          option.componentOptions.propsData = {};
+	        }
+
+	        var props = option.componentOptions.propsData;
 	        props.model = _this.value;
 	        props.inline = _this.inline || props.inline;
 	        props.type = _this.type || props.type;
@@ -6189,6 +6215,7 @@
 	  props: {
 	    size: {
 	      type: String,
+	      "default": undefined,
 	      validator: function validator(v) {
 	        return !v || Object.keys(LabelSizes).includes(v);
 	      }
@@ -6255,7 +6282,7 @@
 	    return _super !== null && _super.apply(this, arguments) || this;
 	  }
 
-	  Radio.prototype.onChecked = function (e) {
+	  Radio.prototype.onChecked = function () {
 	    this.$emit('change', this._value);
 	  };
 
@@ -6367,6 +6394,10 @@
 	        var componentOptions = _a.componentOptions;
 	        return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-radio');
 	      }).map(function (option) {
+	        if (!option.componentOptions) {
+	          option.componentOptions = {};
+	        }
+
 	        var props = option.componentOptions.propsData || {};
 	        props.name = name;
 	        props.size = props.size !== undefined ? props.size : _this.size;
@@ -6548,8 +6579,19 @@
 	        var componentOptions = _a.componentOptions;
 	        return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-option');
 	      }).map(function (option) {
-	        var props = option.componentOptions.propsData;
-	        var value = props.value || option.componentOptions.children[0].text;
+	        if (!option.componentOptions) {
+	          option.componentOptions = {
+	            children: []
+	          };
+	        }
+
+	        if (!option.componentOptions.propsData) {
+	          option.componentOptions.propsData = {};
+	        }
+
+	        var props = option.componentOptions.propsData; // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
+	        var value = props.value || (option.componentOptions.children[0] || {}).text;
 	        props.selected = props.selected !== undefined ? props.selected : _this.isSelected(props.label, value);
 	        return option;
 	      });
@@ -6598,8 +6640,7 @@
 	    } else {
 	      this.$emit('input', selectedOptions[0].value);
 	    }
-	  }; // tslint:disable-next-line:max-line-length
-
+	  };
 
 	  Select.prototype.isSelected = function (label, value, current) {
 	    var _this = this;

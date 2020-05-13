@@ -15,7 +15,7 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import { Size, Sizes } from './Size';
-import { Presence, Presences } from './Presence';
+import { Presence } from './Presence';
 
 @Component
 export default class Avatar extends Vue {
@@ -43,14 +43,14 @@ export default class Avatar extends Vue {
   @Prop(String)
   public icon: string;
 
-  public get cssStyle() {
+  public get cssStyle(): { [key: string]: string | undefined } {
     return {
       color: this.color,
       background: this.background,
     };
   }
 
-  public get cssClass() {
+  public get cssClass(): string[] {
     return [Sizes[this.size] || this.size];
   }
 }

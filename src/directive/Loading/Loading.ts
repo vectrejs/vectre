@@ -17,9 +17,7 @@ export const Loading: DirectiveFunction = (el: HTMLElement, { value = true, modi
 
   if (value instanceof Promise) {
     add(el, cssClasses);
-    value.then(() =>
-      remove(el, cssClasses),
-    );
+    value.then(() => remove(el, cssClasses));
 
     return;
   }

@@ -3,36 +3,41 @@ import Tab from './Tab.vue';
 
 type EmitFunction = (event: string, ...args: any[]) => {};
 
-// tslint:disable-next-line:max-line-length
-const createTab = (v: vue, origin: VNode, key: number | string, isActive = false) => {
+const updateCurrent = (current: string | number, emit: EmitFunction): void => {
+  emit('update:current', current);
+};
+
+const createTab = (v: vue, origin: VNode, key: number | string, isActive = false): VNode => {
   return v.$createElement(
     Tab,
     {
-      props: origin.componentOptions!.propsData,
+      props: origin.componentOptions && origin.componentOptions.propsData,
       class: { active: isActive },
       nativeOn: {
-        click: () => !isActive && updateCurrent(key, v.$emit.bind(v)),
+        click: (): void => {
+          !isActive && updateCurrent(key, v.$emit.bind(v));
+        },
       },
     },
-    origin.componentOptions!.children,
+    origin.componentOptions && origin.componentOptions.children,
   );
 };
 
-const createSimpleTab = (v: vue, item: string, isActive: boolean) => {
+const createSimpleTab = (v: vue, item: string, isActive: boolean): VNode => {
   return v.$createElement(
     Tab,
     {
       class: { active: isActive },
       nativeOn: {
-        click: () => !isActive && updateCurrent(item, v.$emit.bind(v)),
+        click: (): void => {
+          if (!isActive) {
+            updateCurrent(item, v.$emit.bind(v));
+          }
+        },
       },
     },
     [item],
   );
-};
-
-const updateCurrent = (current: string | number, emit: EmitFunction) => {
-  emit('update:current', current);
 };
 
 export const Tabs = vue.extend({
@@ -69,7 +74,10 @@ export const Tabs = vue.extend({
     const { default: children = [] } = this.$slots;
 
     tabs = children
-      .filter((child: VNode) => child.componentOptions !== undefined && child.componentOptions.tag!.includes('tab'))
+      .filter(
+        (child: VNode) =>
+          child.componentOptions && child.componentOptions.tag && child.componentOptions.tag.includes('tab'),
+      )
       .map((tab: VNode, i) => {
         const key = tab.key || i + 1;
         const isActive = current === key;
@@ -79,7 +87,7 @@ export const Tabs = vue.extend({
 
     const tabsActions = children
       .filter((child: VNode) => child.tag !== undefined && child.tag.includes('tab-actions'))
-      .map((n: VNode, i) => h('span', { class: ['tab-item', 'tab-action'] }, n.children));
+      .map((n: VNode) => h('span', { class: ['tab-item', 'tab-action'] }, n.children));
 
     return h('div', { class: cssClass }, [tabs, tabsActions]);
   },

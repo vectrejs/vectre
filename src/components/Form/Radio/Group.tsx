@@ -1,15 +1,15 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
-import { Radio, IRadioProps } from './Radio';
-import { VNode, CreateElement } from 'vue';
+import { Radio, RadioProps } from './Radio';
+import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { Size } from './Size';
 
-interface INormalizedOption {
+interface NormalizedOption {
   label: string;
   value: any;
 }
 
-export interface IRadioGroup {
+export interface RadioGroup {
   disabled?: boolean;
   error?: boolean;
   inline?: boolean;
@@ -20,7 +20,7 @@ export interface IRadioGroup {
 }
 
 @Component
-export class Group extends VueComponent<IRadioGroup> {
+export class Group extends VueComponent<RadioGroup> {
   @Prop()
   public options: any[] | { [label: string]: any };
 
@@ -47,10 +47,9 @@ export class Group extends VueComponent<IRadioGroup> {
     let group;
 
     if (this.options) {
-      group = this
-        .normalizeOptions(this.options)
-        .map(({ label, value }) => {
-          return <Radio
+      group = this.normalizeOptions(this.options).map(({ label, value }) => {
+        return (
+          <Radio
             name={name}
             label={label}
             value={value}
@@ -60,18 +59,20 @@ export class Group extends VueComponent<IRadioGroup> {
             size={this.size}
             disabled={this.disabled}
             model={this.value}
-          />;
-        });
+          />
+        );
+      });
     } else {
       group = (this.$slots.default || [])
         .filter(({ componentOptions }) => {
-          return componentOptions
-            && componentOptions.tag
-            && componentOptions.tag.includes('form-radio');
+          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-radio');
         })
         .map((option: VNode) => {
-          const props: IRadioProps = option.componentOptions!.propsData || {};
+          if (!option.componentOptions) {
+            option.componentOptions = {} as VNodeComponentOptions;
+          }
 
+          const props: RadioProps = option.componentOptions.propsData || {};
           props.name = name;
           props.size = props.size !== undefined ? props.size : this.size;
           props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
@@ -79,8 +80,8 @@ export class Group extends VueComponent<IRadioGroup> {
           props.inline = this.inline || props.inline;
           props.model = this.value;
 
-          option.componentOptions!.listeners = {
-            ...option.componentOptions!.listeners,
+          option.componentOptions.listeners = {
+            ...option.componentOptions.listeners,
             change: this.update,
           };
 
@@ -91,15 +92,15 @@ export class Group extends VueComponent<IRadioGroup> {
     return <div>{group}</div>;
   }
 
-  private update(value: any) {
+  private update(value: any): void {
     this.$emit('input', value);
   }
 
-  private get uid() {
+  private get uid(): string {
     return 'radio-group-' + Math.round(Math.random() * 1000);
   }
 
-  private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {
+  private normalizeOptions(options: { [label: string]: any } | string[]): NormalizedOption[] {
     if (Array.isArray(options)) {
       return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
     }

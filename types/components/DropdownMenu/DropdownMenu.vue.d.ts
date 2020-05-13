@@ -2,7 +2,7 @@ import vue from 'vue';
 import { BtnType, BtnState } from '../Button';
 import { IconType } from '../Icon';
 export default class DropdownMenu extends vue {
-    items: IterableIterator<any>;
+    items: [];
     right: boolean;
     btnType: BtnType;
     btnText: string;

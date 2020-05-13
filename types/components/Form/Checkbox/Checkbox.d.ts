@@ -2,7 +2,7 @@ import { VueComponent } from 'vue-tsx-helper';
 import { Type } from './Type';
 import { Size } from './Size';
 import { CreateElement, VNode } from 'vue';
-export interface ICheckboxProps {
+export interface CheckboxProps {
     checked?: boolean;
     disabled?: boolean;
     inline?: boolean;
@@ -13,7 +13,7 @@ export interface ICheckboxProps {
     size?: Size;
     error?: boolean;
 }
-export default class Checkbox extends VueComponent<ICheckboxProps> {
+export default class Checkbox extends VueComponent<CheckboxProps> {
     label: string | number;
     checked: boolean;
     value: any;
@@ -24,6 +24,6 @@ export default class Checkbox extends VueComponent<ICheckboxProps> {
     error: boolean;
     protected model: any;
     render(h: CreateElement): VNode;
-    onChange({ target: { checked } }: any): this | undefined;
+    onChange({ target: { checked } }: any): void;
     private get _checked();
 }

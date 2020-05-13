@@ -8,10 +8,12 @@
       :state="state"
       @focus="open"
       @blur="close"
-    >{{ btnText }}</btn>
+    >
+      {{ btnText }}
+    </btn>
 
     <vertical-menu v-if="$scopedSlots.default" :items="items">
-      <template slot-scope="{item, index}">
+      <template slot-scope="{ item, index }">
         <slot :item="item" :index="index" />
       </template>
     </vertical-menu>
@@ -21,7 +23,7 @@
 
 <script lang="ts">
 import vue from 'vue';
-import { Component, Prop, Emit } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import { VerticalMenu } from '../VerticalMenu';
 import { BtnType, BtnState, BtnTypes } from '../Button';
 import { IconType, Navigation as IconNavigation } from '../Icon';
@@ -31,7 +33,7 @@ import { IconType, Navigation as IconNavigation } from '../Icon';
 })
 export default class DropdownMenu extends vue {
   @Prop({ type: [Object, Array], required: true })
-  public items: IterableIterator<any>;
+  public items: [];
 
   @Prop(Boolean)
   public right: boolean;

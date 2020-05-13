@@ -1,10 +1,4 @@
-import {
-  Avatar,
-  AvatarSize,
-  AvatarSizes,
-  AvatarPresence,
-  AvatarPresences,
-} from './Avatar';
+import { Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences } from './Avatar';
 import { Accordion } from './Accordion';
 import { Card } from './Card';
 import { Bar } from './Bar';
@@ -43,14 +37,7 @@ import {
   FormRadio,
 } from './Form';
 
-export {
-  Accordion,
-  Avatar,
-  AvatarSize,
-  AvatarSizes,
-  AvatarPresence,
-  AvatarPresences,
-};
+export { Accordion, Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences };
 export { Bar } from './Bar';
 export { Breadcrumb } from './Breadcrumb';
 export { Chip } from './Chip';
@@ -67,22 +54,9 @@ export { Tile } from './Tile';
 export { Toast } from './Toast';
 export { Navigation } from './Navigation';
 
-export {
-  Btn,
-  BtnGroup,
-  BtnSize,
-  BtnSizes,
-  BtnState,
-  BtnStates,
-  BtnType,
-  BtnTypes,
-} from './Button';
+export { Btn, BtnGroup, BtnSize, BtnSizes, BtnState, BtnStates, BtnType, BtnTypes } from './Button';
 
-export {
-  Card,
-  CardImageSlot,
-  CardImageSlots,
-} from './Card';
+export { Card, CardImageSlot, CardImageSlots } from './Card';
 
 export {
   FormCheckbox,
@@ -97,12 +71,10 @@ export {
   FormOption,
   FormRadioGroup,
   FormRadio,
-
   FormCheckboxSizes,
   FormInputSizes,
   FormLabelSizes,
   FormSelectSize,
-
   FormCheckboxTypes,
 } from './Form';
 
@@ -116,23 +88,11 @@ export {
   IconType,
 } from './Icon';
 
-export {
-  Tag,
-  TagType,
-  TagTypes,
-} from './Tag';
+export { Tag, TagType, TagTypes } from './Tag';
 
-export {
-  Modal,
-  ModalSize,
-  ModalSizes,
-} from './Modal';
+export { Modal, ModalSize, ModalSizes } from './Modal';
 
-export {
-  Popover,
-  PopoverSide,
-  PopoverSides,
-} from './Popover';
+export { Popover, PopoverSide, PopoverSides } from './Popover';
 
 // Default is all components
 export default {

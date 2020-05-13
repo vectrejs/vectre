@@ -9,9 +9,4 @@ export default {
   Tooltip,
 };
 
-export {
-  Badge,
-  Loading,
-  Tooltip,
-  TooltipSides,
-};
+export { Badge, Loading, Tooltip, TooltipSides };

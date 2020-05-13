@@ -1,7 +1,7 @@
 import Vue, { CreateElement, VNode } from 'vue';
 import { Sides, Side } from './Side';
 
-const createPopoverContainer = (h: CreateElement, nodes: VNode[]) => {
+const createPopoverContainer = (h: CreateElement, nodes: VNode[]): VNode => {
   return h('div', { class: 'popover-container' }, nodes);
 };
 
@@ -10,7 +10,8 @@ export const Popover = Vue.extend({
   props: {
     side: {
       type: String,
-      validator: (side: string) => Object.keys(Sides).includes(side),
+      default: undefined,
+      validator: (side: string): boolean => Object.keys(Sides).includes(side),
     },
   },
   render(h: CreateElement): VNode {

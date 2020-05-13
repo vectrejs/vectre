@@ -1,11 +1,11 @@
 import { Component, Prop } from 'vue-property-decorator';
 import { VueComponent } from 'vue-tsx-helper';
-import { CreateElement } from 'vue';
+import { CreateElement, VNode } from 'vue';
 import { Size, Sizes } from './Size';
 
 type fn = (...args: any[]) => void;
 
-interface IInptProps {
+interface InuptProps {
   value?: string | number;
   attrs: { [name: string]: string };
   on: Record<string, fn | fn[]>;
@@ -15,7 +15,7 @@ interface IInptProps {
 }
 
 @Component
-export class Input extends VueComponent<IInptProps> {
+export class Input extends VueComponent<InuptProps> {
   @Prop({
     type: String,
     validator: size => Object.keys(Sizes).includes(size),
@@ -37,7 +37,7 @@ export class Input extends VueComponent<IInptProps> {
   @Prop(Boolean)
   public success: boolean;
 
-  public render(h: CreateElement) {
+  public render(h: CreateElement): VNode {
     const cssClass = [
       'form-input',
       this.error ? 'is-error' : false,

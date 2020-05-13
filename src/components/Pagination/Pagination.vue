@@ -1,16 +1,7 @@
 <template>
-  <pager v-if="!Array.isArray(pages)" 
-    :pages="pages" 
-    :current="current" 
-    :show="show"
-    @change="change" 
-  />
-  
-  <simple-pager v-else 
-    :pages="pages" 
-    :current="current" 
-    @change="change" 
-  />
+  <pager v-if="!Array.isArray(pages)" :pages="pages" :current="current" :show="show" @change="change" />
+
+  <simple-pager v-else :pages="pages" :current="current" @change="change" />
 </template>
 
 <script lang="ts">

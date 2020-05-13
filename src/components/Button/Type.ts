@@ -1,5 +1,3 @@
-export type Type = keyof typeof Types;
-
 export enum Types {
   primary = 'btn-primary',
   link = 'btn-link',
@@ -7,3 +5,5 @@ export enum Types {
   error = 'btn-error',
   clear = 'btn-clear',
 }
+
+export type Type = keyof typeof Types;

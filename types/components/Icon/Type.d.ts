@@ -1,4 +1,3 @@
-declare type Type = keyof typeof Icons;
 declare enum Navigation {
     up = "icon-arrow-up",
     down = "icon-arrow-down",
@@ -83,4 +82,5 @@ declare const Icons: {
     hMore: Navigation.hMore;
     vMore: Navigation.vMore;
 };
-export { Type, Navigation, Action, Objects, Icons, };
+export declare type Type = keyof typeof Icons;
+export { Navigation, Action, Objects, Icons };

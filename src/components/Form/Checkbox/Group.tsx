@@ -1,16 +1,16 @@
 import { Prop, Component } from 'vue-property-decorator';
-import { default as Checkbox, ICheckboxProps } from './Checkbox';
+import { default as Checkbox, CheckboxProps } from './Checkbox';
 import { VueComponent } from 'vue-tsx-helper';
-import { VNode, CreateElement } from 'vue';
+import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { Type } from './Type';
 import { Size } from './Size';
 
-interface INormalizedOption {
+interface NormalizedOption {
   label: string;
   value: any;
 }
 
-interface ICheckboxGroup {
+interface CheckboxGroup {
   disabled?: boolean;
   inline?: boolean;
   options?: any[] | { [label: string]: any };
@@ -20,7 +20,7 @@ interface ICheckboxGroup {
 }
 
 @Component
-export class Group extends VueComponent<ICheckboxGroup> {
+export class Group extends VueComponent<CheckboxGroup> {
   @Prop([Array, Object])
   public options?: any[] | { [label: string]: any };
 
@@ -46,10 +46,9 @@ export class Group extends VueComponent<ICheckboxGroup> {
     let group;
 
     if (this.options) {
-      group = this
-        .normalizeOptions(this.options)
-        .map(({ label, value }) => {
-          return <Checkbox
+      group = this.normalizeOptions(this.options).map(({ label, value }) => {
+        return (
+          <Checkbox
             label={label}
             value={value}
             model={this.value}
@@ -59,17 +58,22 @@ export class Group extends VueComponent<ICheckboxGroup> {
             size={this.size}
             disabled={this.disabled}
             error={this.error}
-          />;
-        });
+          />
+        );
+      });
     } else {
       group = (this.$slots.default || [])
         .filter(({ componentOptions }) => {
-          return componentOptions
-            && componentOptions.tag
-            && componentOptions.tag.includes('form-checkbox');
+          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-checkbox');
         })
         .map((option: VNode) => {
-          const props: ICheckboxProps = option.componentOptions!.propsData || {};
+          if (!option.componentOptions) {
+            option.componentOptions = {} as VNodeComponentOptions;
+          }
+          if (!option.componentOptions.propsData) {
+            option.componentOptions.propsData = {};
+          }
+          const props: CheckboxProps = option.componentOptions.propsData;
           props.model = this.value;
           props.inline = this.inline || props.inline;
           props.type = this.type || props.type;
@@ -77,8 +81,8 @@ export class Group extends VueComponent<ICheckboxGroup> {
           props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
           props.error = props.error !== undefined ? props.error : this.error;
 
-          option.componentOptions!.listeners = {
-            ...option.componentOptions!.listeners,
+          option.componentOptions.listeners = {
+            ...option.componentOptions.listeners,
             input: this.update,
           };
 
@@ -89,11 +93,11 @@ export class Group extends VueComponent<ICheckboxGroup> {
     return <div>{group}</div>;
   }
 
-  private update(value: any) {
+  private update(value: any): void {
     this.$emit('input', value);
   }
 
-  private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {
+  private normalizeOptions(options: { [label: string]: any } | string[]): NormalizedOption[] {
     if (Array.isArray(options)) {
       return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
     }

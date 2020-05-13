@@ -1,13 +1,13 @@
 <template>
   <div class="accordion-container">
-    <div class="accordion" v-for="(value, key, index) of items" :key="index || key || 0">
+    <div v-for="(value, key, index) of items" :key="index || key || 0" class="accordion">
       <input
         :id="uid(index || key || 0)"
         :name="id"
         :type="type"
         :checked="isSelected(key, index)"
-        @click="check($event, key, index)"
         hidden
+        @click="check($event, key, index)"
       />
 
       <label class="accordion-header c-hand" :for="uid(index || key || 0)">
@@ -19,6 +19,7 @@
       <div class="accordion-body">
         <slot v-if="$scopedSlots['body']" name="body" :item="value" :index="key || index || 0"></slot>
         <slot v-if="!$scopedSlots['body']" :item="value" :index="key || index || 0"></slot>
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <span v-if="!$scopedSlots['body'] && !$slots.default" v-html="value" />
       </div>
     </div>
@@ -61,10 +62,7 @@ export default class Accordion extends Vue {
 
   private isSelected(key: string, index: number): boolean {
     if (!Array.isArray(this.checked)) {
-      return (
-        !!this.checked &&
-        (this.checked === key || this.checked.toString() === index.toString())
-      );
+      return !!this.checked && (this.checked === key || this.checked.toString() === index.toString());
     }
 
     if ((this.checked as number[]).indexOf(index) !== -1) {
@@ -78,20 +76,17 @@ export default class Accordion extends Vue {
     return false;
   }
 
-  private check(event: Event, key: string, index: number) {
+  private check(event: Event, key: string, index: number): void {
     if (!this.$listeners.check) return;
 
     event.preventDefault();
 
     if (!this.multiple) {
-      return this.$emit('check', key || index || 0);
+      this.$emit('check', key || index || 0);
+      return;
     }
 
-    let checked = Array.isArray(this.checked)
-      ? [...this.checked]
-      : this.checked !== undefined
-      ? [this.checked]
-      : [];
+    let checked = Array.isArray(this.checked) ? [...this.checked] : this.checked !== undefined ? [this.checked] : [];
 
     if ((event.target as HTMLInputElement).checked) {
       checked.push(key || index || 0);
@@ -103,9 +98,7 @@ export default class Accordion extends Vue {
   }
 
   private get id(): string {
-    return this.name
-      ? this.name
-      : 'accordion-' + Math.round(Math.random() * 1000);
+    return this.name ? this.name : 'accordion-' + Math.round(Math.random() * 1000);
   }
 }
 </script>

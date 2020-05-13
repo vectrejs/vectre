@@ -2,19 +2,18 @@ import { VueComponent } from 'vue-tsx-helper';
 import { Prop, Component } from 'vue-property-decorator';
 import { VNode, CreateElement } from 'vue';
 
-type IconSides = keyof typeof IconSide;
-
 export enum IconSide {
   left = 'has-icon-left',
   right = 'has-icon-right',
 }
+type IconSides = keyof typeof IconSide;
 
-interface IProps {
+interface Props {
   side: IconSides;
 }
 
 @Component
-export class IconContainer extends VueComponent<IProps> {
+export class IconContainer extends VueComponent<Props> {
   @Prop({
     type: String,
     validator: side => Object.keys(IconSide).includes(side),

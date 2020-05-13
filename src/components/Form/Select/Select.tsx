@@ -1,18 +1,18 @@
-import { VNode, CreateElement } from 'vue';
+import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
-import { Option, IOptionProps } from './Option';
+import { Option, OptionProps } from './Option';
 import { VueComponent } from 'vue-tsx-helper';
 import { Size, Sizes } from './Size';
 import { SelectHTMLAttributes } from 'vue-tsx-helper/lib/dom';
 
-interface IInputEvent {
+interface InputEvent {
   target: {
-    value: string,
-    selectedOptions: HTMLCollectionOf<HTMLOptionElement>,
+    value: string;
+    selectedOptions: HTMLCollectionOf<HTMLOptionElement>;
   };
 }
 
-interface IProps extends SelectHTMLAttributes {
+interface Props extends SelectHTMLAttributes {
   options?: { [label: string]: string } | string[];
   multiple?: boolean;
   placeholder?: string;
@@ -23,13 +23,13 @@ interface IProps extends SelectHTMLAttributes {
   disabled?: boolean;
 }
 
-export interface INormalizedOption {
+export interface NormalizedOption {
   label: string;
   value: any;
 }
 
 @Component
-export class Select extends VueComponent<IProps> {
+export class Select extends VueComponent<Props> {
   @Prop([Array, Object])
   public options: { [label: string]: any } | string[];
 
@@ -57,7 +57,7 @@ export class Select extends VueComponent<IProps> {
   @Prop(Boolean)
   public disabled: boolean;
 
-  public mounted() {
+  public mounted(): void {
     if (!this.options && !this.$slots.default) {
       throw new TypeError('Component could not be created without options');
     }
@@ -67,62 +67,54 @@ export class Select extends VueComponent<IProps> {
     let options: VNode[] = [];
 
     if (this.options) {
-      options = this
-        .normalizeOptions(this.options)
-        .map(({ label, value }: INormalizedOption) => {
-          return <Option
-            selected={this.isSelected(label, value)}
-            label={label}
-            value={value}
-          />;
-        });
+      options = this.normalizeOptions(this.options).map(({ label, value }: NormalizedOption) => {
+        return <Option selected={this.isSelected(label, value)} label={label} value={value} />;
+      });
     } else {
       options = (this.$slots.default || [])
         .filter(({ componentOptions }) => {
-          return componentOptions
-            && componentOptions.tag
-            && componentOptions.tag.includes('form-option');
+          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-option');
         })
         .map((option: VNode) => {
-          const props = option.componentOptions!.propsData as IOptionProps;
-          const value = props.value || (option.componentOptions!.children![0] as VNode).text;
+          if (!option.componentOptions) {
+            option.componentOptions = { children: [] as VNode[] } as VNodeComponentOptions;
+          }
+          if (!option.componentOptions.propsData) {
+            option.componentOptions.propsData = {};
+          }
 
-          props.selected = props.selected !== undefined
-            ? props.selected
-            : this.isSelected(props.label, value);
+          const props = option.componentOptions.propsData as OptionProps;
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          const value = props.value || (option.componentOptions.children![0] || {}).text;
+
+          props.selected = props.selected !== undefined ? props.selected : this.isSelected(props.label, value);
 
           return option;
         });
     }
 
     if (this.placeholder && !this.multiple) {
-      options.unshift(<Option value="" disabled selected>{this.placeholder}</Option>);
+      options.unshift(
+        <Option value="" disabled selected>
+          {this.placeholder}
+        </Option>,
+      );
     }
 
-    const cssClass = [
-      'form-select',
-      Sizes[this.scale],
-      this.error ? 'is-error' : '',
-      this.success ? 'is-success' : '',
-    ];
+    const cssClass = ['form-select', Sizes[this.scale], this.error ? 'is-error' : '', this.success ? 'is-success' : ''];
 
     return (
-      <select
-        class={cssClass}
-        multiple={this.multiple}
-        disabled={this.disabled}
-        {...{ on: this.listeners }}
-      >
+      <select class={cssClass} multiple={this.multiple} disabled={this.disabled} {...{ on: this.listeners }}>
         {options}
-      </select >
+      </select>
     );
   }
 
-  private get listeners() {
+  private get listeners(): object {
     return { ...this.$listeners, change: this.onInput };
   }
 
-  private onInput({ target: { selectedOptions } }: IInputEvent): void {
+  private onInput({ target: { selectedOptions } }: InputEvent): void {
     if (this.multiple) {
       const selected = [...selectedOptions].map((option: HTMLOptionElement) => {
         return option.value || option.innerHTML;
@@ -133,17 +125,22 @@ export class Select extends VueComponent<IProps> {
     }
   }
 
-  // tslint:disable-next-line:max-line-length
-  private isSelected(label: string | number | undefined, value: string | number | undefined, current = this.value): boolean {
+  private isSelected(
+    label: string | number | undefined,
+    value: string | number | undefined,
+    current = this.value,
+  ): boolean {
     if (current instanceof Array) {
       return current.some((v: string) => this.isSelected(label, value, v));
     }
 
-    return (label !== undefined && current.toString() === label.toString())
-      || (value !== undefined && current.toString() === value.toString());
+    return (
+      (label !== undefined && current.toString() === label.toString()) ||
+      (value !== undefined && current.toString() === value.toString())
+    );
   }
 
-  private normalizeOptions(options: { [label: string]: any } | string[]): INormalizedOption[] {
+  private normalizeOptions(options: { [label: string]: any } | string[]): NormalizedOption[] {
     if (Array.isArray(options)) {
       return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
     }

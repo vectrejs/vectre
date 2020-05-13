@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/vectrejs/vectre#readme",
   "scripts": {
-    "prebuilds": "npm run lint && rm -rf dist/* && rm -rf types/*",
+    "prebuild": "npm run lint && rm -rf dist/* && rm -rf types/*",
     "build": "NODE_ENV=production ./rollup.js",
     "lint": "eslint --ext .ts,.tsx,.vue,.js src/**",
     "lint:fix": "npm run lint -- --fix",

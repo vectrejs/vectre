@@ -8,8 +8,7 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
-const sizeValidator = (size: number) =>
-  size % 1 === 0 && size > 0 && size <= 12;
+const sizeValidator = (size: number): boolean => size % 1 === 0 && size > 0 && size <= 12;
 
 @Component
 export default class extends Vue {

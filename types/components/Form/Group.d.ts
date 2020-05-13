@@ -1,10 +1,10 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { VNode, CreateElement } from 'vue';
-interface IGroupProps {
+interface GroupProps {
     size?: 'lg' | 'sm';
     disabled?: boolean;
 }
-export declare class Group extends VueComponent<IGroupProps> {
+export declare class Group extends VueComponent<GroupProps> {
     size: 'lg' | 'sm';
     disabled: boolean;
     error: boolean;

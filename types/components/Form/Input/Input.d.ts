@@ -1,8 +1,8 @@
 import { VueComponent } from 'vue-tsx-helper';
-import { CreateElement } from 'vue';
+import { CreateElement, VNode } from 'vue';
 import { Size, Sizes } from './Size';
 declare type fn = (...args: any[]) => void;
-interface IInptProps {
+interface InuptProps {
     value?: string | number;
     attrs: {
         [name: string]: string;
@@ -12,7 +12,7 @@ interface IInptProps {
     size?: Sizes;
     success?: boolean;
 }
-export declare class Input extends VueComponent<IInptProps> {
+export declare class Input extends VueComponent<InuptProps> {
     size: Size;
     attrs: {
         [name: string]: string;
@@ -21,6 +21,6 @@ export declare class Input extends VueComponent<IInptProps> {
     on: Record<string, fn | fn[]>;
     error: boolean;
     success: boolean;
-    render(h: CreateElement): JSX.Element;
+    render(h: CreateElement): VNode;
 }
 export {};

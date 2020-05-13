@@ -13,13 +13,13 @@ export const Steps = vue.extend({
   render(h: CreateElement): VNode {
     const steps = (this.$slots.default || [])
       .filter((n: VNode) => {
-        return n.componentOptions !== undefined && n.componentOptions.tag!.includes('step');
+        return n.componentOptions && n.componentOptions.tag && n.componentOptions.tag.includes('step');
       })
       .map((n: VNode, i: number) => {
         return h(
           Step,
-          { directives: n.data!.directives, class: [i + 1 === this.$props.active ? 'active' : ''] },
-          n.componentOptions!.children,
+          { directives: n.data && n.data.directives, class: [i + 1 === this.$props.active ? 'active' : ''] },
+          n.componentOptions && n.componentOptions.children,
         );
       });
 

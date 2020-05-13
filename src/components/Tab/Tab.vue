@@ -14,6 +14,7 @@ export default Vue.extend({
   props: {
     badge: {
       type: [String, Number],
+      default: undefined,
     },
   },
 });

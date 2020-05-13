@@ -1,25 +1,14 @@
 <template>
   <span class="chip" :class="cssClass">
-    <avatar
-      v-if="avatar || initials"
-      :src="avatar"
-      :size="small ? avatarSizes.sm : undefined"
-      :initials="initials"
-    />
+    <avatar v-if="avatar || initials" :src="avatar" :size="small ? avatarSizes.sm : undefined" :initials="initials" />
     {{ text }}
-    <a
-      v-if="showClose()"
-      @click="close"
-      class="btn btn-clear"
-      aria-label="Close"
-      role="button"
-    />
+    <a v-if="showClose()" class="btn btn-clear" aria-label="Close" role="button" @click="close" />
   </span>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop, Emit } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import { Avatar, AvatarSizes } from '../Avatar';
 
 @Component({

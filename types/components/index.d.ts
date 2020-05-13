@@ -1,7 +1,7 @@
 import { Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences } from './Avatar';
 import { Accordion } from './Accordion';
 import { FormCheckbox, FormCheckboxGroup, FormGroup, FormSelect, FormOption, FormRadioGroup, FormRadio } from './Form';
-export { Accordion, Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences, };
+export { Accordion, Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences };
 export { Bar } from './Bar';
 export { Breadcrumb } from './Breadcrumb';
 export { Chip } from './Chip';
@@ -17,13 +17,13 @@ export { Tabs, Tab } from './Tab';
 export { Tile } from './Tile';
 export { Toast } from './Toast';
 export { Navigation } from './Navigation';
-export { Btn, BtnGroup, BtnSize, BtnSizes, BtnState, BtnStates, BtnType, BtnTypes, } from './Button';
-export { Card, CardImageSlot, CardImageSlots, } from './Card';
+export { Btn, BtnGroup, BtnSize, BtnSizes, BtnState, BtnStates, BtnType, BtnTypes } from './Button';
+export { Card, CardImageSlot, CardImageSlots } from './Card';
 export { FormCheckbox, FormCheckboxGroup, FormInput, FormGroup, FormLabel, FormHint, FormHorizontal, FormSelect, FormTextarea, FormOption, FormRadioGroup, FormRadio, FormCheckboxSizes, FormInputSizes, FormLabelSizes, FormSelectSize, FormCheckboxTypes, } from './Form';
 export { Action as IconAction, Icon, Navigation as IconNavigation, Objects as IconObject, Icons, IconSize, IconType, } from './Icon';
-export { Tag, TagType, TagTypes, } from './Tag';
-export { Modal, ModalSize, ModalSizes, } from './Modal';
-export { Popover, PopoverSide, PopoverSides, } from './Popover';
+export { Tag, TagType, TagTypes } from './Tag';
+export { Modal, ModalSize, ModalSizes } from './Modal';
+export { Popover, PopoverSide, PopoverSides } from './Popover';
 declare const _default: {
     Avatar: import("vue").VueConstructor<Avatar>;
     Accordion: import("vue").VueConstructor<Avatar>;

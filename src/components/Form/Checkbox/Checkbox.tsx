@@ -4,7 +4,7 @@ import { Type, Types } from './Type';
 import { Size, Sizes } from './Size';
 import { CreateElement, VNode } from 'vue';
 
-export interface ICheckboxProps {
+export interface CheckboxProps {
   checked?: boolean;
   disabled?: boolean;
   inline?: boolean;
@@ -22,7 +22,7 @@ export interface ICheckboxProps {
     prop: 'model',
   },
 })
-export default class Checkbox extends VueComponent<ICheckboxProps> {
+export default class Checkbox extends VueComponent<CheckboxProps> {
   @Prop([String, Number])
   public label: string | number;
 
@@ -70,15 +70,16 @@ export default class Checkbox extends VueComponent<ICheckboxProps> {
           disabled={this.disabled}
           {...{ on: { ...this.$listeners, change: this.onChange } }}
         />
-        <i class="form-icon"></i>
+        <i class="form-icon" />
         {this.$slots.default || this.label || this.value}
       </label>
     );
   }
 
-  public onChange({ target: { checked } }: any) {
+  public onChange({ target: { checked } }: any): void {
     if (this.model === undefined || !Array.isArray(this.model)) {
-      return this.$emit('input', checked ? this.value : false);
+      this.$emit('input', checked ? this.value : false);
+      return;
     }
 
     if (checked) {

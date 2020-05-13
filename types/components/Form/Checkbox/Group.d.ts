@@ -2,7 +2,7 @@ import { VueComponent } from 'vue-tsx-helper';
 import { VNode, CreateElement } from 'vue';
 import { Type } from './Type';
 import { Size } from './Size';
-interface ICheckboxGroup {
+interface CheckboxGroup {
     disabled?: boolean;
     inline?: boolean;
     options?: any[] | {
@@ -12,7 +12,7 @@ interface ICheckboxGroup {
     type: Type;
     value?: any[];
 }
-export declare class Group extends VueComponent<ICheckboxGroup> {
+export declare class Group extends VueComponent<CheckboxGroup> {
     options?: any[] | {
         [label: string]: any;
     };

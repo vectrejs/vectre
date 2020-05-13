@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { ICrumb } from './Crumb';
+import { Crumb } from './Crumb';
 export default class Breadcrumb extends Vue {
-    crumbs: ICrumb[] | any[];
+    crumbs: Crumb[] | [];
 }

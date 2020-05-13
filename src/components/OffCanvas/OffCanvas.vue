@@ -7,7 +7,7 @@
       </a>
     </div>
 
-    <div class="off-canvas-sidebar" :class="{ 'active': active }">
+    <div class="off-canvas-sidebar" :class="{ active: active }">
       <slot name="sidebar"></slot>
     </div>
 
@@ -38,7 +38,7 @@ export default class OffCanvas extends vue {
   @Prop({ default: true, type: Boolean })
   public sidebarShow: boolean;
 
-  private active: boolean = false;
+  private active = false;
 
   public showSidebar(): void {
     this.active = true;

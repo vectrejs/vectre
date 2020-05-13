@@ -1,17 +1,17 @@
 <template>
   <ul class="nav">
-    <li class="nav-item" v-for="(item, index) in items" :key="index" :class="itemCssClass(item)">
+    <li v-for="(item, index) in items" :key="index" class="nav-item" :class="itemCssClass(item)">
       <slot v-if="$scopedSlots.default" :item="item" :index="index" />
-      <a v-else :href="item.path">{{item.text}}</a>
+      <a v-else :href="item.path">{{ item.text }}</a>
 
       <template v-if="Array.isArray(item.items) && level != 0">
-        <vs-nav v-if="$scopedSlots.default" :items="item.items" :level="level - 1">
-          <template slot-scope="{item, index}">
-            <slot :item="item" :index="index" />
+        <navigation v-if="$scopedSlots.default" :items="item.items" :level="level - 1">
+          <template slot-scope="{ item: subitem, index: subindex }">
+            <slot :item="subitem" :index="subindex" />
           </template>
-        </vs-nav>
+        </navigation>
 
-        <vs-nav v-else :items="item.items" :level="level - 1" />
+        <navigation v-else :items="item.items" :level="level - 1" />
       </template>
     </li>
   </ul>
@@ -36,4 +36,3 @@ export default class Navigation extends vue {
   }
 }
 </script>
-

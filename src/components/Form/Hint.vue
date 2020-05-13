@@ -1,5 +1,5 @@
 <template>
-  <div class="form-input-hint" :class="{error, success}">
+  <div class="form-input-hint" :class="{ error, success }">
     <slot />
   </div>
 </template>

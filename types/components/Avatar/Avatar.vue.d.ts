@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Size, Sizes } from './Size';
+import { Size } from './Size';
 import { Presence } from './Presence';
 export default class Avatar extends Vue {
     size: Size;
@@ -11,8 +11,7 @@ export default class Avatar extends Vue {
     presence: Presence;
     icon: string;
     get cssStyle(): {
-        color: string;
-        background: string;
+        [key: string]: string | undefined;
     };
-    get cssClass(): Sizes[];
+    get cssClass(): string[];
 }

@@ -1,8 +1,8 @@
 import { PluginFunction } from 'vue';
-export interface IPluginOptions {
+export interface PluginOptions {
     prefix?: string;
 }
-declare const _default: PluginFunction<IPluginOptions> & {
+declare const _default: PluginFunction<PluginOptions> & {
     components: {
         Avatar: import("vue").VueConstructor<import("vue").default>;
         Accordion: import("vue").VueConstructor<import("vue").default>;

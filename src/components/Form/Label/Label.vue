@@ -13,7 +13,8 @@ export default Vue.extend({
   props: {
     size: {
       type: String,
-      validator: (v: string) => !v || Object.keys(LabelSizes).includes(v),
+      default: undefined,
+      validator: (v: string): boolean => !v || Object.keys(LabelSizes).includes(v),
     },
   },
 

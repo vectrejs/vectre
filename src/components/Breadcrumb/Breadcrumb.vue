@@ -1,6 +1,6 @@
 <template>
   <ul class="breadcrumb">
-    <li class="breadcrumb-item" v-for="(crumb, key) in crumbs" :key="key">
+    <li v-for="(crumb, key) in crumbs" :key="key" class="breadcrumb-item">
       <slot :crumb="crumb" />
       <a v-if="!$scopedSlots['default']" :href="crumb.path">
         {{ crumb.title }}
@@ -13,11 +13,11 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
-import { ICrumb } from './Crumb';
+import { Crumb } from './Crumb';
 
 @Component
 export default class Breadcrumb extends Vue {
   @Prop({ type: Array, required: true })
-  public crumbs: ICrumb[] | any[];
+  public crumbs: Crumb[] | [];
 }
 </script>

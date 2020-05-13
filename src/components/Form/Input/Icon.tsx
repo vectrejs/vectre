@@ -3,12 +3,12 @@ import { Prop, Component } from 'vue-property-decorator';
 import { Icons, IconType } from '../../Icon';
 import { VNode, CreateElement } from 'vue';
 
-interface IIconProps {
+interface IconProps {
   icon: string;
 }
 
 @Component
-export class Icon extends VueComponent<IIconProps> {
+export class Icon extends VueComponent<IconProps> {
   @Prop()
   public icon: string;
 

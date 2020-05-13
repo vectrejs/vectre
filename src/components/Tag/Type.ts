@@ -1,5 +1,3 @@
-export type Type = keyof typeof Types;
-
 export enum Types {
   primary = 'label-primary',
   secondary = 'label-secondary',
@@ -7,3 +5,5 @@ export enum Types {
   warning = 'label-warning',
   error = 'label-error',
 }
+
+export type Type = keyof typeof Types;

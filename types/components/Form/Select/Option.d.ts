@@ -1,12 +1,12 @@
 import { VueComponent } from 'vue-tsx-helper';
 import { VNode, CreateElement } from 'vue';
-export interface IOptionProps {
+export interface OptionProps {
     value?: string;
     label?: string;
     disabled?: boolean;
     selected?: boolean;
 }
-export declare class Option extends VueComponent<IOptionProps> {
+export declare class Option extends VueComponent<OptionProps> {
     disabled: boolean;
     value: string | number;
     label: string | number;

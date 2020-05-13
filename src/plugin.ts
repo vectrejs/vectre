@@ -6,11 +6,11 @@ import directives from './directive';
 
 const allComponents: { [name: string]: any } = { ...components, ...layout };
 
-export interface IPluginOptions {
+export interface PluginOptions {
   prefix?: string;
 }
 
-const VectrePlugin: PluginFunction<IPluginOptions> = (vue, options = { prefix: '' }): void => {
+const VectrePlugin: PluginFunction<PluginOptions> = (vue, options = { prefix: '' }): void => {
   for (const component of Object.keys(allComponents)) {
     vue.component(addPrefix(component, options.prefix), allComponents[component]);
   }
