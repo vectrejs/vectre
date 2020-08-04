@@ -1,59 +1,38 @@
-import { Component, Prop } from 'vue-property-decorator';
-import { VueComponent } from 'vue-tsx-helper';
+import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 import { Size, Sizes } from './Size';
 
-type fn = (...args: any[]) => void;
+import { cachedAttrs, cachedListeners } from '../../../mixins/cache';
 
-interface InuptProps {
-  value?: string | number;
-  attrs: { [name: string]: string };
-  on: Record<string, fn | fn[]>;
-  error?: boolean;
-  size?: Sizes;
-  success?: boolean;
-}
+export const Input = tsx
+  .componentFactoryOf()
+  .mixin(cachedListeners)
+  .mixin(cachedAttrs)
+  .create({
+    name: 'Input',
+    props: {
+      size: { type: String as () => Size, validator: (size: Size): boolean => Object.keys(Sizes).includes(size) },
+      error: { type: Boolean },
+      success: { type: Boolean },
+      value: { type: [String, Number] },
+    },
+    render(h: CreateElement): VNode {
+      const cssClass = [
+        'form-input',
+        this.error ? 'is-error' : false,
+        this.success ? 'is-success' : false,
+        Sizes[this.size],
+      ];
 
-@Component
-export class Input extends VueComponent<InuptProps> {
-  @Prop({
-    type: String,
-    validator: size => Object.keys(Sizes).includes(size),
-  })
-  public size: Size;
-
-  @Prop()
-  public attrs: { [name: string]: string };
-
-  @Prop([String, Number])
-  public value: string | number;
-
-  @Prop()
-  public on: Record<string, fn | fn[]>;
-
-  @Prop(Boolean)
-  public error: boolean;
-
-  @Prop(Boolean)
-  public success: boolean;
-
-  public render(h: CreateElement): VNode {
-    const cssClass = [
-      'form-input',
-      this.error ? 'is-error' : false,
-      this.success ? 'is-success' : false,
-      Sizes[this.size],
-    ];
-
-    return (
-      <input
-        class={cssClass}
-        {...{
-          domProps: { value: this.value },
-          on: this.on,
-          attrs: this.attrs,
-        }}
-      />
-    );
-  }
-}
+      return (
+        <input
+          class={cssClass}
+          {...{
+            domProps: { value: this.value },
+            on: this.__listeners,
+            attrs: this.__attrs,
+          }}
+        />
+      );
+    },
+  });

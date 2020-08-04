@@ -1,2 +1,2 @@
-export { default as Label } from './Label.vue';
+export { Label } from './Label';
 export { LabelSize, LabelSizes } from './LabelSize';

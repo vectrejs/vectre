@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { IconType } from '../Icon';
 export default class Accordion extends Vue {
-    items: object[] | object;
+    items: Record<string, unknown>[] | Record<string, unknown>;
     checked: string | number | string[] | number[];
     name: string;
     multiple: boolean;

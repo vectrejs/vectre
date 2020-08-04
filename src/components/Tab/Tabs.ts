@@ -1,7 +1,7 @@
 import vue, { PropOptions, VNode, CreateElement } from 'vue';
 import Tab from './Tab.vue';
 
-type EmitFunction = (event: string, ...args: any[]) => {};
+type EmitFunction = (event: string, ...args: any[]) => vue;
 
 const updateCurrent = (current: string | number, emit: EmitFunction): void => {
   emit('update:current', current);

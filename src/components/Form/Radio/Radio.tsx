@@ -1,88 +1,65 @@
-import { VueComponent } from 'vue-tsx-helper';
-import { Prop, Component } from 'vue-property-decorator';
+import * as tsx from 'vue-tsx-support';
 import { Size, Sizes } from './Size';
 import { VNode, CreateElement } from 'vue';
+import { cachedListeners } from 'src/mixins/cache';
 
-export interface RadioProps {
-  checked?: boolean;
-  disabled?: boolean;
-  error?: boolean;
-  inline?: boolean;
-  label?: string;
-  name?: string;
-  size?: Size;
-  value?: any;
-  model?: any;
+export interface RadioEvents {
+  onChange: (value: any) => void;
 }
 
-@Component({
-  model: {
-    prop: 'model',
-    event: 'change',
-  },
-})
-export class Radio extends VueComponent<RadioProps> {
-  @Prop()
-  public value: any;
+export const Radio = tsx
+  .componentFactoryOf<RadioEvents>()
+  .mixin(cachedListeners)
+  .create({
+    name: 'FormRadio',
+    model: {
+      prop: 'model',
+      event: 'change',
+    },
+    props: {
+      checked: { type: Boolean },
+      disabled: { type: Boolean },
+      error: { type: Boolean },
+      inline: { type: Boolean },
+      label: { type: String },
+      name: { type: String },
+      size: { type: String as () => Size, validator: (size: Size): boolean => Object.keys(Sizes).includes(size) },
+      value: { type: undefined },
+      model: { type: undefined },
+    },
+    computed: {
+      _label(): string | VNode | any {
+        return this.$slots.default || this.label || this._value;
+      },
+      _value(): any {
+        return this.value || (this.$slots.default && this.$slots.default[0].text) || this.label;
+      },
+    },
+    methods: {
+      onChecked(): void {
+        this.$emit('change', this._value);
+      },
+    },
+    render(h: CreateElement): VNode {
+      const cssClass = [
+        'form-radio',
+        this.inline ? 'form-inline' : false,
+        this.error ? 'is-error' : false,
+        Sizes[this.size],
+      ];
 
-  @Prop(String)
-  public label: string;
-
-  @Prop(String)
-  public name: string;
-
-  @Prop(Boolean)
-  public checked?: boolean;
-
-  @Prop(Boolean)
-  public inline: boolean;
-
-  @Prop(Boolean)
-  public error: boolean;
-
-  @Prop({
-    type: String,
-    validator: size => Object.keys(Sizes).includes(size),
-  })
-  public size: Size;
-
-  @Prop(Boolean)
-  public disabled: boolean;
-
-  @Prop([String, Boolean, Object, Number, Array])
-  protected model: any;
-
-  public onChecked(): void {
-    this.$emit('change', this._value);
-  }
-
-  public render(h: CreateElement): VNode {
-    const cssClass = [
-      'form-radio',
-      this.inline ? 'form-inline' : false,
-      this.error ? 'is-error' : false,
-      Sizes[this.size],
-    ];
-
-    return (
-      <label class={cssClass}>
-        <input
-          type="radio"
-          checked={this.checked || this.model === this._value}
-          disabled={this.disabled}
-          name={this.name}
-          onChange={this.onChecked}
-        />
-        <i class="form-icon" /> {this._label}
-      </label>
-    );
-  }
-
-  private get _label(): string | VNode | any {
-    return this.$slots.default || this.label || this._value;
-  }
-
-  private get _value(): any {
-    return this.value || (this.$slots.default && this.$slots.default[0].text) || this.label;
-  }
-}
+      return (
+        <label class={cssClass}>
+          <input
+            type="radio"
+            checked={this.checked || this.model === this._value}
+            disabled={this.disabled}
+            name={this.name}
+            // onChange={this.onChecked}
+            {...{ on: { ...this.__listeners, change: this.onChecked } }}
+          />
+          <i class="form-icon" /> {this._label}
+        </label>
+      );
+    },
+  });

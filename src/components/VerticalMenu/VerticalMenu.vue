@@ -23,7 +23,7 @@ import Badge from './Badge.vue';
 })
 export default class VerticalMenu extends vue {
   @Prop({ type: [Array, Object], required: true })
-  public items: object[];
+  public items: Record<string, unknown>[];
 
   @Prop({ type: [String, Number], default: '' })
   public active: string | number;

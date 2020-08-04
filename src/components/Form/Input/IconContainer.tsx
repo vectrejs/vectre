@@ -1,4 +1,4 @@
-import { VueComponent } from 'vue-tsx-helper';
+import * as tsx from 'vue-tsx-support';
 import { Prop, Component } from 'vue-property-decorator';
 import { VNode, CreateElement } from 'vue';
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 @Component
-export class IconContainer extends VueComponent<Props> {
+export class IconContainer extends tsx.Component<Props> {
   @Prop({
     type: String,
     validator: side => Object.keys(IconSide).includes(side),

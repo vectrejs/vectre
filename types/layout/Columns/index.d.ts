@@ -1,1 +1,1 @@
-export { default as Columns } from './Columns.vue';
+export { Columns } from './Columns';

@@ -53,7 +53,7 @@ export default class Bar extends Vue {
     return [this.tooltip ? 'tooltip' : ''];
   }
 
-  public get cssStyle(): object {
+  public get cssStyle(): Record<string, string | boolean | number> {
     return {
       width: (this.value / this.max) * 100 + '%',
     };

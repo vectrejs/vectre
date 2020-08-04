@@ -2,7 +2,7 @@ import { PluginFunction } from 'vue';
 import { addPrefix } from './utils/prefix';
 import { default as components } from './components';
 import layout from './layout';
-import directives from './directive';
+import directives from './directives';
 
 const allComponents: { [name: string]: any } = { ...components, ...layout };
 

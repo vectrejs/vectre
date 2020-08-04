@@ -9,6 +9,8 @@ const replace = require('@rollup/plugin-replace');
 const typescript = require('rollup-plugin-typescript2');
 const vue = require('rollup-plugin-vue');
 const { terser } = require('rollup-plugin-terser');
+const postcss = require('rollup-plugin-postcss');
+const pureanno = require('rollup-plugin-pure-annotation');
 
 const { rollup, watch } = require('rollup');
 const { resolve } = require('path');
@@ -23,7 +25,7 @@ const allDeps = Object.keys({
   ...package.devDependencies,
   ...package.dependencies,
 });
-const requiredDeps = ['core-js', 'vue-tsx-helper', 'vue-property-decorator', '@vue/babel-helper-vue-jsx-merge-props'];
+const requiredDeps = ['core-js', 'vue-tsx-support', 'vue-property-decorator', '@vue/babel-helper-vue-jsx-merge-props'];
 
 const browserInput = {
   input: resolve(source, 'plugin.ts'),
@@ -31,6 +33,7 @@ const browserInput = {
   plugins: [
     nodeResolve(),
     commonjs(),
+    postcss({ extensions: ['css', 'scss'] }),
     vue(),
     typescript({
       verbosity: 1,
@@ -44,7 +47,40 @@ const browserInput = {
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.tsx', '.ts', '.vue'],
       presets: [
-        '@vue/app',
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+            useBuiltIns: false,
+            targets: '> 0.25%, not dead',
+          },
+        ],
+        '@vue/babel-preset-jsx',
+      ],
+    }),
+  ],
+};
+
+const browserLegacyInput = {
+  input: resolve(source, 'plugin.ts'),
+  external: allDeps.filter(dep => !requiredDeps.includes(dep)),
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    postcss({ extensions: ['css', 'scss'] }),
+    vue(),
+    typescript({
+      verbosity: 1,
+      clean: false,
+      objectHashIgnoreUnknownHack: true,
+      tsconfigOverride: { compilerOptions: { declaration: false } },
+    }),
+    babel({
+      babelrc: false,
+      babelHelpers: 'runtime',
+      exclude: 'node_modules/**',
+      extensions: ['.js', '.jsx', '.tsx', '.ts', '.vue'],
+      presets: [
         [
           '@babel/preset-env',
           {
@@ -56,14 +92,19 @@ const browserInput = {
             },
           },
         ],
+        '@vue/babel-preset-jsx',
       ],
-      plugins: ['transform-vue-jsx'],
     }),
   ],
 };
 
 if (process.env.NODE_ENV === 'production') {
   browserInput.plugins.unshift(
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+  );
+  browserLegacyInput.plugins.unshift(
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
@@ -88,10 +129,31 @@ const browserOuts = [
   },
 ];
 
+const browserLegacyOuts = [
+  {
+    globals: { vue: 'Vue' },
+    format: 'umd',
+    name: 'Vectre',
+    file: resolve(dest, 'vectre.legacy.js'),
+    exports: 'default',
+  },
+  {
+    globals: { vue: 'Vue' },
+    format: 'umd',
+    name: 'Vectre',
+    file: resolve(dest, 'vectre.legacy.min.js'),
+    exports: 'default',
+    plugins: [terser()],
+  },
+];
+
 const moduleInput = {
   input: resolve(source, 'main.ts'),
-  external: allDeps,
+  external: allDeps.filter(dep => !requiredDeps.includes(dep)),
   plugins: [
+    nodeResolve(),
+    commonjs(),
+    postcss({ extensions: ['css', 'scss'] }),
     vue(),
     typescript({
       verbosity: 1,
@@ -99,7 +161,9 @@ const moduleInput = {
       objectHashIgnoreUnknownHack: true,
       useTsconfigDeclarationDir: true,
     }),
-    commonjs(),
+    pureanno({
+      includes: ['**/*.js', '**/*.ts'],
+    }),
     babel({
       babelHelpers: 'runtime',
       exclude: 'node_modules/**',
@@ -122,6 +186,9 @@ const moduleOuts = [
 async function buildBrowser() {
   const browserBundle = await rollup(browserInput);
   browserOuts.map(out => browserBundle.write(out));
+
+  const browserLegacyBundle = await rollup(browserLegacyInput);
+  browserLegacyOuts.map(out => browserLegacyBundle.write(out));
 }
 
 async function buildModules() {
@@ -142,8 +209,8 @@ function rebuildOnChanges() {
   );
 
   const watcher = watch({
-    ...browserInput,
-    output: browserOuts,
+    ...moduleInput,
+    output: moduleOuts,
     watch: {
       inclued: 'src/**',
       chokidar: true,

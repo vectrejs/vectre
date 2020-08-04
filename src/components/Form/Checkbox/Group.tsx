@@ -1,9 +1,9 @@
 import { Prop, Component } from 'vue-property-decorator';
-import { default as Checkbox, CheckboxProps } from './Checkbox';
-import { VueComponent } from 'vue-tsx-helper';
+import { Checkbox } from './Checkbox';
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { Type } from './Type';
 import { Size } from './Size';
+import * as tsx from 'vue-tsx-support';
 
 interface NormalizedOption {
   label: string;
@@ -19,12 +19,14 @@ interface CheckboxGroup {
   value?: any[];
 }
 
-@Component
-export class Group extends VueComponent<CheckboxGroup> {
+@Component({
+  name: 'FormCheckboxGroup',
+})
+export class Group extends tsx.Component<CheckboxGroup> {
   @Prop([Array, Object])
   public options?: any[] | { [label: string]: any };
 
-  @Prop({ type: Array, default: () => [] })
+  @Prop({ type: Array, default: (): any[] => [] })
   public value: any[];
 
   @Prop(Boolean)
@@ -49,15 +51,15 @@ export class Group extends VueComponent<CheckboxGroup> {
       group = this.normalizeOptions(this.options).map(({ label, value }) => {
         return (
           <Checkbox
-            label={label}
             value={value}
-            model={this.value}
-            onInput={this.update}
+            label={label}
+            onChange={this.update}
             inline={this.inline}
             type={this.type}
             size={this.size}
             disabled={this.disabled}
             error={this.error}
+            {...{ props: { model: this.value } }}
           />
         );
       });
@@ -73,7 +75,7 @@ export class Group extends VueComponent<CheckboxGroup> {
           if (!option.componentOptions.propsData) {
             option.componentOptions.propsData = {};
           }
-          const props: CheckboxProps = option.componentOptions.propsData;
+          const props = option.componentOptions.propsData as InstanceType<typeof Checkbox>;
           props.model = this.value;
           props.inline = this.inline || props.inline;
           props.type = this.type || props.type;
@@ -83,7 +85,7 @@ export class Group extends VueComponent<CheckboxGroup> {
 
           option.componentOptions.listeners = {
             ...option.componentOptions.listeners,
-            input: this.update,
+            change: this.update,
           };
 
           return option;

@@ -8,5 +8,5 @@ export default class Bar extends Vue {
     get dataTooltip(): string | undefined;
     get barCssClass(): string[];
     get barItemCssClass(): string[];
-    get cssStyle(): object;
+    get cssStyle(): Record<string, string | boolean | number>;
 }

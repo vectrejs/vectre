@@ -1,12 +1,774 @@
 import Vue from 'vue';
-import { Prop, Component as Component$1, Emit } from 'vue-property-decorator';
-import { VueComponent } from 'vue-tsx-helper';
-import _mergeJSXProps from '@vue/babel-helper-vue-jsx-merge-props';
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _createSuper(Derived) {
+  return function () {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (_isNativeReflectConstruct()) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+/**
+  * vue-class-component v7.2.3
+  * (c) 2015-present Evan You
+  * @license MIT
+  */
+
+function _typeof$1(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof$1 = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof$1 = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof$1(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+// The rational behind the verbose Reflect-feature check below is the fact that there are polyfills
+// which add an implementation for Reflect.defineMetadata but not for Reflect.getOwnMetadataKeys.
+// Without this check consumers will encounter hard to track down runtime errors.
+function reflectionIsSupported() {
+  return typeof Reflect !== 'undefined' && Reflect.defineMetadata && Reflect.getOwnMetadataKeys;
+}
+function copyReflectionMetadata(to, from) {
+  forwardMetadata(to, from);
+  Object.getOwnPropertyNames(from.prototype).forEach(function (key) {
+    forwardMetadata(to.prototype, from.prototype, key);
+  });
+  Object.getOwnPropertyNames(from).forEach(function (key) {
+    forwardMetadata(to, from, key);
+  });
+}
+
+function forwardMetadata(to, from, propertyKey) {
+  var metaKeys = propertyKey ? Reflect.getOwnMetadataKeys(from, propertyKey) : Reflect.getOwnMetadataKeys(from);
+  metaKeys.forEach(function (metaKey) {
+    var metadata = propertyKey ? Reflect.getOwnMetadata(metaKey, from, propertyKey) : Reflect.getOwnMetadata(metaKey, from);
+
+    if (propertyKey) {
+      Reflect.defineMetadata(metaKey, metadata, to, propertyKey);
+    } else {
+      Reflect.defineMetadata(metaKey, metadata, to);
+    }
+  });
+}
+
+var fakeArray = {
+  __proto__: []
+};
+var hasProto = fakeArray instanceof Array;
+function createDecorator(factory) {
+  return function (target, key, index) {
+    var Ctor = typeof target === 'function' ? target : target.constructor;
+
+    if (!Ctor.__decorators__) {
+      Ctor.__decorators__ = [];
+    }
+
+    if (typeof index !== 'number') {
+      index = undefined;
+    }
+
+    Ctor.__decorators__.push(function (options) {
+      return factory(options, key, index);
+    });
+  };
+}
+function isPrimitive(value) {
+  var type = _typeof$1(value);
+
+  return value == null || type !== 'object' && type !== 'function';
+}
+function warn(message) {
+  if (typeof console !== 'undefined') {
+    console.warn('[vue-class-component] ' + message);
+  }
+}
+
+function collectDataFromConstructor(vm, Component) {
+  // override _init to prevent to init as Vue instance
+  var originalInit = Component.prototype._init;
+
+  Component.prototype._init = function () {
+    var _this = this;
+
+    // proxy to actual vm
+    var keys = Object.getOwnPropertyNames(vm); // 2.2.0 compat (props are no longer exposed as self properties)
+
+    if (vm.$options.props) {
+      for (var key in vm.$options.props) {
+        if (!vm.hasOwnProperty(key)) {
+          keys.push(key);
+        }
+      }
+    }
+
+    keys.forEach(function (key) {
+      if (key.charAt(0) !== '_') {
+        Object.defineProperty(_this, key, {
+          get: function get() {
+            return vm[key];
+          },
+          set: function set(value) {
+            vm[key] = value;
+          },
+          configurable: true
+        });
+      }
+    });
+  }; // should be acquired class property values
+
+
+  var data = new Component(); // restore original _init to avoid memory leak (#209)
+
+  Component.prototype._init = originalInit; // create plain data object
+
+  var plainData = {};
+  Object.keys(data).forEach(function (key) {
+    if (data[key] !== undefined) {
+      plainData[key] = data[key];
+    }
+  });
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(Component.prototype instanceof Vue) && Object.keys(plainData).length > 0) {
+      warn('Component class must inherit Vue or its descendant class ' + 'when class property is used.');
+    }
+  }
+
+  return plainData;
+}
+
+var $internalHooks = ['data', 'beforeCreate', 'created', 'beforeMount', 'mounted', 'beforeDestroy', 'destroyed', 'beforeUpdate', 'updated', 'activated', 'deactivated', 'render', 'errorCaptured', 'serverPrefetch' // 2.6
+];
+function componentFactory(Component) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  options.name = options.name || Component._componentTag || Component.name; // prototype props.
+
+  var proto = Component.prototype;
+  Object.getOwnPropertyNames(proto).forEach(function (key) {
+    if (key === 'constructor') {
+      return;
+    } // hooks
+
+
+    if ($internalHooks.indexOf(key) > -1) {
+      options[key] = proto[key];
+      return;
+    }
+
+    var descriptor = Object.getOwnPropertyDescriptor(proto, key);
+
+    if (descriptor.value !== void 0) {
+      // methods
+      if (typeof descriptor.value === 'function') {
+        (options.methods || (options.methods = {}))[key] = descriptor.value;
+      } else {
+        // typescript decorated data
+        (options.mixins || (options.mixins = [])).push({
+          data: function data() {
+            return _defineProperty({}, key, descriptor.value);
+          }
+        });
+      }
+    } else if (descriptor.get || descriptor.set) {
+      // computed properties
+      (options.computed || (options.computed = {}))[key] = {
+        get: descriptor.get,
+        set: descriptor.set
+      };
+    }
+  });
+  (options.mixins || (options.mixins = [])).push({
+    data: function data() {
+      return collectDataFromConstructor(this, Component);
+    }
+  }); // decorate options
+
+  var decorators = Component.__decorators__;
+
+  if (decorators) {
+    decorators.forEach(function (fn) {
+      return fn(options);
+    });
+    delete Component.__decorators__;
+  } // find super
+
+
+  var superProto = Object.getPrototypeOf(Component.prototype);
+  var Super = superProto instanceof Vue ? superProto.constructor : Vue;
+  var Extended = Super.extend(options);
+  forwardStaticMembers(Extended, Component, Super);
+
+  if (reflectionIsSupported()) {
+    copyReflectionMetadata(Extended, Component);
+  }
+
+  return Extended;
+}
+var reservedPropertyNames = [// Unique id
+'cid', // Super Vue constructor
+'super', // Component options that will be used by the component
+'options', 'superOptions', 'extendOptions', 'sealedOptions', // Private assets
+'component', 'directive', 'filter'];
+var shouldIgnore = {
+  prototype: true,
+  arguments: true,
+  callee: true,
+  caller: true
+};
+
+function forwardStaticMembers(Extended, Original, Super) {
+  // We have to use getOwnPropertyNames since Babel registers methods as non-enumerable
+  Object.getOwnPropertyNames(Original).forEach(function (key) {
+    // Skip the properties that should not be overwritten
+    if (shouldIgnore[key]) {
+      return;
+    } // Some browsers does not allow reconfigure built-in properties
+
+
+    var extendedDescriptor = Object.getOwnPropertyDescriptor(Extended, key);
+
+    if (extendedDescriptor && !extendedDescriptor.configurable) {
+      return;
+    }
+
+    var descriptor = Object.getOwnPropertyDescriptor(Original, key); // If the user agent does not support `__proto__` or its family (IE <= 10),
+    // the sub class properties may be inherited properties from the super class in TypeScript.
+    // We need to exclude such properties to prevent to overwrite
+    // the component options object which stored on the extended constructor (See #192).
+    // If the value is a referenced value (object or function),
+    // we can check equality of them and exclude it if they have the same reference.
+    // If it is a primitive value, it will be forwarded for safety.
+
+    if (!hasProto) {
+      // Only `cid` is explicitly exluded from property forwarding
+      // because we cannot detect whether it is a inherited property or not
+      // on the no `__proto__` environment even though the property is reserved.
+      if (key === 'cid') {
+        return;
+      }
+
+      var superDescriptor = Object.getOwnPropertyDescriptor(Super, key);
+
+      if (!isPrimitive(descriptor.value) && superDescriptor && superDescriptor.value === descriptor.value) {
+        return;
+      }
+    } // Warn if the users manually declare reserved properties
+
+
+    if (process.env.NODE_ENV !== 'production' && reservedPropertyNames.indexOf(key) >= 0) {
+      warn("Static property name '".concat(key, "' declared on class '").concat(Original.name, "' ") + 'conflicts with reserved property name of Vue internal. ' + 'It may cause unexpected behavior of the component. Consider renaming the property.');
+    }
+
+    Object.defineProperty(Extended, key, descriptor);
+  });
+}
+
+function Component(options) {
+  if (typeof options === 'function') {
+    return componentFactory(options);
+  }
+
+  return function (Component) {
+    return componentFactory(Component, options);
+  };
+}
+
+Component.registerHooks = function registerHooks(keys) {
+  $internalHooks.push.apply($internalHooks, _toConsumableArray(keys));
+};
+
+/** vue-property-decorator verson 8.4.0 MIT LICENSE copyright 2019 kaorun343 */
+/** @see {@link https://github.com/vuejs/vue-class-component/blob/master/src/reflect.ts} */
+var reflectMetadataIsSupported = typeof Reflect !== 'undefined' && typeof Reflect.getMetadata !== 'undefined';
+function applyMetadata(options, target, key) {
+    if (reflectMetadataIsSupported) {
+        if (!Array.isArray(options) &&
+            typeof options !== 'function' &&
+            typeof options.type === 'undefined') {
+            options.type = Reflect.getMetadata('design:type', target, key);
+        }
+    }
+}
+/**
+ * decorator of a prop
+ * @param  options the options for the prop
+ * @return PropertyDecorator | void
+ */
+function Prop(options) {
+    if (options === void 0) { options = {}; }
+    return function (target, key) {
+        applyMetadata(options, target, key);
+        createDecorator(function (componentOptions, k) {
+            (componentOptions.props || (componentOptions.props = {}))[k] = options;
+        })(target, key);
+    };
+}
+// Code copied from Vue/src/shared/util.js
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = function (str) { return str.replace(hyphenateRE, '-$1').toLowerCase(); };
+/**
+ * decorator of an event-emitter function
+ * @param  event The name of the event
+ * @return MethodDecorator
+ */
+function Emit(event) {
+    return function (_target, key, descriptor) {
+        key = hyphenate(key);
+        var original = descriptor.value;
+        descriptor.value = function emitter() {
+            var _this = this;
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
+            }
+            var emit = function (returnValue) {
+                if (returnValue !== undefined)
+                    args.unshift(returnValue);
+                _this.$emit.apply(_this, [event || key].concat(args));
+            };
+            var returnValue = original.apply(this, args);
+            if (isPromise(returnValue)) {
+                returnValue.then(function (returnValue) {
+                    emit(returnValue);
+                });
+            }
+            else {
+                emit(returnValue);
+            }
+            return returnValue;
+        };
+    };
+}
+function isPromise(obj) {
+    return obj instanceof Promise || (obj && typeof obj.then === 'function');
+}
+
+var Sizes;
+
+(function (Sizes) {
+  Sizes["xl"] = "avatar-xl";
+  Sizes["lg"] = "avatar-lg";
+  Sizes["sm"] = "avatar-sm";
+  Sizes["xs"] = "avatar-xs";
+})(Sizes || (Sizes = {}));
+
+var Avatar = /*#__PURE__*/function (_Vue) {
+  _inherits(Avatar, _Vue);
+
+  var _super = _createSuper(Avatar);
+
+  function Avatar() {
+    _classCallCheck(this, Avatar);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Avatar, [{
+    key: "cssStyle",
+    get: function get() {
+      return {
+        color: this.color,
+        background: this.background
+      };
+    }
+  }, {
+    key: "cssClass",
+    get: function get() {
+      return [Sizes[this.size] || this.size];
+    }
+  }]);
+
+  return Avatar;
+}(Vue);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "size", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "src", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "initials", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "background", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "color", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "alt", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "presence", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "icon", void 0);
+
+Avatar = __decorate([Component], Avatar);
+var script = Avatar;
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
+/* server only */
+, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+  if (typeof shadowMode !== 'boolean') {
+    createInjectorSSR = createInjector;
+    createInjector = shadowMode;
+    shadowMode = false;
+  } // Vue.extend constructor export interop.
+
+
+  var options = typeof script === 'function' ? script.options : script; // render functions
+
+  if (template && template.render) {
+    options.render = template.render;
+    options.staticRenderFns = template.staticRenderFns;
+    options._compiled = true; // functional template
+
+    if (isFunctionalTemplate) {
+      options.functional = true;
+    }
+  } // scopedId
+
+
+  if (scopeId) {
+    options._scopeId = scopeId;
+  }
+
+  var hook;
+
+  if (moduleIdentifier) {
+    // server build
+    hook = function hook(context) {
+      // 2.3 injection
+      context = context || // cached call
+      this.$vnode && this.$vnode.ssrContext || // stateful
+      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+      // 2.2 with runInNewContext: true
+
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__;
+      } // inject component styles
+
+
+      if (style) {
+        style.call(this, createInjectorSSR(context));
+      } // register component module identifier for async chunk inference
+
+
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier);
+      }
+    }; // used by ssr in case component is cached and beforeCreate
+    // never gets called
+
+
+    options._ssrRegister = hook;
+  } else if (style) {
+    hook = shadowMode ? function () {
+      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    } : function (context) {
+      style.call(this, createInjector(context));
+    };
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // register for functional component in vue file
+      var originalRender = options.render;
+
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context);
+        return originalRender(h, context);
+      };
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate;
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+    }
+  }
+
+  return script;
+}
+
+var normalizeComponent_1 = normalizeComponent;
+
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+  return function (id, style) {
+    return addStyle(id, style);
+  };
+}
+var HEAD = document.head || document.getElementsByTagName('head')[0];
+var styles = {};
+
+function addStyle(id, css) {
+  var group = isOldIE ? css.media || 'default' : id;
+  var style = styles[group] || (styles[group] = {
+    ids: new Set(),
+    styles: []
+  });
+
+  if (!style.ids.has(id)) {
+    style.ids.add(id);
+    var code = css.source;
+
+    if (css.map) {
+      // https://developer.chrome.com/devtools/docs/javascript-debugging
+      // this makes source maps inside style tags work properly in Chrome
+      code += '\n/*# sourceURL=' + css.map.sources[0] + ' */'; // http://stackoverflow.com/a/26603875
+
+      code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
+    }
+
+    if (!style.element) {
+      style.element = document.createElement('style');
+      style.element.type = 'text/css';
+      if (css.media) style.element.setAttribute('media', css.media);
+      HEAD.appendChild(style.element);
+    }
+
+    if ('styleSheet' in style.element) {
+      style.styles.push(code);
+      style.element.styleSheet.cssText = style.styles.filter(Boolean).join('\n');
+    } else {
+      var index = style.ids.size - 1;
+      var textNode = document.createTextNode(code);
+      var nodes = style.element.childNodes;
+      if (nodes[index]) style.element.removeChild(nodes[index]);
+      if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+    }
+  }
+}
+
+var browser = createInjector;
+
+/* script */
+const __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('figure',{staticClass:"avatar",class:_vm.cssClass,style:(_vm.cssStyle),attrs:{"data-initial":_vm.initials && _vm.initials.trim().substring(0, 2)}},[(_vm.src)?_c('img',{attrs:{"src":_vm.src,"alt":_vm.alt}}):_vm._e(),_vm._v(" "),(_vm.icon)?_c('img',{staticClass:"avatar-icon",attrs:{"src":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.presence && !_vm.icon)?_c('i',{staticClass:"avatar-presence",class:_vm.presence}):_vm._e()])};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  const __vue_inject_styles__ = function (inject) {
+    if (!inject) return
+    inject("data-v-7b0fef51_0", { source: "figure.avatar+figure.avatar{margin-left:.4rem}", map: undefined, media: undefined });
+
+  };
+  /* scoped */
+  const __vue_scope_id__ = undefined;
+  /* module identifier */
+  const __vue_module_identifier__ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+
+  
+  var Avatar$1 = normalizeComponent_1(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    browser,
+    undefined
+  );
+
+var Presences;
+
+(function (Presences) {
+  Presences["online"] = "online";
+  Presences["busy"] = "busy";
+  Presences["away"] = "away";
+  Presences["offline"] = "offline";
+})(Presences || (Presences = {}));
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 }
 
 var check = function (it) {
@@ -523,331 +1285,6 @@ var _export = function (options, source) {
   }
 };
 
-// `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
-_export({ target: 'Object', stat: true, forced: !descriptors, sham: !descriptors }, {
-  defineProperty: objectDefineProperty.f
-});
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-var Sizes;
-
-(function (Sizes) {
-  Sizes["xl"] = "avatar-xl";
-  Sizes["lg"] = "avatar-lg";
-  Sizes["sm"] = "avatar-sm";
-  Sizes["xs"] = "avatar-xs";
-})(Sizes || (Sizes = {}));
-
-var Avatar =
-/** @class */
-function (_super) {
-  __extends(Avatar, _super);
-
-  function Avatar() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Object.defineProperty(Avatar.prototype, "cssStyle", {
-    get: function get() {
-      return {
-        color: this.color,
-        background: this.background
-      };
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Avatar.prototype, "cssClass", {
-    get: function get() {
-      return [Sizes[this.size] || this.size];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "size", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "src", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "initials", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "background", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "color", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "alt", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "presence", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Avatar.prototype, "icon", void 0);
-
-  Avatar = __decorate([Component$1], Avatar);
-  return Avatar;
-}(Vue);
-
-function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
-/* server only */
-, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-  if (typeof shadowMode !== 'boolean') {
-    createInjectorSSR = createInjector;
-    createInjector = shadowMode;
-    shadowMode = false;
-  } // Vue.extend constructor export interop.
-
-
-  var options = typeof script === 'function' ? script.options : script; // render functions
-
-  if (template && template.render) {
-    options.render = template.render;
-    options.staticRenderFns = template.staticRenderFns;
-    options._compiled = true; // functional template
-
-    if (isFunctionalTemplate) {
-      options.functional = true;
-    }
-  } // scopedId
-
-
-  if (scopeId) {
-    options._scopeId = scopeId;
-  }
-
-  var hook;
-
-  if (moduleIdentifier) {
-    // server build
-    hook = function hook(context) {
-      // 2.3 injection
-      context = context || // cached call
-      this.$vnode && this.$vnode.ssrContext || // stateful
-      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
-      // 2.2 with runInNewContext: true
-
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__;
-      } // inject component styles
-
-
-      if (style) {
-        style.call(this, createInjectorSSR(context));
-      } // register component module identifier for async chunk inference
-
-
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier);
-      }
-    }; // used by ssr in case component is cached and beforeCreate
-    // never gets called
-
-
-    options._ssrRegister = hook;
-  } else if (style) {
-    hook = shadowMode ? function () {
-      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
-    } : function (context) {
-      style.call(this, createInjector(context));
-    };
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // register for functional component in vue file
-      var originalRender = options.render;
-
-      options.render = function renderWithStyleInjection(h, context) {
-        hook.call(context);
-        return originalRender(h, context);
-      };
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate;
-      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-    }
-  }
-
-  return script;
-}
-
-var normalizeComponent_1 = normalizeComponent;
-
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
-function createInjector(context) {
-  return function (id, style) {
-    return addStyle(id, style);
-  };
-}
-var HEAD = document.head || document.getElementsByTagName('head')[0];
-var styles = {};
-
-function addStyle(id, css) {
-  var group = isOldIE ? css.media || 'default' : id;
-  var style = styles[group] || (styles[group] = {
-    ids: new Set(),
-    styles: []
-  });
-
-  if (!style.ids.has(id)) {
-    style.ids.add(id);
-    var code = css.source;
-
-    if (css.map) {
-      // https://developer.chrome.com/devtools/docs/javascript-debugging
-      // this makes source maps inside style tags work properly in Chrome
-      code += '\n/*# sourceURL=' + css.map.sources[0] + ' */'; // http://stackoverflow.com/a/26603875
-
-      code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
-    }
-
-    if (!style.element) {
-      style.element = document.createElement('style');
-      style.element.type = 'text/css';
-      if (css.media) style.element.setAttribute('media', css.media);
-      HEAD.appendChild(style.element);
-    }
-
-    if ('styleSheet' in style.element) {
-      style.styles.push(code);
-      style.element.styleSheet.cssText = style.styles.filter(Boolean).join('\n');
-    } else {
-      var index = style.ids.size - 1;
-      var textNode = document.createTextNode(code);
-      var nodes = style.element.childNodes;
-      if (nodes[index]) style.element.removeChild(nodes[index]);
-      if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
-    }
-  }
-}
-
-var browser = createInjector;
-
-/* script */
-const __vue_script__ = Avatar;
-
-/* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('figure',{staticClass:"avatar",class:_vm.cssClass,style:(_vm.cssStyle),attrs:{"data-initial":_vm.initials && _vm.initials.trim().substring(0, 2)}},[(_vm.src)?_c('img',{attrs:{"src":_vm.src,"alt":_vm.alt}}):_vm._e(),_vm._v(" "),(_vm.icon)?_c('img',{staticClass:"avatar-icon",attrs:{"src":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.presence && !_vm.icon)?_c('i',{staticClass:"avatar-presence",class:_vm.presence}):_vm._e()])};
-var __vue_staticRenderFns__ = [];
-
-  /* style */
-  const __vue_inject_styles__ = function (inject) {
-    if (!inject) return
-    inject("data-v-7b0fef51_0", { source: "figure.avatar+figure.avatar{margin-left:.4rem}", map: undefined, media: undefined });
-
-  };
-  /* scoped */
-  const __vue_scope_id__ = undefined;
-  /* module identifier */
-  const __vue_module_identifier__ = undefined;
-  /* functional template */
-  const __vue_is_functional_template__ = false;
-  /* style inject SSR */
-  
-
-  
-  var Avatar$1 = normalizeComponent_1(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
-    browser,
-    undefined
-  );
-
-var Presences;
-
-(function (Presences) {
-  Presences["online"] = "online";
-  Presences["busy"] = "busy";
-  Presences["away"] = "away";
-  Presences["offline"] = "offline";
-})(Presences || (Presences = {}));
-
 var aFunction$1 = function (it) {
   if (typeof it != 'function') {
     throw TypeError(String(it) + ' is not a function');
@@ -991,8 +1428,8 @@ var arrayIteration = {
 
 var engineUserAgent = getBuiltIn('navigator', 'userAgent') || '';
 
-var process = global_1.process;
-var versions = process && process.versions;
+var process$1 = global_1.process;
+var versions = process$1 && process$1.versions;
 var v8 = versions && versions.v8;
 var match, version;
 
@@ -1447,6 +1884,41 @@ if (NOT_GENERIC || INCORRECT_NAME) {
   }, { unsafe: true });
 }
 
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _arrayWithoutHoles$1(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _iterableToArray$1(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(n);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _nonIterableSpread$1() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _toConsumableArray$1(arr) {
+  return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread$1();
+}
+
 var Sizes$1;
 
 (function (Sizes) {
@@ -1828,47 +2300,48 @@ var Objects;
   Objects["emoji"] = "icon-emoji";
 })(Objects || (Objects = {}));
 
-var Icons = __assign(__assign(__assign({}, Navigation), Objects), Action);
+var Icons = Object.assign(Object.assign(Object.assign({}, Navigation), Objects), Action);
 
-var Icon =
-/** @class */
-function (_super) {
-  __extends(Icon, _super);
+var Icon = /*#__PURE__*/function (_vue) {
+  _inherits(Icon, _vue);
+
+  var _super = _createSuper(Icon);
 
   function Icon() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Icon);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Icon.prototype, "cssStyle", {
+  _createClass(Icon, [{
+    key: "cssStyle",
     get: function get() {
       return {
         'font-size': Sizes$1[this.size] || this.size
       };
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Icon.prototype, "cssClass", {
+    }
+  }, {
+    key: "cssClass",
     get: function get() {
       return [Sizes$1[this.size] || this.size, Icons[this.type] || this.type];
-    },
-    enumerable: true,
-    configurable: true
-  });
+    }
+  }]);
 
-  __decorate([Prop({
-    type: String,
-    required: true
-  }), __metadata("design:type", String)], Icon.prototype, "type", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Icon.prototype, "size", void 0);
-
-  Icon = __decorate([Component$1], Icon);
   return Icon;
 }(Vue);
 
+__decorate([Prop({
+  type: String,
+  required: true
+}), __metadata("design:type", String)], Icon.prototype, "type", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Icon.prototype, "size", void 0);
+
+Icon = __decorate([Component], Icon);
+var script$1 = Icon;
+
 /* script */
-const __vue_script__$1 = Icon;
+const __vue_script__$1 = script$1;
 
 /* template */
 var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i',{staticClass:"icon",class:_vm.cssClass,style:(_vm.cssStyle)})};
@@ -1899,99 +2372,102 @@ var __vue_staticRenderFns__$1 = [];
     undefined
   );
 
-var Accordion =
-/** @class */
-function (_super) {
-  __extends(Accordion, _super);
+var Accordion = /*#__PURE__*/function (_Vue) {
+  _inherits(Accordion, _Vue);
+
+  var _super = _createSuper(Accordion);
 
   function Accordion() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Accordion);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Accordion.prototype, "type", {
+  _createClass(Accordion, [{
+    key: "uid",
+    value: function uid(index) {
+      return this.id + '-' + index;
+    }
+  }, {
+    key: "isSelected",
+    value: function isSelected(key, index) {
+      if (!Array.isArray(this.checked)) {
+        return !!this.checked && (this.checked === key || this.checked.toString() === index.toString());
+      }
+
+      if (this.checked.indexOf(index) !== -1) {
+        return true;
+      }
+
+      if (this.checked.indexOf(key) !== -1) {
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "check",
+    value: function check(event, key, index) {
+      if (!this.$listeners.check) return;
+      event.preventDefault();
+
+      if (!this.multiple) {
+        this.$emit('check', key || index || 0);
+        return;
+      }
+
+      var checked = Array.isArray(this.checked) ? _toConsumableArray$1(this.checked) : this.checked !== undefined ? [this.checked] : [];
+
+      if (event.target.checked) {
+        checked.push(key || index || 0);
+      } else {
+        checked = checked.filter(function (item) {
+          return item !== index && item !== key;
+        });
+      }
+
+      this.$emit('check', checked);
+    }
+  }, {
+    key: "type",
     get: function get() {
       return this.multiple ? 'checkbox' : 'radio';
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Accordion.prototype.uid = function (index) {
-    return this.id + '-' + index;
-  };
-
-  Accordion.prototype.isSelected = function (key, index) {
-    if (!Array.isArray(this.checked)) {
-      return !!this.checked && (this.checked === key || this.checked.toString() === index.toString());
     }
-
-    if (this.checked.indexOf(index) !== -1) {
-      return true;
-    }
-
-    if (this.checked.indexOf(key) !== -1) {
-      return true;
-    }
-
-    return false;
-  };
-
-  Accordion.prototype.check = function (event, key, index) {
-    if (!this.$listeners.check) return;
-    event.preventDefault();
-
-    if (!this.multiple) {
-      this.$emit('check', key || index || 0);
-      return;
-    }
-
-    var checked = Array.isArray(this.checked) ? __spread(this.checked) : this.checked !== undefined ? [this.checked] : [];
-
-    if (event.target.checked) {
-      checked.push(key || index || 0);
-    } else {
-      checked = checked.filter(function (item) {
-        return item !== index && item !== key;
-      });
-    }
-
-    this.$emit('check', checked);
-  };
-
-  Object.defineProperty(Accordion.prototype, "id", {
+  }, {
+    key: "id",
     get: function get() {
       return this.name ? this.name : 'accordion-' + Math.round(Math.random() * 1000);
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  __decorate([Prop({
-    required: true,
-    type: [Object, Array]
-  }), __metadata("design:type", Object)], Accordion.prototype, "items", void 0);
-
-  __decorate([Prop([String, Number, Array]), __metadata("design:type", Object)], Accordion.prototype, "checked", void 0);
-
-  __decorate([Prop([String]), __metadata("design:type", String)], Accordion.prototype, "name", void 0);
-
-  __decorate([Prop([Boolean]), __metadata("design:type", Boolean)], Accordion.prototype, "multiple", void 0);
-
-  __decorate([Prop([String]), __metadata("design:type", String)], Accordion.prototype, "icon", void 0);
-
-  Accordion = __decorate([Component$1({
-    components: {
-      Icon: Icon$1
     }
-  })], Accordion);
+  }]);
+
   return Accordion;
 }(Vue);
 
+__decorate([Prop({
+  required: true,
+  type: [Object, Array]
+}), __metadata("design:type", Object)], Accordion.prototype, "items", void 0);
+
+__decorate([Prop([String, Number, Array]), __metadata("design:type", Object)], Accordion.prototype, "checked", void 0);
+
+__decorate([Prop([String]), __metadata("design:type", String)], Accordion.prototype, "name", void 0);
+
+__decorate([Prop([Boolean]), __metadata("design:type", Boolean)], Accordion.prototype, "multiple", void 0);
+
+__decorate([Prop([String]), __metadata("design:type", String)], Accordion.prototype, "icon", void 0);
+
+Accordion = __decorate([Component({
+  components: {
+    Icon: Icon$1
+  }
+})], Accordion);
+var script$2 = Accordion;
+
 /* script */
-const __vue_script__$2 = Accordion;
+const __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accordion-container"},_vm._l((_vm.items),function(value,key,index){return _c('div',{key:index || key || 0,staticClass:"accordion"},[_c('input',{attrs:{"id":_vm.uid(index || key || 0),"name":_vm.id,"type":_vm.type,"hidden":""},domProps:{"checked":_vm.isSelected(key, index)},on:{"click":function($event){return _vm.check($event, key, index)}}}),_vm._v(" "),_c('label',{staticClass:"accordion-header c-hand",attrs:{"for":_vm.uid(index || key || 0)}},[(_vm.icon)?_c('icon',{attrs:{"type":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.$scopedSlots['header'])?_vm._t("header",null,{"item":value,"index":key || index || 0}):[_vm._v(_vm._s(key))]],2),_vm._v(" "),_c('div',{staticClass:"accordion-body"},[(_vm.$scopedSlots['body'])?_vm._t("body",null,{"item":value,"index":key || index || 0}):_vm._e(),_vm._v(" "),(!_vm.$scopedSlots['body'])?_vm._t("default",null,{"item":value,"index":key || index || 0}):_vm._e(),_vm._v(" "),(!_vm.$scopedSlots['body'] && !_vm.$slots.default)?_c('span',{domProps:{"innerHTML":_vm._s(value)}}):_vm._e()],2)])}),0)};
+var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accordion-container"},_vm._l((_vm.items),function(value,key,index){return _c('div',{key:index || key || 0,staticClass:"accordion"},[_c('input',{attrs:{"id":_vm.uid(index || key || 0),"name":_vm.id,"type":_vm.type,"hidden":""},domProps:{"checked":_vm.isSelected(key, index)},on:{"input":function($event){_vm.check($event, key, index);}}}),_vm._v(" "),_c('label',{staticClass:"accordion-header c-hand",attrs:{"for":_vm.uid(index || key || 0)}},[(_vm.icon)?_c('icon',{attrs:{"type":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.$scopedSlots['header'])?_vm._t("header",null,{item:value,index:key || index || 0}):[_vm._v(_vm._s(key))]],2),_vm._v(" "),_c('div',{staticClass:"accordion-body"},[(_vm.$scopedSlots['body'])?_vm._t("body",null,{item:value,index:key || index || 0}):_vm._e(),_vm._v(" "),(!_vm.$scopedSlots['body'])?_vm._t("default",null,{item:value,index:key || index || 0}):_vm._e(),_vm._v(" "),(!_vm.$scopedSlots['body'] && !_vm.$slots.default)?_c('span',{domProps:{"innerHTML":_vm._s(value)}}):_vm._e()],2)])}),0)};
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
@@ -2034,35 +2510,43 @@ var Slots;
   Slots["footer"] = "footer";
 })(Slots || (Slots = {}));
 
-var Card =
-/** @class */
-function (_super) {
-  __extends(Card, _super);
+var Card = /*#__PURE__*/function (_Vue) {
+  _inherits(Card, _Vue);
+
+  var _super = _createSuper(Card);
 
   function Card() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Card);
+
+    _this = _super.apply(this, arguments);
     _this.positions = Positions;
     _this.slots = Slots;
     return _this;
   }
 
-  Card.prototype.showImg = function (pos, slot) {
-    return this.$props[pos] && this.$props[pos] === Slots[slot];
-  };
+  _createClass(Card, [{
+    key: "showImg",
+    value: function showImg(pos, slot) {
+      return this.$props[pos] && this.$props[pos] === Slots[slot];
+    }
+  }]);
 
-  __decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "img", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "before", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "after", void 0);
-
-  Card = __decorate([Component$1], Card);
   return Card;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "img", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "before", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Card.prototype, "after", void 0);
+
+Card = __decorate([Component], Card);
+var script$3 = Card;
+
 /* script */
-const __vue_script__$3 = Card;
+const __vue_script__$3 = script$3;
 
 /* template */
 var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card"},[(_vm.showImg(_vm.positions.before, _vm.slots.header))?_c('div',{staticClass:"card-image"},[_c('img',{staticClass:"img-responsive",attrs:{"src":_vm.img}})]):_vm._e(),_vm._v(" "),(_vm.$slots.header)?_c('div',{staticClass:"card-header"},[_vm._t("header")],2):_vm._e(),_vm._v(" "),(_vm.showImg(_vm.positions.after, _vm.slots.header) || _vm.showImg(_vm.positions.before, _vm.slots.body))?_c('div',{staticClass:"card-image"},[_c('img',{staticClass:"img-responsive",attrs:{"src":_vm.img}})]):_vm._e(),_vm._v(" "),(_vm.$slots.body || _vm.$slots.default)?_c('div',{staticClass:"card-body"},[_vm._t("body"),_vm._v(" "),(!_vm.$scopedSlots.body)?_vm._t("default"):_vm._e()],2):_vm._e(),_vm._v(" "),(_vm.showImg(_vm.positions.after, _vm.slots.body) || _vm.showImg(_vm.positions.before, _vm.slots.footer))?_c('div',{staticClass:"card-image"},[_c('img',{staticClass:"img-responsive",attrs:{"src":_vm.img}})]):_vm._e(),_vm._v(" "),(_vm.$slots.footer)?_c('div',{staticClass:"card-footer"},[_vm._t("footer")],2):_vm._e(),_vm._v(" "),(_vm.showImg(_vm.positions.after, _vm.slots.footer))?_c('div',{staticClass:"card-image"},[_c('img',{staticClass:"img-responsive",attrs:{"src":_vm.img}})]):_vm._e()])};
@@ -2093,16 +2577,19 @@ var __vue_staticRenderFns__$3 = [];
     undefined
   );
 
-var Bar =
-/** @class */
-function (_super) {
-  __extends(Bar, _super);
+var Bar = /*#__PURE__*/function (_Vue) {
+  _inherits(Bar, _Vue);
+
+  var _super = _createSuper(Bar);
 
   function Bar() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Bar);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Bar.prototype, "dataTooltip", {
+  _createClass(Bar, [{
+    key: "dataTooltip",
     get: function get() {
       if (typeof this.tooltip === 'undefined') {
         return;
@@ -2113,59 +2600,53 @@ function (_super) {
       }
 
       return this.value.toString() + this.tooltip;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Bar.prototype, "barCssClass", {
+    }
+  }, {
+    key: "barCssClass",
     get: function get() {
       return [this.sm ? 'bar-sm' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Bar.prototype, "barItemCssClass", {
+    }
+  }, {
+    key: "barItemCssClass",
     get: function get() {
       return [this.tooltip ? 'tooltip' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Bar.prototype, "cssStyle", {
+    }
+  }, {
+    key: "cssStyle",
     get: function get() {
       return {
         width: this.value / this.max * 100 + '%'
       };
-    },
-    enumerable: true,
-    configurable: true
-  });
+    }
+  }]);
 
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Bar.prototype, "sm", void 0);
-
-  __decorate([Prop({
-    type: Number,
-    "default": 0
-  }), __metadata("design:type", Number)], Bar.prototype, "min", void 0);
-
-  __decorate([Prop({
-    type: Number,
-    "default": 100
-  }), __metadata("design:type", Number)], Bar.prototype, "max", void 0);
-
-  __decorate([Prop({
-    type: Number,
-    "default": 0
-  }), __metadata("design:type", Number)], Bar.prototype, "value", void 0);
-
-  __decorate([Prop([Function, String]), __metadata("design:type", Object)], Bar.prototype, "tooltip", void 0);
-
-  Bar = __decorate([Component$1], Bar);
   return Bar;
 }(Vue);
 
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Bar.prototype, "sm", void 0);
+
+__decorate([Prop({
+  type: Number,
+  "default": 0
+}), __metadata("design:type", Number)], Bar.prototype, "min", void 0);
+
+__decorate([Prop({
+  type: Number,
+  "default": 100
+}), __metadata("design:type", Number)], Bar.prototype, "max", void 0);
+
+__decorate([Prop({
+  type: Number,
+  "default": 0
+}), __metadata("design:type", Number)], Bar.prototype, "value", void 0);
+
+__decorate([Prop([Function, String]), __metadata("design:type", Object)], Bar.prototype, "tooltip", void 0);
+
+Bar = __decorate([Component], Bar);
+var script$4 = Bar;
+
 /* script */
-const __vue_script__$4 = Bar;
+const __vue_script__$4 = script$4;
 
 /* template */
 var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"bar",class:_vm.barCssClass},[_c('div',{staticClass:"bar-item",class:_vm.barItemCssClass,style:(_vm.cssStyle),attrs:{"data-tooltip":_vm.dataTooltip,"aria-valuenow":_vm.value,"aria-valuemin":_vm.min,"aria-valuemax":_vm.max,"role":"progressbar"}})])};
@@ -2196,29 +2677,33 @@ var __vue_staticRenderFns__$4 = [];
     undefined
   );
 
-var Breadcrumb =
-/** @class */
-function (_super) {
-  __extends(Breadcrumb, _super);
+var Breadcrumb = /*#__PURE__*/function (_Vue) {
+  _inherits(Breadcrumb, _Vue);
+
+  var _super = _createSuper(Breadcrumb);
 
   function Breadcrumb() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Breadcrumb);
+
+    return _super.apply(this, arguments);
   }
 
-  __decorate([Prop({
-    type: Array,
-    required: true
-  }), __metadata("design:type", Array)], Breadcrumb.prototype, "crumbs", void 0);
-
-  Breadcrumb = __decorate([Component$1], Breadcrumb);
   return Breadcrumb;
 }(Vue);
 
+__decorate([Prop({
+  type: Array,
+  required: true
+}), __metadata("design:type", Array)], Breadcrumb.prototype, "crumbs", void 0);
+
+Breadcrumb = __decorate([Component], Breadcrumb);
+var script$5 = Breadcrumb;
+
 /* script */
-const __vue_script__$5 = Breadcrumb;
+const __vue_script__$5 = script$5;
 
 /* template */
-var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"breadcrumb"},_vm._l((_vm.crumbs),function(crumb,key){return _c('li',{key:key,staticClass:"breadcrumb-item"},[_vm._t("default",null,{"crumb":crumb}),_vm._v(" "),(!_vm.$scopedSlots['default'])?_c('a',{attrs:{"href":crumb.path}},[_vm._v("\n      "+_vm._s(crumb.title)+"\n    ")]):_vm._e()],2)}),0)};
+var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"breadcrumb"},_vm._l((_vm.crumbs),function(crumb,key){return _c('li',{key:key,staticClass:"breadcrumb-item"},[_vm._t("default",null,{crumb:crumb}),_vm._v(" "),(!_vm.$scopedSlots['default'])?_c('a',{attrs:{"href":crumb.path}},[_vm._v("\n      "+_vm._s(crumb.title)+"\n    ")]):_vm._e()],2)}),0)};
 var __vue_staticRenderFns__$5 = [];
 
   /* style */
@@ -2272,53 +2757,57 @@ var States;
   States["loading"] = "loading";
 })(States || (States = {}));
 
-var Button =
-/** @class */
-function (_super) {
-  __extends(Button, _super);
+var Button = /*#__PURE__*/function (_vue) {
+  _inherits(Button, _vue);
+
+  var _super = _createSuper(Button);
 
   function Button() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Button);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Button.prototype, "cssClass", {
+  _createClass(Button, [{
+    key: "created",
+    value: function created() {
+      if (this.action && !this.icon) {
+        throw new Error('Action button should have icon');
+      }
+    }
+  }, {
+    key: "cssClass",
     get: function get() {
       return [Types[this.type] || this.type, Sizes$2[this.size] || this.size, States[this.state] || this.state, this.action && this.circle ? 's-circle' : '', this.action ? 'btn-action' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Button.prototype.created = function () {
-    if (this.action && !this.icon) {
-      throw new Error('Action button should have icon');
     }
-  };
+  }]);
 
-  __decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "type", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "size", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "icon", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "state", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "left", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "circle", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "action", void 0);
-
-  Button = __decorate([Component$1({
-    components: {
-      Icon: Icon$1
-    }
-  })], Button);
   return Button;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "type", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "size", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "icon", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Button.prototype, "state", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "left", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "circle", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Button.prototype, "action", void 0);
+
+Button = __decorate([Component({
+  components: {
+    Icon: Icon$1
+  }
+})], Button);
+var script$6 = Button;
+
 /* script */
-const __vue_script__$6 = Button;
+const __vue_script__$6 = script$6;
 
 /* template */
 var __vue_render__$6 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._g({staticClass:"btn",class:_vm.cssClass},_vm.$listeners),[(_vm.icon && _vm.left)?_c('icon',{staticClass:"left",attrs:{"type":_vm.icon}}):_vm._e(),_vm._v(" "),(!_vm.action)?_vm._t("default"):_vm._e(),_vm._v(" "),(_vm.icon && !_vm.left)?_c('icon',{attrs:{"type":_vm.icon}}):_vm._e()],2)};
@@ -2351,7 +2840,7 @@ var __vue_staticRenderFns__$6 = [];
     undefined
   );
 
-var script = Vue.extend({
+var script$7 = Vue.extend({
   name: 'ButtonGroup',
   props: {
     block: Boolean
@@ -2364,7 +2853,7 @@ var script = Vue.extend({
 });
 
 /* script */
-const __vue_script__$7 = script;
+const __vue_script__$7 = script$7;
 
 /* template */
 var __vue_render__$7 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"btn-group",class:_vm.cssClass},[_vm._t("default")],2)};
@@ -2395,60 +2884,66 @@ var __vue_staticRenderFns__$7 = [];
     undefined
   );
 
-var Chip =
-/** @class */
-function (_super) {
-  __extends(Chip, _super);
+var Chip = /*#__PURE__*/function (_Vue) {
+  _inherits(Chip, _Vue);
+
+  var _super = _createSuper(Chip);
 
   function Chip() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Chip);
+
+    _this = _super.apply(this, arguments);
     _this.avatarSizes = Sizes;
     return _this;
   }
 
-  Object.defineProperty(Chip.prototype, "cssClass", {
+  _createClass(Chip, [{
+    key: "close",
+    value: function close() {
+      this.$emit('close');
+    }
+  }, {
+    key: "showClose",
+    value: function showClose() {
+      return !!this.$listeners.close;
+    }
+  }, {
+    key: "cssClass",
     get: function get() {
       return [this.active ? 'active' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Chip.prototype.close = function () {
-    this.$emit('close');
-  };
-
-  Chip.prototype.showClose = function () {
-    return !!this.$listeners.close;
-  };
-
-  __decorate([Prop({
-    type: String,
-    required: true
-  }), __metadata("design:type", String)], Chip.prototype, "text", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Chip.prototype, "avatar", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Chip.prototype, "initials", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Chip.prototype, "active", void 0);
-
-  __decorate([Prop({
-    type: Boolean,
-    "default": true
-  }), __metadata("design:type", Boolean)], Chip.prototype, "small", void 0);
-
-  Chip = __decorate([Component$1({
-    components: {
-      Avatar: Avatar$1
     }
-  })], Chip);
+  }]);
+
   return Chip;
 }(Vue);
 
+__decorate([Prop({
+  type: String,
+  required: true
+}), __metadata("design:type", String)], Chip.prototype, "text", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Chip.prototype, "avatar", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Chip.prototype, "initials", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Chip.prototype, "active", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  "default": true
+}), __metadata("design:type", Boolean)], Chip.prototype, "small", void 0);
+
+Chip = __decorate([Component({
+  components: {
+    Avatar: Avatar$1
+  }
+})], Chip);
+var script$8 = Chip;
+
 /* script */
-const __vue_script__$8 = Chip;
+const __vue_script__$8 = script$8;
 
 /* template */
 var __vue_render__$8 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"chip",class:_vm.cssClass},[(_vm.avatar || _vm.initials)?_c('avatar',{attrs:{"src":_vm.avatar,"size":_vm.small ? _vm.avatarSizes.sm : undefined,"initials":_vm.initials}}):_vm._e(),_vm._v("\n  "+_vm._s(_vm.text)+"\n  "),(_vm.showClose())?_c('a',{staticClass:"btn btn-clear",attrs:{"aria-label":"Close","role":"button"},on:{"click":_vm.close}}):_vm._e()],1)};
@@ -2479,33 +2974,36 @@ var __vue_staticRenderFns__$8 = [];
     undefined
   );
 
-var Divider =
-/** @class */
-function (_super) {
-  __extends(Divider, _super);
+var Divider = /*#__PURE__*/function (_Vue) {
+  _inherits(Divider, _Vue);
+
+  var _super = _createSuper(Divider);
 
   function Divider() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Divider);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Divider.prototype, "dataContent", {
+  _createClass(Divider, [{
+    key: "dataContent",
     get: function get() {
       return this.content || this.$slots["default"] && this.$slots["default"][0].text;
-    },
-    enumerable: true,
-    configurable: true
-  });
+    }
+  }]);
 
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Divider.prototype, "vert", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Divider.prototype, "content", void 0);
-
-  Divider = __decorate([Component$1], Divider);
   return Divider;
 }(Vue);
 
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Divider.prototype, "vert", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Divider.prototype, "content", void 0);
+
+Divider = __decorate([Component], Divider);
+var script$9 = Divider;
+
 /* script */
-const __vue_script__$9 = Divider;
+const __vue_script__$9 = script$9;
 
 /* template */
 var __vue_render__$9 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-center",class:{ divider: !_vm.vert, 'divider-vert': _vm.vert },attrs:{"data-content":_vm.dataContent}})};
@@ -2536,23 +3034,27 @@ var __vue_staticRenderFns__$9 = [];
     undefined
   );
 
-var MenuBadge =
-/** @class */
-function (_super) {
-  __extends(MenuBadge, _super);
+var MenuBadge = /*#__PURE__*/function (_Vue) {
+  _inherits(MenuBadge, _Vue);
+
+  var _super = _createSuper(MenuBadge);
 
   function MenuBadge() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, MenuBadge);
+
+    return _super.apply(this, arguments);
   }
 
-  __decorate([Prop([String, Number]), __metadata("design:type", Object)], MenuBadge.prototype, "value", void 0);
-
-  MenuBadge = __decorate([Component$1], MenuBadge);
   return MenuBadge;
 }(Vue);
 
+__decorate([Prop([String, Number]), __metadata("design:type", Object)], MenuBadge.prototype, "value", void 0);
+
+MenuBadge = __decorate([Component], MenuBadge);
+var script$a = MenuBadge;
+
 /* script */
-const __vue_script__$a = MenuBadge;
+const __vue_script__$a = script$a;
 
 /* template */
 var __vue_render__$a = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"menu-badge"},[_c('label',{staticClass:"label label-primary"},[_vm._v(_vm._s(_vm.value))])])};
@@ -2583,46 +3085,54 @@ var __vue_staticRenderFns__$a = [];
     undefined
   );
 
-var VerticalMenu =
-/** @class */
-function (_super) {
-  __extends(VerticalMenu, _super);
+var VerticalMenu = /*#__PURE__*/function (_vue) {
+  _inherits(VerticalMenu, _vue);
+
+  var _super = _createSuper(VerticalMenu);
 
   function VerticalMenu() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, VerticalMenu);
+
+    return _super.apply(this, arguments);
   }
 
-  VerticalMenu.prototype.normalizeDivider = function (divider) {
-    return typeof divider === 'string' ? divider : '';
-  };
-
-  VerticalMenu.prototype.cssClassLinkItem = function (current) {
-    return [this.active.toString() === current.toString() ? 'active' : ''];
-  };
-
-  __decorate([Prop({
-    type: [Array, Object],
-    required: true
-  }), __metadata("design:type", Array)], VerticalMenu.prototype, "items", void 0);
-
-  __decorate([Prop({
-    type: [String, Number],
-    "default": ''
-  }), __metadata("design:type", Object)], VerticalMenu.prototype, "active", void 0);
-
-  VerticalMenu = __decorate([Component$1({
-    components: {
-      Badge: Badge
+  _createClass(VerticalMenu, [{
+    key: "normalizeDivider",
+    value: function normalizeDivider(divider) {
+      return typeof divider === 'string' ? divider : '';
     }
-  })], VerticalMenu);
+  }, {
+    key: "cssClassLinkItem",
+    value: function cssClassLinkItem(current) {
+      return [this.active.toString() === current.toString() ? 'active' : ''];
+    }
+  }]);
+
   return VerticalMenu;
 }(Vue);
 
+__decorate([Prop({
+  type: [Array, Object],
+  required: true
+}), __metadata("design:type", Array)], VerticalMenu.prototype, "items", void 0);
+
+__decorate([Prop({
+  type: [String, Number],
+  "default": ''
+}), __metadata("design:type", Object)], VerticalMenu.prototype, "active", void 0);
+
+VerticalMenu = __decorate([Component({
+  components: {
+    Badge: Badge
+  }
+})], VerticalMenu);
+var script$b = VerticalMenu;
+
 /* script */
-const __vue_script__$b = VerticalMenu;
+const __vue_script__$b = script$b;
 
 /* template */
-var __vue_render__$b = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu"},[_vm._l((_vm.items),function(value,key){return [(value.divider)?_c('li',{key:key,staticClass:"divider",attrs:{"data-content":_vm.normalizeDivider(value.divider)}}):_c('li',{key:key,staticClass:"menu-item"},[(value.badge)?_c('badge',{attrs:{"value":value.badge}}):_vm._e(),_vm._v(" "),(_vm.$scopedSlots.default)?_vm._t("default",null,{"item":value,"index":key}):_c('a',{class:_vm.cssClassLinkItem(key),attrs:{"href":value.path}},[_vm._v(_vm._s(value.text))])],2)]})],2)};
+var __vue_render__$b = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu"},[_vm._l((_vm.items),function(value,key){return [(value.divider)?_c('li',{key:key,staticClass:"divider",attrs:{"data-content":_vm.normalizeDivider(value.divider)}}):_c('li',{key:key,staticClass:"menu-item"},[(value.badge)?_c('badge',{attrs:{"value":value.badge}}):_vm._e(),_vm._v(" "),(_vm.$scopedSlots.default)?_vm._t("default",null,{item:value,index:key}):_c('a',{class:_vm.cssClassLinkItem(key),attrs:{"href":value.path}},[_vm._v(_vm._s(value.text))])],2)]})],2)};
 var __vue_staticRenderFns__$b = [];
 
   /* style */
@@ -2650,72 +3160,75 @@ var __vue_staticRenderFns__$b = [];
     undefined
   );
 
-var DropdownMenu =
-/** @class */
-function (_super) {
-  __extends(DropdownMenu, _super);
+var DropdownMenu = /*#__PURE__*/function (_vue) {
+  _inherits(DropdownMenu, _vue);
+
+  var _super = _createSuper(DropdownMenu);
 
   function DropdownMenu() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, DropdownMenu);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(DropdownMenu.prototype, "cssClass", {
+  _createClass(DropdownMenu, [{
+    key: "open",
+    value: function open() {
+      this.$emit('opened');
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.$emit('closed');
+    }
+  }, {
+    key: "cssClass",
     get: function get() {
       return [this.right ? 'dropdown-right' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DropdownMenu.prototype, "btnCssClass", {
+    }
+  }, {
+    key: "btnCssClass",
     get: function get() {
       return [Types[this.btnType]];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  DropdownMenu.prototype.open = function () {
-    this.$emit('opened');
-  };
-
-  DropdownMenu.prototype.close = function () {
-    this.$emit('closed');
-  };
-
-  __decorate([Prop({
-    type: [Object, Array],
-    required: true
-  }), __metadata("design:type", Array)], DropdownMenu.prototype, "items", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], DropdownMenu.prototype, "right", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], DropdownMenu.prototype, "btnType", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], DropdownMenu.prototype, "btnText", void 0);
-
-  __decorate([Prop({
-    type: String,
-    "default": Navigation.caret
-  }), __metadata("design:type", String)], DropdownMenu.prototype, "btnIcon", void 0);
-
-  __decorate([Prop(), __metadata("design:type", String)], DropdownMenu.prototype, "state", void 0);
-
-  DropdownMenu = __decorate([Component$1({
-    components: {
-      VerticalMenu: VerticalMenu$1
     }
-  })], DropdownMenu);
+  }]);
+
   return DropdownMenu;
 }(Vue);
 
+__decorate([Prop({
+  type: [Object, Array],
+  required: true
+}), __metadata("design:type", Array)], DropdownMenu.prototype, "items", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], DropdownMenu.prototype, "right", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], DropdownMenu.prototype, "btnType", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], DropdownMenu.prototype, "btnText", void 0);
+
+__decorate([Prop({
+  type: String,
+  "default": Navigation.caret
+}), __metadata("design:type", String)], DropdownMenu.prototype, "btnIcon", void 0);
+
+__decorate([Prop(), __metadata("design:type", String)], DropdownMenu.prototype, "state", void 0);
+
+DropdownMenu = __decorate([Component({
+  components: {
+    VerticalMenu: VerticalMenu$1
+  }
+})], DropdownMenu);
+var script$c = DropdownMenu;
+
 /* script */
-const __vue_script__$c = DropdownMenu;
+const __vue_script__$c = script$c;
 
 /* template */
 var __vue_render__$c = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dropdown",class:_vm.cssClass},[_c('btn',{staticClass:"dropdown-toggle",class:_vm.btnCssClass,attrs:{"tabindex":"0","icon":_vm.btnIcon,"state":_vm.state},on:{"focus":_vm.open,"blur":_vm.close}},[_vm._v("\n    "+_vm._s(_vm.btnText)+"\n  ")]),_vm._v(" "),(_vm.$scopedSlots.default)?_c('vertical-menu',{attrs:{"items":_vm.items},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var item = ref.item;
 var index = ref.index;
-return [_vm._t("default",null,{"item":item,"index":index})]}}],null,true)}):_c('vertical-menu',{attrs:{"items":_vm.items}})],1)};
+return [_vm._t("default",null,{item:item,index:index})]}}])}):_c('vertical-menu',{attrs:{"items":_vm.items}})],1)};
 var __vue_staticRenderFns__$c = [];
 
   /* style */
@@ -2743,34 +3256,39 @@ var __vue_staticRenderFns__$c = [];
     undefined
   );
 
-var Empty =
-/** @class */
-function (_super) {
-  __extends(Empty, _super);
+var Empty = /*#__PURE__*/function (_Vue) {
+  _inherits(Empty, _Vue);
+
+  var _super = _createSuper(Empty);
 
   function Empty() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Empty);
+
+    _this = _super.apply(this, arguments);
     _this.iconSizes = Sizes$1;
     return _this;
   }
 
-  __decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "title", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "sub", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "icon", void 0);
-
-  Empty = __decorate([Component$1({
-    components: {
-      Icon: Icon$1
-    }
-  })], Empty);
   return Empty;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "title", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "sub", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Empty.prototype, "icon", void 0);
+
+Empty = __decorate([Component({
+  components: {
+    Icon: Icon$1
+  }
+})], Empty);
+var script$d = Empty;
+
 /* script */
-const __vue_script__$d = Empty;
+const __vue_script__$d = script$d;
 
 /* template */
 var __vue_render__$d = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"empty"},[(_vm.icon)?_c('div',{staticClass:"empty-icon"},[_c('icon',{attrs:{"type":_vm.icon,"size":_vm.iconSizes.x3}})],1):_vm._e(),_vm._v(" "),(_vm.title)?_c('p',{staticClass:"empty-title h5"},[_vm._v(_vm._s(_vm.title))]):_vm._e(),_vm._v(" "),(_vm.sub)?_c('p',{staticClass:"empty-subtitle"},[_vm._v(_vm._s(_vm.sub))]):_vm._e(),_vm._v(" "),(_vm.$slots.default)?_c('div',{staticClass:"empty-content"},[_vm._t("default")],2):_vm._e(),_vm._v(" "),(_vm.$slots.action)?_c('div',{staticClass:"empty-action"},[_vm._t("action")],2):_vm._e()])};
@@ -2811,35 +3329,38 @@ var Types$1;
   Types["error"] = "label-error";
 })(Types$1 || (Types$1 = {}));
 
-var Label =
-/** @class */
-function (_super) {
-  __extends(Label, _super);
+var Label = /*#__PURE__*/function (_Vue) {
+  _inherits(Label, _Vue);
+
+  var _super = _createSuper(Label);
 
   function Label() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Label);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Label.prototype, "cssClass", {
+  _createClass(Label, [{
+    key: "cssClass",
     get: function get() {
       return [Types$1[this.type], this.rounded ? 'label-rounded' : ''];
-    },
-    enumerable: true,
-    configurable: true
-  });
+    }
+  }]);
 
-  __decorate([Prop(String), __metadata("design:type", String)], Label.prototype, "type", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Label.prototype, "rounded", void 0);
-
-  Label = __decorate([Component$1({
-    name: 'tag'
-  })], Label);
   return Label;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Label.prototype, "type", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Label.prototype, "rounded", void 0);
+
+Label = __decorate([Component({
+  name: 'tag'
+})], Label);
+var script$e = Label;
+
 /* script */
-const __vue_script__$e = Label;
+const __vue_script__$e = script$e;
 
 /* template */
 var __vue_render__$e = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"label",class:_vm.cssClass},[_vm._t("default")],2)};
@@ -2879,59 +3400,64 @@ var Sizes$3;
   Sizes["lg"] = "modal-lg";
 })(Sizes$3 || (Sizes$3 = {}));
 
-var Modal =
-/** @class */
-function (_super) {
-  __extends(Modal, _super);
+var Modal = /*#__PURE__*/function (_vue) {
+  _inherits(Modal, _vue);
+
+  var _super = _createSuper(Modal);
 
   function Modal() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Modal);
+
+    _this = _super.apply(this, arguments);
     _this.btnType = Types.clear;
     return _this;
   }
 
-  Object.defineProperty(Modal.prototype, "cssClass", {
+  _createClass(Modal, [{
+    key: "close",
+    value: function close() {}
+  }, {
+    key: "cssClass",
     get: function get() {
       return [this.show ? 'active' : '', Sizes$3[this.size] || this.size];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Modal.prototype.close = function () {};
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Modal.prototype, "show", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Modal.prototype, "size", void 0);
-
-  __decorate([Prop({
-    type: Boolean,
-    "default": true
-  }), __metadata("design:type", Boolean)], Modal.prototype, "closeBtn", void 0);
-
-  __decorate([Prop({
-    type: Boolean,
-    "default": true
-  }), __metadata("design:type", Boolean)], Modal.prototype, "overlay", void 0);
-
-  __decorate([Prop({
-    type: Boolean,
-    "default": true
-  }), __metadata("design:type", Boolean)], Modal.prototype, "closeOverlay", void 0);
-
-  __decorate([Emit('close'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], Modal.prototype, "close", null);
-
-  Modal = __decorate([Component$1({
-    components: {
-      Btn: Btn
     }
-  })], Modal);
+  }]);
+
   return Modal;
 }(Vue);
 
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Modal.prototype, "show", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Modal.prototype, "size", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  "default": true
+}), __metadata("design:type", Boolean)], Modal.prototype, "closeBtn", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  "default": true
+}), __metadata("design:type", Boolean)], Modal.prototype, "overlay", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  "default": true
+}), __metadata("design:type", Boolean)], Modal.prototype, "closeOverlay", void 0);
+
+__decorate([Emit('close'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], Modal.prototype, "close", null);
+
+Modal = __decorate([Component({
+  components: {
+    Btn: Btn
+  }
+})], Modal);
+var script$f = Modal;
+
 /* script */
-const __vue_script__$f = Modal;
+const __vue_script__$f = script$f;
 
 /* template */
 var __vue_render__$f = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal",class:_vm.cssClass},[(_vm.overlay)?_c('a',{staticClass:"modal-overlay",attrs:{"aria-label":"Close"},on:{"click":function($event){_vm.closeOverlay && _vm.close();}}}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"modal-container"},[_c('div',{staticClass:"modal-header"},[(_vm.closeBtn)?_c('btn',{staticClass:"float-right",attrs:{"type":_vm.btnType,"aria-label":"Close"},on:{"click":_vm.close}}):_vm._e(),_vm._v(" "),_vm._t("header")],2),_vm._v(" "),_c('div',{staticClass:"modal-body"},[_c('div',{staticClass:"content"},[_vm._t("content")],2)]),_vm._v(" "),_c('div',{staticClass:"modal-footer"},[_vm._t("footer")],2)])])};
@@ -2962,48 +3488,57 @@ var __vue_staticRenderFns__$f = [];
     undefined
   );
 
-var OffCanvas =
-/** @class */
-function (_super) {
-  __extends(OffCanvas, _super);
+var OffCanvas = /*#__PURE__*/function (_vue) {
+  _inherits(OffCanvas, _vue);
+
+  var _super = _createSuper(OffCanvas);
 
   function OffCanvas() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, OffCanvas);
+
+    _this = _super.apply(this, arguments);
     _this.active = false;
     return _this;
   }
 
-  OffCanvas.prototype.showSidebar = function () {
-    this.active = true;
-  };
-
-  OffCanvas.prototype.hideSidebar = function () {
-    this.active = false;
-  };
-
-  __decorate([Prop({
-    "default": Navigation.menu
-  }), __metadata("design:type", String)], OffCanvas.prototype, "icon", void 0);
-
-  __decorate([Prop({
-    "default": true,
-    type: Boolean
-  }), __metadata("design:type", Boolean)], OffCanvas.prototype, "sidebarShow", void 0);
-
-  OffCanvas = __decorate([Component$1({
-    components: {
-      icon: Icon$1
+  _createClass(OffCanvas, [{
+    key: "showSidebar",
+    value: function showSidebar() {
+      this.active = true;
     }
-  })], OffCanvas);
+  }, {
+    key: "hideSidebar",
+    value: function hideSidebar() {
+      this.active = false;
+    }
+  }]);
+
   return OffCanvas;
 }(Vue);
 
+__decorate([Prop({
+  "default": Navigation.menu
+}), __metadata("design:type", String)], OffCanvas.prototype, "icon", void 0);
+
+__decorate([Prop({
+  "default": true,
+  type: Boolean
+}), __metadata("design:type", Boolean)], OffCanvas.prototype, "sidebarShow", void 0);
+
+OffCanvas = __decorate([Component({
+  components: {
+    icon: Icon$1
+  }
+})], OffCanvas);
+var script$g = OffCanvas;
+
 /* script */
-const __vue_script__$g = OffCanvas;
+const __vue_script__$g = script$g;
 
 /* template */
-var __vue_render__$g = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"off-canvas",class:{ 'off-canvas-sidebar-show': _vm.sidebarShow }},[_c('div',{staticClass:"off-canvas-toggle"},[_c('a',{staticClass:"btn btn-primary btn-action",on:{"click":function($event){return _vm.showSidebar()}}},[(_vm.$slots.icon)?_vm._t("icon"):_c('icon',{attrs:{"type":_vm.icon}})],2)]),_vm._v(" "),_c('div',{staticClass:"off-canvas-sidebar",class:{ active: _vm.active }},[_vm._t("sidebar")],2),_vm._v(" "),_c('a',{staticClass:"off-canvas-overlay",on:{"click":function($event){return _vm.hideSidebar()}}}),_vm._v(" "),_c('div',{staticClass:"off-canvas-content"},[_vm._t("content"),_vm._v(" "),_vm._t("default")],2)])};
+var __vue_render__$g = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"off-canvas",class:{ 'off-canvas-sidebar-show': _vm.sidebarShow }},[_c('div',{staticClass:"off-canvas-toggle"},[_c('a',{staticClass:"btn btn-primary btn-action",on:{"click":function($event){_vm.showSidebar();}}},[(_vm.$slots.icon)?_vm._t("icon"):_c('icon',{attrs:{"type":_vm.icon}})],2)]),_vm._v(" "),_c('div',{staticClass:"off-canvas-sidebar",class:{ active: _vm.active }},[_vm._t("sidebar")],2),_vm._v(" "),_c('a',{staticClass:"off-canvas-overlay",on:{"click":function($event){_vm.hideSidebar();}}}),_vm._v(" "),_c('div',{staticClass:"off-canvas-content"},[_vm._t("content"),_vm._v(" "),_vm._t("default")],2)])};
 var __vue_staticRenderFns__$g = [];
 
   /* style */
@@ -3031,59 +3566,59 @@ var __vue_staticRenderFns__$g = [];
     undefined
   );
 
-var SimplePager =
-/** @class */
-function (_super) {
-  __extends(SimplePager, _super);
+var SimplePager = /*#__PURE__*/function (_vue) {
+  _inherits(SimplePager, _vue);
+
+  var _super = _createSuper(SimplePager);
 
   function SimplePager() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, SimplePager);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(SimplePager.prototype, "previous", {
+  _createClass(SimplePager, [{
+    key: "change",
+    value: function change(page) {
+      this.$emit('change', page);
+    }
+  }, {
+    key: "previous",
     get: function get() {
       return this.pages[this.curIndex - 1];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SimplePager.prototype, "next", {
+    }
+  }, {
+    key: "next",
     get: function get() {
       return this.pages[this.curIndex + 1];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SimplePager.prototype, "curIndex", {
+    }
+  }, {
+    key: "curIndex",
     get: function get() {
       return this.pages.indexOf(this.current);
-    },
-    enumerable: true,
-    configurable: true
-  });
+    }
+  }]);
 
-  SimplePager.prototype.change = function (page) {
-    this.$emit('change', page);
-  };
-
-  __decorate([Prop({
-    type: Array,
-    required: true
-  }), __metadata("design:type", Array)], SimplePager.prototype, "pages", void 0);
-
-  __decorate([Prop({
-    "default": 0
-  }), __metadata("design:type", String)], SimplePager.prototype, "current", void 0);
-
-  SimplePager = __decorate([Component$1], SimplePager);
   return SimplePager;
 }(Vue);
 
+__decorate([Prop({
+  type: Array,
+  required: true
+}), __metadata("design:type", Array)], SimplePager.prototype, "pages", void 0);
+
+__decorate([Prop({
+  "default": 0
+}), __metadata("design:type", String)], SimplePager.prototype, "current", void 0);
+
+SimplePager = __decorate([Component], SimplePager);
+var script$h = SimplePager;
+
 /* script */
-const __vue_script__$h = SimplePager;
+const __vue_script__$h = script$h;
 
 /* template */
-var __vue_render__$h = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"pagination"},[(_vm.previous)?_c('li',{staticClass:"page-item page-prev"},[_c('a',{on:{"click":function($event){return _vm.change(_vm.previous)}}},[_c('div',{staticClass:"page-item-subtitle"},[_vm._v("Previous")]),_vm._v(" "),_c('div',{staticClass:"page-item-title h5"},[_vm._v(_vm._s(_vm.previous))])])]):_vm._e(),_vm._v(" "),(_vm.next)?_c('li',{staticClass:"page-item page-next"},[_c('a',{on:{"click":function($event){return _vm.change(_vm.next)}}},[_c('div',{staticClass:"page-item-subtitle"},[_vm._v("Next")]),_vm._v(" "),_c('div',{staticClass:"page-item-title h5"},[_vm._v(_vm._s(_vm.next))])])]):_vm._e()])};
+var __vue_render__$h = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"pagination"},[(_vm.previous)?_c('li',{staticClass:"page-item page-prev"},[_c('a',{on:{"click":function($event){_vm.change(_vm.previous);}}},[_c('div',{staticClass:"page-item-subtitle"},[_vm._v("Previous")]),_vm._v(" "),_c('div',{staticClass:"page-item-title h5"},[_vm._v(_vm._s(_vm.previous))])])]):_vm._e(),_vm._v(" "),(_vm.next)?_c('li',{staticClass:"page-item page-next"},[_c('a',{on:{"click":function($event){_vm.change(_vm.next);}}},[_c('div',{staticClass:"page-item-subtitle"},[_vm._v("Next")]),_vm._v(" "),_c('div',{staticClass:"page-item-title h5"},[_vm._v(_vm._s(_vm.next))])])]):_vm._e()])};
 var __vue_staticRenderFns__$h = [];
 
   /* style */
@@ -3111,6 +3646,60 @@ var __vue_staticRenderFns__$h = [];
     undefined
   );
 
+var createProperty = function (object, key, value) {
+  var propertyKey = toPrimitive(key);
+  if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
+};
+
+var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
+
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT = engineV8Version >= 51 || !fails(function () {
+  var array = [];
+  array[IS_CONCAT_SPREADABLE] = false;
+  return array.concat()[0] !== array;
+});
+
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
+
+var isConcatSpreadable = function (O) {
+  if (!isObject(O)) return false;
+  var spreadable = O[IS_CONCAT_SPREADABLE];
+  return spreadable !== undefined ? !!spreadable : isArray(O);
+};
+
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+
+// `Array.prototype.concat` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+_export({ target: 'Array', proto: true, forced: FORCED }, {
+  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+    var O = toObject(this);
+    var A = arraySpeciesCreate(O, 0);
+    var n = 0;
+    var i, k, length, len, E;
+    for (i = -1, length = arguments.length; i < length; i++) {
+      E = i === -1 ? O : arguments[i];
+      if (isConcatSpreadable(E)) {
+        len = toLength(E.length);
+        if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
+      } else {
+        if (n >= MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        createProperty(A, n++, E);
+      }
+    }
+    A.length = n;
+    return A;
+  }
+});
+
 // call something on iterator step with safe closing on error
 var callWithSafeIterationClosing = function (iterator, fn, value, ENTRIES) {
   try {
@@ -3131,12 +3720,6 @@ var ArrayPrototype = Array.prototype;
 // check on default Array iterator
 var isArrayIteratorMethod = function (it) {
   return it !== undefined && (iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-var createProperty = function (object, key, value) {
-  var propertyKey = toPrimitive(key);
-  if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
-  else object[propertyKey] = value;
 };
 
 var ITERATOR$1 = wellKnownSymbol('iterator');
@@ -3438,84 +4021,90 @@ defineIterator(String, 'String', function (iterated) {
 
 var SEPARATOR = '...';
 
-var Pager =
-/** @class */
-function (_super) {
-  __extends(Pager, _super);
+var Pager = /*#__PURE__*/function (_vue) {
+  _inherits(Pager, _vue);
+
+  var _super = _createSuper(Pager);
 
   function Pager() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Pager);
+
+    return _super.apply(this, arguments);
   }
 
-  Object.defineProperty(Pager.prototype, "items", {
+  _createClass(Pager, [{
+    key: "change",
+    value: function change(current) {
+      this.$emit('change', current);
+    }
+  }, {
+    key: "next",
+    value: function next() {
+      this.$emit('change', this.current + 1);
+    }
+  }, {
+    key: "previous",
+    value: function previous() {
+      this.$emit('change', this.current - 1);
+    }
+  }, {
+    key: "items",
     get: function get() {
       var _this = this;
 
       var half = Math.round((this.show + 1) / 2);
 
       if (this.current <= half) {
-        return __spread(Array.from({
+        return [].concat(_toConsumableArray$1(Array.from({
           length: this.show - 1
         }, function (v, i) {
           return i + 1;
-        }), [SEPARATOR, this.pages]);
+        })), [SEPARATOR, this.pages]);
       }
 
       if (this.current + half > this.pages) {
-        return __spread([1, SEPARATOR], Array.from({
+        return [1, SEPARATOR].concat(_toConsumableArray$1(Array.from({
           length: this.show - 1
         }, function (v, i) {
           return _this.pages - _this.show + 2 + i;
-        }));
+        })));
       }
 
       var mediana = Math.floor((this.show - 4) / 2);
-      return __spread([1, SEPARATOR], Array.from({
+      return [1, SEPARATOR].concat(_toConsumableArray$1(Array.from({
         length: this.show - 3
       }, function (v, i) {
         return _this.current - mediana + i;
-      }), [SEPARATOR, this.pages]);
-    },
-    enumerable: true,
-    configurable: true
-  });
+      })), [SEPARATOR, this.pages]);
+    }
+  }]);
 
-  Pager.prototype.change = function (current) {
-    this.$emit('change', current);
-  };
-
-  Pager.prototype.next = function () {
-    this.$emit('change', this.current + 1);
-  };
-
-  Pager.prototype.previous = function () {
-    this.$emit('change', this.current - 1);
-  };
-
-  __decorate([Prop({
-    type: [Number],
-    required: true
-  }), __metadata("design:type", Number)], Pager.prototype, "pages", void 0);
-
-  __decorate([Prop({
-    type: [Number],
-    "default": 1
-  }), __metadata("design:type", Number)], Pager.prototype, "current", void 0);
-
-  __decorate([Prop({
-    type: Number,
-    "default": 6
-  }), __metadata("design:type", Number)], Pager.prototype, "show", void 0);
-
-  Pager = __decorate([Component$1], Pager);
   return Pager;
 }(Vue);
 
+__decorate([Prop({
+  type: [Number],
+  required: true
+}), __metadata("design:type", Number)], Pager.prototype, "pages", void 0);
+
+__decorate([Prop({
+  type: [Number],
+  "default": 1
+}), __metadata("design:type", Number)], Pager.prototype, "current", void 0);
+
+__decorate([Prop({
+  type: Number,
+  "default": 6
+}), __metadata("design:type", Number)], Pager.prototype, "show", void 0);
+
+Pager = __decorate([Component], Pager);
+var script$i = Pager;
+
 /* script */
-const __vue_script__$i = Pager;
+const __vue_script__$i = script$i;
 
 /* template */
-var __vue_render__$i = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"pagination"},[_c('li',{staticClass:"page-item",class:{ disabled: _vm.current == 1 }},[_c('a',{attrs:{"tabindex":"-1"},on:{"click":_vm.previous}},[_vm._v("Previous")])]),_vm._v(" "),_vm._l((_vm.items),function(n,i){return _c('li',{key:i,staticClass:"page-item page-item-num",class:{ active: _vm.current == n }},[_c('a',{on:{"click":function($event){return _vm.change(n)}}},[_vm._v(_vm._s(n))])])}),_vm._v(" "),_c('li',{staticClass:"page-item",class:{ disabled: _vm.current == _vm.pages }},[_c('a',{on:{"click":_vm.next}},[_vm._v("Next")])])],2)};
+var __vue_render__$i = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"pagination"},[_c('li',{staticClass:"page-item",class:{ disabled: _vm.current == 1 }},[_c('a',{attrs:{"tabindex":"-1"},on:{"click":_vm.previous}},[_vm._v("Previous")])]),_vm._v(" "),_vm._l((_vm.items),function(n,i){return _c('li',{key:i,staticClass:"page-item page-item-num",class:{ active: _vm.current == n }},[_c('a',{on:{"click":function($event){_vm.change(n);}}},[_vm._v(_vm._s(n))])])}),_vm._v(" "),_c('li',{staticClass:"page-item",class:{ disabled: _vm.current == _vm.pages }},[_c('a',{on:{"click":_vm.next}},[_vm._v("Next")])])],2)};
 var __vue_staticRenderFns__$i = [];
 
   /* style */
@@ -3543,43 +4132,50 @@ var __vue_staticRenderFns__$i = [];
     undefined
   );
 
-var Pagination =
-/** @class */
-function (_super) {
-  __extends(Pagination, _super);
+var Pagination = /*#__PURE__*/function (_vue) {
+  _inherits(Pagination, _vue);
+
+  var _super = _createSuper(Pagination);
 
   function Pagination() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Pagination);
+
+    return _super.apply(this, arguments);
   }
 
-  Pagination.prototype.change = function (current) {
-    this.$emit('update:current', current);
-  };
-
-  __decorate([Prop({
-    type: [Number, Array],
-    required: true
-  }), __metadata("design:type", Object)], Pagination.prototype, "pages", void 0);
-
-  __decorate([Prop({
-    type: [Number, String]
-  }), __metadata("design:type", Object)], Pagination.prototype, "current", void 0);
-
-  __decorate([Prop({
-    type: Number
-  }), __metadata("design:type", Number)], Pagination.prototype, "show", void 0);
-
-  Pagination = __decorate([Component$1({
-    components: {
-      SimplePager: SimplePager$1,
-      Pager: Pager$1
+  _createClass(Pagination, [{
+    key: "change",
+    value: function change(current) {
+      this.$emit('update:current', current);
     }
-  })], Pagination);
+  }]);
+
   return Pagination;
 }(Vue);
 
+__decorate([Prop({
+  type: [Number, Array],
+  required: true
+}), __metadata("design:type", Object)], Pagination.prototype, "pages", void 0);
+
+__decorate([Prop({
+  type: [Number, String]
+}), __metadata("design:type", Object)], Pagination.prototype, "current", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], Pagination.prototype, "show", void 0);
+
+Pagination = __decorate([Component({
+  components: {
+    SimplePager: SimplePager$1,
+    Pager: Pager$1
+  }
+})], Pagination);
+var script$j = Pagination;
+
 /* script */
-const __vue_script__$j = Pagination;
+const __vue_script__$j = script$j;
 
 /* template */
 var __vue_render__$j = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!Array.isArray(_vm.pages))?_c('pager',{attrs:{"pages":_vm.pages,"current":_vm.current,"show":_vm.show},on:{"change":_vm.change}}):_c('simple-pager',{attrs:{"pages":_vm.pages,"current":_vm.current},on:{"change":_vm.change}})};
@@ -3612,12 +4208,12 @@ var __vue_staticRenderFns__$j = [];
     undefined
   );
 
-var script$1 = Vue.extend({
+var script$k = Vue.extend({
   name: 'Panel'
 });
 
 /* script */
-const __vue_script__$k = script$1;
+const __vue_script__$k = script$k;
 
 /* template */
 var __vue_render__$k = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"panel"},[(_vm.$slots.header)?_c('div',{staticClass:"panel-header"},[_vm._t("header")],2):_vm._e(),_vm._v(" "),(_vm.$slots.nav)?_c('div',{staticClass:"panel-nav"},[_vm._t("nav")],2):_vm._e(),_vm._v(" "),(_vm.$slots.body)?_c('div',{staticClass:"panel-body"},[_vm._t("body")],2):_vm._e(),_vm._v(" "),(_vm.$slots.footer)?_c('div',{staticClass:"panel-footer"},[_vm._t("footer")],2):_vm._e()])};
@@ -3783,7 +4379,7 @@ var createPopoverContainer = function createPopoverContainer(h, nodes) {
   }, nodes);
 };
 
-var Popover = Vue.extend({
+var Popover = /*#__PURE__*/Vue.extend({
   name: 'Popover',
   props: {
     side: {
@@ -3819,12 +4415,12 @@ _export({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT$2 || !USES_
   }
 });
 
-var script$2 = Vue.extend({
+var script$l = Vue.extend({
   name: 'Step'
 });
 
 /* script */
-const __vue_script__$l = script$2;
+const __vue_script__$l = script$l;
 
 /* template */
 var __vue_render__$l = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"step-item"},[_c('a',[_vm._t("default")],2)])};
@@ -3857,7 +4453,7 @@ var __vue_staticRenderFns__$l = [];
     undefined
   );
 
-var Steps = Vue.extend({
+var Steps = /*#__PURE__*/Vue.extend({
   name: 'Steps',
   props: {
     active: {
@@ -3912,7 +4508,7 @@ _export({ target: 'Function', proto: true }, {
   bind: functionBind
 });
 
-var script$3 = Vue.extend({
+var script$m = Vue.extend({
   name: 'Tab',
   props: {
     badge: {
@@ -3923,7 +4519,7 @@ var script$3 = Vue.extend({
 });
 
 /* script */
-const __vue_script__$m = script$3;
+const __vue_script__$m = script$m;
 
 /* template */
 var __vue_render__$m = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"tab-item"},[_c('a',{directives:[{name:"badge",rawName:"v-badge",value:(_vm.badge),expression:"badge"}]},[_vm._t("default")],2)])};
@@ -3960,11 +4556,8 @@ var updateCurrent = function updateCurrent(current, emit) {
   emit('update:current', current);
 };
 
-var createTab = function createTab(v, origin, key, isActive) {
-  if (isActive === void 0) {
-    isActive = false;
-  }
-
+var createTab = function createTab(v, origin, key) {
+  var isActive = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   return v.$createElement(Tab, {
     props: origin.componentOptions && origin.componentOptions.propsData,
     "class": {
@@ -3993,7 +4586,7 @@ var createSimpleTab = function createSimpleTab(v, item, isActive) {
   }, [item]);
 };
 
-var Tabs = Vue.extend({
+var Tabs = /*#__PURE__*/Vue.extend({
   name: 'tabs',
   props: {
     current: {
@@ -4013,10 +4606,10 @@ var Tabs = Vue.extend({
   render: function render(h) {
     var _this = this;
 
-    var _a = this.$props,
-        items = _a.items,
-        current = _a.current,
-        block = _a.block;
+    var _this$$props = this.$props,
+        items = _this$$props.items,
+        current = _this$$props.current,
+        block = _this$$props.block;
     var cssClass = {
       tab: true,
       'tab-block': block
@@ -4033,8 +4626,8 @@ var Tabs = Vue.extend({
       }, tabs);
     }
 
-    var _b = this.$slots["default"],
-        children = _b === void 0 ? [] : _b;
+    var _this$$slots$default = this.$slots["default"],
+        children = _this$$slots$default === void 0 ? [] : _this$$slots$default;
     tabs = children.filter(function (child) {
       return child.componentOptions && child.componentOptions.tag && child.componentOptions.tag.includes('tab');
     }).map(function (tab, i) {
@@ -4055,45 +4648,50 @@ var Tabs = Vue.extend({
   }
 });
 
-var Tile =
-/** @class */
-function (_super) {
-  __extends(Tile, _super);
+var Tile = /*#__PURE__*/function (_vue) {
+  _inherits(Tile, _vue);
+
+  var _super = _createSuper(Tile);
 
   function Tile() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Tile);
+
+    _this = _super.apply(this, arguments);
     _this.iconSize = Sizes$1.x2;
     _this.avatarSize = Sizes.lg;
     return _this;
   }
 
-  __decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "title", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "subtitle", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "avatar", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "initials", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "icon", void 0);
-
-  __decorate([Prop({
-    type: Boolean,
-    "default": false
-  }), __metadata("design:type", Boolean)], Tile.prototype, "compact", void 0);
-
-  Tile = __decorate([Component$1({
-    components: {
-      Icon: Icon$1,
-      Avatar: Avatar$1
-    }
-  })], Tile);
   return Tile;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "title", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "subtitle", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "avatar", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "initials", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Tile.prototype, "icon", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  "default": false
+}), __metadata("design:type", Boolean)], Tile.prototype, "compact", void 0);
+
+Tile = __decorate([Component({
+  components: {
+    Icon: Icon$1,
+    Avatar: Avatar$1
+  }
+})], Tile);
+var script$n = Tile;
+
 /* script */
-const __vue_script__$n = Tile;
+const __vue_script__$n = script$n;
 
 /* template */
 var __vue_render__$n = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"tile",class:{ 'tile-centered': _vm.compact }},[_c('div',{staticClass:"tile-icon"},[(_vm.$slots.icon)?_vm._t("default"):(_vm.avatar || _vm.initials)?_c('avatar',{attrs:{"src":_vm.avatar,"initials":_vm.initials,"size":_vm.avatarSize}}):(_vm.icon)?_c('icon',{attrs:{"size":_vm.iconSize,"type":_vm.icon}}):_vm._e()],2),_vm._v(" "),_c('div',{staticClass:"tile-content"},[(_vm.title)?_c('p',{staticClass:"tile-title",domProps:{"innerHTML":_vm._s(_vm.title)}}):_vm._e(),_vm._v(" "),(_vm.subtitle)?_c('p',{staticClass:"tile-subtitle text-gray",domProps:{"innerHTML":_vm._s(_vm.subtitle)}}):_vm._e(),_vm._v(" "),(_vm.$slots.default)?_c('p',[_vm._t("default")],2):_vm._e()]),_vm._v(" "),(_vm.$slots.actions)?_c('div',{staticClass:"tile-action"},[_vm._t("actions")],2):_vm._e()])};
@@ -4151,66 +4749,70 @@ _export({ global: true, bind: true, forced: MSIE }, {
   setInterval: wrap(global_1.setInterval)
 });
 
-var Toast =
-/** @class */
-function (_super) {
-  __extends(Toast, _super);
+var Toast = /*#__PURE__*/function (_vue) {
+  _inherits(Toast, _vue);
+
+  var _super = _createSuper(Toast);
 
   function Toast() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
+    var _this;
 
+    _classCallCheck(this, Toast);
+
+    _this = _super.apply(this, arguments);
     _this.shown = true;
     return _this;
   }
 
-  Object.defineProperty(Toast.prototype, "typeClass", {
+  _createClass(Toast, [{
+    key: "mounted",
+    value: function mounted() {
+      var _this2 = this;
+
+      if (this.autoclose) {
+        setTimeout(function () {
+          return _this2.shown = false;
+        }, this.autoclose);
+      }
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.shown = false;
+    }
+  }, {
+    key: "typeClass",
     get: function get() {
       return 'toast-' + this.type;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Toast.prototype, "iconClass", {
+    }
+  }, {
+    key: "iconClass",
     get: function get() {
       return 'icon-' + this.icon;
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Toast.prototype.mounted = function () {
-    var _this = this;
-
-    if (this.autoclose) {
-      setTimeout(function () {
-        return _this.shown = false;
-      }, this.autoclose);
     }
-  };
+  }]);
 
-  Toast.prototype.close = function () {
-    this.shown = false;
-  };
-
-  __decorate([Prop(String), __metadata("design:type", String)], Toast.prototype, "type", void 0);
-
-  __decorate([Prop(Number), __metadata("design:type", Number)], Toast.prototype, "autoclose", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Toast.prototype, "closeable", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Toast.prototype, "icon", void 0);
-
-  __decorate([Emit('closed'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], Toast.prototype, "close", null);
-
-  Toast = __decorate([Component$1], Toast);
   return Toast;
 }(Vue);
 
+__decorate([Prop(String), __metadata("design:type", String)], Toast.prototype, "type", void 0);
+
+__decorate([Prop(Number), __metadata("design:type", Number)], Toast.prototype, "autoclose", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Toast.prototype, "closeable", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Toast.prototype, "icon", void 0);
+
+__decorate([Emit('closed'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], Toast.prototype, "close", null);
+
+Toast = __decorate([Component], Toast);
+var script$o = Toast;
+
 /* script */
-const __vue_script__$o = Toast;
+const __vue_script__$o = script$o;
 
 /* template */
-var __vue_render__$o = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[(_vm.shown)?_c('div',{staticClass:"toast",class:_vm.typeClass},[(_vm.icon)?_c('icon',{attrs:{"type":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.closeable)?_c('button',{staticClass:"btn btn-clear float-right",on:{"click":function($event){return _vm.close()}}}):_vm._e(),_vm._v(" "),_vm._t("default")],2):_vm._e()])};
+var __vue_render__$o = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"fade"}},[(_vm.shown)?_c('div',{staticClass:"toast",class:_vm.typeClass},[(_vm.icon)?_c('icon',{attrs:{"type":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.closeable)?_c('button',{staticClass:"btn btn-clear float-right",on:{"click":function($event){_vm.close();}}}):_vm._e(),_vm._v(" "),_vm._t("default")],2):_vm._e()])};
 var __vue_staticRenderFns__$o = [];
 
   /* style */
@@ -4240,45 +4842,52 @@ var __vue_staticRenderFns__$o = [];
     undefined
   );
 
-var Navigation$1 =
-/** @class */
-function (_super) {
-  __extends(Navigation, _super);
+var Navigation$1 = /*#__PURE__*/function (_vue) {
+  _inherits(Navigation, _vue);
+
+  var _super = _createSuper(Navigation);
 
   function Navigation() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Navigation);
+
+    return _super.apply(this, arguments);
   }
 
-  Navigation.prototype.itemCssClass = function (_a) {
-    var _b = _a.active,
-        active = _b === void 0 ? false : _b;
-    return [active ? 'active' : ''];
-  };
+  _createClass(Navigation, [{
+    key: "itemCssClass",
+    value: function itemCssClass(_ref) {
+      var _ref$active = _ref.active,
+          active = _ref$active === void 0 ? false : _ref$active;
+      return [active ? 'active' : ''];
+    }
+  }]);
 
-  __decorate([Prop({
-    type: Array,
-    required: true
-  }), __metadata("design:type", Array)], Navigation.prototype, "items", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    "default": -1
-  }), __metadata("design:type", Object)], Navigation.prototype, "level", void 0);
-
-  Navigation = __decorate([Component$1({
-    name: 'navigation'
-  })], Navigation);
   return Navigation;
 }(Vue);
 
+__decorate([Prop({
+  type: Array,
+  required: true
+}), __metadata("design:type", Array)], Navigation$1.prototype, "items", void 0);
+
+__decorate([Prop({
+  type: [Number, String],
+  "default": -1
+}), __metadata("design:type", Object)], Navigation$1.prototype, "level", void 0);
+
+Navigation$1 = __decorate([Component({
+  name: 'navigation'
+})], Navigation$1);
+var script$p = Navigation$1;
+
 /* script */
-const __vue_script__$p = Navigation$1;
+const __vue_script__$p = script$p;
 
 /* template */
-var __vue_render__$p = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"nav"},_vm._l((_vm.items),function(item,index){return _c('li',{key:index,staticClass:"nav-item",class:_vm.itemCssClass(item)},[(_vm.$scopedSlots.default)?_vm._t("default",null,{"item":item,"index":index}):_c('a',{attrs:{"href":item.path}},[_vm._v(_vm._s(item.text))]),_vm._v(" "),(Array.isArray(item.items) && _vm.level != 0)?[(_vm.$scopedSlots.default)?_c('navigation',{attrs:{"items":item.items,"level":_vm.level - 1},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+var __vue_render__$p = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"nav"},_vm._l((_vm.items),function(item,index){return _c('li',{key:index,staticClass:"nav-item",class:_vm.itemCssClass(item)},[(_vm.$scopedSlots.default)?_vm._t("default",null,{item:item,index:index}):_c('a',{attrs:{"href":item.path}},[_vm._v(_vm._s(item.text))]),_vm._v(" "),(Array.isArray(item.items) && _vm.level != 0)?[(_vm.$scopedSlots.default)?_c('navigation',{attrs:{"items":item.items,"level":_vm.level - 1},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var subitem = ref.item;
 var subindex = ref.index;
-return [_vm._t("default",null,{"item":subitem,"index":subindex})]}}],null,true)}):_c('navigation',{attrs:{"items":item.items,"level":_vm.level - 1}})]:_vm._e()],2)}),0)};
+return [_vm._t("default",null,{item:subitem,index:subindex})]}}])}):_c('navigation',{attrs:{"items":item.items,"level":_vm.level - 1}})]:_vm._e()],2)}),0)};
 var __vue_staticRenderFns__$p = [];
 
   /* style */
@@ -4306,211 +4915,476 @@ var __vue_staticRenderFns__$p = [];
     undefined
   );
 
-var Group =
-/** @class */
-function (_super) {
-  __extends(Group, _super);
+function _extends(){return _extends=Object.assign||function(a){for(var b,c=1;c<arguments.length;c++)for(var d in b=arguments[c],b)Object.prototype.hasOwnProperty.call(b,d)&&(a[d]=b[d]);return a},_extends.apply(this,arguments)}var normalMerge=["attrs","props","domProps"],toArrayMerge=["class","style","directives"],functionalMerge=["on","nativeOn"],mergeJsxProps=function(a){return a.reduce(function(c,a){for(var b in a)if(!c[b])c[b]=a[b];else if(-1!==normalMerge.indexOf(b))c[b]=_extends({},c[b],a[b]);else if(-1!==toArrayMerge.indexOf(b)){var d=c[b]instanceof Array?c[b]:[c[b]],e=a[b]instanceof Array?a[b]:[a[b]];c[b]=d.concat(e);}else if(-1!==functionalMerge.indexOf(b)){for(var f in a[b])if(c[b][f]){var g=c[b][f]instanceof Array?c[b][f]:[c[b][f]],h=a[b][f]instanceof Array?a[b][f]:[a[b][f]];c[b][f]=g.concat(h);}else c[b][f]=a[b][f];}else if("hook"==b)for(var i in a[b])c[b][i]=c[b][i]?mergeFn(c[b][i],a[b][i]):a[b][i];else c[b]=a[b];return c},{})},mergeFn=function(a,b){return function(){a&&a.apply(this,arguments),b&&b.apply(this,arguments);}};var helper=mergeJsxProps;
 
-  function Group() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
+var api = createCommonjsModule(function (module, exports) {
+var __extends = (commonjsGlobal && commonjsGlobal.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_1 = __importDefault(Vue);
+var Component = /** @class */ (function (_super) {
+    __extends(Component, _super);
+    function Component() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Component;
+}(vue_1.default));
+exports.Component = Component;
+/**
+ * Create component from component options (Compatible with Vue.extend)
+ */
+function createComponent(opts) {
+    return vue_1.default.extend(opts);
+}
+exports.createComponent = createComponent;
+var factoryImpl = {
+    convert: function (c) { return c; },
+    extendFrom: function (c) { return c; }
+};
+/**
+ * Specify Props and Event types of component
+ *
+ * Usage:
+ *  // Get TSX-supported component with props(`name`, `value`) and event(`onInput`)
+ *  const NewComponent = tsx.ofType<{ name: string, value: string }, { onInput: string }>.convert(Component);
+ */
+function ofType() {
+    return factoryImpl;
+}
+exports.ofType = ofType;
+function withNativeOn(componentType) {
+    return componentType;
+}
+exports.withNativeOn = withNativeOn;
+function withHtmlAttrs(componentType) {
+    return componentType;
+}
+exports.withHtmlAttrs = withHtmlAttrs;
+function withUnknownProps(componentType) {
+    return componentType;
+}
+exports.withUnknownProps = withUnknownProps;
+function createComponentFactory(base, mixins) {
+    return {
+        create: function (options) {
+            var mergedMixins = options.mixins
+                ? options.mixins.concat(mixins) : mixins;
+            return base.extend(__assign({}, options, { mixins: mergedMixins }));
+        },
+        mixin: function (mixinObject) {
+            return createComponentFactory(base, mixins.concat([mixinObject]));
+        }
+    };
+}
+function createExtendableComponentFactory() {
+    return {
+        create: function (options) {
+            return vue_1.default.extend(options);
+        },
+        extendFrom: function (base) {
+            return createComponentFactory(base, []);
+        },
+        mixin: function (mixinObject) {
+            return createComponentFactory(vue_1.default, [mixinObject]);
+        }
+    };
+}
+exports.componentFactory = createExtendableComponentFactory();
+function componentFactoryOf() {
+    return exports.componentFactory;
+}
+exports.componentFactoryOf = componentFactoryOf;
+/**
+ * Shorthand of `componentFactory.create`
+ */
+exports.component = exports.componentFactory.create;
+exports.extendFrom = exports.componentFactory.extendFrom;
 
-  Group.prototype.render = function (h) {
-    var _this = this;
+});
 
-    if (this.size) {
-      (this.$slots["default"] || []).map(function (v) {
+var modifiers = createCommonjsModule(function (module, exports) {
+var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+function handleEvent(event, filters, handler) {
+    for (var _i = 0, filters_1 = filters; _i < filters_1.length; _i++) {
+        var filter = filters_1[_i];
+        if (!filter(event)) {
+            return;
+        }
+    }
+    if (handler) {
+        handler(event);
+    }
+}
+var keyCodes = {
+    esc: 27,
+    tab: 9,
+    enter: 13,
+    space: 32,
+    up: 38,
+    down: 40,
+    del: [8, 46],
+    left: 37,
+    right: 39
+};
+function createKeyFilter(keys) {
+    var codes = [];
+    for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
+        var key = keys_1[_i];
+        if (typeof key === "number") {
+            codes.push(key);
+        }
+        else {
+            var code = keyCodes[key];
+            if (typeof code === "number") {
+                codes.push(code);
+            }
+            else {
+                codes.push.apply(codes, code);
+            }
+        }
+    }
+    switch (codes.length) {
+        case 0:
+            return function (_) { return false; };
+        case 1:
+            var code_1 = codes[0];
+            return function (e) { return e.keyCode === code_1; };
+        default:
+            return function (e) { return codes.indexOf(e.keyCode) >= 0; };
+    }
+}
+function defineChildModifier(target, currentFilters, name, filter, children) {
+    Object.defineProperty(target, name, {
+        get: function () {
+            // call this getter at most once.
+            // reuse created instance after next time.
+            var ret = createModifier(currentFilters.concat([filter]), children);
+            Object.defineProperty(target, name, {
+                value: ret,
+                enumerable: true
+            });
+            return ret;
+        },
+        enumerable: true,
+        configurable: true
+    });
+}
+function defineKeyCodeModifiers(target, filters, children) {
+    var _loop_1 = function (name_1) {
+        var keyName = name_1;
+        if (keyName === "left" || keyName === "right") {
+            return "continue";
+        }
+        var code = keyCodes[keyName];
+        if (typeof code === "number") {
+            defineChildModifier(target, filters, keyName, function (e) { return e.keyCode === code; }, children);
+        }
+        else {
+            var c1_1 = code[0], c2_1 = code[1];
+            defineChildModifier(target, filters, keyName, function (e) { return e.keyCode === c1_1 || e.keyCode === c2_1; }, children);
+        }
+    };
+    for (var name_1 in keyCodes) {
+        _loop_1(name_1);
+    }
+}
+function defineKeys(target, filters, children) {
+    Object.defineProperty(target, "keys", {
+        get: function () {
+            var _this = this;
+            var keysFunction = function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                var propName = "keys:" + args.toString();
+                var modifier = _this[propName];
+                if (modifier !== undefined) {
+                    return modifier;
+                }
+                var filter = createKeyFilter(args);
+                defineChildModifier(_this, filters, propName, filter, children);
+                return _this[propName];
+            };
+            Object.defineProperty(this, "keys", {
+                value: keysFunction,
+                enumerable: true
+            });
+            return keysFunction;
+        },
+        enumerable: true,
+        configurable: true
+    });
+}
+function defineExact(target, filters, children) {
+    Object.defineProperty(target, "exact", {
+        get: function () {
+            var _this = this;
+            var exactFunction = function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                var propName = "exact:" + args.toString();
+                var modifier = _this[propName];
+                if (modifier !== undefined) {
+                    return modifier;
+                }
+                var expected = {
+                    ctrl: false,
+                    shift: false,
+                    alt: false,
+                    meta: false
+                };
+                args.forEach(function (arg) { return (expected[arg] = true); });
+                var filter = function (e) {
+                    return !!e.ctrlKey === expected.ctrl &&
+                        !!e.shiftKey === expected.shift &&
+                        !!e.altKey === expected.alt &&
+                        !!e.metaKey === expected.meta;
+                };
+                defineChildModifier(_this, filters, propName, filter, children);
+                return _this[propName];
+            };
+            Object.defineProperty(this, "exact", {
+                value: exactFunction,
+                enumerable: true
+            });
+            return exactFunction;
+        },
+        enumerable: true,
+        configurable: true
+    });
+}
+function createModifier(filters, children) {
+    function m(arg) {
+        if (arg instanceof Function) {
+            // EventHandler => EventHandler
+            return function (event) { return handleEvent(event, filters, arg); };
+        }
+        else {
+            // Event => void
+            handleEvent(arg, filters);
+            return;
+        }
+    }
+    if (children.keyboard || children.mouse) {
+        var nextChildren = __assign({}, children, { keyboard: false, mouse: false });
+        if (children.keyboard) {
+            defineKeyCodeModifiers(m, filters, nextChildren);
+            defineKeys(m, filters, nextChildren);
+        }
+        if (children.mouse) {
+            defineChildModifier(m, filters, "middle", function (e) { return e.button === 1; }, nextChildren);
+        }
+        defineChildModifier(m, filters, "left", function (e) { return e.keyCode === 37 || e.button === 0; }, nextChildren);
+        defineChildModifier(m, filters, "right", function (e) { return e.keyCode === 39 || e.button === 2; }, nextChildren);
+    }
+    if (children.exact) {
+        var nextChildren = __assign({}, children, { exact: false, modkey: false });
+        defineExact(m, filters, nextChildren);
+    }
+    if (children.modkey) {
+        var nextChildren = __assign({}, children, { exact: false });
+        defineChildModifier(m, filters, "ctrl", function (e) { return e.ctrlKey; }, nextChildren);
+        defineChildModifier(m, filters, "shift", function (e) { return e.shiftKey; }, nextChildren);
+        defineChildModifier(m, filters, "alt", function (e) { return e.altKey; }, nextChildren);
+        defineChildModifier(m, filters, "meta", function (e) { return e.metaKey; }, nextChildren);
+        defineChildModifier(m, filters, "noctrl", function (e) { return !e.ctrlKey; }, nextChildren);
+        defineChildModifier(m, filters, "noshift", function (e) { return !e.shiftKey; }, nextChildren);
+        defineChildModifier(m, filters, "noalt", function (e) { return !e.altKey; }, nextChildren);
+        defineChildModifier(m, filters, "nometa", function (e) { return !e.metaKey; }, nextChildren);
+    }
+    defineChildModifier(m, filters, "stop", function (e) {
+        e.stopPropagation();
+        return true;
+    }, children);
+    defineChildModifier(m, filters, "prevent", function (e) {
+        e.preventDefault();
+        return true;
+    }, children);
+    defineChildModifier(m, filters, "self", function (e) { return e.target === e.currentTarget; }, children);
+    return m;
+}
+exports.modifiers = createModifier([], {
+    keyboard: true,
+    mouse: true,
+    modkey: true,
+    exact: true
+});
+
+});
+
+var lib = createCommonjsModule(function (module, exports) {
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(api);
+
+exports.modifiers = modifiers.modifiers;
+
+});
+
+var index = /*@__PURE__*/unwrapExports(lib);
+
+var Group = index.createComponent({
+  name: 'FormGroup',
+  functional: true,
+  props: {
+    size: {
+      type: String,
+      validator: function validator(v) {
+        return !v || ['lg', 'sm'].includes(v);
+      }
+    },
+    disabled: {
+      type: Boolean
+    },
+    error: {
+      type: Boolean
+    },
+    success: {
+      type: Boolean
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        slots = _ref.slots,
+        data = _ref.data;
+
+    if (props.size) {
+      (slots()["default"] || []).map(function (v) {
         if (v.componentOptions && /^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag || '')) {
           if (!v.componentOptions.propsData) {
             v.componentOptions.propsData = {};
           }
 
-          v.componentOptions.propsData.size = v.componentOptions.propsData.size || _this.size;
+          v.componentOptions.propsData.size = v.componentOptions.propsData.size || props.size;
         }
       });
     }
 
-    if (this.disabled !== undefined) {
-      (this.$slots["default"] || []).map(function (v) {
+    if (props.disabled !== undefined) {
+      (slots()["default"] || []).map(function (v) {
         if (v.componentOptions && /^.*form-(input|textarea|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag || '')) {
           if (!v.componentOptions.propsData) {
             v.componentOptions.propsData = {};
           }
 
-          v.componentOptions.propsData.disabled = _this.disabled;
+          v.componentOptions.propsData.disabled = props.disabled;
         }
       });
     }
 
-    var cssClass = ['form-group', this.error ? 'has-error' : '', this.success ? 'has-success' : ''];
-    return h("div", {
+    var cssClass = ['form-group', props.error && 'has-error', props.success && 'has-success', data["class"], data.staticClass];
+    return h("div", helper([{
       "class": cssClass
-    }, [this.$slots["default"]]);
-  };
-
-  __decorate([Prop({
-    type: String,
-    validator: function validator(v) {
-      return !v || ['lg', 'sm'].includes(v);
-    }
-  }), __metadata("design:type", String)], Group.prototype, "size", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "disabled", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "error", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "success", void 0);
-
-  Group = __decorate([Component$1], Group);
-  return Group;
-}(VueComponent);
-
-var script$4 = Vue.extend({
-  name: 'Hint',
-  props: {
-    error: Boolean,
-    success: Boolean
+    }, data]), [slots()["default"]]);
   }
 });
 
-/* script */
-const __vue_script__$q = script$4;
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
 
-/* template */
-var __vue_render__$q = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-input-hint",class:{ error: _vm.error, success: _vm.success }},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$q = [];
+  if (!css || typeof document === 'undefined') { return; }
 
-  /* style */
-  const __vue_inject_styles__$q = function (inject) {
-    if (!inject) return
-    inject("data-v-ebd537ce_0", { source: ".form-input-hint.error{display:none}.form-group.has-error .form-input-hint{display:none}.form-group.has-error .form-input-hint.error{display:initial}.form-group.has-success .form-input-hint.success{display:initial}", map: undefined, media: undefined });
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
 
-  };
-  /* scoped */
-  const __vue_scope_id__$q = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$q = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$q = false;
-  /* style inject SSR */
-  
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
 
-  
-  var FormHint = normalizeComponent_1(
-    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
-    __vue_inject_styles__$q,
-    __vue_script__$q,
-    __vue_scope_id__$q,
-    __vue_is_functional_template__$q,
-    __vue_module_identifier__$q,
-    browser,
-    undefined
-  );
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
 
-var script$5 = Vue.extend({
-  name: 'FormHorizontal'
-});
+var css_248z = ".form-input-hint.error {\n  display: none; }\n\n.form-group.has-error .form-input-hint {\n  display: none; }\n\n.form-group.has-error .form-input-hint.error {\n  display: initial; }\n\n.form-group.has-success .form-input-hint.success {\n  display: initial; }\n";
+styleInject(css_248z);
 
-/* script */
-const __vue_script__$r = script$5;
-
-/* template */
-var __vue_render__$r = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-horizontal"},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$r = [];
-
-  /* style */
-  const __vue_inject_styles__$r = undefined;
-  /* scoped */
-  const __vue_scope_id__$r = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$r = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$r = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var FormHorizontal = normalizeComponent_1(
-    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
-    __vue_inject_styles__$r,
-    __vue_script__$r,
-    __vue_scope_id__$r,
-    __vue_is_functional_template__$r,
-    __vue_module_identifier__$r,
-    undefined,
-    undefined
-  );
-
-var script$6 = Vue.extend({
-  name: 'Textarea',
+var Hint = index.createComponent({
+  name: 'FormHint',
+  functional: true,
   props: {
-    value: {
-      type: String,
-      "default": undefined
+    error: {
+      type: Boolean
     },
-    disabled: {
-      type: Boolean,
-      "default": false
+    success: {
+      type: Boolean
     }
   },
-  data: function data() {
-    return {
-      listeners: {}
-    };
-  },
-  computed: {
-    placeholder: function placeholder() {
-      return this.$attrs.placeholder || this.$slots["default"] && this.$slots["default"][0].text;
-    }
-  },
-  created: function created() {
-    this.listeners = __assign(__assign({}, this.$listeners), {
-      input: this.onInput
-    });
-  },
-  methods: {
-    onInput: function onInput(_a) {
-      var value = _a.target.value;
-      this.$emit('input', value);
-    }
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        children = _ref.children,
+        data = _ref.data;
+    var cssClasses = ['form-input-hint', props.error && 'error', props.success && 'success'];
+    return h("div", helper([{
+      "class": cssClasses
+    }, data]), [children]);
   }
 });
 
-/* script */
-const __vue_script__$s = script$6;
+var Horizontal = index.createComponent({
+  name: 'FormHorizontal',
+  functional: true,
+  render: function render(h, _ref) {
+    var children = _ref.children,
+        data = _ref.data;
+    return h("div", helper([{
+      "class": "form-horizontal"
+    }, data]), [children]);
+  }
+});
 
-/* template */
-var __vue_render__$s = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('textarea',_vm._g({staticClass:"form-input",attrs:{"placeholder":_vm.placeholder,"disabled":_vm.disabled},domProps:{"value":_vm.value},on:{"input":_vm.onInput}},_vm.listeners))};
-var __vue_staticRenderFns__$s = [];
-
-  /* style */
-  const __vue_inject_styles__$s = undefined;
-  /* scoped */
-  const __vue_scope_id__$s = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$s = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$s = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var FormTextarea = normalizeComponent_1(
-    { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
-    __vue_inject_styles__$s,
-    __vue_script__$s,
-    __vue_scope_id__$s,
-    __vue_is_functional_template__$s,
-    __vue_module_identifier__$s,
-    undefined,
-    undefined
-  );
-
-function _defineProperty(obj, key, value) {
+function _defineProperty$1(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -4545,7 +5419,7 @@ function _objectSpread2(target) {
 
     if (i % 2) {
       ownKeys$1(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
+        _defineProperty$1(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
@@ -4558,6 +5432,80 @@ function _objectSpread2(target) {
 
   return target;
 }
+
+function cachedProp(origin, cached) {
+  return Vue.extend({
+    data: function data() {
+      return _defineProperty$1({}, cached, {});
+    },
+    watch: _defineProperty$1({}, origin, {
+      immediate: true,
+      handler: function handler(value, old) {
+        if (old !== void 0) {
+          for (var prop in old) {
+            if (Object.prototype.hasOwnProperty.call(value, prop) !== true) {
+              this.$delete(this[cached], prop);
+            }
+          }
+        }
+
+        for (var _prop in value) {
+          this.$set(this.$data[cached], _prop, value[_prop]);
+        }
+      }
+    }),
+    created: function created() {
+      this[cached] = Object.assign({}, this[origin]);
+    }
+  });
+}
+var cachedListeners = /*#__PURE__*/cachedProp('$listeners', '__listeners');
+var cachedAttrs = /*#__PURE__*/cachedProp('$attrs', '__attrs');
+
+var Textarea = index.componentFactoryOf().mixin(cachedListeners).mixin(cachedAttrs).create({
+  name: 'FormTextarea',
+  props: {
+    value: {
+      type: String,
+      "default": undefined
+    },
+    disabled: {
+      type: Boolean,
+      "default": false
+    }
+  },
+  data: function data() {
+    return {
+      listeners: {}
+    };
+  },
+  computed: {
+    placeholder: function placeholder() {
+      return this.$attrs.placeholder || this.$slots["default"] && this.$slots["default"][0].text;
+    }
+  },
+  methods: {
+    onInput: function onInput(_ref) {
+      var value = _ref.target.value;
+      this.$emit('input', value);
+    }
+  },
+  render: function render(h) {
+    return h("textarea", {
+      "attrs": _objectSpread2({
+        "placeholder": this.placeholder,
+        "disabled": this.disabled
+      }, Object.assign({}, this.__attrs)),
+      "domProps": {
+        "value": this.value
+      },
+      "class": "form-input",
+      "on": _objectSpread2({}, Object.assign(Object.assign({}, this.__listeners), {
+        input: this.onInput
+      }))
+    });
+  }
+});
 
 var Types$2;
 
@@ -4573,16 +5521,77 @@ var Sizes$4;
   Sizes["lg"] = "input-lg";
 })(Sizes$4 || (Sizes$4 = {}));
 
-var Checkbox =
-/** @class */
-function (_super) {
-  __extends(Checkbox, _super);
+var Checkbox = index.componentFactoryOf().mixin(cachedListeners).create({
+  name: 'FormCheckbox',
+  props: {
+    checked: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
+    },
+    inline: {
+      type: Boolean
+    },
+    label: {
+      type: [String, Number]
+    },
+    model: {
+      type: undefined
+    },
+    value: {
+      type: undefined
+    },
+    size: {
+      type: String,
+      validator: function validator(v) {
+        return Object.keys(Sizes$4).includes(v);
+      }
+    },
+    type: {
+      type: String,
+      validator: function validator(v) {
+        return Object.keys(Types$2).includes(v);
+      }
+    },
+    error: {
+      type: Boolean
+    }
+  },
+  model: {
+    event: 'change',
+    prop: 'model'
+  },
+  computed: {
+    _checked: function _checked() {
+      if (!Array.isArray(this.model)) {
+        return this.checked || this.model && this.model === this.value;
+      }
 
-  function Checkbox() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
+      return this.model.includes(this.value);
+    }
+  },
+  methods: {
+    onChange: function onChange(_ref) {
+      var _this = this;
 
-  Checkbox.prototype.render = function (h) {
+      var checked = _ref.target.checked;
+
+      if (this.model === undefined || !Array.isArray(this.model)) {
+        this.$emit('change', checked ? this.value || checked : false);
+        return;
+      }
+
+      if (checked) {
+        this.$emit('change', [].concat(_toConsumableArray$1(this.model), [this.value]));
+      } else {
+        this.$emit('change', this.model.filter(function (option) {
+          return option !== _this.value;
+        }));
+      }
+    }
+  },
+  render: function render(h) {
     var cssClass = [Types$2[this.type] || 'form-checkbox', this.inline ? 'form-inline' : '', this.error ? 'is-error' : false, Sizes$4[this.size]];
     return h("label", {
       "class": cssClass
@@ -4591,83 +5600,17 @@ function (_super) {
         "type": "checkbox",
         "disabled": this.disabled
       },
-      "on": _objectSpread2({
-        "change": this.update
-      }, __assign(__assign({}, this.$listeners), {
-        change: this.onChange
-      })),
       "domProps": {
         "checked": this._checked
-      }
+      },
+      "on": _objectSpread2({}, Object.assign(Object.assign({}, this.__listeners), {
+        change: this.onChange
+      }))
     }), h("i", {
       "class": "form-icon"
     }), this.$slots["default"] || this.label || this.value]);
-  };
-
-  Checkbox.prototype.onChange = function (_a) {
-    var _this = this;
-
-    var checked = _a.target.checked;
-
-    if (this.model === undefined || !Array.isArray(this.model)) {
-      this.$emit('input', checked ? this.value : false);
-      return;
-    }
-
-    if (checked) {
-      this.$emit('input', __spread(this.model, [this.value]));
-    } else {
-      this.$emit('input', this.model.filter(function (option) {
-        return option !== _this.value;
-      }));
-    }
-  };
-
-  Object.defineProperty(Checkbox.prototype, "_checked", {
-    get: function get() {
-      if (!Array.isArray(this.model)) {
-        return this.checked || this.model && this.model === this.value;
-      }
-
-      return this.model.includes(this.value);
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  __decorate([Prop([String, Number]), __metadata("design:type", Object)], Checkbox.prototype, "label", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Checkbox.prototype, "checked", void 0);
-
-  __decorate([Prop({
-    "default": true
-  }), __metadata("design:type", Object)], Checkbox.prototype, "value", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Checkbox.prototype, "disabled", void 0);
-
-  __decorate([Prop({
-    type: String,
-    validator: function validator(v) {
-      return Object.keys(Types$2).includes(v);
-    }
-  }), __metadata("design:type", String)], Checkbox.prototype, "type", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Checkbox.prototype, "inline", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Checkbox.prototype, "size", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Checkbox.prototype, "error", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Object)], Checkbox.prototype, "model", void 0);
-
-  Checkbox = __decorate([Component$1({
-    model: {
-      event: 'input',
-      prop: 'model'
-    }
-  })], Checkbox);
-  return Checkbox;
-}(VueComponent);
+  }
+});
 
 // `Array.prototype.{ reduce, reduceRight }` methods implementation
 var createMethod$4 = function (IS_RIGHT) {
@@ -4720,133 +5663,131 @@ _export({ target: 'Array', proto: true, forced: !STRICT_METHOD$1 || !USES_TO_LEN
   }
 });
 
-var Group$1 =
-/** @class */
-function (_super) {
-  __extends(Group, _super);
+var Group$1 = /*#__PURE__*/function (_tsx$Component) {
+  _inherits(Group, _tsx$Component);
+
+  var _super = _createSuper(Group);
 
   function Group() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Group);
+
+    return _super.apply(this, arguments);
   }
 
-  Group.prototype.render = function (h) {
-    var _this = this;
+  _createClass(Group, [{
+    key: "render",
+    value: function render(h) {
+      var _this = this;
 
-    var group;
+      var group;
 
-    if (this.options) {
-      group = this.normalizeOptions(this.options).map(function (_a) {
-        var label = _a.label,
-            value = _a.value;
-        return h(Checkbox, {
-          "attrs": {
-            "label": label,
-            "value": value,
-            "inline": _this.inline,
-            "type": _this.type,
-            "size": _this.size,
-            "disabled": _this.disabled,
-            "error": _this.error
-          },
-          "model": _this.value,
-          "on": {
-            "input": _this.update
+      if (this.options) {
+        group = this.normalizeOptions(this.options).map(function (_ref) {
+          var label = _ref.label,
+              value = _ref.value;
+          return h(Checkbox, {
+            "attrs": {
+              "value": value,
+              "label": label,
+              "inline": _this.inline,
+              "type": _this.type,
+              "size": _this.size,
+              "disabled": _this.disabled,
+              "error": _this.error
+            },
+            "on": {
+              "change": _this.update
+            },
+            "props": _objectSpread2({}, {
+              model: _this.value
+            })
+          });
+        });
+      } else {
+        group = (this.$slots["default"] || []).filter(function (_ref2) {
+          var componentOptions = _ref2.componentOptions;
+          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-checkbox');
+        }).map(function (option) {
+          if (!option.componentOptions) {
+            option.componentOptions = {};
           }
+
+          if (!option.componentOptions.propsData) {
+            option.componentOptions.propsData = {};
+          }
+
+          var props = option.componentOptions.propsData;
+          props.model = _this.value;
+          props.inline = _this.inline || props.inline;
+          props.type = _this.type || props.type;
+          props.size = props.size !== undefined ? props.size : _this.size;
+          props.disabled = props.disabled !== undefined ? props.disabled : _this.disabled;
+          props.error = props.error !== undefined ? props.error : _this.error;
+          option.componentOptions.listeners = Object.assign(Object.assign({}, option.componentOptions.listeners), {
+            change: _this.update
+          });
+          return option;
         });
-      });
-    } else {
-      group = (this.$slots["default"] || []).filter(function (_a) {
-        var componentOptions = _a.componentOptions;
-        return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-checkbox');
-      }).map(function (option) {
-        if (!option.componentOptions) {
-          option.componentOptions = {};
-        }
+      }
 
-        if (!option.componentOptions.propsData) {
-          option.componentOptions.propsData = {};
-        }
-
-        var props = option.componentOptions.propsData;
-        props.model = _this.value;
-        props.inline = _this.inline || props.inline;
-        props.type = _this.type || props.type;
-        props.size = props.size !== undefined ? props.size : _this.size;
-        props.disabled = props.disabled !== undefined ? props.disabled : _this.disabled;
-        props.error = props.error !== undefined ? props.error : _this.error;
-        option.componentOptions.listeners = __assign(__assign({}, option.componentOptions.listeners), {
-          input: _this.update
-        });
-        return option;
-      });
+      return h("div", [group]);
     }
-
-    return h("div", [group]);
-  };
-
-  Group.prototype.update = function (value) {
-    this.$emit('input', value);
-  };
-
-  Group.prototype.normalizeOptions = function (options) {
-    var e_1, _a;
-
-    if (Array.isArray(options)) {
-      return options.reduce(function (normal, value) {
-        return __spread(normal, [{
-          value: value,
-          label: value
-        }]);
-      }, []);
+  }, {
+    key: "update",
+    value: function update(value) {
+      this.$emit('input', value);
     }
+  }, {
+    key: "normalizeOptions",
+    value: function normalizeOptions(options) {
+      if (Array.isArray(options)) {
+        return options.reduce(function (normal, value) {
+          return [].concat(_toConsumableArray$1(normal), [{
+            value: value,
+            label: value
+          }]);
+        }, []);
+      }
 
-    var normalized = [];
+      var normalized = [];
 
-    try {
-      for (var _b = __values(Object.keys(options)), _c = _b.next(); !_c.done; _c = _b.next()) {
-        var label = _c.value;
+      for (var _i = 0, _Object$keys = Object.keys(options); _i < _Object$keys.length; _i++) {
+        var label = _Object$keys[_i];
         normalized.push({
           label: label,
           value: options[label]
         });
       }
-    } catch (e_1_1) {
-      e_1 = {
-        error: e_1_1
-      };
-    } finally {
-      try {
-        if (_c && !_c.done && (_a = _b["return"])) _a.call(_b);
-      } finally {
-        if (e_1) throw e_1.error;
-      }
+
+      return normalized;
     }
+  }]);
 
-    return normalized;
-  };
-
-  __decorate([Prop([Array, Object]), __metadata("design:type", Object)], Group.prototype, "options", void 0);
-
-  __decorate([Prop({
-    type: Array,
-    "default": function _default() {
-      return [];
-    }
-  }), __metadata("design:type", Array)], Group.prototype, "value", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "inline", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Group.prototype, "type", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Group.prototype, "size", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "disabled", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "error", void 0);
-
-  Group = __decorate([Component$1], Group);
   return Group;
-}(VueComponent);
+}(index.Component);
+
+__decorate([Prop([Array, Object]), __metadata("design:type", Object)], Group$1.prototype, "options", void 0);
+
+__decorate([Prop({
+  type: Array,
+  "default": function _default() {
+    return [];
+  }
+}), __metadata("design:type", Array)], Group$1.prototype, "value", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$1.prototype, "inline", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Group$1.prototype, "type", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Group$1.prototype, "size", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$1.prototype, "disabled", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$1.prototype, "error", void 0);
+
+Group$1 = __decorate([Component({
+  name: 'FormCheckboxGroup'
+})], Group$1);
 
 var Sizes$5;
 
@@ -4855,68 +5796,64 @@ var Sizes$5;
   Sizes["lg"] = "input-lg";
 })(Sizes$5 || (Sizes$5 = {}));
 
-var Input =
-/** @class */
-function (_super) {
-  __extends(Input, _super);
-
-  function Input() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Input.prototype.render = function (h) {
+var Input = index.componentFactoryOf().mixin(cachedListeners).mixin(cachedAttrs).create({
+  name: 'Input',
+  props: {
+    size: {
+      type: String,
+      validator: function validator(size) {
+        return Object.keys(Sizes$5).includes(size);
+      }
+    },
+    error: {
+      type: Boolean
+    },
+    success: {
+      type: Boolean
+    },
+    value: {
+      type: [String, Number]
+    }
+  },
+  render: function render(h) {
     var cssClass = ['form-input', this.error ? 'is-error' : false, this.success ? 'is-success' : false, Sizes$5[this.size]];
     return h("input", {
       "class": cssClass,
       "domProps": _objectSpread2({}, {
         value: this.value
       }),
-      "on": _objectSpread2({}, this.on),
-      "attrs": _objectSpread2({}, this.attrs)
+      "on": _objectSpread2({}, this.__listeners),
+      "attrs": _objectSpread2({}, this.__attrs)
     });
-  };
+  }
+});
 
-  __decorate([Prop({
-    type: String,
-    validator: function validator(size) {
-      return Object.keys(Sizes$5).includes(size);
-    }
-  }), __metadata("design:type", String)], Input.prototype, "size", void 0);
+var Icon$2 = /*#__PURE__*/function (_TsxComponent) {
+  _inherits(Icon, _TsxComponent);
 
-  __decorate([Prop(), __metadata("design:type", Object)], Input.prototype, "attrs", void 0);
-
-  __decorate([Prop([String, Number]), __metadata("design:type", Object)], Input.prototype, "value", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Object)], Input.prototype, "on", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Input.prototype, "error", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Input.prototype, "success", void 0);
-
-  Input = __decorate([Component$1], Input);
-  return Input;
-}(VueComponent);
-
-var Icon$2 =
-/** @class */
-function (_super) {
-  __extends(Icon, _super);
+  var _super = _createSuper(Icon);
 
   function Icon() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Icon);
+
+    return _super.apply(this, arguments);
   }
 
-  Icon.prototype.render = function (h) {
-    return h("i", {
-      "class": ['form-icon', 'icon', Icons[this.icon]]
-    });
-  };
+  _createClass(Icon, [{
+    key: "render",
+    value: function render(h) {
+      return h("i", {
+        "class": ['form-icon', 'icon', Icons[this.icon]]
+      });
+    }
+  }]);
 
-  __decorate([Prop(), __metadata("design:type", String)], Icon.prototype, "icon", void 0);
-
-  Icon = __decorate([Component$1], Icon);
   return Icon;
-}(VueComponent);
+}(index.Component);
+
+__decorate([Prop(), __metadata("design:type", String)], Icon$2.prototype, "icon", void 0);
+
+Icon$2 = __decorate([Component], Icon$2);
 
 var IconSide;
 
@@ -4925,31 +5862,37 @@ var IconSide;
   IconSide["right"] = "has-icon-right";
 })(IconSide || (IconSide = {}));
 
-var IconContainer =
-/** @class */
-function (_super) {
-  __extends(IconContainer, _super);
+var IconContainer = /*#__PURE__*/function (_tsx$Component) {
+  _inherits(IconContainer, _tsx$Component);
+
+  var _super = _createSuper(IconContainer);
 
   function IconContainer() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, IconContainer);
+
+    return _super.apply(this, arguments);
   }
 
-  IconContainer.prototype.render = function (h) {
-    return h("div", {
-      "class": IconSide[this.side]
-    }, [this.$slots["default"]]);
-  };
-
-  __decorate([Prop({
-    type: String,
-    validator: function validator(side) {
-      return Object.keys(IconSide).includes(side);
+  _createClass(IconContainer, [{
+    key: "render",
+    value: function render(h) {
+      return h("div", {
+        "class": IconSide[this.side]
+      }, [this.$slots["default"]]);
     }
-  }), __metadata("design:type", String)], IconContainer.prototype, "side", void 0);
+  }]);
 
-  IconContainer = __decorate([Component$1], IconContainer);
   return IconContainer;
-}(VueComponent);
+}(index.Component);
+
+__decorate([Prop({
+  type: String,
+  validator: function validator(side) {
+    return Object.keys(IconSide).includes(side);
+  }
+}), __metadata("design:type", String)], IconContainer.prototype, "side", void 0);
+
+IconContainer = __decorate([Component], IconContainer);
 
 var Loading = Vue.extend({
   render: function render(h) {
@@ -4959,7 +5902,7 @@ var Loading = Vue.extend({
   }
 });
 
-var Component = Vue.extend({
+var Component$1 = index.componentFactoryOf().mixin(cachedListeners).mixin(cachedAttrs).create({
   name: 'FormInput',
   props: {
     value: [String, Number],
@@ -4983,37 +5926,31 @@ var Component = Vue.extend({
   },
   inheritAttrs: false,
   methods: {
-    onInput: function onInput(_a) {
-      var value = _a.target.value;
+    onInput: function onInput(_ref) {
+      var value = _ref.target.value;
       this.$emit('input', value);
     }
   },
   render: function render(h) {
-    var _a = this.$props,
-        icon = _a.icon,
-        iconSide = _a.iconSide,
-        loading = _a.loading,
-        size = _a.size,
-        disabled = _a.disabled;
-    var input = h(Input, _mergeJSXProps([{
-      "attrs": {
-        "size": size
-      }
-    }, {
-      "attrs": __assign(__assign({}, this.$attrs), {
-        disabled: disabled
-      })
-    }, {
-      "attrs": {
+    var _this$$props = this.$props,
+        icon = _this$$props.icon,
+        iconSide = _this$$props.iconSide,
+        loading = _this$$props.loading,
+        size = _this$$props.size,
+        disabled = _this$$props.disabled;
+    var input = h(Input, {
+      "attrs": _objectSpread2({
+        "size": size,
         "value": this.value,
         "error": this.error,
         "success": this.success
-      }
-    }, {
-      "on": __assign(__assign({}, this.$listeners), {
+      }, Object.assign(Object.assign({}, this.__attrs), {
+        disabled: disabled
+      })),
+      "on": _objectSpread2({}, Object.assign(Object.assign({}, this.__listeners), {
         input: this.onInput
-      })
-    }]));
+      }))
+    });
 
     if (icon || loading) {
       return h(IconContainer, {
@@ -5038,8 +5975,9 @@ var LabelSizes;
   LabelSizes["lg"] = "label-lg";
 })(LabelSizes || (LabelSizes = {}));
 
-var script$7 = Vue.extend({
+var Label$1 = index.createComponent({
   name: 'FormLabel',
+  functional: true,
   props: {
     size: {
       type: String,
@@ -5049,44 +5987,16 @@ var script$7 = Vue.extend({
       }
     }
   },
-  computed: {
-    cssClass: function cssClass() {
-      return ['form-label', LabelSizes[this.size] || ''];
-    }
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        children = _ref.children,
+        data = _ref.data;
+    var cssClasses = ['form-label', LabelSizes[props.size]];
+    return h("label", helper([{
+      "class": cssClasses
+    }, data]), [children]);
   }
 });
-
-/* script */
-const __vue_script__$t = script$7;
-
-/* template */
-var __vue_render__$t = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{class:_vm.cssClass},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$t = [];
-
-  /* style */
-  const __vue_inject_styles__$t = undefined;
-  /* scoped */
-  const __vue_scope_id__$t = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$t = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$t = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var FormLabel = normalizeComponent_1(
-    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
-    __vue_inject_styles__$t,
-    __vue_script__$t,
-    __vue_scope_id__$t,
-    __vue_is_functional_template__$t,
-    __vue_module_identifier__$t,
-    undefined,
-    undefined
-  );
 
 var Sizes$6;
 
@@ -5095,20 +6005,58 @@ var Sizes$6;
   Sizes["lg"] = "input-lg";
 })(Sizes$6 || (Sizes$6 = {}));
 
-var Radio =
-/** @class */
-function (_super) {
-  __extends(Radio, _super);
-
-  function Radio() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Radio.prototype.onChecked = function () {
-    this.$emit('change', this._value);
-  };
-
-  Radio.prototype.render = function (h) {
+var Radio = index.componentFactoryOf().mixin(cachedListeners).create({
+  name: 'FormRadio',
+  model: {
+    prop: 'model',
+    event: 'change'
+  },
+  props: {
+    checked: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
+    },
+    error: {
+      type: Boolean
+    },
+    inline: {
+      type: Boolean
+    },
+    label: {
+      type: String
+    },
+    name: {
+      type: String
+    },
+    size: {
+      type: String,
+      validator: function validator(size) {
+        return Object.keys(Sizes$6).includes(size);
+      }
+    },
+    value: {
+      type: undefined
+    },
+    model: {
+      type: undefined
+    }
+  },
+  computed: {
+    _label: function _label() {
+      return this.$slots["default"] || this.label || this._value;
+    },
+    _value: function _value() {
+      return this.value || this.$slots["default"] && this.$slots["default"][0].text || this.label;
+    }
+  },
+  methods: {
+    onChecked: function onChecked() {
+      this.$emit('change', this._value);
+    }
+  },
+  render: function render(h) {
     var cssClass = ['form-radio', this.inline ? 'form-inline' : false, this.error ? 'is-error' : false, Sizes$6[this.size]];
     return h("label", {
       "class": cssClass
@@ -5121,188 +6069,137 @@ function (_super) {
       "domProps": {
         "checked": this.checked || this.model === this._value
       },
-      "on": {
-        "change": this.onChecked
-      }
+      "on": _objectSpread2({}, Object.assign(Object.assign({}, this.__listeners), {
+        change: this.onChecked
+      }))
     }), h("i", {
       "class": "form-icon"
     }), " ", this._label]);
-  };
+  }
+});
 
-  Object.defineProperty(Radio.prototype, "_label", {
-    get: function get() {
-      return this.$slots["default"] || this.label || this._value;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(Radio.prototype, "_value", {
-    get: function get() {
-      return this.value || this.$slots["default"] && this.$slots["default"][0].text || this.label;
-    },
-    enumerable: true,
-    configurable: true
-  });
+var Group$2 = /*#__PURE__*/function (_tsx$Component) {
+  _inherits(Group, _tsx$Component);
 
-  __decorate([Prop(), __metadata("design:type", Object)], Radio.prototype, "value", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Radio.prototype, "label", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Radio.prototype, "name", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Radio.prototype, "checked", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Radio.prototype, "inline", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Radio.prototype, "error", void 0);
-
-  __decorate([Prop({
-    type: String,
-    validator: function validator(size) {
-      return Object.keys(Sizes$6).includes(size);
-    }
-  }), __metadata("design:type", String)], Radio.prototype, "size", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Radio.prototype, "disabled", void 0);
-
-  __decorate([Prop([String, Boolean, Object, Number, Array]), __metadata("design:type", Object)], Radio.prototype, "model", void 0);
-
-  Radio = __decorate([Component$1({
-    model: {
-      prop: 'model',
-      event: 'change'
-    }
-  })], Radio);
-  return Radio;
-}(VueComponent);
-
-var Group$2 =
-/** @class */
-function (_super) {
-  __extends(Group, _super);
+  var _super = _createSuper(Group);
 
   function Group() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Group);
+
+    return _super.apply(this, arguments);
   }
 
-  Group.prototype.render = function (h) {
-    var _this = this;
+  _createClass(Group, [{
+    key: "render",
+    value: function render(h) {
+      var _this = this;
 
-    var name = this.name || this.uid;
-    var group;
+      var name = this.name || this.uid;
+      var group;
 
-    if (this.options) {
-      group = this.normalizeOptions(this.options).map(function (_a) {
-        var label = _a.label,
-            value = _a.value;
-        return h(Radio, {
-          "attrs": {
-            "name": name,
-            "label": label,
-            "value": value,
-            "error": _this.error,
-            "inline": _this.inline,
-            "size": _this.size,
-            "disabled": _this.disabled
-          },
-          "on": {
-            "change": _this.update
-          },
-          "model": _this.value
+      if (this.options) {
+        group = this.normalizeOptions(this.options).map(function (_ref) {
+          var label = _ref.label,
+              value = _ref.value;
+          return h(Radio, {
+            "attrs": {
+              "name": name,
+              "label": label,
+              "value": value,
+              "error": _this.error,
+              "inline": _this.inline,
+              "size": _this.size,
+              "disabled": _this.disabled
+            },
+            "on": {
+              "change": _this.update
+            },
+            "props": _objectSpread2({}, {
+              model: _this.value
+            })
+          });
         });
-      });
-    } else {
-      group = (this.$slots["default"] || []).filter(function (_a) {
-        var componentOptions = _a.componentOptions;
-        return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-radio');
-      }).map(function (option) {
-        if (!option.componentOptions) {
-          option.componentOptions = {};
-        }
+      } else {
+        group = (this.$slots["default"] || []).filter(function (_ref2) {
+          var componentOptions = _ref2.componentOptions;
+          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-radio');
+        }).map(function (option) {
+          if (!option.componentOptions) {
+            option.componentOptions = {};
+          }
 
-        var props = option.componentOptions.propsData || {};
-        props.name = name;
-        props.size = props.size !== undefined ? props.size : _this.size;
-        props.disabled = props.disabled !== undefined ? props.disabled : _this.disabled;
-        props.error = props.error !== undefined ? props.error : _this.error;
-        props.inline = _this.inline || props.inline;
-        props.model = _this.value;
-        option.componentOptions.listeners = __assign(__assign({}, option.componentOptions.listeners), {
-          change: _this.update
+          var props = option.componentOptions.propsData || {};
+          props.name = name;
+          props.size = props.size !== undefined ? props.size : _this.size;
+          props.disabled = props.disabled !== undefined ? props.disabled : _this.disabled;
+          props.error = props.error !== undefined ? props.error : _this.error;
+          props.inline = _this.inline || props.inline;
+          props.model = _this.value;
+          option.componentOptions.listeners = Object.assign(Object.assign({}, option.componentOptions.listeners), {
+            change: _this.update
+          });
+          return option;
         });
-        return option;
-      });
+      }
+
+      return h("div", [group]);
     }
-
-    return h("div", [group]);
-  };
-
-  Group.prototype.update = function (value) {
-    this.$emit('input', value);
-  };
-
-  Object.defineProperty(Group.prototype, "uid", {
-    get: function get() {
-      return 'radio-group-' + Math.round(Math.random() * 1000);
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Group.prototype.normalizeOptions = function (options) {
-    var e_1, _a;
-
-    if (Array.isArray(options)) {
-      return options.reduce(function (normal, value) {
-        return __spread(normal, [{
-          value: value,
-          label: value
-        }]);
-      }, []);
+  }, {
+    key: "update",
+    value: function update(value) {
+      this.$emit('input', value);
     }
+  }, {
+    key: "normalizeOptions",
+    value: function normalizeOptions(options) {
+      if (Array.isArray(options)) {
+        return options.reduce(function (normal, value) {
+          return [].concat(_toConsumableArray$1(normal), [{
+            value: value,
+            label: value
+          }]);
+        }, []);
+      }
 
-    var normalized = [];
+      var normalized = [];
 
-    try {
-      for (var _b = __values(Object.keys(options)), _c = _b.next(); !_c.done; _c = _b.next()) {
-        var label = _c.value;
+      for (var _i = 0, _Object$keys = Object.keys(options); _i < _Object$keys.length; _i++) {
+        var label = _Object$keys[_i];
         normalized.push({
           label: label,
           value: options[label]
         });
       }
-    } catch (e_1_1) {
-      e_1 = {
-        error: e_1_1
-      };
-    } finally {
-      try {
-        if (_c && !_c.done && (_a = _b["return"])) _a.call(_b);
-      } finally {
-        if (e_1) throw e_1.error;
-      }
+
+      return normalized;
     }
+  }, {
+    key: "uid",
+    get: function get() {
+      return 'radio-group-' + Math.round(Math.random() * 1000);
+    }
+  }]);
 
-    return normalized;
-  };
-
-  __decorate([Prop(), __metadata("design:type", Object)], Group.prototype, "options", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Group.prototype, "name", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Object)], Group.prototype, "value", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "inline", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Group.prototype, "size", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "error", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group.prototype, "disabled", void 0);
-
-  Group = __decorate([Component$1], Group);
   return Group;
-}(VueComponent);
+}(index.Component);
+
+__decorate([Prop(), __metadata("design:type", Object)], Group$2.prototype, "options", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Group$2.prototype, "name", void 0);
+
+__decorate([Prop(), __metadata("design:type", Object)], Group$2.prototype, "value", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$2.prototype, "inline", void 0);
+
+__decorate([Prop(String), __metadata("design:type", String)], Group$2.prototype, "size", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$2.prototype, "error", void 0);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Group$2.prototype, "disabled", void 0);
+
+Group$2 = __decorate([Component({
+  name: 'FormRadioGroup'
+})], Group$2);
 
 var $some = arrayIteration.some;
 
@@ -5319,43 +6216,49 @@ _export({ target: 'Array', proto: true, forced: !STRICT_METHOD$2 || !USES_TO_LEN
   }
 });
 
-var Option =
-/** @class */
-function (_super) {
-  __extends(Option, _super);
+var Option = /*#__PURE__*/function (_tsx$Component) {
+  _inherits(Option, _tsx$Component);
+
+  var _super = _createSuper(Option);
 
   function Option() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    _classCallCheck(this, Option);
+
+    return _super.apply(this, arguments);
   }
 
-  Option.prototype.render = function (h) {
-    var _a = this.$props,
-        selected = _a.selected,
-        disabled = _a.disabled,
-        value = _a.value,
-        label = _a.label;
-    return h("option", {
-      "domProps": {
-        "selected": selected,
-        "value": value
-      },
-      "attrs": {
-        "disabled": disabled
-      }
-    }, [this.$slots["default"] || label || value]);
-  };
+  _createClass(Option, [{
+    key: "render",
+    value: function render(h) {
+      var _this$$props = this.$props,
+          selected = _this$$props.selected,
+          disabled = _this$$props.disabled,
+          value = _this$$props.value,
+          label = _this$$props.label;
+      return h("option", {
+        "domProps": {
+          "selected": selected,
+          "value": value
+        },
+        "attrs": {
+          "disabled": disabled
+        }
+      }, [this.$slots["default"] || label || value]);
+    }
+  }]);
 
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Option.prototype, "disabled", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Object)], Option.prototype, "value", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Object)], Option.prototype, "label", void 0);
-
-  __decorate([Prop(), __metadata("design:type", Boolean)], Option.prototype, "selected", void 0);
-
-  Option = __decorate([Component$1], Option);
   return Option;
-}(VueComponent);
+}(index.Component);
+
+__decorate([Prop(Boolean), __metadata("design:type", Boolean)], Option.prototype, "disabled", void 0);
+
+__decorate([Prop(), __metadata("design:type", Object)], Option.prototype, "value", void 0);
+
+__decorate([Prop(), __metadata("design:type", Object)], Option.prototype, "label", void 0);
+
+__decorate([Prop(), __metadata("design:type", Boolean)], Option.prototype, "selected", void 0);
+
+Option = __decorate([Component], Option);
 
 var Sizes$7;
 
@@ -5364,41 +6267,116 @@ var Sizes$7;
   Sizes["lg"] = "select-lg";
 })(Sizes$7 || (Sizes$7 = {}));
 
-var Select =
-/** @class */
-function (_super) {
-  __extends(Select, _super);
-
-  function Select() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Select.prototype.mounted = function () {
+var Select = index.componentFactoryOf().mixin(cachedListeners).mixin(cachedAttrs).create({
+  name: 'FormSelect',
+  props: {
+    options: {
+      type: [Object, Array]
+    },
+    multiple: {
+      type: Boolean
+    },
+    placeholder: {
+      type: String
+    },
+    value: {
+      type: [String, Number, Array],
+      "default": ''
+    },
+    size: {
+      type: [String, Number]
+    },
+    scale: {
+      type: String,
+      validator: function validator(size) {
+        return Object.keys(Sizes$7).includes(size);
+      }
+    },
+    error: {
+      type: Boolean
+    },
+    success: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
+    }
+  },
+  mounted: function mounted() {
     if (!this.options && !this.$slots["default"]) {
       throw new TypeError('Component could not be created without options');
     }
-  };
+  },
+  methods: {
+    onInput: function onInput(_ref) {
+      var selectedOptions = _ref.target.selectedOptions;
 
-  Select.prototype.render = function (h) {
-    var _this = this;
+      if (this.multiple) {
+        var selected = _toConsumableArray$1(selectedOptions).map(function (option) {
+          return option.value || option.innerHTML;
+        });
+
+        this.$emit('input', selected);
+      } else {
+        this.$emit('input', selectedOptions[0].value);
+      }
+    },
+    isSelected: function isSelected(label, value, current) {
+      var _this = this;
+
+      current = current || this.value;
+
+      if (current instanceof Array) {
+        return current.some(function (v) {
+          return _this.isSelected(label, value, v);
+        });
+      }
+
+      return label !== undefined && current.toString() === label.toString() || value !== undefined && current.toString() === value.toString();
+    },
+    normalizeOptions: function normalizeOptions(options) {
+      if (Array.isArray(options)) {
+        return options.reduce(function (normal, value) {
+          return [].concat(_toConsumableArray$1(normal), [{
+            value: value,
+            label: value
+          }]);
+        }, []);
+      }
+
+      var normalized = [];
+
+      for (var _i = 0, _Object$keys = Object.keys(options); _i < _Object$keys.length; _i++) {
+        var label = _Object$keys[_i];
+        normalized.push({
+          label: label,
+          value: options[label]
+        });
+      }
+
+      return normalized;
+    }
+  },
+  render: function render(h) {
+    var _this2 = this;
 
     var options = [];
 
     if (this.options) {
-      options = this.normalizeOptions(this.options).map(function (_a) {
-        var label = _a.label,
-            value = _a.value;
+      options = this.normalizeOptions(this.options).map(function (_ref2) {
+        var label = _ref2.label,
+            value = _ref2.value;
         return h(Option, {
           "attrs": {
-            "selected": _this.isSelected(label, value),
+            "selected": _this2.isSelected(label, value),
             "label": label,
             "value": value
           }
         });
       });
     } else {
-      options = (this.$slots["default"] || []).filter(function (_a) {
-        var componentOptions = _a.componentOptions;
+      options = (this.$slots["default"] || []).filter(function (_ref3) {
+        var componentOptions = _ref3.componentOptions;
         return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-option');
       }).map(function (option) {
         if (!option.componentOptions) {
@@ -5414,7 +6392,7 @@ function (_super) {
         var props = option.componentOptions.propsData; // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 
         var value = props.value || (option.componentOptions.children[0] || {}).text;
-        props.selected = props.selected !== undefined ? props.selected : _this.isSelected(props.label, value);
+        props.selected = props.selected !== undefined ? props.selected : _this2.isSelected(props.label, value);
         return option;
       });
     }
@@ -5432,117 +6410,17 @@ function (_super) {
     var cssClass = ['form-select', Sizes$7[this.scale], this.error ? 'is-error' : '', this.success ? 'is-success' : ''];
     return h("select", {
       "class": cssClass,
-      "attrs": {
+      "attrs": _objectSpread2({
         "multiple": this.multiple,
-        "disabled": this.disabled
-      },
-      "on": _objectSpread2({}, this.listeners)
+        "disabled": this.disabled,
+        "size": Number(this.size)
+      }, Object.assign({}, this.__attrs)),
+      "on": _objectSpread2({}, Object.assign(Object.assign({}, this.__listeners), {
+        input: this.onInput
+      }))
     }, [options]);
-  };
-
-  Object.defineProperty(Select.prototype, "listeners", {
-    get: function get() {
-      return __assign(__assign({}, this.$listeners), {
-        change: this.onInput
-      });
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  Select.prototype.onInput = function (_a) {
-    var selectedOptions = _a.target.selectedOptions;
-
-    if (this.multiple) {
-      var selected = __spread(selectedOptions).map(function (option) {
-        return option.value || option.innerHTML;
-      });
-
-      this.$emit('input', selected);
-    } else {
-      this.$emit('input', selectedOptions[0].value);
-    }
-  };
-
-  Select.prototype.isSelected = function (label, value, current) {
-    var _this = this;
-
-    if (current === void 0) {
-      current = this.value;
-    }
-
-    if (current instanceof Array) {
-      return current.some(function (v) {
-        return _this.isSelected(label, value, v);
-      });
-    }
-
-    return label !== undefined && current.toString() === label.toString() || value !== undefined && current.toString() === value.toString();
-  };
-
-  Select.prototype.normalizeOptions = function (options) {
-    var e_1, _a;
-
-    if (Array.isArray(options)) {
-      return options.reduce(function (normal, value) {
-        return __spread(normal, [{
-          value: value,
-          label: value
-        }]);
-      }, []);
-    }
-
-    var normalized = [];
-
-    try {
-      for (var _b = __values(Object.keys(options)), _c = _b.next(); !_c.done; _c = _b.next()) {
-        var label = _c.value;
-        normalized.push({
-          label: label,
-          value: options[label]
-        });
-      }
-    } catch (e_1_1) {
-      e_1 = {
-        error: e_1_1
-      };
-    } finally {
-      try {
-        if (_c && !_c.done && (_a = _b["return"])) _a.call(_b);
-      } finally {
-        if (e_1) throw e_1.error;
-      }
-    }
-
-    return normalized;
-  };
-
-  __decorate([Prop([Array, Object]), __metadata("design:type", Object)], Select.prototype, "options", void 0);
-
-  __decorate([Prop({
-    "default": ''
-  }), __metadata("design:type", Object)], Select.prototype, "value", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Select.prototype, "multiple", void 0);
-
-  __decorate([Prop(String), __metadata("design:type", String)], Select.prototype, "placeholder", void 0);
-
-  __decorate([Prop({
-    type: String,
-    validator: function validator(size) {
-      return Object.keys(Sizes$7).includes(size);
-    }
-  }), __metadata("design:type", String)], Select.prototype, "scale", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Select.prototype, "error", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Select.prototype, "success", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], Select.prototype, "disabled", void 0);
-
-  Select = __decorate([Component$1], Select);
-  return Select;
-}(VueComponent);
+  }
+});
 
 var components = {
   Avatar: Avatar$1,
@@ -5574,13 +6452,13 @@ var components = {
   FormCheckbox: Checkbox,
   FormCheckboxGroup: Group$1,
   FormGroup: Group,
-  FormInput: Component,
-  FormLabel: FormLabel,
-  FormHint: FormHint,
-  FormHorizontal: FormHorizontal,
+  FormInput: Component$1,
+  FormLabel: Label$1,
+  FormHint: Hint,
+  FormHorizontal: Horizontal,
   FormOption: Option,
   FormSelect: Select,
-  FormTextarea: FormTextarea,
+  FormTextarea: Textarea,
   FormRadioGroup: Group$2,
   FormRadio: Radio
 };
@@ -5589,161 +6467,83 @@ var sizeValidator = function sizeValidator(size) {
   return size % 1 === 0 && size > 0 && size <= 12;
 };
 
-var default_1 =
-/** @class */
-function (_super) {
-  __extends(default_1, _super);
+var cssClass = function cssClass(props) {
+  return ['column', props.mr ? 'col-mr-auto' : '', props.ml ? 'col-ml-auto' : '', props.mx ? 'col-mx-auto' : '', props.xs ? "col-xs-".concat(props.xs) : '', props.sm ? "col-sm-".concat(props.sm) : '', props.md ? "col-md-".concat(props.md) : '', props.lg ? "col-lg-".concat(props.lg) : '', props.xl ? "col-xl-".concat(props.xl) : '', props.col ? "col-".concat(props.col) : '', props.hide ? "hide-".concat(props.hide) : '', props.show ? "show-".concat(props.show) : ''];
+};
 
-  function default_1() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Object.defineProperty(default_1.prototype, "cssClass", {
-    get: function get() {
-      return [this.mr ? 'col-mr-auto' : '', this.ml ? 'col-ml-auto' : '', this.mx ? 'col-mx-auto' : '', this.xs ? "col-xs-" + this.xs : '', this.sm ? "col-sm-" + this.sm : '', this.md ? "col-md-" + this.md : '', this.lg ? "col-lg-" + this.lg : '', this.xl ? "col-xl-" + this.xl : '', this.col ? "col-" + this.col : '', this.hide ? "hide-" + this.hide : '', this.show ? "show-" + this.show : ''];
+var Column = index.createComponent({
+  name: 'Column',
+  functional: true,
+  props: {
+    ml: {
+      type: Boolean
     },
-    enumerable: true,
-    configurable: true
-  });
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], default_1.prototype, "ml", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], default_1.prototype, "mx", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], default_1.prototype, "mr", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "xs", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "sm", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "md", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "lg", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "xl", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "col", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "hide", void 0);
-
-  __decorate([Prop({
-    type: [Number, String],
-    validator: sizeValidator
-  }), __metadata("design:type", Number)], default_1.prototype, "show", void 0);
-
-  default_1 = __decorate([Component$1], default_1);
-  return default_1;
-}(Vue);
-
-/* script */
-const __vue_script__$u = default_1;
-
-/* template */
-var __vue_render__$u = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"column",class:_vm.cssClass},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$u = [];
-
-  /* style */
-  const __vue_inject_styles__$u = undefined;
-  /* scoped */
-  const __vue_scope_id__$u = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$u = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$u = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var Column = normalizeComponent_1(
-    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
-    __vue_inject_styles__$u,
-    __vue_script__$u,
-    __vue_scope_id__$u,
-    __vue_is_functional_template__$u,
-    __vue_module_identifier__$u,
-    undefined,
-    undefined
-  );
-
-var default_1$1 =
-/** @class */
-function (_super) {
-  __extends(default_1, _super);
-
-  function default_1() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  Object.defineProperty(default_1.prototype, "cssClass", {
-    get: function get() {
-      return [this.gapless ? 'col-gapless' : '', this.oneline ? 'col-oneline' : ''];
+    mx: {
+      type: Boolean
     },
-    enumerable: true,
-    configurable: true
-  });
+    mr: {
+      type: Boolean
+    },
+    xs: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    sm: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    md: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    lg: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    xl: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    col: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    hide: {
+      type: [Number, String],
+      validator: sizeValidator
+    },
+    show: {
+      type: [Number, String],
+      validator: sizeValidator
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        children = _ref.children,
+        data = _ref.data;
+    return h("div", helper([{
+      "class": cssClass(props)
+    }, data]), [children]);
+  }
+});
 
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], default_1.prototype, "gapless", void 0);
-
-  __decorate([Prop(Boolean), __metadata("design:type", Boolean)], default_1.prototype, "oneline", void 0);
-
-  default_1 = __decorate([Component$1], default_1);
-  return default_1;
-}(Vue);
-
-/* script */
-const __vue_script__$v = default_1$1;
-
-/* template */
-var __vue_render__$v = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"columns",class:_vm.cssClass},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$v = [];
-
-  /* style */
-  const __vue_inject_styles__$v = undefined;
-  /* scoped */
-  const __vue_scope_id__$v = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$v = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$v = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var Columns = normalizeComponent_1(
-    { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
-    __vue_inject_styles__$v,
-    __vue_script__$v,
-    __vue_scope_id__$v,
-    __vue_is_functional_template__$v,
-    __vue_module_identifier__$v,
-    undefined,
-    undefined
-  );
+var Columns = index.createComponent({
+  name: 'Columns',
+  functional: true,
+  props: {
+    gapless: Boolean,
+    oneline: Boolean
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        children = _ref.children,
+        data = _ref.data;
+    var cssClasses = ['columns', props.gapless && 'col-gapless', props.oneline && 'col-oneline'];
+    return h("div", helper([{
+      "class": cssClasses
+    }, data]), [children]);
+  }
+});
 
 var Grids;
 
@@ -5755,60 +6555,24 @@ var Grids;
   Grids["xl"] = "grid-xl";
 })(Grids || (Grids = {}));
 
-var default_1$2 =
-/** @class */
-function (_super) {
-  __extends(default_1, _super);
-
-  function default_1() {
-    return _super !== null && _super.apply(this, arguments) || this;
+var Container = index.createComponent({
+  name: 'Container',
+  functional: true,
+  props: {
+    grid: {
+      type: String
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        children = _ref.children,
+        data = _ref.data;
+    var cssClasses = ['container', Grids[props.grid]];
+    return h("div", helper([{
+      "class": cssClasses
+    }, data]), [children]);
   }
-
-  Object.defineProperty(default_1.prototype, "cssClass", {
-    get: function get() {
-      return [Grids[this.grid]];
-    },
-    enumerable: true,
-    configurable: true
-  });
-
-  __decorate([Prop(String), __metadata("design:type", String)], default_1.prototype, "grid", void 0);
-
-  default_1 = __decorate([Component$1], default_1);
-  return default_1;
-}(Vue);
-
-/* script */
-const __vue_script__$w = default_1$2;
-
-/* template */
-var __vue_render__$w = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container",class:_vm.cssClass},[_vm._t("default")],2)};
-var __vue_staticRenderFns__$w = [];
-
-  /* style */
-  const __vue_inject_styles__$w = undefined;
-  /* scoped */
-  const __vue_scope_id__$w = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$w = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$w = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var Container = normalizeComponent_1(
-    { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
-    __vue_inject_styles__$w,
-    __vue_script__$w,
-    __vue_scope_id__$w,
-    __vue_is_functional_template__$w,
-    __vue_module_identifier__$w,
-    undefined,
-    undefined
-  );
+});
 
 var layout = {
   Container: Container,
@@ -5816,66 +6580,29 @@ var layout = {
   Column: Column
 };
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-var capitalize = function capitalize(s) {
-  if (typeof s !== 'string') {
-    throw new TypeError("Argument should be a string. Given: " + _typeof(s));
-  }
-
-  return s.charAt(0).toUpperCase() + s.slice(1);
-};
-
-var addPrefix = function addPrefix(source, prefix, suffix) {
-  if (prefix === void 0) {
-    prefix = '';
-  }
-
-  if (suffix === void 0) {
-    suffix = '';
-  }
-
-  var prefixWithSuffix = prefix ? prefix + suffix : prefix;
-  return prefixWithSuffix + capitalize(source);
-};
-
-var Badge$1 = function Badge(el, _a) {
-  var value = _a.value;
+var Badge$1 = function Badge(el, _ref) {
+  var value = _ref.value;
   if (value === undefined) return;
   el.classList.add('badge');
   el.setAttribute('data-badge', value);
 };
 
 var add = function add(el, cssClasses) {
-  var _a;
+  var _el$classList;
 
-  (_a = el.classList).add.apply(_a, __spread(cssClasses));
+  (_el$classList = el.classList).add.apply(_el$classList, _toConsumableArray$1(cssClasses));
 };
 
 var remove = function remove(el, cssClasses) {
-  var _a;
+  var _el$classList2;
 
-  (_a = el.classList).remove.apply(_a, __spread(cssClasses));
+  (_el$classList2 = el.classList).remove.apply(_el$classList2, _toConsumableArray$1(cssClasses));
 };
 
-var Loading$1 = function Loading(el, _a) {
-  var _b = _a.value,
-      value = _b === void 0 ? true : _b,
-      modifiers = _a.modifiers;
+var Loading$1 = function Loading(el, _ref) {
+  var _ref$value = _ref.value,
+      value = _ref$value === void 0 ? true : _ref$value,
+      modifiers = _ref.modifiers;
   var cssClasses = ['loading'];
 
   if (modifiers.lg) {
@@ -5907,9 +6634,9 @@ var Sides$1;
   Sides["left"] = "tooltip-left";
 })(Sides$1 || (Sides$1 = {}));
 
-var Tooltip = function Tooltip(el, _a) {
-  var value = _a.value,
-      modifiers = _a.modifiers;
+var Tooltip = function Tooltip(el, _ref) {
+  var value = _ref.value,
+      modifiers = _ref.modifiers;
 
   if (value) {
     el.classList.add('tooltip');
@@ -5926,49 +6653,36 @@ var directives = {
   Tooltip: Tooltip
 };
 
-var allComponents = __assign(__assign({}, components), layout);
-
-var VectrePlugin = function VectrePlugin(vue, options) {
-  var e_1, _a, e_2, _b;
-
-  if (options === void 0) {
-    options = {
-      prefix: ''
-    };
+var capitalize = function capitalize(s) {
+  if (typeof s !== 'string') {
+    throw new TypeError("Argument should be a string. Given: ".concat(_typeof(s)));
   }
 
-  try {
-    for (var _c = __values(Object.keys(allComponents)), _d = _c.next(); !_d.done; _d = _c.next()) {
-      var component = _d.value;
-      vue.component(addPrefix(component, options.prefix), allComponents[component]);
-    }
-  } catch (e_1_1) {
-    e_1 = {
-      error: e_1_1
-    };
-  } finally {
-    try {
-      if (_d && !_d.done && (_a = _c["return"])) _a.call(_c);
-    } finally {
-      if (e_1) throw e_1.error;
-    }
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+var addPrefix = function addPrefix(source) {
+  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var suffix = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  var prefixWithSuffix = prefix ? prefix + suffix : prefix;
+  return prefixWithSuffix + capitalize(source);
+};
+
+var allComponents = Object.assign(Object.assign({}, components), layout);
+
+var VectrePlugin = function VectrePlugin(vue) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    prefix: ''
+  };
+
+  for (var _i = 0, _Object$keys = Object.keys(allComponents); _i < _Object$keys.length; _i++) {
+    var component = _Object$keys[_i];
+    vue.component(addPrefix(component, options.prefix), allComponents[component]);
   }
 
-  try {
-    for (var _e = __values(Object.keys(directives)), _f = _e.next(); !_f.done; _f = _e.next()) {
-      var directive = _f.value;
-      vue.directive(addPrefix(directive, options.prefix, '-'), directives[directive]);
-    }
-  } catch (e_2_1) {
-    e_2 = {
-      error: e_2_1
-    };
-  } finally {
-    try {
-      if (_f && !_f.done && (_b = _e["return"])) _b.call(_e);
-    } finally {
-      if (e_2) throw e_2.error;
-    }
+  for (var _i2 = 0, _Object$keys2 = Object.keys(directives); _i2 < _Object$keys2.length; _i2++) {
+    var directive = _Object$keys2[_i2];
+    vue.directive(addPrefix(directive, options.prefix, '-'), directives[directive]);
   }
 };
 
@@ -5978,4 +6692,4 @@ var plugin = Object.assign(VectrePlugin, {
   directives: directives
 });
 
-export { Accordion$1 as Accordion, Avatar$1 as Avatar, Presences as AvatarPresences, Sizes as AvatarSizes, Bar$1 as Bar, Breadcrumb$1 as Breadcrumb, Btn, BtnGroup, Sizes$2 as BtnSizes, States as BtnStates, Types as BtnTypes, Card$1 as Card, Slots as CardImageSlots, Chip$1 as Chip, Column, Columns, Container, Grids as ContainerGrids, Divider$1 as Divider, DropdownMenu$1 as DropdownMenu, Empty$1 as Empty, Checkbox as FormCheckbox, Group$1 as FormCheckboxGroup, Sizes$4 as FormCheckboxSizes, Types$2 as FormCheckboxTypes, Group as FormGroup, FormHint, FormHorizontal, Component as FormInput, Sizes$5 as FormInputSizes, FormLabel, LabelSizes as FormLabelSizes, Option as FormOption, Radio as FormRadio, Group$2 as FormRadioGroup, Select as FormSelect, FormTextarea, Icon$1 as Icon, Action as IconAction, Navigation as IconNavigation, Objects as IconObject, Icons, Modal$1 as Modal, Navigation$2 as Navigation, OffCanvas$1 as OffCanvas, Pagination$1 as Pagination, Panel, Popover, Sides as PopoverSides, Step, Steps, Tab, Tabs, Tag, Types$1 as TagTypes, Tile$1 as Tile, Toast$1 as Toast, plugin as VectrePlugin, VerticalMenu$1 as VerticalMenu };
+export { Accordion$1 as Accordion, Avatar$1 as Avatar, Presences as AvatarPresences, Sizes as AvatarSizes, Badge$1 as Badge, Bar$1 as Bar, Breadcrumb$1 as Breadcrumb, Btn, BtnGroup, Sizes$2 as BtnSizes, States as BtnStates, Types as BtnTypes, Card$1 as Card, Slots as CardImageSlots, Chip$1 as Chip, Column, Columns, Container, Grids as ContainerGrids, Divider$1 as Divider, DropdownMenu$1 as DropdownMenu, Empty$1 as Empty, Checkbox as FormCheckbox, Group$1 as FormCheckboxGroup, Sizes$4 as FormCheckboxSizes, Types$2 as FormCheckboxTypes, Group as FormGroup, Hint as FormHint, Horizontal as FormHorizontal, Component$1 as FormInput, Sizes$5 as FormInputSizes, Label$1 as FormLabel, LabelSizes as FormLabelSizes, Option as FormOption, Radio as FormRadio, Group$2 as FormRadioGroup, Select as FormSelect, Textarea as FormTextarea, Icon$1 as Icon, Action as IconAction, Navigation as IconNavigation, Objects as IconObject, Icons, Loading$1 as Loading, Modal$1 as Modal, Navigation$2 as Navigation, OffCanvas$1 as OffCanvas, Pagination$1 as Pagination, Panel, Popover, Sides as PopoverSides, Step, Steps, Tab, Tabs, Tag, Types$1 as TagTypes, Tile$1 as Tile, Toast$1 as Toast, Tooltip, Sides$1 as TooltipSides, plugin as VectrePlugin, VerticalMenu$1 as VerticalMenu };

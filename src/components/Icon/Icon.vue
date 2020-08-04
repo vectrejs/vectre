@@ -16,7 +16,7 @@ export default class Icon extends vue {
   @Prop(String)
   public size: string;
 
-  public get cssStyle(): object {
+  public get cssStyle(): Record<string, string | number | boolean> {
     return {
       'font-size': Sizes[this.size as Size] || this.size,
     };

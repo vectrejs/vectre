@@ -1,7 +1,7 @@
 export { Group as FormGroup } from './Group';
-export { default as FormHint } from './Hint.vue';
-export { default as FormHorizontal } from './Horizontal.vue';
-export { default as FormTextarea } from './Textarea.vue';
+export { Hint as FormHint } from './Hint';
+export { Horizontal as FormHorizontal } from './Horizontal';
+export { Textarea as FormTextarea } from './Textarea';
 
 export {
   Group as FormCheckboxGroup,

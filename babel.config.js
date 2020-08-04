@@ -1,4 +1,13 @@
 module.exports = {
-  presets: ["@babel/preset-env","@vue/app"],
-  plugins: ["transform-vue-jsx"],
+  presets: [
+    [
+      '@vue/app',
+      {
+        targets: {
+          browsers: ['Chrome >= 60', 'Safari >= 10.1', 'iOS >= 10.3', 'Firefox >= 54', 'Edge >= 15'],
+        },
+      },
+    ],
+    '@vue/babel-preset-jsx',
+  ],
 };

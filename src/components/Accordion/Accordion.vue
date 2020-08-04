@@ -7,7 +7,7 @@
         :type="type"
         :checked="isSelected(key, index)"
         hidden
-        @click="check($event, key, index)"
+        @input="check($event, key, index)"
       />
 
       <label class="accordion-header c-hand" :for="uid(index || key || 0)">
@@ -38,7 +38,7 @@ import { Icon, IconType } from '../Icon';
 })
 export default class Accordion extends Vue {
   @Prop({ required: true, type: [Object, Array] })
-  public items: object[] | object;
+  public items: Record<string, unknown>[] | Record<string, unknown>;
 
   @Prop([String, Number, Array])
   public checked: string | number | string[] | number[];

@@ -1,2 +1,2 @@
-export { default as Container } from './Container.vue';
+export { Container } from './Container';
 export * from './Grid';

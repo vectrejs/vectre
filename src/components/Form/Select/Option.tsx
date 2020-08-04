@@ -1,6 +1,6 @@
 import { Prop, Component } from 'vue-property-decorator';
-import { VueComponent } from 'vue-tsx-helper';
 import { VNode, CreateElement } from 'vue';
+import * as tsx from 'vue-tsx-support';
 
 export interface OptionProps {
   value?: string;
@@ -10,7 +10,7 @@ export interface OptionProps {
 }
 
 @Component
-export class Option extends VueComponent<OptionProps> {
+export class Option extends tsx.Component<OptionProps> {
   @Prop(Boolean)
   public disabled: boolean;
 

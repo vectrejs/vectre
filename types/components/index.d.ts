@@ -1,6 +1,6 @@
 import { Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences } from './Avatar';
 import { Accordion } from './Accordion';
-import { FormCheckbox, FormCheckboxGroup, FormGroup, FormSelect, FormOption, FormRadioGroup, FormRadio } from './Form';
+import { FormCheckboxGroup, FormOption, FormRadioGroup } from './Form';
 export { Accordion, Avatar, AvatarSize, AvatarSizes, AvatarPresence, AvatarPresences };
 export { Bar } from './Bar';
 export { Breadcrumb } from './Breadcrumb';
@@ -19,7 +19,7 @@ export { Toast } from './Toast';
 export { Navigation } from './Navigation';
 export { Btn, BtnGroup, BtnSize, BtnSizes, BtnState, BtnStates, BtnType, BtnTypes } from './Button';
 export { Card, CardImageSlot, CardImageSlots } from './Card';
-export { FormCheckbox, FormCheckboxGroup, FormInput, FormGroup, FormLabel, FormHint, FormHorizontal, FormSelect, FormTextarea, FormOption, FormRadioGroup, FormRadio, FormCheckboxSizes, FormInputSizes, FormLabelSizes, FormSelectSize, FormCheckboxTypes, } from './Form';
+export { FormCheckbox, FormCheckboxGroup, FormInput, FormGroup, FormLabel, FormHint, FormHorizontal, FormTextarea, FormSelect, FormOption, FormRadioGroup, FormRadio, FormCheckboxSizes, FormInputSizes, FormLabelSizes, FormSelectSize, FormCheckboxTypes, } from './Form';
 export { Action as IconAction, Icon, Navigation as IconNavigation, Objects as IconObject, Icons, IconSize, IconType, } from './Icon';
 export { Tag, TagType, TagTypes } from './Tag';
 export { Modal, ModalSize, ModalSizes } from './Modal';
@@ -59,16 +59,61 @@ declare const _default: {
     Tag: import("vue").VueConstructor<Avatar>;
     Navigation: import("vue").VueConstructor<Avatar>;
     VerticalMenu: import("vue").VueConstructor<Avatar>;
-    FormCheckbox: typeof FormCheckbox;
+    FormCheckbox: import("vue-tsx-support").TsxComponent<import("vue/types/vue").CombinedVueInstance<{
+        __listeners: ((data: string) => void)[];
+    } & Record<string, unknown> & {
+        __listeners: () => any;
+    } & Avatar, object, object, object, Record<never, any>>, {} & {
+        checked?: boolean;
+        disabled?: boolean;
+        inline?: boolean;
+        label?: string | number;
+        model?: unknown;
+        value?: unknown;
+        size?: string;
+        type?: string;
+        error?: boolean;
+    }, import("./Form/Checkbox/Checkbox").CheckboxEvents, {}, {
+        onChange({ target: { checked } }: any): void;
+    } & {
+        _checked: boolean;
+    } & {
+        checked: boolean;
+        disabled: boolean;
+        inline: boolean;
+        label: string | number;
+        model: unknown;
+        value: unknown;
+        size: string;
+        type: string;
+        error: boolean;
+    }>;
     FormCheckboxGroup: typeof FormCheckboxGroup;
-    FormGroup: typeof FormGroup;
-    FormInput: import("vue/types/vue").ExtendedVue<Avatar, unknown, {
+    FormGroup: import("vue-tsx-support").TsxComponent<Avatar, unknown, {}, {}, {}>;
+    FormInput: import("vue-tsx-support").TsxComponent<object & Record<never, any> & {
+        __attrs: ((data: string) => void)[];
+    } & Record<string, unknown> & {
+        __attrs: () => any;
+    } & Avatar & {
+        __listeners: ((data: string) => void)[];
+    } & {
+        __listeners: () => any;
+    }, {} & {
+        disabled?: boolean;
+        value?: string | number;
+        size?: string;
+        error?: boolean;
+        loading?: boolean;
+        success?: boolean;
+        icon?: string;
+        iconSide?: string;
+    }, import("./Form/Input/Component").InputEvents, {}, {
         onInput({ target: { value } }: {
             target: {
                 value: string;
             };
         }): void;
-    }, unknown, {
+    } & {
         value: string | number;
         error: boolean;
         loading: boolean;
@@ -78,13 +123,100 @@ declare const _default: {
         iconSide: string;
         size: string;
     }>;
-    FormLabel: import("vue").VueConstructor<Avatar>;
-    FormHint: import("vue").VueConstructor<Avatar>;
-    FormHorizontal: import("vue").VueConstructor<Avatar>;
+    FormLabel: import("vue-tsx-support").TsxComponent<Avatar, unknown, {}, {}, {}>;
+    FormHint: import("vue-tsx-support").TsxComponent<Avatar, unknown, {}, {}, {}>;
+    FormHorizontal: import("vue-tsx-support").TsxComponent<Avatar, unknown, {}, {}, {}>;
     FormOption: typeof FormOption;
-    FormSelect: typeof FormSelect;
-    FormTextarea: import("vue").VueConstructor<Avatar>;
+    FormSelect: import("vue-tsx-support").TsxComponent<object & Record<never, any> & {
+        __attrs: ((data: string) => void)[];
+    } & Record<string, unknown> & {
+        __attrs: () => any;
+    } & Avatar & {
+        __listeners: ((data: string) => void)[];
+    } & {
+        __listeners: () => any;
+    }, {} & {
+        disabled?: boolean;
+        value?: string | number | string[] | number[];
+        size?: string | number;
+        error?: boolean;
+        success?: boolean;
+        options?: string[] | {
+            [label: string]: string;
+        };
+        multiple?: boolean;
+        placeholder?: string;
+        scale?: "sm" | "lg";
+    }, import("./Form/Select/Select").SelectEvent, {}, {
+        onInput({ target: { selectedOptions } }: import("./Form/Select/Select").InputEvent): void;
+        isSelected(label: string | number, value: string | number, current?: string | number | string[] | number[]): boolean;
+        normalizeOptions(options: string[] | {
+            [label: string]: any;
+        }): import("./Form/Select/Select").NormalizedOption[];
+    } & {
+        options: string[] | {
+            [label: string]: string;
+        };
+        multiple: boolean;
+        placeholder: string;
+        value: string | number | string[] | number[];
+        size: string | number;
+        scale: "sm" | "lg";
+        error: boolean;
+        success: boolean;
+        disabled: boolean;
+    }>;
+    FormTextarea: import("vue-tsx-support").TsxComponent<object & Record<never, any> & {
+        __attrs: ((data: string) => void)[];
+    } & Record<string, unknown> & {
+        __attrs: () => any;
+    } & Avatar & {
+        __listeners: ((data: string) => void)[];
+    } & {
+        __listeners: () => any;
+    }, {} & {
+        disabled?: boolean;
+        value?: string;
+    }, import("./Form/Textarea/Textarea").TextareaEvents, {}, {
+        listeners: {};
+    } & {
+        onInput({ target: { value } }: any): void;
+    } & {
+        placeholder: string;
+    } & {
+        value: string;
+        disabled: boolean;
+    }>;
     FormRadioGroup: typeof FormRadioGroup;
-    FormRadio: typeof FormRadio;
+    FormRadio: import("vue-tsx-support").TsxComponent<import("vue/types/vue").CombinedVueInstance<{
+        __listeners: ((data: string) => void)[];
+    } & Record<string, unknown> & {
+        __listeners: () => any;
+    } & Avatar, object, object, object, Record<never, any>>, {} & {
+        checked?: boolean;
+        disabled?: boolean;
+        inline?: boolean;
+        label?: string;
+        model?: unknown;
+        value?: unknown;
+        size?: "sm" | "lg";
+        error?: boolean;
+        name?: string;
+    }, import("./Form/Radio/Radio").RadioEvents, {}, {
+        onChecked(): void;
+    } & {
+        _label: any;
+        _value: any;
+    } & {
+        checked: boolean;
+        disabled: boolean;
+        error: boolean;
+        inline: boolean;
+        label: string;
+        name: string;
+        size: "sm" | "lg";
+        value: unknown;
+        model: unknown;
+    }>;
 };
 export default _default;

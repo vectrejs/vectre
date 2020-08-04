@@ -1,12 +1,12 @@
-import { VueComponent } from 'vue-tsx-helper';
+import * as tsx from 'vue-tsx-support';
 import { Prop, Component } from 'vue-property-decorator';
-import { Radio, RadioProps } from './Radio';
+import { Radio } from './Radio';
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { Size } from './Size';
 
 interface NormalizedOption {
-  label: string;
   value: any;
+  label: string;
 }
 
 export interface RadioGroup {
@@ -19,8 +19,10 @@ export interface RadioGroup {
   value?: any;
 }
 
-@Component
-export class Group extends VueComponent<RadioGroup> {
+@Component({
+  name: 'FormRadioGroup',
+})
+export class Group extends tsx.Component<RadioGroup> {
   @Prop()
   public options: any[] | { [label: string]: any };
 
@@ -44,7 +46,7 @@ export class Group extends VueComponent<RadioGroup> {
 
   public render(h: CreateElement): VNode {
     const name = this.name || this.uid;
-    let group;
+    let group: VNode[];
 
     if (this.options) {
       group = this.normalizeOptions(this.options).map(({ label, value }) => {
@@ -58,7 +60,7 @@ export class Group extends VueComponent<RadioGroup> {
             inline={this.inline}
             size={this.size}
             disabled={this.disabled}
-            model={this.value}
+            {...{ props: { model: this.value } }}
           />
         );
       });
@@ -72,7 +74,7 @@ export class Group extends VueComponent<RadioGroup> {
             option.componentOptions = {} as VNodeComponentOptions;
           }
 
-          const props: RadioProps = option.componentOptions.propsData || {};
+          const props = (option.componentOptions.propsData || {}) as InstanceType<typeof Radio>;
           props.name = name;
           props.size = props.size !== undefined ? props.size : this.size;
           props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;

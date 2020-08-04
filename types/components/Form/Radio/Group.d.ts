@@ -1,4 +1,4 @@
-import { VueComponent } from 'vue-tsx-helper';
+import * as tsx from 'vue-tsx-support';
 import { VNode, CreateElement } from 'vue';
 import { Size } from './Size';
 export interface RadioGroup {
@@ -12,7 +12,7 @@ export interface RadioGroup {
     size?: Size;
     value?: any;
 }
-export declare class Group extends VueComponent<RadioGroup> {
+export declare class Group extends tsx.Component<RadioGroup> {
     options: any[] | {
         [label: string]: any;
     };

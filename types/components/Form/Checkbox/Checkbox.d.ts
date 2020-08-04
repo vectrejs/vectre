@@ -1,29 +1,33 @@
-import { VueComponent } from 'vue-tsx-helper';
-import { Type } from './Type';
-import { Size } from './Size';
-import { CreateElement, VNode } from 'vue';
-export interface CheckboxProps {
+import * as tsx from 'vue-tsx-support';
+export interface CheckboxEvents {
+    onChange: (value: any) => void;
+}
+export declare const Checkbox: tsx.TsxComponent<import("vue/types/vue").CombinedVueInstance<{
+    __listeners: ((data: string) => void)[];
+} & Record<string, unknown> & {
+    __listeners: () => any;
+} & import("vue").default, object, object, object, Record<never, any>>, {} & {
     checked?: boolean;
     disabled?: boolean;
     inline?: boolean;
     label?: string | number;
-    model?: any;
-    type?: Type;
-    value?: any;
-    size?: Size;
+    model?: unknown;
+    value?: unknown;
+    size?: string;
+    type?: string;
     error?: boolean;
-}
-export default class Checkbox extends VueComponent<CheckboxProps> {
-    label: string | number;
-    checked: boolean;
-    value: any;
-    disabled: boolean;
-    type: Type;
-    inline: boolean;
-    size: Size;
-    error: boolean;
-    protected model: any;
-    render(h: CreateElement): VNode;
+}, CheckboxEvents, {}, {
     onChange({ target: { checked } }: any): void;
-    private get _checked();
-}
+} & {
+    _checked: boolean;
+} & {
+    checked: boolean;
+    disabled: boolean;
+    inline: boolean;
+    label: string | number;
+    model: unknown;
+    value: unknown;
+    size: string;
+    type: string;
+    error: boolean;
+}>;

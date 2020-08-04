@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off', // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md#configuring-in-a-mixed-jsts-codebase
     'getter-return': ['error', { allowImplicit: true }],
     'vue/html-indent': [
       'error',
@@ -32,7 +33,21 @@ module.exports = {
         ignores: [],
       },
     ],
+    'vue/component-tags-order': [
+      'error',
+      {
+        order: ['template', 'script', 'style'],
+      },
+    ],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: 'h' }],
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': ['error'],
+      },
+    },
+  ],
   ignorePatterns: ['dist/*.*', 'node_modules/**/*.*', 'types/**/*.*'],
 };

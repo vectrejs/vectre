@@ -1,29 +1,34 @@
-import { VueComponent } from 'vue-tsx-helper';
-import { Size } from './Size';
-import { VNode, CreateElement } from 'vue';
-export interface RadioProps {
+import * as tsx from 'vue-tsx-support';
+export interface RadioEvents {
+    onChange: (value: any) => void;
+}
+export declare const Radio: tsx.TsxComponent<import("vue/types/vue").CombinedVueInstance<{
+    __listeners: ((data: string) => void)[];
+} & Record<string, unknown> & {
+    __listeners: () => any;
+} & import("vue").default, object, object, object, Record<never, any>>, {} & {
+    model?: unknown;
     checked?: boolean;
     disabled?: boolean;
     error?: boolean;
     inline?: boolean;
     label?: string;
     name?: string;
-    size?: Size;
-    value?: any;
-    model?: any;
-}
-export declare class Radio extends VueComponent<RadioProps> {
-    value: any;
+    size?: "sm" | "lg";
+    value?: unknown;
+}, RadioEvents, {}, {
+    onChecked(): void;
+} & {
+    _label: any;
+    _value: any;
+} & {
+    checked: boolean;
+    disabled: boolean;
+    error: boolean;
+    inline: boolean;
     label: string;
     name: string;
-    checked?: boolean;
-    inline: boolean;
-    error: boolean;
-    size: Size;
-    disabled: boolean;
-    protected model: any;
-    onChecked(): void;
-    render(h: CreateElement): VNode;
-    private get _label();
-    private get _value();
-}
+    size: "sm" | "lg";
+    value: unknown;
+    model: unknown;
+}>;
