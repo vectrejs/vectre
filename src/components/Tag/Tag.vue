@@ -7,20 +7,20 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { Type, Types } from './Type';
+import { TagType, TagTypes } from './Type';
 
 @Component({
-  name: 'tag',
+  name: 'Tag',
 })
 export default class Label extends Vue {
   @Prop(String)
-  public type: Type;
+  public type: TagType;
 
   @Prop(Boolean)
   public rounded: boolean;
 
   public get cssClass(): string[] {
-    return [Types[this.type], this.rounded ? 'label-rounded' : ''];
+    return [TagTypes[this.type], this.rounded ? 'label-rounded' : ''];
   }
 }
 </script>

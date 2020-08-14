@@ -1,8 +1,8 @@
-export enum Presences {
+export enum AvatarPresences {
   online = 'online',
   busy = 'busy',
   away = 'away',
   offline = 'offline',
 }
 
-export type Presence = keyof typeof Presences;
+export type AvatarPresence = keyof typeof AvatarPresences;

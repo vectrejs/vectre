@@ -1,3 +1,8 @@
-export { default as Avatar } from './Avatar.vue';
-export { Size as AvatarSize, Sizes as AvatarSizes } from './Size';
-export { Presence as AvatarPresence, Presences as AvatarPresences } from './Presence';
+import Avatar from './Avatar.vue';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Avatar };
+export { AvatarSize, AvatarSizes } from './Size';
+export { AvatarPresence, AvatarPresences } from './Presence';

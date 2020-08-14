@@ -25,10 +25,11 @@
 import vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import { VerticalMenu } from '../VerticalMenu';
-import { BtnType, BtnState, BtnTypes } from '../Button';
-import { IconType, Navigation as IconNavigation } from '../Icon';
+import { BtnType, BtnState, BtnTypes } from '../Btn';
+import { IconType, IconNavigation } from '../Icon';
 
 @Component({
+  name: 'DropdownMenu',
   components: { VerticalMenu },
 })
 export default class DropdownMenu extends vue {

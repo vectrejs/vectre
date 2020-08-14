@@ -15,7 +15,9 @@ import { Component, Prop } from 'vue-property-decorator';
 
 import { Crumb } from './Crumb';
 
-@Component
+@Component({
+  name: 'Breadcrumb',
+})
 export default class Breadcrumb extends Vue {
   @Prop({ type: Array, required: true })
   public crumbs: Crumb[] | [];

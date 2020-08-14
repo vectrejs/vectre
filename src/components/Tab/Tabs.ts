@@ -41,7 +41,7 @@ const createSimpleTab = (v: vue, item: string, isActive: boolean): VNode => {
 };
 
 export const Tabs = vue.extend({
-  name: 'tabs',
+  name: 'Tabs',
   props: {
     current: {
       type: [String, Number],

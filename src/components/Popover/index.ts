@@ -1,2 +1,6 @@
-export { Popover } from './Popover';
-export { Side as PopoverSide, Sides as PopoverSides } from './Side';
+import { Popover } from './Popover';
+import { makePluggableComponents } from 'src/utils/plugin';
+
+export default makePluggableComponents({ Popover });
+export { Popover };
+export { PopoverSide, PopoverSides } from './Side';

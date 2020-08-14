@@ -1,12 +1,12 @@
-export enum Positions {
+export enum CardImagePositions {
   before = 'before',
   after = 'after',
 }
-export type Position = keyof typeof Positions;
+export type CardImagePosition = keyof typeof CardImagePositions;
 
-export enum Slots {
+export enum CardImageSlots {
   header = 'header',
   body = 'body',
   footer = 'footer',
 }
-export type Slot = keyof typeof Slots;
+export type CardImageSlot = keyof typeof CardImageSlots;

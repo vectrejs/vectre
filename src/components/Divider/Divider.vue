@@ -1,11 +1,14 @@
 <template>
   <div class="text-center" :class="{ divider: !vert, 'divider-vert': vert }" :data-content="dataContent"></div>
 </template>
+
 <script lang="ts">
 import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
-@Component
+@Component({
+  name: 'Divider',
+})
 export default class Divider extends Vue {
   @Prop(Boolean)
   public vert: boolean;

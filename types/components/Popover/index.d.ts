@@ -1,2 +1,7 @@
-export { Popover } from './Popover';
-export { Side as PopoverSide, Sides as PopoverSides } from './Side';
+import { Popover } from './Popover';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Popover };
+export { PopoverSide, PopoverSides } from './Side';

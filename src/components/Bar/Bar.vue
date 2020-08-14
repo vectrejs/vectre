@@ -16,7 +16,9 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
-@Component
+@Component({
+  name: 'Bar',
+})
 export default class Bar extends Vue {
   @Prop(Boolean)
   public sm: boolean;

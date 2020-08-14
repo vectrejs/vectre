@@ -21,10 +21,11 @@
 <script lang="ts">
 import vue from 'vue';
 import { Prop, Component, Emit } from 'vue-property-decorator';
-import { Btn, BtnTypes } from '../Button';
-import { Size, Sizes } from './Size';
+import { Btn, BtnTypes } from '../Btn';
+import { ModalSize, ModalSizes } from './Size';
 
 @Component({
+  name: 'Modal',
   components: { Btn },
 })
 export default class Modal extends vue {
@@ -32,7 +33,7 @@ export default class Modal extends vue {
   public show: boolean;
 
   @Prop(String)
-  public size: Size;
+  public size: ModalSize;
 
   @Prop({ type: Boolean, default: true })
   private closeBtn: boolean;
@@ -46,7 +47,7 @@ export default class Modal extends vue {
   private btnType = BtnTypes.clear;
 
   private get cssClass(): string[] {
-    return [this.show ? 'active' : '', Sizes[this.size] || this.size];
+    return [this.show ? 'active' : '', ModalSizes[this.size] || this.size];
   }
 
   @Emit('close')

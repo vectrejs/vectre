@@ -1,4 +1,4 @@
-declare enum Navigation {
+declare enum IconNavigation {
     up = "icon-arrow-up",
     down = "icon-arrow-down",
     right = "icon-arrow-right",
@@ -13,7 +13,7 @@ declare enum Navigation {
     hMore = "icon-more-horiz",
     vMore = "icon-more-vert"
 }
-declare enum Action {
+declare enum IconAction {
     hResize = "icon-resize-horiz",
     vResize = "icon-resize-vert",
     plus = "icon-plus",
@@ -32,7 +32,7 @@ declare enum Action {
     download = "icon-download",
     upload = "icon-upload"
 }
-declare enum Objects {
+declare enum IconObject {
     mail = "icon-mail",
     people = "icon-people",
     message = "icon-message",
@@ -43,44 +43,44 @@ declare enum Objects {
     emoji = "icon-emoji"
 }
 declare const Icons: {
-    hResize: Action.hResize;
-    vResize: Action.vResize;
-    plus: Action.plus;
-    minus: Action.minus;
-    cross: Action.cross;
-    check: Action.check;
-    stop: Action.stop;
-    shutdown: Action.shutdown;
-    refresh: Action.refresh;
-    search: Action.search;
-    flag: Action.flag;
-    bookmark: Action.bookmark;
-    edit: Action.edit;
-    delete: Action.delete;
-    share: Action.share;
-    download: Action.download;
-    upload: Action.upload;
-    mail: Objects.mail;
-    people: Objects.people;
-    message: Objects.message;
-    photo: Objects.photo;
-    time: Objects.time;
-    location: Objects.location;
-    link: Objects.link;
-    emoji: Objects.emoji;
-    up: Navigation.up;
-    down: Navigation.down;
-    right: Navigation.right;
-    left: Navigation.left;
-    upward: Navigation.upward;
-    forward: Navigation.forward;
-    downward: Navigation.downward;
-    back: Navigation.back;
-    caret: Navigation.caret;
-    menu: Navigation.menu;
-    apps: Navigation.apps;
-    hMore: Navigation.hMore;
-    vMore: Navigation.vMore;
+    hResize: IconAction.hResize;
+    vResize: IconAction.vResize;
+    plus: IconAction.plus;
+    minus: IconAction.minus;
+    cross: IconAction.cross;
+    check: IconAction.check;
+    stop: IconAction.stop;
+    shutdown: IconAction.shutdown;
+    refresh: IconAction.refresh;
+    search: IconAction.search;
+    flag: IconAction.flag;
+    bookmark: IconAction.bookmark;
+    edit: IconAction.edit;
+    delete: IconAction.delete;
+    share: IconAction.share;
+    download: IconAction.download;
+    upload: IconAction.upload;
+    mail: IconObject.mail;
+    people: IconObject.people;
+    message: IconObject.message;
+    photo: IconObject.photo;
+    time: IconObject.time;
+    location: IconObject.location;
+    link: IconObject.link;
+    emoji: IconObject.emoji;
+    up: IconNavigation.up;
+    down: IconNavigation.down;
+    right: IconNavigation.right;
+    left: IconNavigation.left;
+    upward: IconNavigation.upward;
+    forward: IconNavigation.forward;
+    downward: IconNavigation.downward;
+    back: IconNavigation.back;
+    caret: IconNavigation.caret;
+    menu: IconNavigation.menu;
+    apps: IconNavigation.apps;
+    hMore: IconNavigation.hMore;
+    vMore: IconNavigation.vMore;
 };
-export declare type Type = keyof typeof Icons;
-export { Navigation, Action, Objects, Icons };
+export declare type IconType = keyof typeof Icons;
+export { IconNavigation, IconAction, IconObject, Icons };

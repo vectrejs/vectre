@@ -1,2 +1,7 @@
-export { Tooltip } from './Tooltip';
-export { Sides as TooltipSides } from './Side';
+import { Tooltip } from './Tooltip';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Tooltip };
+export { TooltipSide, TooltipSides } from './Side';

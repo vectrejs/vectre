@@ -12,6 +12,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import { Avatar, AvatarSizes } from '../Avatar';
 
 @Component({
+  name: 'Chip',
   components: { Avatar },
 })
 export default class Chip extends Vue {

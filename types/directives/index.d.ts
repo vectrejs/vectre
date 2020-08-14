@@ -1,10 +1,15 @@
-import { Badge } from './Badge';
-import { Loading } from './Loading';
-import { Tooltip, TooltipSides } from './Tooltip';
 declare const _default: {
-    Badge: import("vue").DirectiveFunction;
-    Loading: import("vue").DirectiveFunction;
-    Tooltip: import("vue").DirectiveFunction;
+    BadgeDirectives: import("vue").PluginFunction<{
+        prefix?: string;
+    }>;
+    LoadingDirectives: import("vue").PluginFunction<{
+        prefix?: string;
+    }>;
+    TooltipDirectives: import("vue").PluginFunction<{
+        prefix?: string;
+    }>;
 };
 export default _default;
-export { Badge, Loading, Tooltip, TooltipSides };
+export * from './Badge';
+export * from './Loading';
+export * from './Tooltip';

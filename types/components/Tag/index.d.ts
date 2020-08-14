@@ -1,2 +1,7 @@
-export { default as Tag } from './Tag.vue';
-export { Type as TagType, Types as TagTypes } from './Type';
+import Tag from './Tag.vue';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Tag };
+export { TagType, TagTypes } from './Type';

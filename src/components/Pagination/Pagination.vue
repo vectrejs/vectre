@@ -11,6 +11,7 @@ import SimplePager from './SimplePager.vue';
 import Pager from './Pager.vue';
 
 @Component({
+  name: 'Pagination',
   components: { SimplePager, Pager },
 })
 export default class Pagination extends vue {

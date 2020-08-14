@@ -1,4 +1,4 @@
-export enum Types {
+export enum TagTypes {
   primary = 'label-primary',
   secondary = 'label-secondary',
   success = 'label-success',
@@ -6,4 +6,4 @@ export enum Types {
   error = 'label-error',
 }
 
-export type Type = keyof typeof Types;
+export type TagType = keyof typeof TagTypes;

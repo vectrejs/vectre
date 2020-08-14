@@ -22,7 +22,7 @@ import vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 
 @Component({
-  name: 'navigation',
+  name: 'Navigation',
 })
 export default class Navigation extends vue {
   @Prop({ type: Array, required: true })

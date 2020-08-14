@@ -19,6 +19,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import Badge from './Badge.vue';
 
 @Component({
+  name: 'VerticalMenu',
   components: { Badge },
 })
 export default class VerticalMenu extends vue {

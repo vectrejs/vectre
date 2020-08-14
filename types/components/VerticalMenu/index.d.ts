@@ -1,1 +1,6 @@
-export { default as VerticalMenu } from './VerticalMenu.vue';
+import VerticalMenu from './VerticalMenu.vue';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { VerticalMenu };

@@ -1,4 +1,4 @@
-enum Navigation {
+enum IconNavigation {
   up = 'icon-arrow-up',
   down = 'icon-arrow-down',
   right = 'icon-arrow-right',
@@ -17,7 +17,7 @@ enum Navigation {
   vMore = 'icon-more-vert',
 }
 
-enum Action {
+enum IconAction {
   hResize = 'icon-resize-horiz',
   vResize = 'icon-resize-vert',
   plus = 'icon-plus',
@@ -37,7 +37,7 @@ enum Action {
   upload = 'icon-upload',
 }
 
-enum Objects {
+enum IconObject {
   mail = 'icon-mail',
   people = 'icon-people',
   message = 'icon-message',
@@ -48,7 +48,7 @@ enum Objects {
   emoji = 'icon-emoji',
 }
 
-const Icons = { ...Navigation, ...Objects, ...Action };
+const Icons = { ...IconNavigation, ...IconObject, ...IconAction };
 
-export type Type = keyof typeof Icons;
-export { Navigation, Action, Objects, Icons };
+export type IconType = keyof typeof Icons;
+export { IconNavigation, IconAction, IconObject, Icons };

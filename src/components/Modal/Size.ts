@@ -1,6 +1,6 @@
-export enum Sizes {
+export enum ModalSizes {
   sm = 'modal-sm',
   lg = 'modal-lg',
 }
 
-export type Size = keyof typeof Sizes;
+export type ModalSize = keyof typeof ModalSizes;

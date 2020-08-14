@@ -24,6 +24,7 @@ import { Component, Prop } from 'vue-property-decorator';
 import { Icon, IconSizes, IconType } from '../Icon';
 
 @Component({
+  name: 'Empty',
   components: { Icon },
 })
 export default class Empty extends Vue {

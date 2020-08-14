@@ -14,13 +14,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { Size, Sizes } from './Size';
-import { Presence } from './Presence';
+import { AvatarSize, AvatarSizes } from './Size';
+import { AvatarPresence } from './Presence';
 
-@Component
+@Component({
+  name: 'Avatar',
+})
 export default class Avatar extends Vue {
   @Prop(String)
-  public size: Size;
+  public size: AvatarSize;
 
   @Prop(String)
   public src: string;
@@ -38,7 +40,7 @@ export default class Avatar extends Vue {
   public alt: string;
 
   @Prop(String)
-  public presence: Presence;
+  public presence: AvatarPresence;
 
   @Prop(String)
   public icon: string;
@@ -51,7 +53,7 @@ export default class Avatar extends Vue {
   }
 
   public get cssClass(): string[] {
-    return [Sizes[this.size] || this.size];
+    return [AvatarSizes[this.size] || this.size];
   }
 }
 </script>

@@ -1,7 +1,7 @@
-export declare enum Presences {
+export declare enum AvatarPresences {
     online = "online",
     busy = "busy",
     away = "away",
     offline = "offline"
 }
-export declare type Presence = keyof typeof Presences;
+export declare type AvatarPresence = keyof typeof AvatarPresences;

@@ -1,8 +1,8 @@
-export enum Sides {
+export enum TooltipSides {
   top = '',
   bottom = 'tooltip-bottom',
   right = 'tooltip-right',
   left = 'tooltip-left',
 }
 
-export type Side = keyof typeof Sides;
+export type TooltipSide = keyof typeof TooltipSides;

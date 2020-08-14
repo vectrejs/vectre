@@ -1,5 +1,5 @@
-export declare enum Sizes {
+export declare enum ModalSizes {
     sm = "modal-sm",
     lg = "modal-lg"
 }
-export declare type Size = keyof typeof Sizes;
+export declare type ModalSize = keyof typeof ModalSizes;

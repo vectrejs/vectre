@@ -34,24 +34,26 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import { Position, Positions, Slot, Slots } from './Image';
+import { CardImagePosition, CardImagePositions, CardImageSlot, CardImageSlots } from './Image';
 
-@Component
+@Component({
+  name: 'Card',
+})
 export default class Card extends Vue {
   @Prop(String)
   public img: string;
 
   @Prop(String)
-  public before: Slot;
+  public before: CardImageSlot;
 
   @Prop(String)
-  public after: Slot;
+  public after: CardImageSlot;
 
-  private positions = Positions;
-  private slots = Slots;
+  private positions = CardImagePositions;
+  private slots = CardImageSlots;
 
-  public showImg(pos: Position, slot: Slot): boolean {
-    return this.$props[pos] && this.$props[pos] === Slots[slot];
+  public showImg(pos: CardImagePosition, slot: CardImageSlot): boolean {
+    return this.$props[pos] && this.$props[pos] === CardImageSlots[slot];
   }
 }
 </script>

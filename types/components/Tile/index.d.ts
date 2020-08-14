@@ -1,1 +1,6 @@
-export { default as Tile } from './Tile.vue';
+import Tile from './Tile.vue';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Tile };

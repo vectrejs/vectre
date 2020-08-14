@@ -1,13 +1,13 @@
 import { DirectiveFunction } from 'vue';
-import { Sides, Side } from './Side';
+import { TooltipSides, TooltipSide } from './Side';
 
 export const Tooltip: DirectiveFunction = (el, { value, modifiers }) => {
   if (value) {
     el.classList.add('tooltip');
     el.setAttribute('data-tooltip', value);
 
-    Object.keys(Sides).map((side: string) => {
-      if (modifiers[side]) el.classList.add(Sides[side as Side]);
+    Object.keys(TooltipSides).map((side: string) => {
+      if (modifiers[side]) el.classList.add(TooltipSides[side as TooltipSide]);
     });
   }
 };

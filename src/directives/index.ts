@@ -1,12 +1,14 @@
-import { Badge } from './Badge';
-import { Loading } from './Loading';
-import { Tooltip, TooltipSides } from './Tooltip';
+import BadgeDirectives from './Badge';
+import LoadingDirectives from './Loading';
+import TooltipDirectives from './Tooltip';
 
 // Directives
 export default {
-  Badge,
-  Loading,
-  Tooltip,
+  BadgeDirectives,
+  LoadingDirectives,
+  TooltipDirectives,
 };
 
-export { Badge, Loading, Tooltip, TooltipSides };
+export * from './Badge';
+export * from './Loading';
+export * from './Tooltip';

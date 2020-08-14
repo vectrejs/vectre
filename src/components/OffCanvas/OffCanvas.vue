@@ -21,12 +21,13 @@
 </template>
 
 <script lang="ts">
-import { Icon, Navigation as IconNavigation, IconType } from '../Icon';
+import { Icon, IconNavigation, IconType } from '../Icon';
 
 import vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
 @Component({
+  name: 'OffCanvas',
   components: {
     icon: Icon,
   },

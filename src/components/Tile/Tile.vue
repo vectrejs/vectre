@@ -25,6 +25,7 @@ import { Avatar, AvatarSizes } from '../Avatar';
 import { Icon, IconType, IconSizes } from '../Icon';
 
 @Component({
+  name: 'Tile',
   components: { Icon, Avatar },
 })
 export default class Tile extends vue {

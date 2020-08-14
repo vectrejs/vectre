@@ -1,2 +1,7 @@
-export { default as Modal } from './Modal.vue';
-export { Size as ModalSize, Size as ModalSizes } from './Size';
+import Modal from './Modal.vue';
+declare const _default: import("vue").PluginFunction<{
+    prefix?: string;
+}>;
+export default _default;
+export { Modal };
+export { ModalSize, ModalSizes } from './Size';

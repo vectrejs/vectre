@@ -19,7 +19,9 @@ import { Prop, Component } from 'vue-property-decorator';
 export type PagerItem = number | string;
 const SEPARATOR = '...';
 
-@Component
+@Component({
+  name: 'Pager',
+})
 export default class Pager extends vue {
   @Prop({ type: [Number], required: true })
   public pages: number;
