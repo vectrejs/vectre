@@ -4,4 +4,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { Container };
-export { Grid, Grids } from './Grid';
+export * from './Grid';

@@ -1,7 +1,7 @@
-import Icon from './Icon.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Icon } from './Icon';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Icon });
 export { Icon };
-export { IconSize, IconSizes } from './Size';
-export { IconType, IconAction, IconNavigation, IconObject, Icons } from './Type';
+export * from './Size';
+export * from './Type';

@@ -1,7 +1,7 @@
-import Avatar from './Avatar.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Avatar } from './Avatar';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Avatar });
 export { Avatar };
-export { AvatarSize, AvatarSizes } from './Size';
-export { AvatarPresence, AvatarPresences } from './Presence';
+export * from './Size';
+export * from './Presence';

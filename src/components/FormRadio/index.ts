@@ -1,7 +1,7 @@
 import { FormRadioGroup } from './Group';
 import { FormRadio } from './Radio';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ FormRadioGroup, FormRadio });
 export { FormRadioGroup, FormRadio };
-export { FormRadioSize, FormRadioSizes } from './Size';
+export * from './Size';

@@ -1,6 +1,6 @@
 import { Container } from './Container';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Container });
 export { Container };
-export { Grid, Grids } from './Grid';
+export * from './Grid';

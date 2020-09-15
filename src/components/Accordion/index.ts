@@ -1,5 +1,5 @@
-import Accordion from './Accordion.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Accordion } from './Accordion';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Accordion });
 export { Accordion };

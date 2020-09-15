@@ -2,7 +2,7 @@ import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { FormSelectOption, FormSelectOptionProps } from './Option';
 import { FormSelectSize, FormSelectSizes } from './Size';
 import * as tsx from 'vue-tsx-support';
-import { cachedListeners, cachedAttrs } from 'src/mixins/cache';
+import { cachedListeners, cachedAttrs } from '../../mixins/cache';
 
 export interface InputEvent {
   target: {

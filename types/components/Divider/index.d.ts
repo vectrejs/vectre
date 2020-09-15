@@ -1,4 +1,4 @@
-import Divider from './Divider.vue';
+import { Divider } from './Divider';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;

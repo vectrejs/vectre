@@ -4,4 +4,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { Tooltip };
-export { TooltipSide, TooltipSides } from './Side';
+export * from './Side';

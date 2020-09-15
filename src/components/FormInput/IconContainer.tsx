@@ -1,26 +1,23 @@
 import * as tsx from 'vue-tsx-support';
-import { Prop, Component } from 'vue-property-decorator';
 import { VNode, CreateElement } from 'vue';
 
-export enum IconSide {
+export enum IconSides {
   left = 'has-icon-left',
   right = 'has-icon-right',
 }
-type IconSides = keyof typeof IconSide;
+export type IconSide = keyof typeof IconSides;
 
-interface Props {
-  side: IconSides;
-}
-
-@Component
-export class IconContainer extends tsx.Component<Props> {
-  @Prop({
-    type: String,
-    validator: side => Object.keys(IconSide).includes(side),
-  })
-  public side: IconSides;
-
-  public render(h: CreateElement): VNode {
-    return <div class={IconSide[this.side as IconSides]}>{this.$slots.default}</div>;
-  }
-}
+export const IconContainer = tsx.component({
+  name: 'FormInputIconContainer',
+  functional: true,
+  props: {
+    side: {
+      type: String as () => IconSide,
+      validator: (side: IconSide): boolean => Object.keys(IconSides).includes(side),
+      default: undefined,
+    },
+  },
+  render(h: CreateElement, { props, children }): VNode {
+    return <div class={IconSides[props.side as IconSide]}>{children}</div>;
+  },
+});

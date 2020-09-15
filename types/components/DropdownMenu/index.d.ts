@@ -1,4 +1,4 @@
-import DropdownMenu from './DropdownMenu.vue';
+import { DropdownMenu } from './DropdownMenu';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;

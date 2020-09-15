@@ -1,114 +1,104 @@
-import { Prop, Component } from 'vue-property-decorator';
+import * as tsx from 'vue-tsx-support';
 import { FormCheckbox } from './Checkbox';
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { FormCheckboxType } from './Type';
 import { FormCheckboxSize } from './Size';
-import * as tsx from 'vue-tsx-support';
+import { FormCheckboxEvents } from './Event';
+import { cachedListeners } from '../../mixins/cache';
 
 interface NormalizedOption {
   label: string;
   value: any;
 }
 
-interface FormCheckboxGroupProps {
-  disabled?: boolean;
-  inline?: boolean;
-  options?: any[] | { [label: string]: any };
-  size?: FormCheckboxSize;
-  type: FormCheckboxType;
-  value?: any[];
-}
+const normalizeOptions = (options: { [label: string]: any } | string[]): NormalizedOption[] => {
+  if (Array.isArray(options)) {
+    return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
+  }
 
-@Component({
-  name: 'FormCheckboxGroup',
-})
-export class FormCheckboxGroup extends tsx.Component<FormCheckboxGroupProps> {
-  @Prop([Array, Object])
-  public options?: any[] | { [label: string]: any };
+  const normalized = [];
+  for (const label of Object.keys(options)) {
+    normalized.push({ label, value: options[label] });
+  }
 
-  @Prop({ type: Array, default: (): any[] => [] })
-  public value: any[];
+  return normalized;
+};
 
-  @Prop(Boolean)
-  public inline: boolean;
+const isCheckboxTag = (tag = ''): boolean => /^.*form-?checkbox$/i.test(tag);
 
-  @Prop(String)
-  public type: FormCheckboxType;
+export const FormCheckboxGroup = tsx
+  .componentFactoryOf<FormCheckboxEvents>()
+  .mixin(cachedListeners)
+  .create({
+    name: 'FormCheckboxGroup',
+    model: {
+      event: 'change',
+    },
+    props: {
+      options: { type: [Array, Object] as (() => { [label: string]: string } | string[])[] },
+      value: { type: [Array, Object], default: (): any[] => [] },
+      type: { type: String as () => FormCheckboxType, default: undefined },
+      size: { type: String as () => FormCheckboxSize, default: undefined },
+      inline: { type: Boolean },
+      disabled: { type: Boolean },
+      error: { type: Boolean },
+    },
+    methods: {
+      onChange(value: unknown): void {
+        this.$emit('change', value);
+      },
+    },
+    render(h: CreateElement): VNode {
+      let group;
 
-  @Prop(String)
-  public size: FormCheckboxSize;
-
-  @Prop(Boolean)
-  public disabled: boolean;
-
-  @Prop(Boolean)
-  public error: boolean;
-
-  public render(h: CreateElement): VNode {
-    let group;
-
-    if (this.options) {
-      group = this.normalizeOptions(this.options).map(({ label, value }) => {
-        return (
-          <FormCheckbox
-            value={value}
-            label={label}
-            onChange={this.update}
-            inline={this.inline}
-            type={this.type}
-            size={this.size}
-            disabled={this.disabled}
-            error={this.error}
-            {...{ props: { model: this.value } }}
-          />
-        );
-      });
-    } else {
-      group = (this.$slots.default || [])
-        .filter(({ componentOptions }) => {
-          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-checkbox');
-        })
-        .map((option: VNode) => {
-          if (!option.componentOptions) {
-            option.componentOptions = {} as VNodeComponentOptions;
-          }
-          if (!option.componentOptions.propsData) {
-            option.componentOptions.propsData = {};
-          }
-          const props = option.componentOptions.propsData as InstanceType<typeof FormCheckbox>;
-          props.model = this.value;
-          props.inline = this.inline || props.inline;
-          props.type = this.type || props.type;
-          props.size = props.size !== undefined ? props.size : this.size;
-          props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
-          props.error = props.error !== undefined ? props.error : this.error;
-
-          option.componentOptions.listeners = {
-            ...option.componentOptions.listeners,
-            change: this.update,
-          };
-
-          return option;
+      if (this.options) {
+        group = normalizeOptions(this.options).map(({ label, value }) => {
+          return (
+            <FormCheckbox
+              value={value}
+              label={label}
+              inline={this.inline}
+              type={this.type}
+              size={this.size}
+              disabled={this.disabled}
+              error={this.error}
+              {...{ props: { model: this.value }, on: { ...this.$listeners, change: this.onChange } }}
+            />
+          );
         });
-    }
+      } else {
+        group = (this.$slots.default || [])
+          .filter(({ componentOptions: { tag } }) => tag && isCheckboxTag(tag))
+          .map((option: VNode) => {
+            if (!option.componentOptions) {
+              option.componentOptions = {} as VNodeComponentOptions;
+            }
+            if (!option.componentOptions.propsData) {
+              option.componentOptions.propsData = {};
+            }
+            const props = option.componentOptions.propsData as InstanceType<typeof FormCheckbox>;
+            props.model = this.value;
+            props.inline = this.inline || this.inline;
+            props.type = this.type || this.type;
+            props.size = this.size !== undefined ? this.size : this.size;
+            props.disabled = this.disabled !== undefined ? this.disabled : this.disabled;
+            props.error = this.error !== undefined ? this.error : this.error;
 
-    return <div>{group}</div>;
-  }
+            const listeners = option.componentOptions.listeners as any;
+            const change = [this.onChange];
+            if (listeners && listeners.change) {
+              change.push(listeners.change);
+            }
 
-  private update(value: any): void {
-    this.$emit('input', value);
-  }
+            option.componentOptions.listeners = {
+              ...listeners,
+              change,
+            };
 
-  private normalizeOptions(options: { [label: string]: any } | string[]): NormalizedOption[] {
-    if (Array.isArray(options)) {
-      return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
-    }
+            return option;
+          });
+      }
 
-    const normalized = [];
-    for (const label of Object.keys(options)) {
-      normalized.push({ label, value: options[label] });
-    }
-
-    return normalized;
-  }
-}
+      return <div>{group}</div>;
+    },
+  });

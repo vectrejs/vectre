@@ -1,7 +1,5 @@
 import * as tsx from 'vue-tsx-support';
-export interface FormCheckboxEvents {
-    onChange: (value: any) => void;
-}
+import { FormCheckboxEvents } from './Event';
 export declare const FormCheckbox: tsx.TsxComponent<import("vue/types/vue").CombinedVueInstance<{
     __listeners: ((data: string) => void)[];
 } & Record<string, unknown> & {
@@ -13,8 +11,8 @@ export declare const FormCheckbox: tsx.TsxComponent<import("vue/types/vue").Comb
     label?: string | number;
     model?: unknown;
     value?: unknown;
-    size?: string;
-    type?: string;
+    size?: "sm" | "lg";
+    type?: "switch" | "checkbox";
     error?: boolean;
 }, FormCheckboxEvents, {}, {
     onChange({ target: { checked } }: any): void;
@@ -27,7 +25,7 @@ export declare const FormCheckbox: tsx.TsxComponent<import("vue/types/vue").Comb
     label: string | number;
     model: unknown;
     value: unknown;
-    size: string;
-    type: string;
+    size: "sm" | "lg";
+    type: "switch" | "checkbox";
     error: boolean;
 }>;

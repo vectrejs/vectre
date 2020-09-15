@@ -5,4 +5,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { FormRadioGroup, FormRadio };
-export { FormRadioSize, FormRadioSizes } from './Size';
+export * from './Size';

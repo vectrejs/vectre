@@ -1,10 +1,8 @@
-import { Component as TsxComponent } from 'vue-tsx-support';
-import { VNode, CreateElement } from 'vue';
-interface IconProps {
+import * as tsx from 'vue-tsx-support';
+export declare const Icon: import("vue").VueConstructor<{
+    _tsxattrs: tsx.TsxComponentAttrs<{} & {
+        icon?: string;
+    }, {}, {}>;
+} & import("vue").default & {
     icon: string;
-}
-export declare class Icon extends TsxComponent<IconProps> {
-    icon: string;
-    render(h: CreateElement): VNode;
-}
-export {};
+}>;

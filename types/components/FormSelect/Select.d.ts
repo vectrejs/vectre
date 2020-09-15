@@ -34,7 +34,7 @@ export declare const FormSelect: tsx.TsxComponent<object & Record<never, any> & 
     disabled?: boolean;
 }, FormSelectEvents, {}, {
     onInput({ target: { selectedOptions } }: InputEvent): void;
-    isSelected(label: string | number, value: string | number, current?: string | number | string[] | number[]): boolean;
+    isSelected(label: string | number | undefined, value: string | number | undefined, current?: string | string[] | number | number[]): boolean;
     normalizeOptions(options: string[] | {
         [label: string]: any;
     }): NormalizedOption[];

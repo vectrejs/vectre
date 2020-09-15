@@ -1,6 +1,7 @@
 import { Tabs } from './Tabs';
-import Tab from './Tab.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Tab } from './Tab';
+import { TabAction } from './TabAction';
+import { makePluggableComponents } from '../../utils/plugin';
 
-export default makePluggableComponents({ Tabs, Tab });
-export { Tabs, Tab };
+export default makePluggableComponents({ Tabs, Tab, TabAction });
+export { Tabs, Tab, TabAction };

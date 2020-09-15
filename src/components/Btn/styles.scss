@@ -1,0 +1,13 @@
+.btn + .btn {
+  margin-left: 0.4rem;
+}
+
+.btn {
+  &:not(.btn-action) .icon {
+    margin: 0 0 0 0.2rem;
+
+    &.left {
+      margin: 0 0.2rem 0 0;
+    }
+  }
+}

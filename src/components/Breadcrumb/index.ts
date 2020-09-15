@@ -1,5 +1,5 @@
-import Breadcrumb from './Breadcrumb.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Breadcrumb } from './Breadcrumb';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Breadcrumb });
 export { Breadcrumb };

@@ -1,4 +1,4 @@
-import Accordion from './Accordion.vue';
+import { Accordion } from './Accordion';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;

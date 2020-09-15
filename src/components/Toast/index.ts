@@ -1,5 +1,10 @@
-import Toast from './Toast.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { Toast } from './Toast';
+import { ToastAction } from './ToastAction';
+import { ToastBody } from './ToastBody';
+import { ToastContent } from './ToastContent';
+import { ToastIcon } from './ToastIcon';
+import { ToastTitle } from './ToastTitle';
+import { makePluggableComponents } from '../../utils/plugin';
 
-export default makePluggableComponents({ Toast });
-export { Toast };
+export default makePluggableComponents({ Toast, ToastAction, ToastBody, ToastContent, ToastIcon, ToastTitle });
+export { Toast, ToastAction, ToastBody, ToastContent, ToastIcon, ToastTitle };

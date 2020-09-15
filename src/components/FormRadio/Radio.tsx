@@ -1,7 +1,7 @@
 import * as tsx from 'vue-tsx-support';
-import { FormRadioSize, FormRadioSizes } from './Size';
 import { VNode, CreateElement } from 'vue';
-import { cachedListeners } from 'src/mixins/cache';
+import { cachedListeners } from '../../mixins/cache';
+import { FormRadioSize, FormRadioSizes } from './Size';
 
 export interface FormRadioEvents {
   onChange: (value: any) => void;
@@ -58,7 +58,6 @@ export const FormRadio = tsx
             checked={this.checked || this.model === this._value}
             disabled={this.disabled}
             name={this.name}
-            // onChange={this.onChecked}
             {...{ on: { ...this.__listeners, change: this.onChecked } }}
           />
           <i class="form-icon" /> {this._label}

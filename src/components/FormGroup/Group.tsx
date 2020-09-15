@@ -1,5 +1,9 @@
 import * as tsx from 'vue-tsx-support';
 import { VNode, CreateElement } from 'vue';
+import { CommonOptions } from './Options';
+
+const isFormTag = (tag = ''): boolean =>
+  /^.*form-?(label|input|select|checkbox-group|checkbox|radio-group|radio)$/i.test(tag);
 
 export const FormGroup = tsx.createComponent({
   name: 'FormGroup',
@@ -10,47 +14,32 @@ export const FormGroup = tsx.createComponent({
     error: { type: Boolean },
     success: { type: Boolean },
   },
-  render(h: CreateElement, { props, slots, data }): VNode {
+  render(h: CreateElement, { props, slots, data, children }): VNode {
     if (props.size) {
-      (slots().default || []).map((v: VNode) => {
-        if (
-          v.componentOptions &&
-          /^.*form-(label|input|select|checkbox-group|checkbox|radio-group|radio)$/.test(v.componentOptions.tag || '')
-        ) {
+      children.map((v: VNode & CommonOptions) => {
+        if (v.componentOptions && isFormTag(v.componentOptions.tag)) {
           if (!v.componentOptions.propsData) {
             v.componentOptions.propsData = {};
           }
 
-          (v.componentOptions.propsData as { size: 'sm' | 'lg' }).size =
-            (v.componentOptions.propsData as { size: 'sm' | 'lg' }).size || props.size;
+          v.componentOptions.propsData.size = v.componentOptions.propsData.size || props.size;
         }
       });
     }
 
     if (props.disabled !== undefined) {
-      (slots().default || []).map((v: VNode) => {
-        if (
-          v.componentOptions &&
-          /^.*form-(input|textarea|select|checkbox-group|checkbox|radio-group|radio)$/.test(
-            v.componentOptions.tag || '',
-          )
-        ) {
+      children.map((v: VNode & CommonOptions) => {
+        if (v.componentOptions && isFormTag(v.componentOptions.tag)) {
           if (!v.componentOptions.propsData) {
             v.componentOptions.propsData = {};
           }
 
-          (v.componentOptions.propsData as { disabled: boolean }).disabled = props.disabled;
+          v.componentOptions.propsData.disabled = props.disabled;
         }
       });
     }
 
-    const cssClass = [
-      'form-group',
-      props.error && 'has-error',
-      props.success && 'has-success',
-      data.class,
-      data.staticClass,
-    ];
+    const cssClass = ['form-group', props.error && 'has-error', props.success && 'has-success'];
 
     return (
       <div class={cssClass} {...data}>

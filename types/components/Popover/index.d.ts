@@ -4,4 +4,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { Popover };
-export { PopoverSide, PopoverSides } from './Side';
+export * from './Side';

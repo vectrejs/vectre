@@ -1,4 +1,5 @@
 {
+  "editor.formatOnSave": true,
   "eslint.options": {
     "ext": [
       ".ts",

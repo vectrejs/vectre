@@ -1,5 +1,5 @@
-import DropdownMenu from './DropdownMenu.vue';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { DropdownMenu } from './DropdownMenu';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ DropdownMenu });
 export { DropdownMenu };

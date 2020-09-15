@@ -4,4 +4,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { FormLabel };
-export { FormLabelSize, FormLabelSizes } from './LabelSize';
+export * from './LabelSize';

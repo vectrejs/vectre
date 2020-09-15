@@ -1,8 +1,8 @@
-import Icon from './Icon.vue';
+import { Icon } from './Icon';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;
 export default _default;
 export { Icon };
-export { IconSize, IconSizes } from './Size';
-export { IconType, IconAction, IconNavigation, IconObject, Icons } from './Type';
+export * from './Size';
+export * from './Type';

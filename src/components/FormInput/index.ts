@@ -1,6 +1,6 @@
 import { FormInput } from './Component';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ FormInput });
 export { FormInput };
-export { FormInputSize, FormInputSizes } from './Size';
+export * from './Size';

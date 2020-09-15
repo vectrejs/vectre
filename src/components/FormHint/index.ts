@@ -1,5 +1,5 @@
 import { FormHint } from './Hint';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ FormHint });
 export { FormHint };

@@ -1,7 +1,7 @@
-import * as tsx from 'vue-tsx-support';
-import { Prop, Component } from 'vue-property-decorator';
-import { FormRadio } from './Radio';
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
+import * as tsx from 'vue-tsx-support';
+import { uid } from '../../utils/uid';
+import { FormRadio } from './Radio';
 import { FormRadioSize } from './Size';
 
 interface NormalizedOption {
@@ -9,47 +9,41 @@ interface NormalizedOption {
   label: string;
 }
 
-export interface FormRadioGroupProps {
-  disabled?: boolean;
-  error?: boolean;
-  inline?: boolean;
-  options?: any[] | { [label: string]: any };
-  name?: string;
-  size?: FormRadioSize;
-  value?: any;
-}
+const normalizeOptions = (options: { [label: string]: any } | string[]): NormalizedOption[] => {
+  if (Array.isArray(options)) {
+    return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
+  }
 
-@Component({
+  const normalized = [];
+  for (const label of Object.keys(options)) {
+    normalized.push({ label, value: options[label] });
+  }
+
+  return normalized;
+};
+
+export const FormRadioGroup = tsx.componentFactoryOf().create({
   name: 'FormRadioGroup',
-})
-export class FormRadioGroup extends tsx.Component<FormRadioGroupProps> {
-  @Prop()
-  public options: any[] | { [label: string]: any };
-
-  @Prop(String)
-  public name: string;
-
-  @Prop()
-  public value: any;
-
-  @Prop(Boolean)
-  public inline: boolean;
-
-  @Prop(String)
-  public size: FormRadioSize;
-
-  @Prop(Boolean)
-  public error: boolean;
-
-  @Prop(Boolean)
-  public disabled: boolean;
-
-  public render(h: CreateElement): VNode {
-    const name = this.name || this.uid;
+  props: {
+    name: { type: String },
+    options: { type: undefined },
+    value: { type: undefined },
+    size: { type: String as () => FormRadioSize, default: undefined },
+    inline: { type: Boolean },
+    disabled: { type: Boolean },
+    error: { type: Boolean },
+  },
+  methods: {
+    update(value: unknown): void {
+      this.$emit('input', value);
+    },
+  },
+  render(h: CreateElement): VNode {
+    const name = this.name || uid(this);
     let group: VNode[];
 
     if (this.options) {
-      group = this.normalizeOptions(this.options).map(({ label, value }) => {
+      group = normalizeOptions(this.options).map(({ label, value }) => {
         return (
           <FormRadio
             name={name}
@@ -92,26 +86,5 @@ export class FormRadioGroup extends tsx.Component<FormRadioGroupProps> {
     }
 
     return <div>{group}</div>;
-  }
-
-  private update(value: any): void {
-    this.$emit('input', value);
-  }
-
-  private get uid(): string {
-    return 'radio-group-' + Math.round(Math.random() * 1000);
-  }
-
-  private normalizeOptions(options: { [label: string]: any } | string[]): NormalizedOption[] {
-    if (Array.isArray(options)) {
-      return options.reduce((normal, value) => [...normal, { value, label: value }], [] as any[]);
-    }
-
-    const normalized = [];
-    for (const label of Object.keys(options)) {
-      normalized.push({ label, value: options[label] });
-    }
-
-    return normalized;
-  }
-}
+  },
+});

@@ -4,4 +4,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { FormInput };
-export { FormInputSize, FormInputSizes } from './Size';
+export * from './Size';

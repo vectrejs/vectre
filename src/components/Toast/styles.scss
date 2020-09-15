@@ -1,0 +1,63 @@
+.toast-fade-enter-active,
+.toast-fade-leave-active {
+  transition: opacity 0.5s;
+}
+.toast-fade-enter,
+.toast-fade-leave-to {
+  opacity: 0;
+}
+
+.toast {
+  display: flex;
+
+  &-body {
+    flex-grow: 4;
+  }
+
+  &-icon {
+    align-self: flex-start;
+    margin: 0 0.3rem 0 0.2rem;
+
+    &.large {
+      align-self: center;
+      margin: 0 0.75rem 0 0.5rem;
+    }
+  }
+
+  &-action {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    align-items: center;
+    align-content: flex-start;
+
+    .btn {
+      &-clear {
+        margin: 0;
+      }
+
+      &.btn-link {
+        color: #fff;
+      }
+
+      &.btn-action {
+        width: 1rem;
+        height: 1rem;
+        padding: 0.1rem;
+        line-height: 0.8rem;
+
+        &:hover {
+          background: rgba(247, 248, 249, 0.5);
+          opacity: 0.95;
+        }
+      }
+
+      &.btn-link:hover {
+        color: rgba(255, 255, 255, 0.81);
+      }
+
+      // & + .btn {
+      //   margin-top: 1rem;
+      // }
+    }
+  }
+}

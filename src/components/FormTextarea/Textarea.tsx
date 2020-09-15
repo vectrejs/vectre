@@ -1,5 +1,5 @@
 import * as tsx from 'vue-tsx-support';
-import { cachedListeners, cachedAttrs } from 'src/mixins/cache';
+import { cachedListeners, cachedAttrs } from '../../mixins/cache';
 import { CreateElement, VNode } from 'vue';
 
 export interface FormTextareaEvents {
@@ -12,14 +12,10 @@ export const FormTextarea = tsx
   .mixin(cachedAttrs)
   .create({
     name: 'FormTextarea',
-    mixins: [cachedAttrs],
     props: {
       value: { type: String, default: undefined },
       disabled: { type: Boolean, default: false },
     },
-    data: () => ({
-      listeners: {},
-    }),
     computed: {
       placeholder(): string | undefined {
         return this.$attrs.placeholder || (this.$slots.default && this.$slots.default[0].text);

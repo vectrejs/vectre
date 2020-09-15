@@ -1,5 +1,10 @@
-import vue from 'vue';
-export declare const Tabs: import("vue/types/vue").ExtendedVue<vue, unknown, unknown, unknown, {
+import * as tsx from 'vue-tsx-support';
+import { TabsEvents } from './Events';
+export declare const Tabs: tsx.TsxComponent<import("vue").default, {} & {
+    current?: string | number;
+    items?: string[];
+    block?: boolean;
+}, TabsEvents, {}, {
     current: string | number;
     items: string[];
     block: boolean;

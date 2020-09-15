@@ -1,5 +1,5 @@
 import { Column } from './Column';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ Column });
 export { Column };

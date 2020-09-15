@@ -1,4 +1,4 @@
-import Breadcrumb from './Breadcrumb.vue';
+import { Breadcrumb } from './Breadcrumb';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;

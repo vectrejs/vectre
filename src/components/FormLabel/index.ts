@@ -1,6 +1,6 @@
 import { FormLabel } from './Label';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ FormLabel });
 export { FormLabel };
-export { FormLabelSize, FormLabelSizes } from './LabelSize';
+export * from './LabelSize';

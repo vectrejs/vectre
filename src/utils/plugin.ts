@@ -1,12 +1,10 @@
-import Vue from 'vue';
-import { VueConstructor, PluginFunction, DirectiveFunction } from 'vue';
-
+import vue, { VueConstructor, PluginFunction, DirectiveFunction } from 'vue';
 import { addPrefix } from './prefix';
 
 export const makePluggableComponents = (
-  components = {} as Record<string, VueConstructor<Vue>>,
+  components = {} as Record<string, VueConstructor<vue>>,
 ): PluginFunction<{ prefix?: string }> => {
-  return (vue: VueConstructor<Vue>, options = { prefix: '' }): void => {
+  return (vue: VueConstructor<vue>, options = { prefix: '' }): void => {
     Object.keys(components).forEach(name => vue.component(addPrefix(name, options.prefix), components[name]));
   };
 };
@@ -14,7 +12,7 @@ export const makePluggableComponents = (
 export const makePluggableDirectives = (
   directives = {} as Record<string, DirectiveFunction>,
 ): PluginFunction<{ prefix?: string }> => {
-  return (vue: VueConstructor<Vue>, options = { prefix: '' }): void => {
+  return (vue: VueConstructor<vue>, options = { prefix: '' }): void => {
     Object.keys(directives).forEach(name => vue.directive(addPrefix(name, options.prefix, '-'), directives[name]));
   };
 };

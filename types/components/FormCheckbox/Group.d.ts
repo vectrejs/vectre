@@ -1,29 +1,29 @@
-import { VNode, CreateElement } from 'vue';
-import { FormCheckboxType } from './Type';
-import { FormCheckboxSize } from './Size';
 import * as tsx from 'vue-tsx-support';
-interface FormCheckboxGroupProps {
-    disabled?: boolean;
+import { FormCheckboxEvents } from './Event';
+export declare const FormCheckboxGroup: tsx.TsxComponent<import("vue/types/vue").CombinedVueInstance<{
+    __listeners: ((data: string) => void)[];
+} & Record<string, unknown> & {
+    __listeners: () => any;
+} & import("vue").default, object, object, object, Record<never, any>>, {} & {
+    options?: string[] | {
+        [label: string]: string;
+    };
+    value?: any;
+    type?: "switch" | "checkbox";
+    size?: "sm" | "lg";
     inline?: boolean;
-    options?: any[] | {
-        [label: string]: any;
+    disabled?: boolean;
+    error?: boolean;
+}, FormCheckboxEvents, {}, {
+    onChange(value: unknown): void;
+} & {
+    options: string[] | {
+        [label: string]: string;
     };
-    size?: FormCheckboxSize;
-    type: FormCheckboxType;
-    value?: any[];
-}
-export declare class FormCheckboxGroup extends tsx.Component<FormCheckboxGroupProps> {
-    options?: any[] | {
-        [label: string]: any;
-    };
-    value: any[];
+    value: any;
+    type: "switch" | "checkbox";
+    size: "sm" | "lg";
     inline: boolean;
-    type: FormCheckboxType;
-    size: FormCheckboxSize;
     disabled: boolean;
     error: boolean;
-    render(h: CreateElement): VNode;
-    private update;
-    private normalizeOptions;
-}
-export {};
+}>;

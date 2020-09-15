@@ -1,4 +1,4 @@
-import Pagination from './Pagination.vue';
+import { Pagination } from './Pagination';
 declare const _default: import("vue").PluginFunction<{
     prefix?: string;
 }>;

@@ -1,5 +1,5 @@
 import { FormHorizontal } from './Horizontal';
-import { makePluggableComponents } from 'src/utils/plugin';
+import { makePluggableComponents } from '../../utils/plugin';
 
 export default makePluggableComponents({ FormHorizontal });
 export { FormHorizontal };

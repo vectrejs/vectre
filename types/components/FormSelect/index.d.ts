@@ -5,4 +5,4 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { FormSelect, FormSelectOption };
-export { FormSelectSize, FormSelectSizes } from './Size';
+export * from './Size';

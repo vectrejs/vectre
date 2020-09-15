@@ -5,5 +5,5 @@ declare const _default: import("vue").PluginFunction<{
 }>;
 export default _default;
 export { FormCheckbox, FormCheckboxGroup };
-export { FormCheckboxType, FormCheckboxTypes } from './Type';
-export { FormCheckboxSize, FormCheckboxSizes } from './Size';
+export * from './Type';
+export * from './Size';

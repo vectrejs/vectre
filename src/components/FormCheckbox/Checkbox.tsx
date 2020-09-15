@@ -3,10 +3,7 @@ import { FormCheckboxType, FormCheckboxTypes } from './Type';
 import { FormCheckboxSize, FormCheckboxSizes } from './Size';
 import { CreateElement, VNode } from 'vue';
 import { cachedListeners } from '../../mixins/cache';
-
-export interface FormCheckboxEvents {
-  onChange: (value: any) => void;
-}
+import { FormCheckboxEvents } from './Event';
 
 export const FormCheckbox = tsx
   .componentFactoryOf<FormCheckboxEvents>()
@@ -22,17 +19,17 @@ export const FormCheckbox = tsx
       value: { type: undefined as any },
       size: {
         type: String as () => FormCheckboxSize,
-        validator: (v: string): boolean => Object.keys(FormCheckboxSizes).includes(v),
+        validator: (v: FormCheckboxSize): boolean => Object.keys(FormCheckboxSizes).includes(v),
       },
       type: {
         type: String as () => FormCheckboxType,
-        validator: (v: string): boolean => Object.keys(FormCheckboxTypes).includes(v),
+        validator: (v: FormCheckboxType): boolean => Object.keys(FormCheckboxTypes).includes(v),
       },
       error: { type: Boolean },
     },
     model: {
-      event: 'change',
       prop: 'model',
+      event: 'change',
     },
     computed: {
       _checked(): boolean {
