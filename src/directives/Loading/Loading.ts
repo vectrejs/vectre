@@ -8,7 +8,7 @@ const remove = (el: HTMLElement, cssClasses: string[]): void => {
   el.classList.remove(...cssClasses);
 };
 
-export const Loading: DirectiveFunction = (el: HTMLElement, { value = true, modifiers }): void => {
+export const Loading: DirectiveFunction = /*#__PURE__*/ (el: HTMLElement, { value = true, modifiers }): void => {
   const cssClasses = ['loading'];
 
   if (modifiers.lg) {

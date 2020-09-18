@@ -3,7 +3,7 @@ import { CreateElement, VNode } from 'vue';
 import { VerticalMenuItem } from './VerticalMenuItem';
 import { VerticalMenuDivider } from './VerticalMenuDivider';
 
-export const VerticalMenu = tsx.component({
+export const VerticalMenu = /*#__PURE__*/ tsx.component({
   name: 'VerticalMenu',
   functional: true,
   props: {

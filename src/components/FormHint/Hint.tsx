@@ -2,7 +2,7 @@ import './styles.scss';
 import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 
-export const FormHint = tsx.createComponent({
+export const FormHint = /*#__PURE__*/ tsx.createComponent({
   name: 'FormHint',
   functional: true,
   props: {

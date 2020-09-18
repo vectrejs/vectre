@@ -4,7 +4,7 @@ import { uid } from '../../utils/uid';
 import { Icon, IconType } from '../Icon';
 import { AccordionEvents } from './Event';
 
-export const Accordion = tsx.componentFactoryOf<AccordionEvents>().create({
+export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>().create({
   name: 'Accordion',
   props: {
     items: { required: true, type: [Object, Array] as (() => Record<string | number, string> | string[])[] },

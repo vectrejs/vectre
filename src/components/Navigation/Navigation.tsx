@@ -2,7 +2,7 @@ import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 import { NavigationItem } from './NavigationItem';
 
-export const Navigation = tsx.component({
+export const Navigation = /*#__PURE__*/ tsx.component({
   name: 'Navigation',
   functional: true,
   props: {

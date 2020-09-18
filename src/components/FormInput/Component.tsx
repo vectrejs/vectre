@@ -10,7 +10,7 @@ export interface FormInputEvents {
   onInput: (value: any) => void;
 }
 
-export const FormInput = tsx.componentFactoryOf<FormInputEvents>().create({
+export const FormInput = /*#__PURE__*/ tsx.componentFactoryOf<FormInputEvents>().create({
   name: 'FormInput',
   props: {
     value: [String, Number],

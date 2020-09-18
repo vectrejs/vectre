@@ -5,7 +5,7 @@ import { CreateElement, VNode } from 'vue';
 import { cachedListeners } from '../../mixins/cache';
 import { FormCheckboxEvents } from './Event';
 
-export const FormCheckbox = tsx
+export const FormCheckbox = /*#__PURE__*/ tsx
   .componentFactoryOf<FormCheckboxEvents>()
   .mixin(cachedListeners)
   .create({

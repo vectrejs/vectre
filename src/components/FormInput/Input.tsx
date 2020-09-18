@@ -6,7 +6,7 @@ interface InputEvents {
   onInput: (event: any) => void;
 }
 
-export const Input = tsx.componentFactoryOf<InputEvents>().create({
+export const Input = /*#__PURE__*/ tsx.componentFactoryOf<InputEvents>().create({
   name: 'Input',
   functional: true,
   props: {

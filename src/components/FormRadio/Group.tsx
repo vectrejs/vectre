@@ -22,7 +22,7 @@ const normalizeOptions = (options: { [label: string]: any } | string[]): Normali
   return normalized;
 };
 
-export const FormRadioGroup = tsx.componentFactoryOf().create({
+export const FormRadioGroup = /*#__PURE__*/ tsx.componentFactoryOf().create({
   name: 'FormRadioGroup',
   props: {
     name: { type: String },
@@ -34,7 +34,7 @@ export const FormRadioGroup = tsx.componentFactoryOf().create({
     error: { type: Boolean },
   },
   methods: {
-    update(value: unknown): void {
+    update(value: any): void {
       this.$emit('input', value);
     },
   },

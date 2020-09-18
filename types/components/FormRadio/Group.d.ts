@@ -8,7 +8,7 @@ export declare const FormRadioGroup: tsx.TsxComponent<import("vue").default, {} 
     disabled?: boolean;
     error?: boolean;
 }, {}, {}, {
-    update(value: unknown): void;
+    update(value: any): void;
 } & {
     name: string;
     options: unknown;

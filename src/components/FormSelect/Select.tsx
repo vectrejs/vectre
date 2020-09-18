@@ -20,7 +20,7 @@ export interface FormSelectEvents {
   onInput: (value: string | string[] | number | number[]) => void;
 }
 
-export const FormSelect = tsx
+export const FormSelect = /*#__PURE__*/ tsx
   .componentFactoryOf<FormSelectEvents>()
   .mixin(cachedListeners)
   .mixin(cachedAttrs)

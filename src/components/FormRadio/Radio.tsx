@@ -7,7 +7,7 @@ export interface FormRadioEvents {
   onChange: (value: any) => void;
 }
 
-export const FormRadio = tsx
+export const FormRadio = /*#__PURE__*/ tsx
   .componentFactoryOf<FormRadioEvents>()
   .mixin(cachedListeners)
   .create({

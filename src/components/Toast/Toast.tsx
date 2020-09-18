@@ -9,7 +9,7 @@ import { ToastContent } from './ToastContent';
 import { ToastTitle } from './ToastTitle';
 import './styles.scss';
 
-export const Toast = tsx.component({
+export const Toast = /*#__PURE__*/ tsx.component({
   name: 'Toast',
   props: {
     title: { type: String, default: undefined },

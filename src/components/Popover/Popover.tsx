@@ -3,7 +3,7 @@ import * as tsx from 'vue-tsx-support';
 import { mergeCss } from '../../utils/css';
 import { PopoverSides, PopoverSide } from './Side';
 
-export const Popover = tsx.component({
+export const Popover = /*#__PURE__*/ tsx.component({
   name: 'Popover',
   functional: true,
   props: {

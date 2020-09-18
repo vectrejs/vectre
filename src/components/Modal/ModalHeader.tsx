@@ -4,7 +4,7 @@ import { flattenListener } from '../../utils/listener';
 import { Btn } from '../Btn';
 import { ModalEvents } from './Events';
 
-export const ModalHeader = tsx.componentFactoryOf<ModalEvents>().create({
+export const ModalHeader = /*#__PURE__*/ tsx.componentFactoryOf<ModalEvents>().create({
   name: 'ModalHeader',
   functional: true,
   render(h: CreateElement, { children, listeners }): VNode {

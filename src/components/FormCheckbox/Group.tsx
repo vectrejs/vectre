@@ -26,7 +26,7 @@ const normalizeOptions = (options: { [label: string]: any } | string[]): Normali
 
 const isCheckboxTag = (tag = ''): boolean => /^.*form-?checkbox$/i.test(tag);
 
-export const FormCheckboxGroup = tsx
+export const FormCheckboxGroup = /*#__PURE__*/ tsx
   .componentFactoryOf<FormCheckboxEvents>()
   .mixin(cachedListeners)
   .create({
@@ -44,7 +44,7 @@ export const FormCheckboxGroup = tsx
       error: { type: Boolean },
     },
     methods: {
-      onChange(value: unknown): void {
+      onChange(value: any): void {
         this.$emit('change', value);
       },
     },

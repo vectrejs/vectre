@@ -5,7 +5,7 @@ import { IconType } from '../Icon';
 import { flattenListener } from '../../utils/listener';
 import { VerticalMenu } from '../VerticalMenu';
 
-export const DropdownMenu = tsx.component({
+export const DropdownMenu = /*#__PURE__*/ tsx.component({
   name: 'DropdownMenu',
   functional: true,
   props: {

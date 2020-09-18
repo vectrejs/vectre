@@ -3,7 +3,7 @@ import * as tsx from 'vue-tsx-support';
 import { mergeCss } from '../../utils/css';
 import { Step } from './Step';
 
-export const Steps = tsx.component({
+export const Steps = /*#__PURE__*/ tsx.component({
   name: 'Steps',
   functional: true,
   props: {

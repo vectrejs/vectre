@@ -25,7 +25,7 @@ const items = (pages: number, current: number, show: number): PagerItem[] => {
   ];
 };
 
-export const Pager = tsx.componentFactoryOf<PaginationEvents>().create({
+export const Pager = /*#__PURE__*/ tsx.componentFactoryOf<PaginationEvents>().create({
   name: 'Pager',
   functional: true,
   props: {

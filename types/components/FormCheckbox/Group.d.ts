@@ -15,7 +15,7 @@ export declare const FormCheckboxGroup: tsx.TsxComponent<import("vue/types/vue")
     disabled?: boolean;
     error?: boolean;
 }, FormCheckboxEvents, {}, {
-    onChange(value: unknown): void;
+    onChange(value: any): void;
 } & {
     options: string[] | {
         [label: string]: string;

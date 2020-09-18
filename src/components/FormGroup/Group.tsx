@@ -5,7 +5,7 @@ import { CommonOptions } from './Options';
 const isFormTag = (tag = ''): boolean =>
   /^.*form-?(label|input|select|checkbox-group|checkbox|radio-group|radio)$/i.test(tag);
 
-export const FormGroup = tsx.createComponent({
+export const FormGroup = /*#__PURE__*/ tsx.createComponent({
   name: 'FormGroup',
   functional: true,
   props: {

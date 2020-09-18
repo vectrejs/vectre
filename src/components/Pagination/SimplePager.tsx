@@ -3,7 +3,7 @@ import { CreateElement, VNode } from 'vue';
 import { PaginationEvents } from './Events';
 import { flattenListener } from '../../utils/listener';
 
-export const SimplePager = tsx.componentFactoryOf<PaginationEvents>().create({
+export const SimplePager = /*#__PURE__*/ tsx.componentFactoryOf<PaginationEvents>().create({
   name: 'SimplePager',
   functional: true,
   props: {

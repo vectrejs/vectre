@@ -6,7 +6,7 @@ import { mergeCss } from '../../utils/css';
 import { TabAction } from './TabAction';
 import { TabsEvents } from './Events';
 
-export const Tabs = tsx.componentFactoryOf<TabsEvents>().create({
+export const Tabs = /*#__PURE__*/ tsx.componentFactoryOf<TabsEvents>().create({
   name: 'Tabs',
   functional: true,
   model: {
