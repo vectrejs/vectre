@@ -1,8 +1,8 @@
-export enum Sizes {
+export enum AvatarSizes {
   xl = 'avatar-xl',
   lg = 'avatar-lg',
   sm = 'avatar-sm',
   xs = 'avatar-xs',
 }
 
-export type Size = keyof typeof Sizes;
+export type AvatarSize = keyof typeof AvatarSizes;

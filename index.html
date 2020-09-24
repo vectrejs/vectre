@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VectreJS - Static</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/spectre.css/dist/spectre.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="vectre.js"></script>
+    <style>
+      #app {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <container grid="sm">
+        <columns>
+          <column col="4" sm="6" mx>
+            <h2>Welcome!</h2>
+          </column>
+
+          <column col="12">
+            <columns>
+              <column col="5" sm="12" mx>
+                <form-group>
+                  <form-label>Email</form-label>
+                  <form-input placeholder="Email" type="email"></form-input>
+                </form-group>
+                <form-group>
+                  <form-label>Password</form-label>
+                  <form-input
+                    type="password"
+                    placeholder="Password"
+                  ></form-input>
+                </form-group>
+                <form-checkbox>
+                  Remember me
+                  <small>
+                    <tag type="warning" rounded>2 days</tag>
+                  </small>
+                </form-checkbox>
+                <btn type="primary">Sign in</btn>
+              </column>
+
+              <divider data-content="OR" vert class="hide-sm"></divider>
+
+              <column sm="12" show="sm">
+                <divider data-content="OR"></divider>
+              </column>
+
+              <column col="6" sm="12">
+                <form-group>
+                  <form-label>Email</form-label>
+                  <form-input placeholder="Email" type="email"></form-input>
+                </form-group>
+                <btn type="success" size="block">Sign up</btn>
+              </column>
+            </columns>
+          </column>
+        </columns>
+      </container>
+    </div>
+
+    <script lang="js">
+      Vue.use(Vectre, {})
+
+      new Vue({
+        el: "#app",
+        components: {
+
+        },
+        data: () => ({a: undefined})
+      });
+    </script>
+  </body>
+</html>
