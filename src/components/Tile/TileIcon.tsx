@@ -18,7 +18,7 @@ export const TileIcon = tsx.component({
     const avatar = (props.avatar || props.initials) && (
       <Avatar initials={props.initials} src={props.avatar} size="lg" />
     );
-    const icon = props.icon && <Icon type={props.icon} size="x2" />;
+    const icon = props.icon && <Icon name={props.icon} size="x2" />;
 
     return (
       <div class={cssClass} {...data}>

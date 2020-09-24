@@ -15,7 +15,7 @@ export const ToastIcon = tsx.component({
 
     return (
       <div {...data} class={cssClass}>
-        <Icon type={props.icon} size={props.large ? 'x2' : undefined} />
+        <Icon name={props.icon} size={props.large ? 'x2' : undefined} />
       </div>
     );
   },

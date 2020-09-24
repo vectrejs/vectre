@@ -31,8 +31,8 @@ export const Btn = tsx.componentFactoryOf<BtnEvents>().create({
       props.action && 'btn-action',
     ];
 
-    const leftIcon = props.icon && props.left ? <Icon type={props.icon} class="left" /> : '';
-    const rightIcon = props.icon && !props.left ? <Icon type={props.icon} /> : '';
+    const leftIcon = props.icon && props.left ? <Icon name={props.icon} class="left" /> : '';
+    const rightIcon = props.icon && !props.left ? <Icon name={props.icon} /> : '';
     const content = !props.action && slots().default;
 
     return (

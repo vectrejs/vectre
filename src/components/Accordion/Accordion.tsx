@@ -66,7 +66,7 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
           />
 
           <label staticClass="accordion-header c-hand" for={id}>
-            {this.icon && <Icon type={this.icon} />}
+            {this.icon && <Icon name={this.icon} />}
             {headerSlot && headerSlot({ header: key, item: items[key as any] })}
             {!headerSlot && key}
           </label>

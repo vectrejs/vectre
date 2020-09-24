@@ -18,7 +18,7 @@ export const OffCanvasToggle = tsx.componentFactoryOf<OffCanvasToggleEvents>().c
     return (
       <div {...data} class={cssClass}>
         <a staticClass="btn btn-primary btn-action" onClick={onClick}>
-          {(children.length && children) || <Icon type={props.icon} />}
+          {(children.length && children) || <Icon name={props.icon} />}
         </a>
       </div>
     );

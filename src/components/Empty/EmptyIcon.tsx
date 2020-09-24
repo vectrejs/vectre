@@ -11,7 +11,7 @@ export const EmptyIcon = tsx.component({
   render(h: CreateElement, { props }): VNode {
     return (
       <div staticClass="empty-icon">
-        <Icon type={props.icon} size="x3" />
+        <Icon name={props.icon} size="x3" />
       </div>
     );
   },
