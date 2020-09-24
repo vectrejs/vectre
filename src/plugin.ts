@@ -7,10 +7,8 @@ export interface PluginOptions {
 }
 
 const VectrePlugin: PluginFunction<PluginOptions> = (vue, options = { prefix: '' }): void => {
-  Object.values(components).forEach(c => vue.use(c, options));
-  Object.values(directives).forEach(c => vue.use(c, options));
+  Object.values(components).forEach((c) => vue.use(c, options));
+  Object.values(directives).forEach((c) => vue.use(c, options));
 };
 
-export default VectrePlugin;
-
-// export default Object.assign(VectrePlugin, { components, directives });
+export default Object.assign(VectrePlugin, { components, directives });

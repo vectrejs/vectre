@@ -3,13 +3,13 @@ interface InputEvents {
     onInput: (event: any) => void;
 }
 export declare const Input: tsx.TsxComponent<import("vue").default, {} & {
-    size?: "sm" | "lg";
+    disabled?: boolean;
     error?: boolean;
     success?: boolean;
     value?: string | number;
-    disabled?: boolean;
+    size?: "lg" | "sm";
 }, InputEvents, {}, {
-    size: "sm" | "lg";
+    size: "lg" | "sm";
     error: boolean;
     success: boolean;
     value: string | number;

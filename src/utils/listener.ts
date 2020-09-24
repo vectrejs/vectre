@@ -11,5 +11,5 @@ export const flattenListener = (listener?: Function | Function[]): ((event: any)
     ];
   }
 
-  return (event: any): void => flatten.forEach(l => l(event));
+  return (event: any): void => flatten.forEach((l) => l(event));
 };

@@ -4,8 +4,8 @@ import './styles.scss';
 export declare const Pagination: tsx.TsxComponent<import("vue").default, {
     pages: number | string[];
 } & {
-    current?: string | number;
     show?: number;
+    current?: string | number;
 }, PaginationEvents, {}, {
     pages: number | string[];
     current: string | number;

@@ -30,7 +30,7 @@ export const Input = /*#__PURE__*/ tsx.componentFactoryOf<InputEvents>().create(
     const onInput = (e: any): void => {
       const value = e.target.value;
       if (Array.isArray(listeners.input)) {
-        return listeners.input.forEach(listener => listener(value));
+        return listeners.input.forEach((listener) => listener(value));
       }
 
       if (listeners.input) {

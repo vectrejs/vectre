@@ -21,17 +21,17 @@ export declare const FormSelect: tsx.TsxComponent<object & Record<never, any> & 
 } & {
     __listeners: () => any;
 }, {} & {
+    disabled?: boolean;
+    error?: boolean;
+    success?: boolean;
+    value?: string | number | string[] | number[];
+    size?: string | number;
+    multiple?: boolean;
     options?: string[] | {
         [label: string]: string;
     };
-    multiple?: boolean;
     placeholder?: string;
-    value?: string | number | string[] | number[];
-    size?: string | number;
-    scale?: "sm" | "lg";
-    error?: boolean;
-    success?: boolean;
-    disabled?: boolean;
+    scale?: "lg" | "sm";
 }, FormSelectEvents, {}, {
     onInput({ target: { selectedOptions } }: InputEvent): void;
     isSelected(label: string | number | undefined, value: string | number | undefined, current?: string | string[] | number | number[]): boolean;
@@ -46,7 +46,7 @@ export declare const FormSelect: tsx.TsxComponent<object & Record<never, any> & 
     placeholder: string;
     value: string | number | string[] | number[];
     size: string | number;
-    scale: "sm" | "lg";
+    scale: "lg" | "sm";
     error: boolean;
     success: boolean;
     disabled: boolean;

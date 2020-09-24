@@ -95,8 +95,8 @@ export const FormSelect = /*#__PURE__*/ tsx
         });
       } else {
         options = (this.$slots.default || [])
-          .filter(({ componentOptions }) => {
-            return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-option');
+          .filter(({ tag }) => {
+            return tag && /^.*form-?select-?option$/i.test(tag);
           })
           .map((option: VNode) => {
             if (!option.componentOptions) {

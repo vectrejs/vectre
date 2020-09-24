@@ -7,15 +7,15 @@ export declare const FormRadio: tsx.TsxComponent<import("vue/types/vue").Combine
 } & Record<string, unknown> & {
     __listeners: () => any;
 } & import("vue").default, object, object, object, Record<never, any>>, {} & {
-    model?: unknown;
-    checked?: boolean;
     disabled?: boolean;
     error?: boolean;
-    inline?: boolean;
     label?: string;
     name?: string;
-    size?: "sm" | "lg";
     value?: unknown;
+    size?: "lg" | "sm";
+    checked?: boolean;
+    inline?: boolean;
+    model?: unknown;
 }, FormRadioEvents, {}, {
     onChecked(): void;
 } & {
@@ -28,7 +28,7 @@ export declare const FormRadio: tsx.TsxComponent<import("vue/types/vue").Combine
     inline: boolean;
     label: string;
     name: string;
-    size: "sm" | "lg";
+    size: "lg" | "sm";
     value: unknown;
     model: unknown;
 }>;

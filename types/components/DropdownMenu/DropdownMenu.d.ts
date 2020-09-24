@@ -1,18 +1,18 @@
 import * as tsx from 'vue-tsx-support';
 export declare const DropdownMenu: import("vue").VueConstructor<{
     _tsxattrs: tsx.TsxComponentAttrs<{} & {
-        items?: any;
         right?: boolean;
-        btnType?: "primary" | "link" | "success" | "error" | "clear";
-        btnText?: string;
-        btnIcon?: "right" | "link" | "hResize" | "vResize" | "plus" | "minus" | "cross" | "check" | "stop" | "shutdown" | "refresh" | "search" | "flag" | "bookmark" | "edit" | "delete" | "share" | "download" | "upload" | "mail" | "people" | "message" | "photo" | "time" | "location" | "emoji" | "up" | "down" | "left" | "upward" | "forward" | "downward" | "back" | "caret" | "menu" | "apps" | "hMore" | "vMore";
+        items?: any;
         state?: "active" | "disabled" | "loading";
+        btnType?: "link" | "error" | "success" | "primary" | "clear";
+        btnText?: string;
+        btnIcon?: "search" | "link" | "left" | "right" | "message" | "menu" | "time" | "stop" | "down" | "up" | "forward" | "hResize" | "vResize" | "plus" | "minus" | "cross" | "check" | "shutdown" | "refresh" | "flag" | "bookmark" | "edit" | "delete" | "share" | "download" | "upload" | "mail" | "people" | "photo" | "location" | "emoji" | "upward" | "downward" | "back" | "caret" | "apps" | "hMore" | "vMore";
     }, {}, {}>;
 } & import("vue").default & {
     items: any;
     right: boolean;
-    btnType: "primary" | "link" | "success" | "error" | "clear";
+    btnType: "link" | "error" | "success" | "primary" | "clear";
     btnText: string;
-    btnIcon: "right" | "link" | "hResize" | "vResize" | "plus" | "minus" | "cross" | "check" | "stop" | "shutdown" | "refresh" | "search" | "flag" | "bookmark" | "edit" | "delete" | "share" | "download" | "upload" | "mail" | "people" | "message" | "photo" | "time" | "location" | "emoji" | "up" | "down" | "left" | "upward" | "forward" | "downward" | "back" | "caret" | "menu" | "apps" | "hMore" | "vMore";
+    btnIcon: "search" | "link" | "left" | "right" | "message" | "menu" | "time" | "stop" | "down" | "up" | "forward" | "hResize" | "vResize" | "plus" | "minus" | "cross" | "check" | "shutdown" | "refresh" | "flag" | "bookmark" | "edit" | "delete" | "share" | "download" | "upload" | "mail" | "people" | "photo" | "location" | "emoji" | "upward" | "downward" | "back" | "caret" | "apps" | "hMore" | "vMore";
     state: "active" | "disabled" | "loading";
 }>;

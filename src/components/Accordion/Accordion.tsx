@@ -39,7 +39,7 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
       if ((event.target as HTMLInputElement).checked) {
         checked.push(key || index || 0);
       } else {
-        checked = checked.filter(item => item !== index && item !== key);
+        checked = checked.filter((item) => item !== index && item !== key);
       }
 
       this.$emit('check', checked);

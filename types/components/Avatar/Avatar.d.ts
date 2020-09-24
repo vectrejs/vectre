@@ -2,13 +2,13 @@ import * as tsx from 'vue-tsx-support';
 import './style.scss';
 export declare const Avatar: import("vue").VueConstructor<{
     _tsxattrs: tsx.TsxComponentAttrs<{} & {
+        alt?: string;
         size?: "xl" | "lg" | "sm" | "xs";
         src?: string;
         initials?: string;
         background?: string;
         color?: string;
-        alt?: string;
-        presence?: "online" | "busy" | "away" | "offline";
+        presence?: "offline" | "online" | "busy" | "away";
         icon?: string;
     }, {}, {}>;
 } & import("vue").default & {
@@ -18,6 +18,6 @@ export declare const Avatar: import("vue").VueConstructor<{
     background: string;
     color: string;
     alt: string;
-    presence: "online" | "busy" | "away" | "offline";
+    presence: "offline" | "online" | "busy" | "away";
     icon: string;
 }>;

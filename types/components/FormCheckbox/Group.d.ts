@@ -5,15 +5,15 @@ export declare const FormCheckboxGroup: tsx.TsxComponent<import("vue/types/vue")
 } & Record<string, unknown> & {
     __listeners: () => any;
 } & import("vue").default, object, object, object, Record<never, any>>, {} & {
+    disabled?: boolean;
+    error?: boolean;
+    type?: "switch" | "checkbox";
+    value?: any;
+    size?: "lg" | "sm";
+    inline?: boolean;
     options?: string[] | {
         [label: string]: string;
     };
-    value?: any;
-    type?: "switch" | "checkbox";
-    size?: "sm" | "lg";
-    inline?: boolean;
-    disabled?: boolean;
-    error?: boolean;
 }, FormCheckboxEvents, {}, {
     onChange(value: any): void;
 } & {
@@ -22,7 +22,7 @@ export declare const FormCheckboxGroup: tsx.TsxComponent<import("vue/types/vue")
     };
     value: any;
     type: "switch" | "checkbox";
-    size: "sm" | "lg";
+    size: "lg" | "sm";
     inline: boolean;
     disabled: boolean;
     error: boolean;

@@ -50,7 +50,10 @@ export const FormCheckbox = /*#__PURE__*/ tsx
         if (checked) {
           this.$emit('change', [...this.model, this.value]);
         } else {
-          this.$emit('change', this.model.filter((option: any) => option !== this.value));
+          this.$emit(
+            'change',
+            this.model.filter((option: any) => option !== this.value),
+          );
         }
       },
     },

@@ -29,13 +29,11 @@ export const Steps = /*#__PURE__*/ tsx.component({
       },
     );
 
-    children.forEach(
-      (child: VNode, i: number): void => {
-        if (i + 1 == props.active) {
-          child.data.class.push('active');
-        }
-      },
-    );
+    children.forEach((child: VNode, i: number): void => {
+      if (i + 1 == props.active) {
+        child.data.class.push('active');
+      }
+    });
 
     return (
       <div {...data} class={cssClass}>

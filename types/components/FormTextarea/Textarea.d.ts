@@ -11,8 +11,8 @@ export declare const FormTextarea: tsx.TsxComponent<object & Record<never, any> 
 } & {
     __listeners: () => any;
 }, {} & {
-    value?: string;
     disabled?: boolean;
+    value?: string;
 }, FormTextareaEvents, {}, {
     onInput({ target: { value } }: any): void;
 } & {

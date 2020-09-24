@@ -7,8 +7,8 @@ export interface FormSelectOptionProps {
 }
 export declare const FormSelectOption: tsx.TsxComponent<import("vue").default, {} & {
     disabled?: boolean;
-    value?: string | number;
     label?: string | number;
+    value?: string | number;
     selected?: boolean;
 }, {}, {}, {
     disabled: boolean;

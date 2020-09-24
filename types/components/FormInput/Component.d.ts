@@ -3,14 +3,14 @@ export interface FormInputEvents {
     onInput: (value: any) => void;
 }
 export declare const FormInput: tsx.TsxComponent<import("vue").default, {} & {
-    value?: string | number;
     disabled?: boolean;
     error?: boolean;
     loading?: boolean;
     success?: boolean;
+    value?: string | number;
+    size?: "lg" | "sm";
     icon?: string;
     iconSide?: "left" | "right";
-    size?: "sm" | "lg";
 }, FormInputEvents, {}, {
     value: string | number;
     disabled: boolean;
@@ -19,5 +19,5 @@ export declare const FormInput: tsx.TsxComponent<import("vue").default, {} & {
     success: boolean;
     icon: string;
     iconSide: "left" | "right";
-    size: "sm" | "lg";
+    size: "lg" | "sm";
 }>;

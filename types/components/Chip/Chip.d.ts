@@ -3,10 +3,10 @@ import { ChipEvents } from './Event';
 export declare const Chip: tsx.TsxComponent<import("vue").default, {
     text: string;
 } & {
-    active?: boolean;
-    avatar?: string;
-    initials?: string;
     small?: boolean;
+    active?: boolean;
+    initials?: string;
+    avatar?: string;
 }, ChipEvents, {}, {
     active: boolean;
     text: string;
