@@ -140,7 +140,7 @@ At present, Vectre supports all modern browsers and additionally has a build to 
 
 ## Social
 
-* [Discord Chat](https://discord.gg/4YTfpB)
+* [Discord Chat](https://discord.gg/5a6Y8X2)
 * [Twitter](https://twitter.com/vectrejs)
 * [Issues](https://github.com/vectrejs/vectre/issues)
 
