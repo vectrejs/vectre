@@ -40,9 +40,8 @@ export const Column = tsx.createComponent({
     col: { type: [Number, String], validator: sizeValidator },
     hide: {
       type: [Number, String],
-      validator: sizeValidator,
     },
-    show: { type: [Number, String], validator: sizeValidator },
+    show: { type: [Number, String] },
   },
   render(h: CreateElement, { props, children, data }): VNode {
     return (
