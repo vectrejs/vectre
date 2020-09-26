@@ -127,7 +127,11 @@ At present, Vectre supports all modern browsers and additionally has a build to 
 <script src="https://unpkg.com/@vectrejs/vectre/dist/vectre.legacy.min.js"></script>
 ```
 
+## Playgrounds
 
+* All in One [https://codesandbox.io/s/vectre-all-in-one-yff7f](https://codesandbox.io/s/vectre-all-in-one-yff7f)
+* Individual Components [https://codesandbox.io/s/vectre-components-4pd1n](https://codesandbox.io/s/vectre-components-4pd1n)
+* CDN [https://codepen.io/vatson_ua/pen/RwavXQY](https://codepen.io/vatson_ua/pen/RwavXQY)
 
 ## Links
 
