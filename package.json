@@ -1,6 +1,6 @@
 {
   "name": "@vectrejs/vectre",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Complete implementation of Spectre.css on Vue 2.x",
   "main": "dist/vectre.js",
   "module": "dist/vectre.esm.js",
@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "files": [
+    "CHANGELOG",
     "dist/*.js",
     "types/**/*.d.ts"
   ],
