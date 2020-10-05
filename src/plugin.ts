@@ -11,4 +11,4 @@ const VectrePlugin: PluginFunction<PluginOptions> = (vue, options = { prefix: ''
   Object.values(directives).forEach((c) => vue.use(c, options));
 };
 
-export default Object.assign(VectrePlugin, { components, directives });
+export default VectrePlugin;
