@@ -1,13 +1,16 @@
 import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { CreateElement, VNode, VNodeDirective } from 'vue';
 import { BtnType, BtnTypes, Btn, BtnState } from '../Btn';
 import { IconType } from '../Icon';
-import { flattenListener } from '../../utils/listener';
 import { VerticalMenu } from '../VerticalMenu';
+import { ClickOutside } from '../../directives/ClickOutside';
+import { flattenListener } from '../../utils/listener';
 
 export const DropdownMenu = /*#__PURE__*/ tsx.component({
   name: 'DropdownMenu',
-  functional: true,
+  directives: {
+    ClickOutside,
+  },
   props: {
     items: { type: [Object, Array], default: undefined },
     right: { type: Boolean },
@@ -16,27 +19,36 @@ export const DropdownMenu = /*#__PURE__*/ tsx.component({
     btnIcon: { type: String as () => IconType, default: undefined },
     state: { type: String as () => BtnState, default: undefined },
   },
-  render(h: CreateElement, { props, listeners, scopedSlots }): VNode {
-    const onOpen = (): ((event: any) => void) => flattenListener(listeners.opened);
-    const onClose = (): ((event: any) => void) => flattenListener(listeners.closed);
-    const btnCssClass = ['dropdown-toggle', BtnTypes[props.btnType]];
+  render(h: CreateElement): VNode {
+    const onOpen = flattenListener(this.$listeners.opened);
+    const onClose = flattenListener(this.$listeners.closed);
+    const btnCssClass = [BtnTypes[this.btnType], 'dropdown-toggle'];
     const btn = (
       <Btn
         class={btnCssClass}
-        tabindex="0"
-        icon={props.btnIcon || 'caret'}
-        state={props.state}
+        icon={this.btnIcon || 'caret'}
+        state={this.state}
         onFocus={onOpen}
         onBlur={onClose}
+        htmlTag="a"
+        tabindex="0"
       >
-        {props.btnText}
+        {this.btnText}
       </Btn>
     );
 
+    const directives: VNodeDirective[] = [
+      {
+        name: 'click-outside',
+        value: (): void => (btn.elm as HTMLElement).blur(),
+        modifiers: { touch: false },
+      },
+    ];
+
     return (
-      <div staticClass="dropdown" class={props.right && 'dropdown-right'}>
+      <div {...{ directives }} staticClass="dropdown" class={this.right && 'dropdown-right'}>
         {btn}
-        <VerticalMenu items={props.items} scopedSlots={{ default: scopedSlots.default }} />
+        <VerticalMenu items={this.items} scopedSlots={{ default: this.$scopedSlots.default }} />
       </div>
     );
   },
