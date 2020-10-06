@@ -2,7 +2,7 @@ import * as tsx from 'vue-tsx-support';
 import { TagType, TagTypes } from './Type';
 import './styles.scss';
 
-export const Tag = tsx.component({
+export const Tag = /*#__PURE__*/ tsx.component({
   name: 'Tag',
   functional: true,
   props: {
