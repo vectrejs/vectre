@@ -34,6 +34,7 @@ import FormInputComponents from './FormInput';
 import FormLabelComponents from './FormLabel';
 import FormRadioComponents from './FormRadio';
 import FormSelectComponents from './FormSelect';
+import FormSwitchComponents from './FormSwitch';
 import FormTextareaComponents from './FormTextarea';
 
 export * from './Avatar';
@@ -68,6 +69,7 @@ export * from './FormInput';
 export * from './FormLabel';
 export * from './FormRadio';
 export * from './FormSelect';
+export * from './FormSwitch';
 export * from './FormTextarea';
 export * from './Icon';
 export * from './Tag';
@@ -110,5 +112,6 @@ export default {
   FormHorizontalComponents,
   FormRadioComponents,
   FormSelectComponents,
+  FormSwitchComponents,
   FormTextareaComponents,
 };
