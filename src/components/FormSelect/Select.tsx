@@ -31,8 +31,8 @@ export const FormSelect = /*#__PURE__*/ tsx
       multiple: { type: Boolean },
       placeholder: { type: String },
       value: { type: [String, Number, Array as () => string[] | number[]], default: '' },
-      size: { type: [String, Number] },
-      scale: {
+      rows: { type: [String, Number] },
+      size: {
         type: String as () => FormSelectSize,
         validator: (size: FormSelectSize): boolean => Object.keys(FormSelectSizes).includes(size),
       },
@@ -126,7 +126,7 @@ export const FormSelect = /*#__PURE__*/ tsx
 
       const cssClass = [
         'form-select',
-        FormSelectSizes[this.scale],
+        FormSelectSizes[this.size],
         this.error ? 'is-error' : '',
         this.success ? 'is-success' : '',
       ];
@@ -136,7 +136,7 @@ export const FormSelect = /*#__PURE__*/ tsx
           class={cssClass}
           multiple={this.multiple}
           disabled={this.disabled}
-          size={Number(this.size)}
+          size={Number(this.rows)}
           {...{ attrs: { ...this.__attrs } }}
           {...{ on: { ...this.__listeners, input: this.onInput } }}
         >

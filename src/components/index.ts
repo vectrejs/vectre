@@ -10,12 +10,14 @@ import BtnComponents from './Btn';
 import ChipComponents from './Chip';
 import DividerComponents from './Divider';
 import DropdownMenuComponents from './DropdownMenu';
+import VerticalMenuComponents from './VerticalMenu';
 import EmptyComponents from './Empty';
 import IconComponents from './Icon';
 import TagComponents from './Tag';
-import VerticalMenuComponents from './VerticalMenu';
 import ModalComponents from './Modal';
+import NavigationComponents from './Navigation';
 import OffCanvasComponents from './OffCanvas';
+import OverlayComponents from './Overlay';
 import PaginationComponents from './Pagination';
 import PanelComponents from './Panel';
 import PopoverComponents from './Popover';
@@ -23,7 +25,6 @@ import StepComponents from './Steps';
 import TabComponents from './Tab';
 import TileComponents from './Tile';
 import ToasComponents from './Toast';
-import NavigationComponents from './Navigation';
 
 import FormCheckboxComponents from './FormCheckbox';
 import FormGroupComponents from './FormGroup';
@@ -33,6 +34,8 @@ import FormInputComponents from './FormInput';
 import FormLabelComponents from './FormLabel';
 import FormRadioComponents from './FormRadio';
 import FormSelectComponents from './FormSelect';
+import FormSliderComponents from './FormSlider';
+import FormSwitchComponents from './FormSwitch';
 import FormTextareaComponents from './FormTextarea';
 
 export * from './Avatar';
@@ -49,6 +52,7 @@ export * from './DropdownMenu';
 export * from './Empty';
 export * from './VerticalMenu';
 export * from './OffCanvas';
+export * from './Overlay';
 export * from './Pagination';
 export * from './Panel';
 export * from './Steps';
@@ -66,6 +70,8 @@ export * from './FormInput';
 export * from './FormLabel';
 export * from './FormRadio';
 export * from './FormSelect';
+export * from './FormSlider';
+export * from './FormSwitch';
 export * from './FormTextarea';
 export * from './Icon';
 export * from './Tag';
@@ -89,7 +95,9 @@ export default {
   EmptyComponents,
   IconComponents,
   ModalComponents,
+  NavigationComponents,
   OffCanvasComponents,
+  OverlayComponents,
   PaginationComponents,
   PanelComponents,
   PopoverComponents,
@@ -98,7 +106,6 @@ export default {
   TileComponents,
   ToasComponents,
   TagComponents,
-  NavigationComponents,
   VerticalMenuComponents,
   FormCheckboxComponents,
   FormGroupComponents,
@@ -108,5 +115,7 @@ export default {
   FormHorizontalComponents,
   FormRadioComponents,
   FormSelectComponents,
+  FormSliderComponents,
+  FormSwitchComponents,
   FormTextareaComponents,
 };

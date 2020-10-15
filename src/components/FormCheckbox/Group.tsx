@@ -24,7 +24,7 @@ const normalizeOptions = (options: { [label: string]: any } | string[]): Normali
   return normalized;
 };
 
-const isCheckboxTag = (tag = ''): boolean => /^.*form-?checkbox$/i.test(tag);
+const isCheckboxTag = (tag = ''): boolean => /^.*form-?(checkbox|switch)$/i.test(tag);
 
 export const FormCheckboxGroup = /*#__PURE__*/ tsx
   .componentFactoryOf<FormCheckboxEvents>()
@@ -68,7 +68,10 @@ export const FormCheckboxGroup = /*#__PURE__*/ tsx
         });
       } else {
         group = (this.$slots.default || [])
-          .filter(({ componentOptions: { tag } }) => tag && isCheckboxTag(tag))
+          .filter(
+            ({ tag = '', componentOptions: { tag: componentTag = '' } }) =>
+              isCheckboxTag(tag) || isCheckboxTag(componentTag),
+          )
           .map((option: VNode) => {
             if (!option.componentOptions) {
               option.componentOptions = {} as VNodeComponentOptions;

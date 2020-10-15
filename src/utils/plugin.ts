@@ -1,4 +1,4 @@
-import { VueConstructor, PluginFunction, DirectiveFunction } from 'vue';
+import { VueConstructor, PluginFunction, DirectiveFunction, DirectiveOptions } from 'vue';
 import { addPrefix } from './prefix';
 import { capitalize, uncapitalize } from './string';
 
@@ -13,7 +13,7 @@ export const makePluggableComponents = /*#__PURE__*/ (
 };
 
 export const makePluggableDirectives = /*#__PURE__*/ (
-  directives = {} as Record<string, DirectiveFunction>,
+  directives = {} as Record<string, DirectiveFunction | DirectiveOptions>,
 ): PluginFunction<{ prefix?: string }> => {
   return (vue: VueConstructor<Vue>, options = { prefix: '' }): void => {
     Object.keys(directives).forEach((name) =>

@@ -6,45 +6,46 @@ import { ModalHeader } from './ModalHeader';
 import { ModalBody } from './ModalBody';
 import { ModalFooter } from './ModalFooter';
 import { ModalEvents } from './Events';
+import { Overlay } from '../Overlay';
+import './styles.scss';
 
-export const Modal = tsx.componentFactoryOf<ModalEvents>().create({
+export const Modal = /*#__PURE__*/ tsx.componentFactoryOf<ModalEvents>().create({
   name: 'Modal',
-  functional: true,
   props: {
     show: { type: Boolean },
     size: { type: String as () => ModalSize, default: undefined },
-    overlay: { type: Boolean, default: true },
+    overlay: { type: [Boolean, String, Number], default: true },
     closeBtn: { type: Boolean, default: true },
     closeOverlay: { type: Boolean, default: true },
+    noScroll: { type: Boolean, default: true },
   },
   model: {
     prop: 'show',
     event: 'close',
   },
-  render(h: CreateElement, { props, slots, listeners }): VNode {
-    const close = flattenListener(listeners.close);
-    const closeOverlay = props.closeOverlay
-      ? close
-      : (): void => {
-          /*noop*/
-        };
 
-    const cssClass = ['modal', props.show && 'active', ModalSizes[props.size] || props.size];
-    const overlay = props.overlay && (
-      <a staticClass="modal-overlay" aria-label="Close" onClick={(): void => closeOverlay(false)} />
-    );
-    const _slots = slots();
+  render(h: CreateElement): VNode {
+    const cssClass = ['modal', this.show && 'active', ModalSizes[this.size] || this.size];
+    const opacity = typeof this.overlay !== 'boolean' ? this.overlay : undefined;
+    const close = flattenListener(this.$listeners.close);
 
     return (
-      <div class={cssClass}>
-        {overlay}
+      <Overlay
+        show={this.show && !!this.overlay}
+        onClick={(): void => this.closeOverlay && close(false)}
+        noScroll={this.noScroll}
+        opacity={opacity}
+        class={cssClass}
+        z-index="201"
+        fullscreen
+      >
         <div staticClass="modal-container">
-          {_slots.header && <ModalHeader onClose={props.closeBtn && close}>{_slots.header}</ModalHeader>}
-          {_slots.body && <ModalBody>{_slots.body}</ModalBody>}
-          {_slots.footer && <ModalFooter>{_slots.footer}</ModalFooter>}
-          {_slots.default}
+          {this.$slots.header && <ModalHeader onClose={this.closeBtn && close}>{this.$slots.header}</ModalHeader>}
+          {this.$slots.body && <ModalBody>{this.$slots.body}</ModalBody>}
+          {this.$slots.footer && <ModalFooter>{this.$slots.footer}</ModalFooter>}
+          {this.$slots.default}
         </div>
-      </div>
+      </Overlay>
     );
   },
 });
