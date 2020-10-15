@@ -1,5 +1,5 @@
-import { Overlay } from './Overlay';
+import { overlay } from './overlay';
 import { makePluggableDirectives } from '../../utils/plugin';
 
-export default makePluggableDirectives({ Overlay });
-export { Overlay };
+export default makePluggableDirectives({ overlay });
+export { overlay };
