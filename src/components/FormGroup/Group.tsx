@@ -3,7 +3,7 @@ import { VNode, CreateElement } from 'vue';
 import { CommonOptions } from './Options';
 
 const isFormTag = (tag = ''): boolean =>
-  /^.*form-?(label|input|select|switch|switch-?group|checkbox-?group|checkbox|radio-?group|radio)$/i.test(tag);
+  /^.*form-?(label|input|select|switch|switch-?group|checkbox-?group|checkbox|radio-?group|radio|slider)$/i.test(tag);
 
 export const FormGroup = /*#__PURE__*/ tsx.createComponent({
   name: 'FormGroup',
