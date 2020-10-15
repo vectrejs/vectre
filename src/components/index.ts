@@ -10,11 +10,12 @@ import BtnComponents from './Btn';
 import ChipComponents from './Chip';
 import DividerComponents from './Divider';
 import DropdownMenuComponents from './DropdownMenu';
+import VerticalMenuComponents from './VerticalMenu';
 import EmptyComponents from './Empty';
 import IconComponents from './Icon';
 import TagComponents from './Tag';
-import VerticalMenuComponents from './VerticalMenu';
 import ModalComponents from './Modal';
+import NavigationComponents from './Navigation';
 import OffCanvasComponents from './OffCanvas';
 import OverlayComponents from './Overlay';
 import PaginationComponents from './Pagination';
@@ -24,7 +25,6 @@ import StepComponents from './Steps';
 import TabComponents from './Tab';
 import TileComponents from './Tile';
 import ToasComponents from './Toast';
-import NavigationComponents from './Navigation';
 
 import FormCheckboxComponents from './FormCheckbox';
 import FormGroupComponents from './FormGroup';
@@ -95,7 +95,9 @@ export default {
   EmptyComponents,
   IconComponents,
   ModalComponents,
+  NavigationComponents,
   OffCanvasComponents,
+  OverlayComponents,
   PaginationComponents,
   PanelComponents,
   PopoverComponents,
@@ -104,7 +106,6 @@ export default {
   TileComponents,
   ToasComponents,
   TagComponents,
-  NavigationComponents,
   VerticalMenuComponents,
   FormCheckboxComponents,
   FormGroupComponents,
