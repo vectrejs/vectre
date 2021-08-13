@@ -1,17 +1,15 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { Tag, TagType } from '../Tag';
 
-export const VerticalMenuItemBadge = tsx.component({
+export const VerticalMenuItemBadge = defineComponent({
   name: 'VerticalMenuItemBadge',
-  functional: true,
   props: {
-    type: { type: String as () => TagType, default: undefined },
+    type: { type: String as PropType<TagType>, default: undefined },
   },
-  render(h: CreateElement, { props, children }): VNode {
+  render(): VNode {
     return (
       <div class="menu-badge">
-        <Tag type={props.type}>{children}</Tag>
+        <Tag type={this.$props.type}>{this.$slots.default && this.$slots.default()}</Tag>
       </div>
     );
   },

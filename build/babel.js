@@ -4,6 +4,7 @@ export default (treeshake = true, polyfills = false, legacy = false) => {
   const plugins = treeshake
     ? [
         'babel-plugin-typescript-iife-enum',
+        '@vue/babel-plugin-jsx',
         ['@babel/plugin-transform-typescript', { isTSX: 'preserve' }],
         'babel-plugin-pure-calls-annotation',
         [
@@ -16,7 +17,7 @@ export default (treeshake = true, polyfills = false, legacy = false) => {
           },
         ],
       ]
-    : [['@babel/plugin-transform-typescript', { isTSX: 'preserve' }]];
+    : ['@vue/babel-plugin-jsx', ['@babel/plugin-transform-typescript', { isTSX: 'preserve' }]];
 
   const presets = legacy
     ? [
@@ -31,15 +32,15 @@ export default (treeshake = true, polyfills = false, legacy = false) => {
             },
           },
         ],
-        '@vue/babel-preset-jsx',
+        '@vue/babel-preset-app',
       ]
-    : ['@vue/babel-preset-jsx'];
+    : ['@vue/babel-preset-app'];
 
   return babel({
     plugins,
     presets,
     babelrc: false,
-    babelHelpers: 'bundled',
+    babelHelpers: 'runtime',
     exclude: 'node_modules/**',
     extensions: ['.js', '.jsx', '.tsx', '.ts', '.vue'],
   });

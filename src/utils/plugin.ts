@@ -1,23 +1,19 @@
-import { VueConstructor, PluginFunction, DirectiveFunction, DirectiveOptions } from 'vue';
+import { App, Plugin, Directive, Component } from 'vue';
 import { addPrefix } from './prefix';
 import { capitalize, uncapitalize } from './string';
 
-export const makePluggableComponents = /*#__PURE__*/ (
-  components = {} as Record<string, VueConstructor<Vue>>,
-): PluginFunction<{ prefix?: string }> => {
-  return (vue: VueConstructor<Vue>, options = { prefix: '' }): void => {
+export const makePluggableComponents = /*#__PURE__*/ (components = {} as Record<string, Component>): Plugin => {
+  return (app: App, options = { prefix: '' }): void => {
     Object.keys(components).forEach((name) =>
-      vue.component(addPrefix(capitalize(name), options.prefix), components[name]),
+      app.component(addPrefix(capitalize(name), options.prefix), components[name]),
     );
   };
 };
 
-export const makePluggableDirectives = /*#__PURE__*/ (
-  directives = {} as Record<string, DirectiveFunction | DirectiveOptions>,
-): PluginFunction<{ prefix?: string }> => {
-  return (vue: VueConstructor<Vue>, options = { prefix: '' }): void => {
+export const makePluggableDirectives = /*#__PURE__*/ (directives = {} as Record<string, Directive>): Plugin => {
+  return (app: App, options = { prefix: '' }): void => {
     Object.keys(directives).forEach((name) =>
-      vue.directive(addPrefix(uncapitalize(name), options.prefix, '-'), directives[name]),
+      app.directive(addPrefix(uncapitalize(name), options.prefix, '-'), directives[name]),
     );
   };
 };

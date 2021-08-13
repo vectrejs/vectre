@@ -1,16 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const CardFooter = tsx.component({
+export const CardFooter = defineComponent({
   name: 'CardFooter',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    const cssClass = mergeCss(data, 'card-footer');
+  setup(_, { attrs, slots }) {
+    const cssClass = mergeCss(attrs, 'card-footer');
 
-    return (
-      <div {...data} class={cssClass}>
-        {children}
+    return (): VNode => (
+      <div {...attrs} class={cssClass}>
+        {slots && slots.default()}
       </div>
     );
   },

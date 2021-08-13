@@ -38,9 +38,7 @@
     "lint": "eslint --ext .ts,.tsx,.vue,.js src/**",
     "lint:fix": "npm run lint -- --fix"
   },
-  "dependencies": {
-    "vue-tsx-support": "^2.3.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-transform-runtime": "^7.11.5",
@@ -52,18 +50,18 @@
     "@types/node": "^13.11.1",
     "@typescript-eslint/eslint-plugin": "^3.0.1",
     "@typescript-eslint/parser": "^3.0.1",
-    "@vue/babel-preset-app": "^4.5.6",
-    "@vue/babel-preset-jsx": "^1.1.2",
+    "@vue/babel-plugin-jsx": "^1.0.6",
+    "@vue/babel-preset-app": "^4.5.13",
+    "@vue/compiler-sfc": "^3.2.2",
     "babel-plugin-pure-calls-annotation": "^0.3.1",
     "babel-plugin-typescript-iife-enum": "^0.2.1",
-    "core-js": "^3.6.5",
-    "eslint": "^7.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^7.0.0-alpha.4",
-    "minimist": "^1.2.0",
+    "core-js": "^3.16.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.16.0",
     "node-sass": "^4.14.1",
-    "postcss": "^7.0.5",
+    "postcss": "^7.0.36",
     "prettier": "^2.1.2",
     "rollup": "^2.22.1",
     "rollup-plugin-analyzer": "^3.3.0",
@@ -71,9 +69,9 @@
     "rollup-plugin-pure-annotation": "0.0.2",
     "rollup-plugin-size-snapshot": "^0.12.0",
     "rollup-plugin-terser": "^5.3.0",
+    "sass": "^1.35.2",
     "typescript": "^3.8.3",
-    "vue": "^2.5.22",
-    "vue-eslint-parser": "^7.1.0",
-    "vue-template-compiler": "^2.5.22"
+    "vue": "^3.2.2",
+    "vue-eslint-parser": "^7.10.0"
   }
 }

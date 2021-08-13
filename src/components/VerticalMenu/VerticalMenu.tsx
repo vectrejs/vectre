@@ -1,22 +1,26 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { VerticalMenuItem } from './VerticalMenuItem';
 import { VerticalMenuDivider } from './VerticalMenuDivider';
+import { VerticalMenuItemData, VerticalMenuItems } from './interface';
+import { mergeCss } from '../../utils/css';
 
-export const VerticalMenu = /*#__PURE__*/ tsx.component({
+export const VerticalMenu = /*#__PURE__*/ defineComponent({
   name: 'VerticalMenu',
-  functional: true,
   props: {
-    items: { type: [Array, Object], default: (): [] => [] },
+    items: { type: [Array, Object] as PropType<VerticalMenuItems>, default: (): [] => [] },
     active: { type: [Number, String], default: '' },
   },
-  render(h: CreateElement, { props, slots, scopedSlots, data }): VNode {
+  setup(props, { slots, attrs }) {
     if (!props.items) {
       throw new TypeError('Items cannot be empty');
     }
 
-    const items = Array.isArray(props.items) ? { ...props.items } : props.items;
-    const menuItems = Object.keys(items).map((key: string | number) => {
+    // TODO remove `as` to fix typings
+    const items = (Array.isArray(props.items) ? { ...props.items } : props.items) as Record<
+      string,
+      VerticalMenuItemData
+    >;
+    const menuItems = Object.keys(items).map((key: string) => {
       if (items[key].divider) {
         return <VerticalMenuDivider text={items[key].divider} />;
       }
@@ -28,15 +32,16 @@ export const VerticalMenu = /*#__PURE__*/ tsx.component({
           path={items[key].path}
           text={items[key].text}
         >
-          {scopedSlots.default && scopedSlots.default({ item: items[key], index: key })}
+          {slots.default && slots.default({ item: items[key], index: key })}
         </VerticalMenuItem>
       );
     });
+    const cssClass = mergeCss(attrs, 'menu');
 
-    return (
-      <ul {...data} class={['menu', data.class]}>
-        {slots().default}
-        {menuItems}
+    return (): VNode => (
+      <ul {...attrs} class={cssClass}>
+        {menuItems.length && menuItems}
+        {!menuItems.length && slots.default()}
       </ul>
     );
   },

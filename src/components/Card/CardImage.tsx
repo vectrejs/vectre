@@ -1,19 +1,17 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const CardImage = tsx.component({
+export const CardImage = defineComponent({
   name: 'CardImage',
-  functional: true,
   props: {
     img: { type: String, required: true },
   },
-  render(h: CreateElement, { props, data }): VNode {
-    const cssClass = mergeCss(data, 'card-image');
+  setup(props, { attrs }) {
+    const cssClass = mergeCss(attrs, 'card-image');
 
-    return (
-      <div {...data} class={cssClass}>
-        <img src={props.img} staticClass="img-responsive" />
+    return (): VNode => (
+      <div {...attrs} class={cssClass}>
+        <img src={props.img} class="img-responsive" />
       </div>
     );
   },

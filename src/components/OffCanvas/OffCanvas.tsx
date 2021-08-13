@@ -1,15 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { IconType } from '../Icon';
 import { OffCanvasToggle } from './OffCanvasToggle';
 import { OffCanvasSidebar } from './OffCanvasSidebar';
 import { OffCanvasOverlay } from './OffCanvasOverlay';
 import { OffCanvasContent } from './OffCanvasContent';
 
-export const OffCanvas = tsx.component({
+export const OffCanvas = defineComponent({
   name: 'OffCanvas',
   props: {
-    icon: { type: String as () => IconType, default: 'menu' as IconType },
+    icon: { type: String as PropType<IconType>, default: 'menu' },
     sidebar: { type: Boolean, default: true },
     overlay: { type: [Number, String], default: 0.1 },
     closeOnOverlay: { type: Boolean, default: true },
@@ -19,37 +18,37 @@ export const OffCanvas = tsx.component({
   }),
   methods: {
     showSidebar(): void {
-      this.active = true;
+      this.active = !this.active;
     },
     hideSidebar(): void {
       this.active = false;
     },
   },
-  render(h: CreateElement): VNode {
+  render() {
     const toggle = (
-      <OffCanvasToggle icon={this.icon} onClick={this.showSidebar}>
-        {this.$slots.icon}
+      <OffCanvasToggle icon={this.$props.icon} onClick={this.showSidebar}>
+        {this.$slots.icon && this.$slots.icon()}
       </OffCanvasToggle>
     );
 
     const sidebar = this.$slots.sidebar && (
-      <OffCanvasSidebar active={this.active}>{this.$slots.sidebar}</OffCanvasSidebar>
+      <OffCanvasSidebar active={this.active}>{this.$slots.sidebar()}</OffCanvasSidebar>
     );
 
-    const overlay = this.overlay && (
+    const overlay = this.$props.overlay && (
       <OffCanvasOverlay
-        opacity={this.overlay}
+        opacity={this.$props.overlay}
         onClick={(): void => {
-          this.closeOnOverlay && this.hideSidebar();
+          this.$props.closeOnOverlay && this.hideSidebar();
         }}
       />
     );
 
-    const content = this.$slots.content && <OffCanvasContent>{this.$slots.content}</OffCanvasContent>;
+    const content = this.$slots.content && <OffCanvasContent>{this.$slots.content()}</OffCanvasContent>;
 
     const cssClass = ['off-canvas', this.sidebar && 'off-canvas-sidebar-show'];
 
-    const sloted = this.$slots.default && <div class={cssClass}>{this.$slots.default}</div>;
+    const sloted = this.$slots.default && <div class={cssClass}>{this.$slots.default()}</div>;
     const offCanvas = (
       <div class={['off-canvas', this.sidebar && 'off-canvas-sidebar-show']} {...this.$attrs}>
         {toggle}

@@ -1,4 +1,4 @@
-import { DirectiveOptions } from 'vue';
+import { Directive } from 'vue';
 import { OverlayBinding, OverlayConfiguration } from './type';
 import './styles.scss';
 
@@ -85,8 +85,8 @@ const enableScroll = (container: HTMLElement): void => {
   window.scrollTo({ top: +root.style.top.match(/\d+/)[0] });
 };
 
-export const overlay: DirectiveOptions = {
-  inserted: /*#__PURE__*/ (el: HTMLElement, binding: OverlayBinding): void => {
+export const overlay: Directive = {
+  mounted: /*#__PURE__*/ (el: HTMLElement, binding: OverlayBinding): void => {
     const configuration = normalizeBinding(binding);
     let overlayEl = findOverlay(el);
 
@@ -95,7 +95,7 @@ export const overlay: DirectiveOptions = {
       updateOverlay(overlayEl, configuration);
     }
   },
-  update: /*#__PURE__*/ (el, binding: OverlayBinding) => {
+  updated: /*#__PURE__*/ (el, binding: OverlayBinding) => {
     let overlayEl = findOverlay(el);
     const configuration = normalizeBinding(binding);
     const oldValue = typeof binding.oldValue === 'object' ? binding.oldValue.show : !!binding.oldValue;

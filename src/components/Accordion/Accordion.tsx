@@ -1,10 +1,8 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { uid } from '../../utils/uid';
 import { Icon, IconType } from '../Icon';
-import { AccordionEvents } from './Event';
 
-export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>().create({
+export const Accordion = /*#__PURE__*/ defineComponent({
   name: 'Accordion',
   props: {
     items: { required: true, type: [Object, Array] as (() => Record<string | number, string> | string[])[] },
@@ -12,6 +10,9 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
     name: { type: String, default: undefined },
     multiple: { type: Boolean },
     icon: { type: String as () => IconType, default: undefined },
+  },
+  emits: {
+    check: null,
   },
   computed: {
     $_name(): string {
@@ -27,7 +28,7 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
       return this.checked.indexOf(index) !== -1 || this.checked.indexOf(key) !== -1;
     },
     toggle(event: Event, key: string, index: number): void {
-      if (!this.$listeners.check) return;
+      // if (!this.$listeners.check) return;
 
       if (!this.multiple) {
         this.$emit('check', key || index || 0);
@@ -45,17 +46,17 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
       this.$emit('check', checked);
     },
   },
-  render(h: CreateElement): VNode {
-    const items = Array.isArray(this.items) ? { ...this.items } : this.items;
+  render(): VNode {
+    const items = Array.isArray(this.$props.items) ? { ...this.$props.items } : this.$props.items;
+    const headerSlot = this.$slots.header;
+    const bodySlot = this.$slots.body || this.$slots.default;
 
     const accordionItems = Object.keys(items).map((key, index) => {
       const id = `${this.$_name}-${key}`;
       const type = this.multiple ? 'checkbox' : 'radio';
-      const headerSlot = this.$scopedSlots['header'];
-      const bodySlot = this.$scopedSlots['body'] || this.$scopedSlots['default'];
 
       return (
-        <div staticClass="accordion">
+        <div class="accordion">
           <input
             id={id}
             name={this.$_name}
@@ -65,18 +66,18 @@ export const Accordion = /*#__PURE__*/ tsx.componentFactoryOf<AccordionEvents>()
             hidden
           />
 
-          <label staticClass="accordion-header c-hand" for={id}>
+          <label class="accordion-header c-hand" for={id}>
             {this.icon && <Icon name={this.icon} />}
             {headerSlot && headerSlot({ header: key, item: items[key as any] })}
             {!headerSlot && key}
           </label>
 
-          {!bodySlot && <div staticClass="accordion-body" domPropsInnerHTML={items[key as any]} />}
-          {bodySlot && <div staticClass="accordion-body">{bodySlot({ header: key, item: items[key as any] })}</div>}
+          {!bodySlot && <div class="accordion-body" innerHTML={items[key as any]} />}
+          {bodySlot && <div class="accordion-body">{bodySlot({ header: key, item: items[key as any] })}</div>}
         </div>
       );
     });
 
-    return <div staticClass="accordion-container">{accordionItems}</div>;
+    return <div class="accordion-container">{accordionItems}</div>;
   },
 });

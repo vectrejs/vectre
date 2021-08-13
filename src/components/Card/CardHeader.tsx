@@ -1,16 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const CardHeader = tsx.component({
+export const CardHeader = defineComponent({
   name: 'CardHeader',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    const cssClass = mergeCss(data, 'card-header');
+  setup(_, { attrs, slots }) {
+    const cssClass = mergeCss(attrs, 'card-header');
 
-    return (
-      <div {...data} class={cssClass}>
-        {children}
+    return (): VNode => (
+      <div {...attrs} class={cssClass}>
+        {slots && slots.default()}
       </div>
     );
   },

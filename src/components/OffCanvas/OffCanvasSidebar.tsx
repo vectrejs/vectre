@@ -1,20 +1,19 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { computed, defineComponent, VNode } from 'vue';
 
-export const OffCanvasSidebar = tsx.component({
+export const OffCanvasSidebar = defineComponent({
   name: 'OffCanvasSidebar',
-  functional: true,
   props: {
     active: { type: Boolean, default: false },
   },
-  render(h: CreateElement, { data, props, children }): VNode {
-    const cssClass = mergeCss(data, 'off-canvas-sidebar', [props.active && 'active']);
+  setup(props, { attrs, slots }) {
+    const cssClass = computed(() => ['off-canvas-sidebar', props.active && 'active']);
 
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+    return (): VNode => {
+      return (
+        <div {...attrs} class={cssClass.value}>
+          {slots.default && slots.default()}
+        </div>
+      );
+    };
   },
 });

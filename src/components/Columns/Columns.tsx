@@ -1,19 +1,17 @@
-import { CreateElement, VNode } from 'vue';
-import * as tsx from 'vue-tsx-support';
+import { defineComponent, VNode } from 'vue';
 
-export const Columns = tsx.createComponent({
+export const Columns = defineComponent({
   name: 'Columns',
-  functional: true,
   props: {
     gapless: Boolean,
     oneline: Boolean,
   },
-  render(h: CreateElement, { props, children, data }): VNode {
+  setup(props, { slots, attrs }) {
     const cssClasses = ['columns', props.gapless && 'col-gapless', props.oneline && 'col-oneline'];
 
-    return (
-      <div class={cssClasses} {...data}>
-        {children}
+    return (): VNode => (
+      <div class={cssClasses} {...attrs}>
+        {slots && slots.default()}
       </div>
     );
   },

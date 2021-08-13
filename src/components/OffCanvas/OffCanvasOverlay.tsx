@@ -1,19 +1,22 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 import { flattenListener } from '../../utils/listener';
-import { OffCanvasOverlayEvents } from './Events';
 
-export const OffCanvasOverlay = tsx.componentFactoryOf<OffCanvasOverlayEvents>().create({
+export const OffCanvasOverlay = defineComponent({
   name: 'OffCanvasOverlay',
-  functional: true,
   props: {
     opacity: { type: [Number, String], default: 0.1 },
+    onClick: { default: undefined, type: Function as PropType<(event: MouseEvent) => void> },
   },
-  render(h: CreateElement, { data, listeners, props }): VNode {
-    const cssClass = mergeCss(data, 'off-canvas-overlay');
-    const onClick = flattenListener(listeners.click);
+  emits: {
+    click: null,
+  },
+  setup(props, { attrs }) {
+    const cssClass = mergeCss(attrs, 'off-canvas-overlay');
+    const onClick = flattenListener(props.onClick);
 
-    return <a {...data} class={cssClass} onClick={onClick} style={`background: rgba(48, 55, 66, ${props.opacity})`} />;
+    return (): VNode => (
+      <a {...attrs} onClick={onClick} class={cssClass} style={`background: rgba(48, 55, 66, ${props.opacity})`} />
+    );
   },
 });

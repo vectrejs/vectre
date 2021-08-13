@@ -1,6 +1,6 @@
-import { DirectiveFunction } from 'vue';
+import { Directive } from 'vue';
 
-export const Badge: DirectiveFunction = /*#__PURE__*/ (el: HTMLElement, { value }): void => {
+export const Badge: Directive = /*#__PURE__*/ (el: HTMLElement, { value }): void => {
   if (value === undefined) return;
 
   el.classList.add('badge');

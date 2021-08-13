@@ -1,16 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const OffCanvasContent = tsx.component({
+export const OffCanvasContent = defineComponent({
   name: 'OffCanvasContent',
-  functional: true,
-  render(h: CreateElement, { data, children }): VNode {
-    const cssClass = mergeCss(data, 'off-canvas-content');
+  setup(_, { attrs, slots }) {
+    const cssClass = mergeCss(attrs, 'off-canvas-content');
 
-    return (
-      <div {...data} class={cssClass}>
-        {children}
+    return (): VNode => (
+      <div {...attrs} class={cssClass}>
+        {slots.default && slots.default()}
       </div>
     );
   },

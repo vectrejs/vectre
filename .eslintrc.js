@@ -8,11 +8,14 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2018,
+    ecmaFeatures: {
+      jsx: true,
+    },
     sourceType: 'module',
   },
   extends: [
     'plugin:vue/recommended',
-    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'prettier/vue',

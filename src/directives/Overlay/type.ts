@@ -1,4 +1,4 @@
-import { VNodeDirective } from 'vue';
+import { DirectiveBinding } from 'vue';
 
 export interface OverlayConfiguration {
   onClick?: OverlayOnClickHandler;
@@ -15,7 +15,7 @@ export type OverlayOnClickHandler = (event: MouseEvent) => void;
 
 export type OverlayValue = string | OverlayOnClickHandler | OverlayConfiguration;
 
-export interface OverlayBinding extends VNodeDirective {
-  value?: OverlayValue;
-  oldValue?: OverlayValue;
+export interface OverlayBinding extends DirectiveBinding {
+  value: OverlayValue;
+  oldValue: OverlayValue;
 }

@@ -1,4 +1,4 @@
-import { DirectiveOptions } from 'vue';
+import { Directive } from 'vue';
 
 const listeners = new WeakMap();
 
@@ -23,11 +23,11 @@ const getListener = (
   return listeners.get(el);
 };
 
-export const ClickOutside: DirectiveOptions = /*#__PURE__*/ {
-  bind(el, { value, modifiers }) {
+export const ClickOutside: Directive = /*#__PURE__*/ {
+  beforeMount(el, { value, modifiers }) {
     document.addEventListener(getEvent(modifiers.touch), getListener(el, value));
   },
-  unbind(el) {
+  unmounted(el) {
     document.removeEventListener(getEvent(), getListener(el));
   },
 };

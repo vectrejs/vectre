@@ -1,5 +1,4 @@
-import { CreateElement, VNode } from 'vue';
-import * as tsx from 'vue-tsx-support';
+import { defineComponent, VNode } from 'vue';
 
 const sizeValidator = (size: number): boolean => size % 1 === 0 && size > 0 && size <= 12;
 const cssClass = (props: Record<string, any>): string[] => {
@@ -19,34 +18,36 @@ const cssClass = (props: Record<string, any>): string[] => {
   ];
 };
 
-export const Column = tsx.createComponent({
+export const Column = defineComponent({
   name: 'Column',
-  functional: true,
   props: {
     ml: { type: Boolean },
     mx: { type: Boolean },
     mr: { type: Boolean },
-    xs: { type: [Number, String], validator: sizeValidator },
-    sm: { type: [Number, String], validator: sizeValidator },
+    xs: { type: [Number, String], validator: sizeValidator, default: undefined },
+    sm: { type: [Number, String], validator: sizeValidator, default: undefined },
     md: {
       type: [Number, String],
       validator: sizeValidator,
+      default: undefined,
     },
-    lg: { type: [Number, String], validator: sizeValidator },
+    lg: { type: [Number, String], validator: sizeValidator, default: undefined },
     xl: {
       type: [Number, String],
       validator: sizeValidator,
+      default: undefined,
     },
-    col: { type: [Number, String], validator: sizeValidator },
+    col: { type: [Number, String], validator: sizeValidator, default: undefined },
     hide: {
       type: [Number, String],
+      default: undefined,
     },
-    show: { type: [Number, String] },
+    show: { type: [Number, String], default: undefined },
   },
-  render(h: CreateElement, { props, children, data }): VNode {
-    return (
-      <div class={cssClass(props)} {...data}>
-        {children}
+  setup(props, { attrs, slots }) {
+    return (): VNode => (
+      <div class={cssClass(props)} {...attrs}>
+        {slots && slots.default()}
       </div>
     );
   },
