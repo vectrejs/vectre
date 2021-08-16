@@ -22,8 +22,10 @@
     "declarationDir": "./types",
     "noImplicitAny": true,
     "strictNullChecks": false,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "skipLibCheck": true,
+    "types": []
   },
-  "exclude": ["node_modules/*"],
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "node_modules/vue-tsx-support/enable-check.d.ts"]
+  "exclude": ["node_modules/**/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

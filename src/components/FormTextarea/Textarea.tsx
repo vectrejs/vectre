@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { cachedListeners, cachedAttrs } from '../../mixins/cache';
 import { CreateElement, VNode } from 'vue';
 

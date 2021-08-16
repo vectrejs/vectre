@@ -1,6 +1,4 @@
 import { CreateElement, VNode } from 'vue';
-import * as tsx from 'vue-tsx-support';
-
 export const FormHorizontal = tsx.createComponent({
   name: 'FormHorizontal',
   functional: true,

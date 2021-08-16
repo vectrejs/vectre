@@ -1,5 +1,4 @@
 import { VNode, CreateElement } from 'vue';
-import * as tsx from 'vue-tsx-support';
 import { FormInputSize, FormInputSizes } from './Size';
 import { Input } from './Input';
 import { Icon } from './Icon';

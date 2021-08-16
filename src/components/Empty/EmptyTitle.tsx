@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 
 export const EmptyTitle = tsx.component({

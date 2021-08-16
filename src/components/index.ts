@@ -1,4 +1,4 @@
-// import AvatarComponents from './Avatar';
+import AvatarComponents from './Avatar';
 import AccordionComponents from './Accordion';
 import CardComponents from './Card';
 import ColumnComponents from './Column';
@@ -6,10 +6,10 @@ import ColumnsComponents from './Columns';
 import ContainerComponents from './Container';
 // import BarComponents from './Bar';
 // import BreadcrumbComponents from './Breadcrumb';
-// import BtnComponents from './Btn';
+import BtnComponents from './Btn';
 // import ChipComponents from './Chip';
 // import DividerComponents from './Divider';
-// import DropdownMenuComponents from './DropdownMenu';
+import DropdownMenuComponents from './DropdownMenu';
 import VerticalMenuComponents from './VerticalMenu';
 // import EmptyComponents from './Empty';
 import IconComponents from './Icon';
@@ -23,7 +23,7 @@ import OffCanvasComponents from './OffCanvas';
 // import PopoverComponents from './Popover';
 // import StepComponents from './Steps';
 // import TabComponents from './Tab';
-// import TileComponents from './Tile';
+import TileComponents from './Tile';
 // import ToasComponents from './Toast';
 
 // import FormCheckboxComponents from './FormCheckbox';
@@ -38,7 +38,7 @@ import OffCanvasComponents from './OffCanvas';
 // import FormSwitchComponents from './FormSwitch';
 // import FormTextareaComponents from './FormTextarea';
 
-// export * from './Avatar';
+export * from './Avatar';
 export * from './Accordion';
 // export * from './Bar';
 // export * from './Breadcrumb';
@@ -48,7 +48,7 @@ export * from './Column';
 export * from './Columns';
 export * from './Container';
 // export * from './Divider';
-// export * from './DropdownMenu';
+export * from './DropdownMenu';
 // export * from './Empty';
 export * from './VerticalMenu';
 export * from './OffCanvas';
@@ -57,10 +57,10 @@ export * from './OffCanvas';
 // export * from './Panel';
 // export * from './Steps';
 // export * from './Tab';
-// export * from './Tile';
+export * from './Tile';
 // export * from './Toast';
 // export * from './Navigation';
-// export * from './Btn';
+export * from './Btn';
 
 // export * from './FormCheckbox';
 // export * from './FormGroup';
@@ -80,9 +80,9 @@ export * from './Tag';
 
 // // Default is all components
 export default {
-  // AvatarComponents,
+  AvatarComponents,
   AccordionComponents,
-  // BtnComponents,
+  BtnComponents,
   // BarComponents,
   // BreadcrumbComponents,
   CardComponents,
@@ -91,7 +91,7 @@ export default {
   ColumnsComponents,
   ContainerComponents,
   // DividerComponents,
-  // DropdownMenuComponents,
+  DropdownMenuComponents,
   // EmptyComponents,
   IconComponents,
   // ModalComponents,
@@ -103,7 +103,7 @@ export default {
   // PopoverComponents,
   // StepComponents,
   // TabComponents,
-  // TileComponents,
+  TileComponents,
   // ToasComponents,
   TagComponents,
   VerticalMenuComponents,

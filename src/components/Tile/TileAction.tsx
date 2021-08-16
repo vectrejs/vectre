@@ -1,16 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const TileAction = tsx.component({
+export const TileAction = defineComponent({
   name: 'TileAction',
-  functional: true,
-  render(h: CreateElement, { data, children }): VNode {
-    const cssClass = mergeCss(data, 'tile-action');
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'tile-action');
 
     return (
-      <div {...data} class={cssClass}>
-        {children}
+      <div {...this.$attrs} class={cssClass}>
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },

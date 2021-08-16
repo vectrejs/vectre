@@ -1,7 +1,7 @@
 import { defineComponent, PropType, VNode } from 'vue';
 import { VerticalMenuItem } from './VerticalMenuItem';
 import { VerticalMenuDivider } from './VerticalMenuDivider';
-import { VerticalMenuItemData, VerticalMenuItems } from './interface';
+import { VerticalMenuDividerData, VerticalMenuItemData, VerticalMenuItems } from './interface';
 import { mergeCss } from '../../utils/css';
 
 export const VerticalMenu = /*#__PURE__*/ defineComponent({
@@ -18,7 +18,7 @@ export const VerticalMenu = /*#__PURE__*/ defineComponent({
     // TODO remove `as` to fix typings
     const items = (Array.isArray(props.items) ? { ...props.items } : props.items) as Record<
       string,
-      VerticalMenuItemData
+      VerticalMenuItemData & VerticalMenuDividerData
     >;
     const menuItems = Object.keys(items).map((key: string) => {
       if (items[key].divider) {
@@ -32,7 +32,7 @@ export const VerticalMenu = /*#__PURE__*/ defineComponent({
           path={items[key].path}
           text={items[key].text}
         >
-          {slots.default && slots.default({ item: items[key], index: key })}
+          {slots.item && slots.item({ item: items[key], index: key })}
         </VerticalMenuItem>
       );
     });
@@ -40,7 +40,7 @@ export const VerticalMenu = /*#__PURE__*/ defineComponent({
 
     return (): VNode => (
       <ul {...attrs} class={cssClass}>
-        {menuItems.length && menuItems}
+        {!!menuItems.length && menuItems}
         {!menuItems.length && slots.default()}
       </ul>
     );

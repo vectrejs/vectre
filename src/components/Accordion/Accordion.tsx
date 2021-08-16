@@ -1,11 +1,14 @@
-import { defineComponent, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { uid } from '../../utils/uid';
 import { Icon, IconType } from '../Icon';
 
 export const Accordion = /*#__PURE__*/ defineComponent({
   name: 'Accordion',
   props: {
-    items: { required: true, type: [Object, Array] as (() => Record<string | number, string> | string[])[] },
+    items: {
+      required: true,
+      type: [Object, Array] as PropType<Record<string, unknown> | string[] | unknown[]>,
+    },
     checked: { type: [String, Number, Array], default: undefined },
     name: { type: String, default: undefined },
     multiple: { type: Boolean },
@@ -28,7 +31,7 @@ export const Accordion = /*#__PURE__*/ defineComponent({
       return this.checked.indexOf(index) !== -1 || this.checked.indexOf(key) !== -1;
     },
     toggle(event: Event, key: string, index: number): void {
-      // if (!this.$listeners.check) return;
+      if (!this.onCheck) return;
 
       if (!this.multiple) {
         this.$emit('check', key || index || 0);
@@ -72,8 +75,8 @@ export const Accordion = /*#__PURE__*/ defineComponent({
             {!headerSlot && key}
           </label>
 
-          {!bodySlot && <div class="accordion-body" innerHTML={items[key as any]} />}
-          {bodySlot && <div class="accordion-body">{bodySlot({ header: key, item: items[key as any] })}</div>}
+          {!bodySlot && <div class="accordion-body" innerHTML={items[key] as string} />}
+          {bodySlot && <div class="accordion-body">{bodySlot({ header: key, item: items[key] })}</div>}
         </div>
       );
     });

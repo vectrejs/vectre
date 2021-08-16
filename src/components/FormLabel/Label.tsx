@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { FormLabelSizes, FormLabelSize } from './LabelSize';
 import { CreateElement, VNode } from 'vue';
 

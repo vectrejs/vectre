@@ -1,16 +1,14 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const TileContent = tsx.component({
+export const TileContent = defineComponent({
   name: 'TileContent',
-  functional: true,
-  render(h: CreateElement, { data, children }): VNode {
-    const cssClass = mergeCss(data, 'tile-content');
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'tile-content');
 
     return (
-      <div {...data} class={cssClass}>
-        {children}
+      <div {...this.$attrs} class={cssClass}>
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },

@@ -1,30 +1,29 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { IconType, Icon } from '../Icon';
 import { mergeCss } from '../../utils/css';
 import { Avatar } from '../Avatar';
 import './icon-styles.scss';
+import { hasSlot } from '../../utils/component';
 
-export const TileIcon = tsx.component({
+export const TileIcon = defineComponent({
   name: 'TileIcon',
-  functional: true,
   props: {
     icon: { type: String as () => IconType, default: undefined },
     avatar: { type: String, default: undefined },
     initials: { type: String, default: undefined },
   },
-  render(h: CreateElement, { data, props, children = [] }): VNode {
-    const cssClass = mergeCss(data, 'tile-icon');
-    const avatar = (props.avatar || props.initials) && (
-      <Avatar initials={props.initials} src={props.avatar} size="lg" />
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'tile-icon');
+    const avatar = (this.$props.avatar || this.$props.initials) && (
+      <Avatar initials={this.$props.initials} src={this.$props.avatar} size="lg" />
     );
-    const icon = props.icon && <Icon name={props.icon} size="x2" />;
+    const icon = this.$props.icon && <Icon name={this.$props.icon} size="x2" />;
+    const hasDefaultSlot = hasSlot(this.$slots, 'default');
 
     return (
-      <div class={cssClass} {...data}>
-        {children}
-        {!children.length && avatar}
-        {!children.length && icon}
+      <div {...this.$attrs} class={cssClass}>
+        {hasDefaultSlot && this.$slots.default()}
+        {!hasDefaultSlot && (avatar || icon)}
       </div>
     );
   },

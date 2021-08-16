@@ -1,46 +1,45 @@
-import * as tsx from 'vue-tsx-support';
 import './styles.scss';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, h, PropType, VNode } from 'vue';
 import { BtnType, BtnTypes } from './Type';
 import { BtnSizes, BtnSize } from './Size';
 import { BtnState, BtnStates } from './State';
 import { IconType } from '../Icon';
 import { Icon } from '../Icon/Icon';
-import { BtnEvents } from './Events';
 import { mergeCss } from '../../utils/css';
 
-export const Btn = /*#__PURE__*/ tsx.componentFactoryOf<BtnEvents>().create({
+export const Btn = /*#__PURE__*/ defineComponent({
   name: 'Btn',
-  functional: true,
   props: {
-    type: { type: String as () => BtnType },
-    size: { type: String as () => BtnSize },
-    icon: { type: String as () => IconType },
-    state: { type: String as () => BtnState },
+    type: { type: String as PropType<BtnType>, default: undefined },
+    size: { type: String as PropType<BtnSize>, default: undefined },
+    icon: { type: String as PropType<IconType>, default: undefined },
+    state: { type: String as PropType<BtnState>, default: undefined },
     tabindex: { type: [Number, String], default: undefined },
     left: { type: Boolean },
     circle: { type: Boolean },
     action: { type: Boolean },
     htmlTag: {
-      type: String as () => 'a' | 'button',
+      type: String as PropType<'a' | 'button'>,
       validator: (tag: 'a' | 'button'): boolean => ['a', 'button'].includes(tag),
+      default: 'button',
     },
   },
-  render(h: CreateElement, { props, data, slots }): VNode {
-    const cssClass = mergeCss(data, 'btn', [
-      BtnTypes[props.type as BtnType] || props.type,
-      BtnSizes[props.size] || props.size,
-      BtnStates[props.state] || props.state,
-      props.action && props.circle && 's-circle',
-      props.action && 'btn-action',
+  emits: ['click', 'focus', 'blur'],
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'btn', [
+      BtnTypes[this.$props.type as BtnType] || this.$props.type,
+      BtnSizes[this.$props.size] || this.$props.size,
+      BtnStates[this.$props.state] || this.$props.state,
+      this.$props.action && this.$props.circle && 's-circle',
+      this.$props.action && 'btn-action',
     ]);
 
-    const leftIcon = props.icon && props.left ? <Icon name={props.icon} class="left" /> : '';
-    const rightIcon = props.icon && !props.left ? <Icon name={props.icon} /> : '';
-    const content = !props.action && slots().default;
-    const htmlTag = ['a', 'button'].includes(props.htmlTag) ? props.htmlTag : 'button';
+    const leftIcon = this.$props.icon && this.$props.left ? <Icon name={this.$props.icon} class="left" /> : '';
+    const rightIcon = this.$props.icon && !this.$props.left ? <Icon name={this.$props.icon} /> : '';
+    const content = !this.$props.action && this.$slots.default && this.$slots.default();
+    const htmlTag = ['a', 'button'].includes(this.$props.htmlTag) ? this.$props.htmlTag : 'button';
 
-    return h(htmlTag, { ...data, class: cssClass, attrs: { tabindex: props.tabindex, ...data.attrs } }, [
+    return h(htmlTag, { ...this.$attrs, class: cssClass, tabindex: this.$props.tabindex }, [
       leftIcon,
       content,
       rightIcon,

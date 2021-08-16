@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 import { PaginationEvents } from './Events';
 import { flattenListener } from '../../utils/listener';
@@ -36,16 +35,14 @@ export const Pager = /*#__PURE__*/ tsx.componentFactoryOf<PaginationEvents>().cr
   render(h: CreateElement, { props, listeners }): VNode {
     const change = (page: string | number) => (): void => flattenListener(listeners.change)(page);
 
-    const pages = items(props.pages, props.current, props.show).map(
-      (page: number | string): VNode => {
-        return (
-          <li staticClass="page-item page-item-num" class={props.current == page && 'active'}>
-            {page === SEPARATOR && <span>{page}</span>}
-            {page !== SEPARATOR && <a onClick={change(page)}>{page}</a>}
-          </li>
-        );
-      },
-    );
+    const pages = items(props.pages, props.current, props.show).map((page: number | string): VNode => {
+      return (
+        <li staticClass="page-item page-item-num" class={props.current == page && 'active'}>
+          {page === SEPARATOR && <span>{page}</span>}
+          {page !== SEPARATOR && <a onClick={change(page)}>{page}</a>}
+        </li>
+      );
+    });
 
     return (
       <ul staticClass="pagination">

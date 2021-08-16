@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { VNode, CreateElement } from 'vue';
 import { cachedListeners } from '../../mixins/cache';
 import { FormRadioSize, FormRadioSizes } from './Size';

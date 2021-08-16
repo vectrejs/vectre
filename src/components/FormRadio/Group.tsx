@@ -1,5 +1,4 @@
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
-import * as tsx from 'vue-tsx-support';
 import { uid } from '../../utils/uid';
 import { FormRadio } from './Radio';
 import { FormRadioSize } from './Size';

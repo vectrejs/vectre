@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode, VNodeDirective } from 'vue';
 import { overlay } from '../../directives/Overlay';
 import { OverlayEvents } from './Events';

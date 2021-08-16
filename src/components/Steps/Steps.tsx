@@ -1,5 +1,4 @@
 import { VNode, CreateElement } from 'vue';
-import * as tsx from 'vue-tsx-support';
 import { mergeCss } from '../../utils/css';
 import { Step } from './Step';
 
@@ -17,17 +16,15 @@ export const Steps = /*#__PURE__*/ tsx.component({
     const cssClass = mergeCss(data, 'step');
 
     const items = Array.isArray(props.items) ? { ...props.items } : props.items;
-    const steps = Object.keys(items).map(
-      (key, index): VNode => {
-        const active = String(index) === key ? props.active == index + 1 : props.active == key;
+    const steps = Object.keys(items).map((key, index): VNode => {
+      const active = String(index) === key ? props.active == index + 1 : props.active == key;
 
-        return (
-          <Step tooltip={items[key].tooltip} active={active}>
-            {items[key].name}
-          </Step>
-        );
-      },
-    );
+      return (
+        <Step tooltip={items[key].tooltip} active={active}>
+          {items[key].name}
+        </Step>
+      );
+    });
 
     children.forEach((child: VNode, i: number): void => {
       if (i + 1 == props.active) {

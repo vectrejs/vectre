@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { mergeCss } from '../../utils/css';
 import { CreateElement, VNode } from 'vue';
 import { PanelHeader } from './PanelHeader';

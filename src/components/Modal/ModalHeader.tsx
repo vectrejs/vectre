@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 import { flattenListener } from '../../utils/listener';
 import { Btn } from '../Btn';

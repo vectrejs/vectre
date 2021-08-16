@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { CreateElement, VNode } from 'vue';
 import { PaginationEvents } from './Events';
 import { flattenListener } from '../../utils/listener';

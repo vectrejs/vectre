@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { FormCheckbox } from './Checkbox';
 import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
 import { FormCheckboxType } from './Type';

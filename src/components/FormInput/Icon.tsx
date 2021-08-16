@@ -1,4 +1,3 @@
-import * as tsx from 'vue-tsx-support';
 import { Icons, IconType } from '../Icon';
 import { VNode, CreateElement } from 'vue';
 

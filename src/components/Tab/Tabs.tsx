@@ -1,5 +1,4 @@
 import { VNode, CreateElement } from 'vue';
-import * as tsx from 'vue-tsx-support';
 import { flattenListener } from '../../utils/listener';
 import { Tab } from './Tab';
 import { mergeCss } from '../../utils/css';

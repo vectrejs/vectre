@@ -1,5 +1,4 @@
 import { CreateElement, VNode } from 'vue';
-import * as tsx from 'vue-tsx-support';
 import { mergeCss } from '../../utils/css';
 import { PopoverSides, PopoverSide } from './Side';
 

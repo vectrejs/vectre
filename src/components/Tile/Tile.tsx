@@ -1,5 +1,4 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 import { IconType } from '@components/Icon';
 import { TileIcon } from './TileIcon';
@@ -8,9 +7,8 @@ import { TileSubtitle } from './TileSubtitle';
 import { TileContent } from './TileContent';
 import { TileAction } from './TileAction';
 
-export const Tile = tsx.component({
+export const Tile = defineComponent({
   name: 'Tile',
-  functional: true,
   props: {
     compact: { type: Boolean },
     title: { type: String, default: undefined },
@@ -19,33 +17,34 @@ export const Tile = tsx.component({
     avatar: { type: String, default: undefined },
     initials: { type: String, default: undefined },
   },
-  render(h: CreateElement, { data, slots, props }): VNode {
-    const _slots = slots() || [];
-    const cssClass = mergeCss(data, 'tile', { 'tile-centered': props.compact });
-    const icon = (props.icon || props.avatar || props.initials || _slots.icon) && (
-      <TileIcon avatar={props.avatar} icon={props.icon} initials={props.initials}>
-        {_slots.icon}
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'tile', { 'tile-centered': this.$props.compact });
+    const icon = (this.$props.icon || this.$props.avatar || this.$props.initials || this.$slots.icon) && (
+      <TileIcon avatar={this.$props.avatar} icon={this.$props.icon} initials={this.$props.initials}>
+        {this.$slots.icon && this.$slots.icon()}
       </TileIcon>
     );
 
-    const title = props.title && <TileTitle domPropsInnerHTML={props.title} />;
-    const subtitle = props.subtitle && <TileSubtitle compact={props.compact} domPropsInnerHTML={props.subtitle} />;
-    const content = (_slots.content || title || subtitle) && (
+    const title = this.$props.title && <TileTitle v-html={this.$props.title} />;
+    const subtitle = this.$props.subtitle && (
+      <TileSubtitle compact={this.$props.compact} v-html={this.$props.subtitle} />
+    );
+    const content = (this.$slots.content || title || subtitle) && (
       <TileContent>
-        {!_slots.content && title}
-        {!_slots.content && subtitle}
-        {_slots.content}
+        {!this.$slots.content && title}
+        {!this.$slots.content && subtitle}
+        {this.$slots.content && this.$slots.content()}
       </TileContent>
     );
 
-    const actions = _slots.actions && <TileAction>{_slots.actions}</TileAction>;
+    const actions = this.$slots.actions && <TileAction>{this.$slots.actions()}</TileAction>;
 
     return (
       <div class={cssClass}>
         {icon}
         {content}
         {actions}
-        {_slots.default}
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },

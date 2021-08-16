@@ -1,23 +1,21 @@
-import * as tsx from 'vue-tsx-support';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { mergeCss } from '../../utils/css';
 
-export const TileSubtitle = tsx.component({
+export const TileSubtitle = defineComponent({
   name: 'TileSubtitle',
-  functional: true,
   props: {
     compact: { type: Boolean },
   },
-  render(h: CreateElement, { data, children, props }): VNode {
-    const cssClass = mergeCss(data, 'tile-subtitle');
+  render(): VNode {
+    const cssClass = mergeCss(this.$attrs, 'tile-subtitle');
 
-    return props.compact ? (
-      <small {...data} class={cssClass}>
-        {children}
+    return this.$props.compact ? (
+      <small {...this.$attrs} class={cssClass}>
+        {this.$slots.default && this.$slots.default()}
       </small>
     ) : (
-      <p {...data} class={cssClass}>
-        {children}
+      <p {...this.$attrs} class={cssClass}>
+        {this.$slots.default && this.$slots.default()}
       </p>
     );
   },
