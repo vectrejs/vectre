@@ -1,12 +1,11 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 
-export const ModalBody = tsx.component({
+export const ModalBody = defineComponent({
   name: 'ModalBody',
-  functional: true,
-  render(h: CreateElement, { children }): VNode {
+  render(): VNode {
     return (
       <div class="modal-body">
-        <div class="content">{children}</div>
+        <div class="content">{this.$slots.default && this.$slots.default()}</div>
       </div>
     );
   },

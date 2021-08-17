@@ -14,7 +14,7 @@ import VerticalMenuComponents from './VerticalMenu';
 import EmptyComponents from './Empty';
 import IconComponents from './Icon';
 import TagComponents from './Tag';
-// import ModalComponents from './Modal';
+import ModalComponents from './Modal';
 // import NavigationComponents from './Navigation';
 import OffCanvasComponents from './OffCanvas';
 import OverlayComponents from './Overlay';
@@ -75,7 +75,7 @@ export * from './Btn';
 // export * from './FormTextarea';
 export * from './Icon';
 export * from './Tag';
-// export * from './Modal';
+export * from './Modal';
 // export * from './Popover';
 
 // // Default is all components
@@ -94,7 +94,7 @@ export default {
   DropdownMenuComponents,
   EmptyComponents,
   IconComponents,
-  // ModalComponents,
+  ModalComponents,
   // NavigationComponents,
   OffCanvasComponents,
   OverlayComponents,

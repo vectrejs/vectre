@@ -1,36 +1,36 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { flattenListener } from '../../utils/listener';
 import { ModalSize, ModalSizes } from './Size';
 import { ModalHeader } from './ModalHeader';
 import { ModalBody } from './ModalBody';
 import { ModalFooter } from './ModalFooter';
-import { ModalEvents } from './Events';
 import { Overlay } from '../Overlay';
 import './styles.scss';
 
-export const Modal = /*#__PURE__*/ tsx.componentFactoryOf<ModalEvents>().create({
+export const Modal = /*#__PURE__*/ defineComponent({
   name: 'Modal',
+  model: {
+    prop: 'show',
+    event: 'close',
+  },
   props: {
-    show: { type: Boolean },
+    modelValue: { type: Boolean },
     size: { type: String as () => ModalSize, default: undefined },
     overlay: { type: [Boolean, String, Number], default: true },
     closeBtn: { type: Boolean, default: true },
     closeOverlay: { type: Boolean, default: true },
     noScroll: { type: Boolean, default: true },
+    onClose: { type: Function, default: undefined },
   },
-  model: {
-    prop: 'show',
-    event: 'close',
-  },
-
-  render(h: CreateElement): VNode {
-    const cssClass = ['modal', this.show && 'active', ModalSizes[this.size] || this.size];
+  emits: ['close', 'update:modelValue'],
+  render(): VNode {
+    const cssClass = ['modal', this.modelValue && 'active', ModalSizes[this.size] || this.size];
     const opacity = typeof this.overlay !== 'boolean' ? this.overlay : undefined;
-    const close = flattenListener(this.$listeners.close);
+    const close = flattenListener([this.onClose, (): void => this.$emit('update:modelValue', !this.modelValue)]);
 
     return (
       <Overlay
-        show={this.show && !!this.overlay}
+        show={this.modelValue && !!this.overlay}
         onClick={(): void => this.closeOverlay && close(false)}
         noScroll={this.noScroll}
         opacity={opacity}
@@ -38,11 +38,11 @@ export const Modal = /*#__PURE__*/ tsx.componentFactoryOf<ModalEvents>().create(
         z-index="201"
         fullscreen
       >
-        <div staticClass="modal-container">
-          {this.$slots.header && <ModalHeader onClose={this.closeBtn && close}>{this.$slots.header}</ModalHeader>}
-          {this.$slots.body && <ModalBody>{this.$slots.body}</ModalBody>}
-          {this.$slots.footer && <ModalFooter>{this.$slots.footer}</ModalFooter>}
-          {this.$slots.default}
+        <div class="modal-container">
+          {this.$slots.header && <ModalHeader onClose={this.closeBtn && close}>{this.$slots.header()}</ModalHeader>}
+          {this.$slots.body && <ModalBody>{this.$slots.body()}</ModalBody>}
+          {this.$slots.footer && <ModalFooter>{this.$slots.footer()}</ModalFooter>}
+          {this.$slots.default && this.$slots.default()}
         </div>
       </Overlay>
     );

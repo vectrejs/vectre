@@ -1,25 +1,22 @@
-import { CreateElement, VNode } from 'vue';
-import { flattenListener } from '../../utils/listener';
+import { defineComponent, VNode } from 'vue';
+// import { flattenListener } from '../../utils/listener';
 import { Btn } from '../Btn';
-import { ModalEvents } from './Events';
 
-export const ModalHeader = /*#__PURE__*/ tsx.componentFactoryOf<ModalEvents>().create({
+export const ModalHeader = /*#__PURE__*/ defineComponent({
   name: 'ModalHeader',
-  functional: true,
-  render(h: CreateElement, { children, listeners }): VNode {
-    const close = listeners.close && (
-      <Btn
-        staticClass="float-right"
-        aria-label="Close"
-        type="clear"
-        onClick={(): void => flattenListener(listeners.close)(false)}
-      />
+  props: {
+    onClose: { type: [Boolean, Function], default: undefined },
+  },
+  emits: ['close'],
+  render(): VNode {
+    const close = this.onClose && (
+      <Btn class="float-right" aria-label="Close" type="clear" onClick={(): void => this.onClose(false)} />
     );
 
     return (
       <div class="modal-header">
         {close}
-        {children}
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },
