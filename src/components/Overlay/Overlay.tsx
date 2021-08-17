@@ -29,16 +29,12 @@ export const Overlay = /*#__PURE__*/ defineComponent({
       opacity: this.opacity,
       onClick: this.onClick,
       zIndex: 'auto',
+      fullscreen: this.fullscreen,
+      noScroll: this.noScroll,
     };
 
-    const modifiers = [this.fullscreen && 'fullscreen', this.noScroll && 'noScroll'];
-
     return (
-      <div
-        class={{ overlay: true, overlay__fullscreen: this.fullscreen }}
-        style={this.styles}
-        v-overlay={[params, undefined, modifiers]}
-      >
+      <div class={{ overlay: true, overlay__fullscreen: this.fullscreen }} style={this.styles} v-overlay={[params]}>
         <div class="overlay__content" style={`backdrop-filter: blur(${this.blur}px)`}>
           {this.$slots.default && this.$slots.default()}
         </div>
