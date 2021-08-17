@@ -4,12 +4,8 @@ export const flattenListener = (listener?: Function | Function[]): ((event: any)
   if (listener) {
     flatten = Array.isArray(listener) ? listener : [listener];
   } else {
-    flatten = [
-      (): void => {
-        /* noop */
-      },
-    ];
+    flatten = [];
   }
 
-  return (event: any): void => flatten.forEach((l) => l(event));
+  return (event: any): void => flatten.forEach((l) => l && l(event));
 };
