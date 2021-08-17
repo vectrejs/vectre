@@ -1,19 +1,19 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const Step = tsx.component({
+export const Step = defineComponent({
   name: 'Step',
-  functional: true,
+
   props: {
     active: { type: Boolean },
     tooltip: { type: String, default: undefined },
   },
-  render(h: CreateElement, { data, props, children }): VNode {
-    const cssClass = mergeCss(data, '', ['step-item', props.active && 'active', props.tooltip && 'tooltip']);
-
+  render(): VNode {
     return (
-      <span {...data} class={cssClass} data-tooltip={props.tooltip}>
-        <a>{children}</a>
+      <span
+        class={['step-item', this.$props.active && 'active', this.$props.tooltip && 'tooltip']}
+        data-tooltip={this.$props.tooltip}
+      >
+        <a>{this.$slots.default && this.$slots.default()}</a>
       </span>
     );
   },

@@ -1,10 +1,9 @@
-import { VNode, CreateElement } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 import { Step } from './Step';
 
-export const Steps = /*#__PURE__*/ tsx.component({
+export const Steps = /*#__PURE__*/ defineComponent({
   name: 'Steps',
-  functional: true,
+
   props: {
     items: { type: [Array, Object], default: (): Record<string, any>[] => [] },
     active: {
@@ -12,30 +11,26 @@ export const Steps = /*#__PURE__*/ tsx.component({
       default: 1,
     },
   },
-  render(h: CreateElement, { data, props, children = [] }): VNode {
-    const cssClass = mergeCss(data, 'step');
-
-    const items = Array.isArray(props.items) ? { ...props.items } : props.items;
+  render(): VNode {
+    const items = Array.isArray(this.$props.items) ? { ...this.$props.items } : this.$props.items;
     const steps = Object.keys(items).map((key, index): VNode => {
-      const active = String(index) === key ? props.active == index + 1 : props.active == key;
+      const active = String(index) === key ? this.$props.active == index + 1 : this.$props.active == key;
 
       return (
-        <Step tooltip={items[key].tooltip} active={active}>
-          {items[key].name}
+        <Step tooltip={items[key as any].tooltip} active={active}>
+          {items[key as any].name}
         </Step>
       );
     });
 
-    children.forEach((child: VNode, i: number): void => {
-      if (i + 1 == props.active) {
-        child.data.class.push('active');
+    const children = (this.$slots.default && this.$slots.default()) || [];
+
+    children.forEach((child, i: number): void => {
+      if (i + 1 == this.$props.active) {
+        child.props = { ...child.props, class: [child.props?.class, 'active'] };
       }
     });
 
-    return (
-      <div {...data} class={cssClass}>
-        {(steps.length && steps) || children}
-      </div>
-    );
+    return <div class="step">{(steps.length && steps) || children}</div>;
   },
 });
