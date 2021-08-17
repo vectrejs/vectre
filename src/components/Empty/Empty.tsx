@@ -1,4 +1,4 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { IconType } from '../Icon';
 import { EmptyTitle } from './EmptyTitle';
 import { EmptySubtitle } from './EmptySubtitle';
@@ -6,31 +6,29 @@ import { EmptyIcon } from './EmptyIcon';
 import { EmptyContent } from './EmptyContent';
 import { EmptyAction } from './EmptyAction';
 
-export const Empty = tsx.component({
+export const Empty = defineComponent({
   name: 'Empty',
-  functional: true,
   props: {
-    icon: { type: String as () => IconType, default: undefined },
-    title: { type: String as () => IconType, default: undefined },
-    sub: { type: String as () => IconType, default: undefined },
+    icon: { type: String as PropType<IconType>, default: undefined },
+    title: { type: String, default: undefined },
+    sub: { type: String, default: undefined },
   },
-  render(h: CreateElement, { props, slots }): VNode {
-    const title = props.title && <EmptyTitle>{props.title}</EmptyTitle>;
-    const sub = props.sub && <EmptySubtitle>{props.sub}</EmptySubtitle>;
-    const icon = props.icon && <EmptyIcon icon={props.icon} />;
+  render(): VNode {
+    const title = this.$props.title && <EmptyTitle>{this.$props.title}</EmptyTitle>;
+    const sub = this.$props.sub && <EmptySubtitle>{this.$props.sub}</EmptySubtitle>;
+    const icon = this.$props.icon && <EmptyIcon icon={this.$props.icon} />;
 
-    const _slots = slots();
-    const content = _slots.content && <EmptyContent>{_slots.content}</EmptyContent>;
-    const actions = _slots.action && <EmptyAction>{_slots.action}</EmptyAction>;
+    const content = this.$slots.content && <EmptyContent>{this.$slots.content()}</EmptyContent>;
+    const actions = this.$slots.action && <EmptyAction>{this.$slots.action()}</EmptyAction>;
 
     return (
-      <div staticClass="empty">
+      <div class="empty">
         {icon}
         {title}
         {sub}
         {content}
         {actions}
-        {_slots.default}
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },

@@ -7,7 +7,7 @@ import ContainerComponents from './Container';
 import BarComponents from './Bar';
 import BreadcrumbComponents from './Breadcrumb';
 import BtnComponents from './Btn';
-// import ChipComponents from './Chip';
+import ChipComponents from './Chip';
 import DividerComponents from './Divider';
 import DropdownMenuComponents from './DropdownMenu';
 import VerticalMenuComponents from './VerticalMenu';
@@ -43,7 +43,7 @@ export * from './Accordion';
 export * from './Bar';
 export * from './Breadcrumb';
 export * from './Card';
-// export * from './Chip';
+export * from './Chip';
 export * from './Column';
 export * from './Columns';
 export * from './Container';
@@ -86,7 +86,7 @@ export default {
   BarComponents,
   BreadcrumbComponents,
   CardComponents,
-  // ChipComponents,
+  ChipComponents,
   ColumnComponents,
   ColumnsComponents,
   ContainerComponents,

@@ -5,7 +5,6 @@ import './style.scss';
 
 export const Avatar = defineComponent({
   name: 'Avatar',
-  functional: true,
   props: {
     size: { type: String as PropType<AvatarSize>, default: undefined },
     src: { type: String, default: undefined },
