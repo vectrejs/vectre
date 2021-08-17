@@ -82,7 +82,8 @@ const disableScroll = (container: HTMLElement): void => {
 const enableScroll = (container: HTMLElement): void => {
   const root = findRootElement(container);
   root.style.position = '';
-  window.scrollTo({ top: +root.style.top.match(/\d+/)[0] });
+  const top = root.style.top.match(/\d+/) || [];
+  window.scrollTo({ top: +top[0] || 0 });
 };
 
 export const overlay: Directive = {
@@ -93,6 +94,10 @@ export const overlay: Directive = {
     if (configuration.show && !overlayEl) {
       overlayEl = createOverlay(el, configuration);
       updateOverlay(overlayEl, configuration);
+
+      if (configuration.noScroll) {
+        disableScroll(el);
+      }
     }
   },
   updated: /*#__PURE__*/ (el, binding: OverlayBinding) => {

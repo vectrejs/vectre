@@ -17,7 +17,7 @@ import TagComponents from './Tag';
 // import ModalComponents from './Modal';
 // import NavigationComponents from './Navigation';
 import OffCanvasComponents from './OffCanvas';
-// import OverlayComponents from './Overlay';
+import OverlayComponents from './Overlay';
 // import PaginationComponents from './Pagination';
 // import PanelComponents from './Panel';
 // import PopoverComponents from './Popover';
@@ -52,7 +52,7 @@ export * from './DropdownMenu';
 export * from './Empty';
 export * from './VerticalMenu';
 export * from './OffCanvas';
-// export * from './Overlay';
+export * from './Overlay';
 // export * from './Pagination';
 // export * from './Panel';
 // export * from './Steps';
@@ -97,7 +97,7 @@ export default {
   // ModalComponents,
   // NavigationComponents,
   OffCanvasComponents,
-  // OverlayComponents,
+  OverlayComponents,
   // PaginationComponents,
   // PanelComponents,
   // PopoverComponents,
