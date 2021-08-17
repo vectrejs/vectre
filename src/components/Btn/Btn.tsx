@@ -23,11 +23,14 @@ export const Btn = /*#__PURE__*/ defineComponent({
       validator: (tag: 'a' | 'button'): boolean => ['a', 'button'].includes(tag),
       default: 'button',
     },
+    onClick: { type: Function },
+    onBlur: { type: Function },
+    onFocus: { type: Function },
   },
   emits: ['click', 'focus', 'blur'],
   render(): VNode {
     const cssClass = mergeCss(this.$attrs, 'btn', [
-      BtnTypes[this.$props.type as BtnType] || this.$props.type,
+      BtnTypes[this.$props.type] || this.$props.type,
       BtnSizes[this.$props.size] || this.$props.size,
       BtnStates[this.$props.state] || this.$props.state,
       this.$props.action && this.$props.circle && 's-circle',
@@ -39,10 +42,17 @@ export const Btn = /*#__PURE__*/ defineComponent({
     const content = !this.$props.action && this.$slots.default && this.$slots.default();
     const htmlTag = ['a', 'button'].includes(this.$props.htmlTag) ? this.$props.htmlTag : 'button';
 
-    return h(htmlTag, { ...this.$attrs, class: cssClass, tabindex: this.$props.tabindex }, [
-      leftIcon,
-      content,
-      rightIcon,
-    ]);
+    return h(
+      htmlTag,
+      {
+        ...this.$attrs,
+        class: cssClass,
+        tabindex: this.$props.tabindex,
+        onClick: this.onClick,
+        onBlur: this.onBlur,
+        onFocus: this.onFocus,
+      },
+      [leftIcon, content, rightIcon],
+    );
   },
 });
