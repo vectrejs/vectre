@@ -1,20 +1,19 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { Crumb } from './Crumb';
 
-export const Breadcrumb = tsx.component({
+export const Breadcrumb = defineComponent({
   name: 'Breadcrumb',
   functional: true,
   props: {
-    crumbs: { type: Array as () => Crumb[], required: true },
+    crumbs: { type: Array as PropType<Crumb[] | any[]>, required: true },
   },
-  render(h: CreateElement, { props, scopedSlots }): VNode {
-    const crumbs = props.crumbs.map((crumb) => {
-      const slot = scopedSlots.default && scopedSlots.default({ crumb });
-      const text = <a href={crumb.path}>{crumb.title}</a>;
+  render(): VNode {
+    const crumbs = this.$props.crumbs.map((crumb) => {
+      const slot = this.$slots.default && this.$slots.default({ crumb });
 
-      return <li staticClass="breadcrumb-item">{slot || text}</li>;
+      return <li class="breadcrumb-item">{slot || <a href={crumb.path}>{crumb.title}</a>}</li>;
     });
 
-    return <ul staticClass="breadcrumb">{crumbs}</ul>;
+    return <ul class="breadcrumb">{crumbs}</ul>;
   },
 });

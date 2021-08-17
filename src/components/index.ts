@@ -5,7 +5,7 @@ import ColumnComponents from './Column';
 import ColumnsComponents from './Columns';
 import ContainerComponents from './Container';
 import BarComponents from './Bar';
-// import BreadcrumbComponents from './Breadcrumb';
+import BreadcrumbComponents from './Breadcrumb';
 import BtnComponents from './Btn';
 // import ChipComponents from './Chip';
 import DividerComponents from './Divider';
@@ -41,7 +41,7 @@ import TileComponents from './Tile';
 export * from './Avatar';
 export * from './Accordion';
 export * from './Bar';
-// export * from './Breadcrumb';
+export * from './Breadcrumb';
 export * from './Card';
 // export * from './Chip';
 export * from './Column';
@@ -84,7 +84,7 @@ export default {
   AccordionComponents,
   BtnComponents,
   BarComponents,
-  // BreadcrumbComponents,
+  BreadcrumbComponents,
   CardComponents,
   // ChipComponents,
   ColumnComponents,
