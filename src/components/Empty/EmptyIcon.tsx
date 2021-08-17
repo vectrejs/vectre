@@ -1,16 +1,15 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { Icon, IconType } from '../Icon';
 
-export const EmptyIcon = tsx.component({
+export const EmptyIcon = defineComponent({
   name: 'EmptyIcon',
-  functional: true,
   props: {
     icon: { type: String as () => IconType, required: true },
   },
-  render(h: CreateElement, { props }): VNode {
+  render(): VNode {
     return (
-      <div staticClass="empty-icon">
-        <Icon name={props.icon} size="x3" />
+      <div class="empty-icon">
+        <Icon name={this.$props.icon} size="x3" />
       </div>
     );
   },

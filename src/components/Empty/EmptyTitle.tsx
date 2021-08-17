@@ -1,9 +1,8 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 
-export const EmptyTitle = tsx.component({
+export const EmptyTitle = defineComponent({
   name: 'EmptyTitle',
-  functional: true,
-  render(h: CreateElement, { children }): VNode {
-    return <p staticClass="empty-title h5">{children}</p>;
+  render(): VNode {
+    return <p class="empty-title h5">{this.$slots.default && this.$slots.default()}</p>;
   },
 });

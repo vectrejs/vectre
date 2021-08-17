@@ -3,7 +3,6 @@ import { Crumb } from './Crumb';
 
 export const Breadcrumb = defineComponent({
   name: 'Breadcrumb',
-  functional: true,
   props: {
     crumbs: { type: Array as PropType<Crumb[] | any[]>, required: true },
   },

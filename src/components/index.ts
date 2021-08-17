@@ -11,7 +11,7 @@ import ChipComponents from './Chip';
 import DividerComponents from './Divider';
 import DropdownMenuComponents from './DropdownMenu';
 import VerticalMenuComponents from './VerticalMenu';
-// import EmptyComponents from './Empty';
+import EmptyComponents from './Empty';
 import IconComponents from './Icon';
 import TagComponents from './Tag';
 // import ModalComponents from './Modal';
@@ -49,7 +49,7 @@ export * from './Columns';
 export * from './Container';
 export * from './Divider';
 export * from './DropdownMenu';
-// export * from './Empty';
+export * from './Empty';
 export * from './VerticalMenu';
 export * from './OffCanvas';
 // export * from './Overlay';
@@ -92,7 +92,7 @@ export default {
   ContainerComponents,
   DividerComponents,
   DropdownMenuComponents,
-  // EmptyComponents,
+  EmptyComponents,
   IconComponents,
   // ModalComponents,
   // NavigationComponents,
