@@ -1,16 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const PanelFooter = tsx.component({
+export const PanelFooter = defineComponent({
   name: 'PanelFooter',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    const cssClass = mergeCss(data, 'panel-footer');
-
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="panel-footer">{this.$slots.default && this.$slots.default()}</div>;
   },
 });

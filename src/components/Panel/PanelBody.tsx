@@ -1,16 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const PanelBody = tsx.component({
+export const PanelBody = defineComponent({
   name: 'PanelBody',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    const cssClass = mergeCss(data, 'panel-body');
-
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="panel-body">{this.$slots.default && this.$slots.default()}</div>;
   },
 });

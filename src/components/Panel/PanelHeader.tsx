@@ -1,16 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const PanelHeader = tsx.component({
+export const PanelHeader = defineComponent({
   name: 'PanelHeader',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    const cssClass = mergeCss(data, 'panel-header');
-
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="panel-header">{this.$slots.default && this.$slots.default()}</div>;
   },
 });
