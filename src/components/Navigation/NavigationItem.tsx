@@ -1,16 +1,11 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 
-export const NavigationItem = tsx.component({
+export const NavigationItem = defineComponent({
   name: 'NavigationItem',
-  functional: true,
   props: {
     active: { type: Boolean, default: false },
   },
-  render(h: CreateElement, { props, children }): VNode {
-    return (
-      <li staticClass="nav-item" class={props.active && 'active'}>
-        {children}
-      </li>
-    );
+  render(): VNode {
+    return <li class={['nav-item', this.$props.active && 'active']}>{this.$slots.default && this.$slots.default()}</li>;
   },
 });
