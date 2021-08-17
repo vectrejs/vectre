@@ -1,17 +1,17 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 
-export const Divider = tsx.component({
+export const Divider = defineComponent({
   name: 'Divider',
-  functional: true,
   props: {
     vert: { type: Boolean },
     content: { type: String, default: undefined },
   },
 
-  render(h: CreateElement, { props, slots, data }): VNode {
-    const classes = ['text-center', props.vert && 'divider-vert', !props.vert && 'divider'];
-    const dataContent = props.content || (slots().default && slots().default[0].text);
+  render(): VNode {
+    const slotedContent = this.$slots.default && this.$slots.default().find(({ children }) => children);
+    const classes = ['text-center', this.$props.vert && 'divider-vert', !this.$props.vert && 'divider'];
+    const dataContent = this.$props.content || (slotedContent && slotedContent.children);
 
-    return <div class={classes} data-content={dataContent} {...data} />;
+    return <div class={classes} data-content={dataContent} />;
   },
 });

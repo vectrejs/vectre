@@ -8,7 +8,7 @@ import ContainerComponents from './Container';
 // import BreadcrumbComponents from './Breadcrumb';
 import BtnComponents from './Btn';
 // import ChipComponents from './Chip';
-// import DividerComponents from './Divider';
+import DividerComponents from './Divider';
 import DropdownMenuComponents from './DropdownMenu';
 import VerticalMenuComponents from './VerticalMenu';
 // import EmptyComponents from './Empty';
@@ -47,7 +47,7 @@ export * from './Card';
 export * from './Column';
 export * from './Columns';
 export * from './Container';
-// export * from './Divider';
+export * from './Divider';
 export * from './DropdownMenu';
 // export * from './Empty';
 export * from './VerticalMenu';
@@ -90,7 +90,7 @@ export default {
   ColumnComponents,
   ColumnsComponents,
   ContainerComponents,
-  // DividerComponents,
+  DividerComponents,
   DropdownMenuComponents,
   // EmptyComponents,
   IconComponents,
