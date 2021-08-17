@@ -1,25 +1,23 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, PropType, VNode } from 'vue';
 import { PopoverSides, PopoverSide } from './Side';
 
-export const Popover = /*#__PURE__*/ tsx.component({
+export const Popover = /*#__PURE__*/ defineComponent({
   name: 'Popover',
-  functional: true,
   props: {
     side: {
-      type: String as () => PopoverSide,
+      type: String as PropType<PopoverSide>,
       default: undefined,
       validator: (side: PopoverSide): boolean => Object.keys(PopoverSides).includes(side),
     },
   },
-  render(h: CreateElement, { data, props, children = [] }): VNode {
-    const cssClass = mergeCss(data, 'popover', [PopoverSides[props.side]]);
+  render(): VNode {
+    const children = (this.$slots.default && this.$slots.default()) || [];
     const activator = children.shift();
 
     return (
-      <div class={cssClass}>
+      <div class={['popover', PopoverSides[this.$props.side]]}>
         {activator}
-        <div staticClass="popover-container">{children}</div>
+        <div class="popover-container">{children}</div>
       </div>
     );
   },

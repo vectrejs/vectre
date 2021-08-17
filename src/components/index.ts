@@ -20,7 +20,7 @@ import OffCanvasComponents from './OffCanvas';
 import OverlayComponents from './Overlay';
 import PaginationComponents from './Pagination';
 import PanelComponents from './Panel';
-// import PopoverComponents from './Popover';
+import PopoverComponents from './Popover';
 // import StepComponents from './Steps';
 // import TabComponents from './Tab';
 import TileComponents from './Tile';
@@ -61,6 +61,10 @@ export * from './Tile';
 // export * from './Toast';
 export * from './Navigation';
 export * from './Btn';
+export * from './Icon';
+export * from './Tag';
+export * from './Modal';
+export * from './Popover';
 
 // export * from './FormCheckbox';
 // export * from './FormGroup';
@@ -73,10 +77,6 @@ export * from './Btn';
 // export * from './FormSlider';
 // export * from './FormSwitch';
 // export * from './FormTextarea';
-export * from './Icon';
-export * from './Tag';
-export * from './Modal';
-// export * from './Popover';
 
 // // Default is all components
 export default {
@@ -100,7 +100,7 @@ export default {
   OverlayComponents,
   PaginationComponents,
   PanelComponents,
-  // PopoverComponents,
+  PopoverComponents,
   // StepComponents,
   // TabComponents,
   TileComponents,
