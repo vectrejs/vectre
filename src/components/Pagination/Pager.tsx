@@ -1,5 +1,4 @@
-import { CreateElement, VNode } from 'vue';
-import { PaginationEvents } from './Events';
+import { defineComponent, VNode } from 'vue';
 import { flattenListener } from '../../utils/listener';
 
 const SEPARATOR = ' ... ';
@@ -16,46 +15,49 @@ const items = (pages: number, current: number, show: number): PagerItem[] => {
     return [...[1, SEPARATOR], ...Array.from({ length: show - 1 }, (v, i) => pages - show + 2 + i)];
   }
 
-  const mediana = Math.floor((show - 4) / 2);
+  const median = Math.floor((show - 4) / 2);
   return [
     ...[1, SEPARATOR],
-    ...Array.from({ length: show - 3 }, (v, i) => current - mediana + i),
+    ...Array.from({ length: show - 3 }, (v, i) => current - median + i),
     ...[SEPARATOR, pages],
   ];
 };
 
-export const Pager = /*#__PURE__*/ tsx.componentFactoryOf<PaginationEvents>().create({
+export const Pager = /*#__PURE__*/ defineComponent({
   name: 'Pager',
-  functional: true,
   props: {
     pages: { type: Number, required: true },
     current: { type: Number, default: 1 },
     show: { type: Number, default: 6 },
+    onChange: { type: Function, default: undefined },
   },
-  render(h: CreateElement, { props, listeners }): VNode {
-    const change = (page: string | number) => (): void => flattenListener(listeners.change)(page);
+  emits: ['change'],
+  render(): VNode {
+    const change = (page: string | number) => (): void => flattenListener(this.$props.onChange)(page);
 
-    const pages = items(props.pages, props.current, props.show).map((page: number | string): VNode => {
-      return (
-        <li staticClass="page-item page-item-num" class={props.current == page && 'active'}>
-          {page === SEPARATOR && <span>{page}</span>}
-          {page !== SEPARATOR && <a onClick={change(page)}>{page}</a>}
-        </li>
-      );
-    });
+    const pages = items(this.$props.pages, this.$props.current, this.$props.show).map(
+      (page: number | string): VNode => {
+        return (
+          <li class={['page-item page-item-num', this.$props.current == page && 'active']}>
+            {page === SEPARATOR && <span>{page}</span>}
+            {page !== SEPARATOR && <a onClick={change(page)}>{page}</a>}
+          </li>
+        );
+      },
+    );
 
     return (
-      <ul staticClass="pagination">
-        <li staticClass="page-item" class={props.current == 1 && 'disabled'}>
-          <a tabindex={-1} onClick={change(props.current - 1)}>
+      <ul class="pagination">
+        <li class={['page-item', this.$props.current == 1 && 'disabled']}>
+          <a tabindex={-1} onClick={change(this.$props.current - 1)}>
             Previous
           </a>
         </li>
 
         {pages}
 
-        <li staticClass="page-item" class={props.current == props.pages && 'disabled'}>
-          <a onClick={change(props.current + 1)}>Next</a>
+        <li class={['page-item', this.$props.current == this.$props.pages && 'disabled']}>
+          <a onClick={change(this.$props.current + 1)}>Next</a>
         </li>
       </ul>
     );
