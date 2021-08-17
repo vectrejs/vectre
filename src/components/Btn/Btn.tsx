@@ -23,9 +23,9 @@ export const Btn = /*#__PURE__*/ defineComponent({
       validator: (tag: 'a' | 'button'): boolean => ['a', 'button'].includes(tag),
       default: 'button',
     },
-    onClick: { type: Function },
-    onBlur: { type: Function },
-    onFocus: { type: Function },
+    onClick: { type: Function, default: undefined },
+    onBlur: { type: Function, default: undefined },
+    onFocus: { type: Function, default: undefined },
   },
   emits: ['click', 'focus', 'blur'],
   render(): VNode {
