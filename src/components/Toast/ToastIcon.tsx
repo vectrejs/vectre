@@ -1,20 +1,17 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { IconType, Icon } from '../Icon';
-import { mergeCss } from '../../utils/css';
 
-export const ToastIcon = tsx.component({
+export const ToastIcon = defineComponent({
   name: 'ToastIcon',
-  functional: true,
+
   props: {
     icon: { type: String as () => IconType, required: true },
     large: { type: Boolean, default: false },
   },
-  render(h: CreateElement, { data, props }): VNode {
-    const cssClass = mergeCss(data, 'toast-icon', [props.large && 'large']);
-
+  render(): VNode {
     return (
-      <div {...data} class={cssClass}>
-        <Icon name={props.icon} size={props.large ? 'x2' : undefined} />
+      <div class={['toast-icon', this.$props.large && 'large']}>
+        <Icon name={this.$props.icon} size={this.$props.large ? 'x2' : undefined} />
       </div>
     );
   },

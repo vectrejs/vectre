@@ -1,16 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const ToastContent = tsx.component({
+export const ToastContent = defineComponent({
   name: 'ToastContent',
-  functional: true,
-  render(h: CreateElement, { data, children }): VNode {
-    const cssClass = mergeCss(data, 'toast-content');
-
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="toast-content">{this.$slots.default && this.$slots.default()}</div>;
   },
 });

@@ -24,7 +24,7 @@ import PopoverComponents from './Popover';
 import StepComponents from './Steps';
 import TabComponents from './Tab';
 import TileComponents from './Tile';
-// import ToasComponents from './Toast';
+import ToastComponents from './Toast';
 
 // import FormCheckboxComponents from './FormCheckbox';
 // import FormGroupComponents from './FormGroup';
@@ -58,7 +58,7 @@ export * from './Panel';
 export * from './Steps';
 export * from './Tab';
 export * from './Tile';
-// export * from './Toast';
+export * from './Toast';
 export * from './Navigation';
 export * from './Btn';
 export * from './Icon';
@@ -104,7 +104,7 @@ export default {
   StepComponents,
   TabComponents,
   TileComponents,
-  // ToasComponents,
+  ToastComponents,
   TagComponents,
   VerticalMenuComponents,
   // FormCheckboxComponents,
