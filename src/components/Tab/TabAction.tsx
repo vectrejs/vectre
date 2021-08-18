@@ -1,16 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
+import { defineComponent, VNode } from 'vue';
 
-export const TabAction = tsx.component({
+export const TabAction = defineComponent({
   name: 'TabAction',
-  functional: true,
-  render(h: CreateElement, { data, children }): VNode {
-    const cssClass = mergeCss(data, 'tab-item tab-action');
-
-    return (
-      <div {...data} class={cssClass}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="tab-item tab-action">{this.$slots.default && this.$slots.default()}</div>;
   },
 });

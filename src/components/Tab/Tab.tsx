@@ -1,22 +1,21 @@
-import { CreateElement, VNode } from 'vue';
-import { mergeCss } from '../../utils/css';
-import { TabEvents } from './Events';
+import { defineComponent, VNode } from 'vue';
+// import { TabEvents } from './Events';
 import './tab.scss';
 
-export const Tab = tsx.componentFactoryOf<TabEvents>().create({
+export const Tab = defineComponent({
   name: 'Tab',
-  functional: true,
+
   props: {
     active: { type: Boolean, default: false },
     badge: { type: [String, Number], default: undefined },
+    onClick: { type: Function, default: undefined },
   },
-  render(h: CreateElement, { data, props, children }): VNode {
-    const cssClass = mergeCss(data, 'tab-item', [props.active && 'active']);
-
+  emits: ['click'],
+  render(): VNode {
     return (
-      <span {...data} class={cssClass}>
-        <a class={[props.badge && 'badge']} data-badge={props.badge}>
-          {children}
+      <span onClick={this.$props.onClick} class={['tab-item', this.$props.active && 'active']}>
+        <a class={[this.$props.badge && 'badge']} data-badge={this.$props.badge}>
+          {this.$slots.default && this.$slots.default()}
         </a>
       </span>
     );

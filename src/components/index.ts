@@ -22,7 +22,7 @@ import PaginationComponents from './Pagination';
 import PanelComponents from './Panel';
 import PopoverComponents from './Popover';
 import StepComponents from './Steps';
-// import TabComponents from './Tab';
+import TabComponents from './Tab';
 import TileComponents from './Tile';
 // import ToasComponents from './Toast';
 
@@ -56,7 +56,7 @@ export * from './Overlay';
 export * from './Pagination';
 export * from './Panel';
 export * from './Steps';
-// export * from './Tab';
+export * from './Tab';
 export * from './Tile';
 // export * from './Toast';
 export * from './Navigation';
@@ -102,7 +102,7 @@ export default {
   PanelComponents,
   PopoverComponents,
   StepComponents,
-  // TabComponents,
+  TabComponents,
   TileComponents,
   // ToasComponents,
   TagComponents,
