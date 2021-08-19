@@ -1,66 +1,67 @@
-import { VNode, CreateElement } from 'vue';
-import { cachedListeners } from '../../mixins/cache';
+import { VNode, defineComponent } from 'vue';
+// import { cachedListeners } from '../../mixins/cache';
 import { FormRadioSize, FormRadioSizes } from './Size';
 
 export interface FormRadioEvents {
   onChange: (value: any) => void;
 }
 
-export const FormRadio = /*#__PURE__*/ tsx
-  .componentFactoryOf<FormRadioEvents>()
-  .mixin(cachedListeners)
-  .create({
-    name: 'FormRadio',
-    model: {
-      prop: 'model',
-      event: 'change',
+export const FormRadio = /*#__PURE__*/ defineComponent({
+  name: 'FormRadio',
+  model: {
+    prop: 'model',
+    event: 'change',
+  },
+  props: {
+    checked: { type: Boolean },
+    disabled: { type: Boolean },
+    error: { type: Boolean },
+    inline: { type: Boolean },
+    label: { type: String, default: undefined },
+    name: { type: String, default: undefined },
+    size: {
+      type: String as () => FormRadioSize,
+      validator: (size: FormRadioSize): boolean => Object.keys(FormRadioSizes).includes(size),
+      default: undefined,
     },
-    props: {
-      checked: { type: Boolean },
-      disabled: { type: Boolean },
-      error: { type: Boolean },
-      inline: { type: Boolean },
-      label: { type: String },
-      name: { type: String },
-      size: {
-        type: String as () => FormRadioSize,
-        validator: (size: FormRadioSize): boolean => Object.keys(FormRadioSizes).includes(size),
-      },
-      value: { type: undefined },
-      model: { type: undefined },
+    value: { type: undefined, default: undefined },
+    modelValue: { type: undefined, default: undefined },
+    onChange: { type: Function, default: undefined },
+  },
+  emits: ['change', 'update:modelValue'],
+  computed: {
+    _label(): string | VNode | any {
+      return (this.$slots.default && this.$slots.default()[0].children) || this.label || this._value;
     },
-    computed: {
-      _label(): string | VNode | any {
-        return this.$slots.default || this.label || this._value;
-      },
-      _value(): any {
-        return this.value || (this.$slots.default && this.$slots.default[0].text) || this.label;
-      },
+    _value(): any {
+      return this.value || (this.$slots.default && this.$slots.default()[0].children) || this.label;
     },
-    methods: {
-      onChecked(): void {
-        this.$emit('change', this._value);
-      },
+  },
+  methods: {
+    onChecked(): void {
+      this.$emit('change', this._value);
+      this.$emit('update:modelValue', this._value);
     },
-    render(h: CreateElement): VNode {
-      const cssClass = [
-        'form-radio',
-        this.inline ? 'form-inline' : false,
-        this.error ? 'is-error' : false,
-        FormRadioSizes[this.size],
-      ];
+  },
+  render(): VNode {
+    const cssClass = [
+      'form-radio',
+      this.inline ? 'form-inline' : false,
+      this.error ? 'is-error' : false,
+      FormRadioSizes[this.size],
+    ];
 
-      return (
-        <label class={cssClass}>
-          <input
-            type="radio"
-            checked={this.checked || this.model === this._value}
-            disabled={this.disabled}
-            name={this.name}
-            {...{ on: { ...this.__listeners, change: this.onChecked } }}
-          />
-          <i class="form-icon" /> {this._label}
-        </label>
-      );
-    },
-  });
+    return (
+      <label class={cssClass}>
+        <input
+          type="radio"
+          checked={this.checked || this.modelValue === this._value}
+          disabled={this.disabled}
+          name={this.name}
+          onChange={this.onChecked}
+        />
+        <i class="form-icon" /> {this._label}
+      </label>
+    );
+  },
+});

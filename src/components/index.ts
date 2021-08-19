@@ -32,7 +32,7 @@ import ToastComponents from './Toast';
 // import FormHorizontalComponents from './FormHorizontal';
 // import FormInputComponents from './FormInput';
 // import FormLabelComponents from './FormLabel';
-// import FormRadioComponents from './FormRadio';
+import FormRadioComponents from './FormRadio';
 // import FormSelectComponents from './FormSelect';
 // import FormSliderComponents from './FormSlider';
 // import FormSwitchComponents from './FormSwitch';
@@ -72,7 +72,7 @@ export * from './Popover';
 // export * from './FormHorizontal';
 // export * from './FormInput';
 // export * from './FormLabel';
-// export * from './FormRadio';
+export * from './FormRadio';
 // export * from './FormSelect';
 // export * from './FormSlider';
 // export * from './FormSwitch';
@@ -113,7 +113,7 @@ export default {
   // FormLabelComponents,
   // FormHintComponents,
   // FormHorizontalComponents,
-  // FormRadioComponents,
+  FormRadioComponents,
   // FormSelectComponents,
   // FormSliderComponents,
   // FormSwitchComponents,

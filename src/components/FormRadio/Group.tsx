@@ -1,4 +1,4 @@
-import { VNode, CreateElement, VNodeComponentOptions } from 'vue';
+import { VNode, defineComponent, PropType } from 'vue';
 import { uid } from '../../utils/uid';
 import { FormRadio } from './Radio';
 import { FormRadioSize } from './Size';
@@ -21,23 +21,25 @@ const normalizeOptions = (options: { [label: string]: any } | string[]): Normali
   return normalized;
 };
 
-export const FormRadioGroup = /*#__PURE__*/ tsx.componentFactoryOf().create({
+export const FormRadioGroup = /*#__PURE__*/ defineComponent({
   name: 'FormRadioGroup',
   props: {
-    name: { type: String },
-    options: { type: undefined },
-    value: { type: undefined },
-    size: { type: String as () => FormRadioSize, default: undefined },
+    name: { type: String, default: undefined },
+    options: { type: undefined, default: undefined },
+    modelValue: { type: undefined, default: undefined },
+    size: { type: String as PropType<FormRadioSize>, default: undefined },
     inline: { type: Boolean },
     disabled: { type: Boolean },
     error: { type: Boolean },
   },
+  emits: ['input', 'update:modelValue'],
   methods: {
     update(value: any): void {
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
     },
   },
-  render(h: CreateElement): VNode {
+  render(): VNode {
     const name = this.name || uid(this);
     let group: VNode[];
 
@@ -53,34 +55,34 @@ export const FormRadioGroup = /*#__PURE__*/ tsx.componentFactoryOf().create({
             inline={this.inline}
             size={this.size}
             disabled={this.disabled}
-            {...{ props: { model: this.value } }}
           />
         );
       });
     } else {
-      group = (this.$slots.default || [])
-        .filter(({ componentOptions }) => {
-          return componentOptions && componentOptions.tag && componentOptions.tag.includes('form-radio');
-        })
-        .map((option: VNode) => {
-          if (!option.componentOptions) {
-            option.componentOptions = {} as VNodeComponentOptions;
+      group = ((this.$slots.default && this.$slots.default()) || [])
+        .filter(({ type }) => {
+          if (typeof type === 'object' && 'name' in type) {
+            return type.name === 'FormRadio';
           }
+        })
+        .map((radio: VNode) => {
+          // const dynamicProps = (radio as any).dynamicProps || [];
+          // (radio as any).dynamicProps = [...new Set([...dynamicProps, 'active'])];
 
-          const props = (option.componentOptions.propsData || {}) as InstanceType<typeof FormRadio>;
-          props.name = name;
-          props.size = props.size !== undefined ? props.size : this.size;
-          props.disabled = props.disabled !== undefined ? props.disabled : this.disabled;
-          props.error = props.error !== undefined ? props.error : this.error;
-          props.inline = this.inline || props.inline;
-          props.model = this.value;
+          // debugger;
 
-          option.componentOptions.listeners = {
-            ...option.componentOptions.listeners,
-            change: this.update,
+          radio.props = {
+            ...radio.props,
+            name: name,
+            size: radio.props.size !== undefined ? radio.props.size : this.size,
+            disabled: radio.props.disabled !== undefined ? radio.props.disabled : this.disabled,
+            error: radio.props.error !== undefined ? radio.props.error : this.error,
+            inline: this.inline || radio.props.inline,
+            modelValue: this.modelValue,
+            onChange: this.update,
           };
 
-          return option;
+          return radio;
         });
     }
 
