@@ -1,9 +1,8 @@
-import { CreateElement, VNode, VNodeDirective } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { flattenListener } from '../../utils/listener';
 import { Tooltip } from '../../directives';
-import { FormSliderEvents } from './Events';
 
-export const FormSlider = /*#__PURE__*/ tsx.componentFactoryOf<FormSliderEvents>().create({
+export const FormSlider = /*#__PURE__*/ defineComponent({
   name: 'FormSlider',
   directives: {
     Tooltip,
@@ -12,47 +11,52 @@ export const FormSlider = /*#__PURE__*/ tsx.componentFactoryOf<FormSliderEvents>
     min: { type: [String, Number], default: 0 },
     max: { type: [String, Number], default: 100 },
     step: { type: [String, Number], default: 1 },
-    value: { type: [String, Number], default: undefined },
-    tooltip: { type: [Boolean, String, Function], default: false },
+    modelValue: { type: [String, Number], default: undefined },
+    tooltip: { type: [Boolean, String, Function], default: undefined },
     disabled: { type: Boolean, default: false },
+    onInput: { type: Function, default: undefined },
   },
+  emits: ['input', 'update:modelValue'],
   computed: {
     tooltipText(): string | number {
+      if (typeof this.tooltip === 'undefined') {
+        return;
+      }
+
       if (typeof this.tooltip === 'boolean') {
-        return this.tooltip && this.value;
+        return this.tooltip && this.modelValue;
       }
 
       if (typeof this.tooltip === 'string') {
-        return `${this.value}${this.tooltip}`;
+        return `${this.modelValue}${this.tooltip}`;
       }
 
       if (typeof this.tooltip === 'function') {
-        return this.tooltip(this.value);
+        return this.tooltip(this.modelValue);
       }
 
       throw new TypeError('Wrong type of tooltip');
     },
   },
-  render(h: CreateElement): VNode {
-    const onInput = (e: Event): void => flattenListener(this.$listeners.input)((e.target as HTMLInputElement).value);
-    const directives: VNodeDirective[] = [];
+  render(): VNode {
+    const onInput = (e: Event): void => {
+      const value = (e.target as HTMLInputElement).value;
+      if (this.onInput) {
+        this.onInput(value);
+      }
 
-    if (this.tooltip) {
-      directives.push({
-        name: 'tooltip',
-        value: this.tooltipText,
-      });
-    }
+      this.$emit('update:modelValue', value);
+    };
 
     return (
       <input
-        {...{ directives }}
+        v-tooltip={this.tooltipText}
         class="slider"
         type="range"
         min={this.min}
         max={this.max}
         step={this.step}
-        value={this.value}
+        value={this.modelValue}
         onInput={onInput}
         onTouchmove={onInput}
         disabled={this.disabled}

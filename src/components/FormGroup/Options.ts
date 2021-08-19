@@ -1,8 +1,6 @@
 export interface CommonOptions {
-  componentOptions?: {
-    propsData?: {
-      size?: 'sm' | 'lg';
-      disabled?: boolean;
-    };
+  props: {
+    size?: 'sm' | 'lg';
+    disabled?: boolean;
   };
 }

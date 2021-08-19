@@ -1,48 +1,53 @@
-import { VNode, CreateElement } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { CommonOptions } from './Options';
 
-const isFormTag = (tag = ''): boolean =>
-  /^.*form-?(label|input|select|switch|switch-?group|checkbox-?group|checkbox|radio-?group|radio|slider)$/i.test(tag);
+const isFormComponent = (tag = ''): boolean =>
+  /^.*Form(Label|Input|Select|Switch|SwitchGroup|CheckboxGroup|Checkbox|RadioGroup|Radio|Slider)$/i.test(tag);
 
-export const FormGroup = /*#__PURE__*/ tsx.createComponent({
+export const FormGroup = /*#__PURE__*/ defineComponent({
   name: 'FormGroup',
-  functional: true,
+
   props: {
-    size: { type: String as () => 'lg' | 'sm', validator: (v: string): boolean => !v || ['lg', 'sm'].includes(v) },
+    size: {
+      type: String as PropType<'lg' | 'sm'>,
+      validator: (v: string): boolean => !v || ['lg', 'sm'].includes(v),
+      default: undefined,
+    },
     disabled: { type: Boolean },
     error: { type: Boolean },
     success: { type: Boolean },
   },
-  render(h: CreateElement, { props, slots, data, children }): VNode {
-    if (props.size) {
-      children.map((v: VNode & CommonOptions) => {
-        if (v.componentOptions && isFormTag(v.componentOptions.tag)) {
-          if (!v.componentOptions.propsData) {
-            v.componentOptions.propsData = {};
-          }
+  render(): VNode {
+    const children = (this.$slots.default && this.$slots.default()) || [];
+    const groupItems = children.filter(({ type }) => {
+      if (typeof type === 'object' && 'name' in type) {
+        return isFormComponent(type.name);
+      }
+    });
 
-          v.componentOptions.propsData.size = v.componentOptions.propsData.size || props.size;
+    if (this.$props.size) {
+      groupItems.forEach((child: VNode & CommonOptions) => {
+        if (!child.props) {
+          child.props = {};
         }
+
+        child.props.size = this.$props.size;
       });
     }
 
-    if (props.disabled !== undefined) {
-      children.map((v: VNode & CommonOptions) => {
-        if (v.componentOptions && isFormTag(v.componentOptions.tag)) {
-          if (!v.componentOptions.propsData) {
-            v.componentOptions.propsData = {};
-          }
-
-          v.componentOptions.propsData.disabled = props.disabled;
+    if (this.$props.disabled !== undefined) {
+      groupItems.forEach((child: VNode & CommonOptions) => {
+        if (!child.props) {
+          child.props = {};
         }
+
+        child.props.disabled = this.$props.disabled;
       });
     }
-
-    const cssClass = ['form-group', props.error && 'has-error', props.success && 'has-success'];
 
     return (
-      <div class={cssClass} {...data}>
-        {slots().default}
+      <div class={['form-group', this.$props.error && 'has-error', this.$props.success && 'has-success']}>
+        {children}
       </div>
     );
   },

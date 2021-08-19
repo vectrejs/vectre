@@ -1,22 +1,20 @@
 import { FormLabelSizes, FormLabelSize } from './LabelSize';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 
-export const FormLabel = /*#__PURE__*/ tsx.createComponent({
+export const FormLabel = /*#__PURE__*/ defineComponent({
   name: 'FormLabel',
-  functional: true,
+
   props: {
     size: {
-      type: String,
+      type: String as PropType<FormLabelSize>,
       default: undefined,
       validator: (v: string): boolean => !v || Object.keys(FormLabelSizes).includes(v),
     },
   },
-  render(h: CreateElement, { props, children, data }): VNode {
-    const cssClasses = ['form-label', FormLabelSizes[props.size as FormLabelSize]];
-
+  render(): VNode {
     return (
-      <label class={cssClasses} {...data}>
-        {children}
+      <label class={['form-label', FormLabelSizes[this.$props.size]]}>
+        {this.$slots.default && this.$slots.default()}
       </label>
     );
   },

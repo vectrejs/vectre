@@ -27,14 +27,14 @@ import TileComponents from './Tile';
 import ToastComponents from './Toast';
 
 // import FormCheckboxComponents from './FormCheckbox';
-// import FormGroupComponents from './FormGroup';
-// import FormHintComponents from './FormHint';
+import FormGroupComponents from './FormGroup';
+import FormHintComponents from './FormHint';
 // import FormHorizontalComponents from './FormHorizontal';
 // import FormInputComponents from './FormInput';
-// import FormLabelComponents from './FormLabel';
+import FormLabelComponents from './FormLabel';
 import FormRadioComponents from './FormRadio';
 import FormSelectComponents from './FormSelect';
-// import FormSliderComponents from './FormSlider';
+import FormSliderComponents from './FormSlider';
 // import FormSwitchComponents from './FormSwitch';
 // import FormTextareaComponents from './FormTextarea';
 
@@ -67,14 +67,14 @@ export * from './Modal';
 export * from './Popover';
 
 // export * from './FormCheckbox';
-// export * from './FormGroup';
-// export * from './FormHint';
+export * from './FormGroup';
+export * from './FormHint';
 // export * from './FormHorizontal';
 // export * from './FormInput';
-// export * from './FormLabel';
+export * from './FormLabel';
 export * from './FormRadio';
 export * from './FormSelect';
-// export * from './FormSlider';
+export * from './FormSlider';
 // export * from './FormSwitch';
 // export * from './FormTextarea';
 
@@ -115,7 +115,7 @@ export default {
   // FormHorizontalComponents,
   FormRadioComponents,
   FormSelectComponents,
-  // FormSliderComponents,
+  FormSliderComponents,
   // FormSwitchComponents,
   // FormTextareaComponents,
 };
