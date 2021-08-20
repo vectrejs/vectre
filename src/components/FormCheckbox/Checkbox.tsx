@@ -1,80 +1,70 @@
 import { FormCheckboxType, FormCheckboxTypes } from './Type';
 import { FormCheckboxSize, FormCheckboxSizes } from './Size';
-import { CreateElement, VNode } from 'vue';
-import { cachedListeners } from '../../mixins/cache';
-import { FormCheckboxEvents } from './Event';
+import { defineComponent, PropType, VNode } from 'vue';
 
-export const FormCheckbox = /*#__PURE__*/ tsx
-  .componentFactoryOf<FormCheckboxEvents>()
-  .mixin(cachedListeners)
-  .create({
-    name: 'FormCheckbox',
-    props: {
-      checked: { type: Boolean },
-      disabled: { type: Boolean },
-      inline: { type: Boolean },
-      label: { type: [String, Number] },
-      model: { type: undefined as any },
-      value: { type: undefined as any },
-      size: {
-        type: String as () => FormCheckboxSize,
-        validator: (v: FormCheckboxSize): boolean => Object.keys(FormCheckboxSizes).includes(v),
-      },
-      type: {
-        type: String as () => FormCheckboxType,
-        validator: (v: FormCheckboxType): boolean => Object.keys(FormCheckboxTypes).includes(v),
-      },
-      error: { type: Boolean },
+export const FormCheckbox = /*#__PURE__*/ defineComponent({
+  name: 'FormCheckbox',
+  props: {
+    checked: { type: Boolean },
+    disabled: { type: Boolean },
+    inline: { type: Boolean },
+    label: { type: [String, Number], default: undefined },
+    modelValue: { type: undefined, default: undefined },
+    value: { type: undefined, default: undefined },
+    size: {
+      type: String as PropType<FormCheckboxSize>,
+      validator: (v: FormCheckboxSize): boolean => Object.keys(FormCheckboxSizes).includes(v),
+      default: undefined,
     },
-    model: {
-      prop: 'model',
-      event: 'change',
+    type: {
+      type: String as PropType<FormCheckboxType>,
+      validator: (v: FormCheckboxType): boolean => Object.keys(FormCheckboxTypes).includes(v),
+      default: undefined,
     },
-    computed: {
-      _checked(): boolean {
-        if (!Array.isArray(this.model)) {
-          return this.checked || (this.model && this.model === this.value);
-        }
+    error: { type: Boolean },
+    onChange: { type: Function, default: undefined },
+  },
+  emits: ['change', 'update:modelValue'],
+  computed: {
+    _checked(): boolean {
+      if (!Array.isArray(this.modelValue)) {
+        return this.checked || (this.modelValue && this.modelValue === this.value);
+      }
 
-        return this.model.includes(this.value);
-      },
+      return this.modelValue.includes(this.value);
     },
-    methods: {
-      onChange({ target: { checked } }: any): void {
-        if (this.model === undefined || !Array.isArray(this.model)) {
-          this.$emit('change', checked ? this.value || checked : false);
-          return;
-        }
+  },
+  methods: {
+    handleChange({ target: { checked } }: any): void {
+      let value;
 
-        if (checked) {
-          this.$emit('change', [...this.model, this.value]);
-        } else {
-          this.$emit(
-            'change',
-            this.model.filter((option: any) => option !== this.value),
-          );
-        }
-      },
-    },
-    render(h: CreateElement): VNode {
-      const cssClass = [
-        FormCheckboxTypes[this.type as FormCheckboxType] || 'form-checkbox',
-        this.inline ? 'form-inline' : '',
-        this.error ? 'is-error' : false,
-        FormCheckboxSizes[this.size as FormCheckboxSize],
-      ];
+      if (this.modelValue === undefined || !Array.isArray(this.modelValue)) {
+        value = checked ? this.value || checked : false;
+      } else if (checked) {
+        value = [...this.modelValue, this.value];
+      } else {
+        value = this.modelValue.filter((option: any) => option !== this.value);
+      }
 
-      return (
-        <label class={cssClass}>
-          <input
-            type="checkbox"
-            checked={this._checked}
-            disabled={this.disabled}
-            {...{ on: { ...this.__listeners, change: this.onChange } }}
-          />
-          <i class="form-icon" />
-          {this.$slots.default || this.label || this.value}
-        </label>
-      );
+      this.onChange && this.onChange(value);
+      this.$emit('change', value);
+      this.$emit('update:modelValue', value);
     },
-  });
+  },
+  render(): VNode {
+    const cssClass = [
+      FormCheckboxTypes[this.type as FormCheckboxType] || 'form-checkbox',
+      this.inline ? 'form-inline' : '',
+      this.error ? 'is-error' : false,
+      FormCheckboxSizes[this.size as FormCheckboxSize],
+    ];
+
+    return (
+      <label class={cssClass}>
+        <input type="checkbox" checked={this._checked} disabled={this.disabled} onChange={this.handleChange} />
+        <i class="form-icon" />
+        {(this.$slots.default && this.$slots.default()) || this.label || this.value}
+      </label>
+    );
+  },
+});

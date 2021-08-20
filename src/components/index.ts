@@ -26,7 +26,7 @@ import TabComponents from './Tab';
 import TileComponents from './Tile';
 import ToastComponents from './Toast';
 
-// import FormCheckboxComponents from './FormCheckbox';
+import FormCheckboxComponents from './FormCheckbox';
 import FormGroupComponents from './FormGroup';
 import FormHintComponents from './FormHint';
 // import FormHorizontalComponents from './FormHorizontal';
@@ -66,7 +66,7 @@ export * from './Tag';
 export * from './Modal';
 export * from './Popover';
 
-// export * from './FormCheckbox';
+export * from './FormCheckbox';
 export * from './FormGroup';
 export * from './FormHint';
 // export * from './FormHorizontal';
@@ -107,11 +107,11 @@ export default {
   ToastComponents,
   TagComponents,
   VerticalMenuComponents,
-  // FormCheckboxComponents,
-  // FormGroupComponents,
+  FormCheckboxComponents,
+  FormGroupComponents,
   // FormInputComponents,
-  // FormLabelComponents,
-  // FormHintComponents,
+  FormLabelComponents,
+  FormHintComponents,
   // FormHorizontalComponents,
   FormRadioComponents,
   FormSelectComponents,
