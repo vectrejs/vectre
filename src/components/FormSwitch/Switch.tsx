@@ -1,13 +1,19 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 import { FormCheckbox } from '../FormCheckbox';
 
-export const FormSwitch = tsx.extendFrom(FormCheckbox).create({
+export const FormSwitch = defineComponent({
   name: 'FormSwitch',
-  functional: true,
-  render(h: CreateElement, { data, children, props }): VNode {
+  extends: FormCheckbox,
+  emits: ['change', 'update:modelValue'],
+  render(): VNode {
+    const handleChange = (value: any): void => {
+      this.$emit('change', value);
+      this.$emit('update:modelValue', value);
+    };
+
     return (
-      <FormCheckbox {...{ ...data, props: { ...(props as Record<string, any>), type: 'switch' } }}>
-        {children}
+      <FormCheckbox {...this.$props} onChange={handleChange} type="switch">
+        {this.$slots.default && this.$slots.default()}
       </FormCheckbox>
     );
   },
