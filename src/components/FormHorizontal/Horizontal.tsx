@@ -1,12 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-export const FormHorizontal = tsx.createComponent({
+import { defineComponent, VNode } from 'vue';
+
+export const FormHorizontal = defineComponent({
   name: 'FormHorizontal',
-  functional: true,
-  render(h: CreateElement, { children, data }): VNode {
-    return (
-      <div class="form-horizontal" {...data}>
-        {children}
-      </div>
-    );
+  render(): VNode {
+    return <div class="form-horizontal">{this.$slots.default && this.$slots.default()}</div>;
   },
 });
