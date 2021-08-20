@@ -1,4 +1,4 @@
-import { VNode, CreateElement } from 'vue';
+import { VNode, defineComponent, PropType } from 'vue';
 
 export enum IconSides {
   left = 'has-icon-left',
@@ -6,17 +6,16 @@ export enum IconSides {
 }
 export type IconSide = keyof typeof IconSides;
 
-export const IconContainer = tsx.component({
+export const IconContainer = defineComponent({
   name: 'FormInputIconContainer',
-  functional: true,
   props: {
     side: {
-      type: String as () => IconSide,
-      validator: (side: IconSide): boolean => Object.keys(IconSides).includes(side),
+      type: String as PropType<IconSide>,
+      validator: (side?: IconSide): boolean => !side || Object.keys(IconSides).includes(side),
       default: undefined,
     },
   },
-  render(h: CreateElement, { props, children }): VNode {
-    return <div class={IconSides[props.side as IconSide]}>{children}</div>;
+  render(): VNode {
+    return <div class={IconSides[this.side as IconSide]}>{this.$slots.default && this.$slots.default()}</div>;
   },
 });

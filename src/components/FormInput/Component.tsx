@@ -1,50 +1,51 @@
-import { VNode, CreateElement } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { FormInputSize, FormInputSizes } from './Size';
 import { Input } from './Input';
 import { Icon } from './Icon';
 import { IconContainer, IconSide, IconSides } from './IconContainer';
 import { Loading } from './Loading';
+import { IconType } from '@components/Icon';
 
 export interface FormInputEvents {
   onInput: (value: any) => void;
 }
 
-export const FormInput = /*#__PURE__*/ tsx.componentFactoryOf<FormInputEvents>().create({
+export const FormInput = /*#__PURE__*/ defineComponent({
   name: 'FormInput',
   props: {
-    value: [String, Number],
+    modelValue: { type: [String, Number], default: undefined },
     disabled: Boolean,
     error: Boolean,
     loading: Boolean,
     success: Boolean,
-    icon: String,
+    icon: { type: String as PropType<IconType>, default: undefined },
     iconSide: {
-      type: String as () => IconSide,
-      validator: (side: IconSide): boolean => Object.keys(IconSides).includes(side),
+      type: String as PropType<IconSide>,
+      validator: (side: IconSide): boolean => !side || Object.keys(IconSides).includes(side),
+      default: 'right',
     },
     size: {
-      type: String as () => FormInputSize,
+      type: String as PropType<FormInputSize>,
       validator: (size: FormInputSize): boolean => Object.keys(FormInputSizes).includes(size),
+      default: undefined,
     },
   },
-  render(h: CreateElement): VNode {
+  emits: ['input', 'update:modelValue'],
+  render(): VNode {
     const input = (
       <Input
         size={this.size}
-        value={this.value}
+        value={this.modelValue}
         error={this.error}
         success={this.success}
         disabled={this.disabled}
-        {...{
-          ...this.$attrs,
-          on: this.$listeners,
-        }}
+        onInput={(v): void => (this.$emit('input', v), this.$emit('update:modelValue', v))}
       />
     );
 
     if (this.icon || this.loading) {
       return (
-        <IconContainer side={this.iconSide || 'right'}>
+        <IconContainer side={this.iconSide}>
           {input}
           {this.loading && <Loading />}
           {!this.loading && <Icon icon={this.icon} />}

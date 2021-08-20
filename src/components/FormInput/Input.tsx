@@ -1,52 +1,33 @@
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 import { FormInputSize, FormInputSizes } from './Size';
 
-interface InputEvents {
-  onInput: (event: any) => void;
-}
-
-export const Input = /*#__PURE__*/ tsx.componentFactoryOf<InputEvents>().create({
+export const Input = /*#__PURE__*/ defineComponent({
   name: 'Input',
-  functional: true,
   props: {
     size: {
-      type: String as () => FormInputSize,
+      type: String as PropType<FormInputSize>,
       validator: (size: FormInputSize): boolean => Object.keys(FormInputSizes).includes(size),
+      default: undefined,
     },
     error: { type: Boolean },
     success: { type: Boolean },
-    value: { type: [String, Number] },
+    value: { type: [String, Number], default: undefined },
     disabled: { type: Boolean },
+    onInput: { type: Function as PropType<(v: string) => void>, default: undefined },
   },
-  render(h: CreateElement, { props, data, listeners }): VNode {
+  emits: ['input'],
+  render(): VNode {
     const cssClass = [
       'form-input',
-      props.error ? 'is-error' : false,
-      props.success ? 'is-success' : false,
-      FormInputSizes[props.size],
+      this.error ? 'is-error' : false,
+      this.success ? 'is-success' : false,
+      FormInputSizes[this.size],
     ];
 
-    const onInput = (e: any): void => {
-      const value = e.target.value;
-      if (Array.isArray(listeners.input)) {
-        return listeners.input.forEach((listener) => listener(value));
-      }
-
-      if (listeners.input) {
-        listeners.input(value);
-      }
+    const onInput = ({ target: { value } }: any): void => {
+      this.$emit('input', value);
     };
 
-    return (
-      <input
-        class={cssClass}
-        disabled={props.disabled}
-        {...{
-          ...data,
-          domProps: { value: props.value },
-          on: { ...listeners, input: onInput },
-        }}
-      />
-    );
+    return <input class={cssClass} disabled={this.disabled} onInput={onInput} value={this.value} />;
   },
 });

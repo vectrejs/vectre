@@ -29,8 +29,8 @@ import ToastComponents from './Toast';
 import FormCheckboxComponents from './FormCheckbox';
 import FormGroupComponents from './FormGroup';
 import FormHintComponents from './FormHint';
-// import FormHorizontalComponents from './FormHorizontal';
-// import FormInputComponents from './FormInput';
+import FormHorizontalComponents from './FormHorizontal';
+import FormInputComponents from './FormInput';
 import FormLabelComponents from './FormLabel';
 import FormRadioComponents from './FormRadio';
 import FormSelectComponents from './FormSelect';
@@ -69,8 +69,8 @@ export * from './Popover';
 export * from './FormCheckbox';
 export * from './FormGroup';
 export * from './FormHint';
-// export * from './FormHorizontal';
-// export * from './FormInput';
+export * from './FormHorizontal';
+export * from './FormInput';
 export * from './FormLabel';
 export * from './FormRadio';
 export * from './FormSelect';
@@ -109,10 +109,10 @@ export default {
   VerticalMenuComponents,
   FormCheckboxComponents,
   FormGroupComponents,
-  // FormInputComponents,
+  FormInputComponents,
   FormLabelComponents,
   FormHintComponents,
-  // FormHorizontalComponents,
+  FormHorizontalComponents,
   FormRadioComponents,
   FormSelectComponents,
   FormSliderComponents,

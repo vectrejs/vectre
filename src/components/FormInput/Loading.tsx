@@ -1,9 +1,9 @@
-import Vue, { VNode, CreateElement } from 'vue';
+import { VNode, defineComponent } from 'vue';
 
-export const Loading = Vue.extend({
+export const Loading = defineComponent({
   name: 'FormInputLoading',
-  functional: true,
-  render(h: CreateElement): VNode {
+
+  render(): VNode {
     return <i class="form-icon loading" />;
   },
 });
