@@ -31,11 +31,12 @@ export const FormRadioGroup = /*#__PURE__*/ defineComponent({
     inline: { type: Boolean },
     disabled: { type: Boolean },
     error: { type: Boolean },
+    onChange: { type: Function, default: undefined },
   },
-  emits: ['input', 'update:modelValue'],
+  emits: ['change', 'update:modelValue'],
   methods: {
     update(value: any): void {
-      this.$emit('input', value);
+      this.$emit('change', value);
       this.$emit('update:modelValue', value);
     },
   },
@@ -66,11 +67,6 @@ export const FormRadioGroup = /*#__PURE__*/ defineComponent({
           }
         })
         .map((radio: VNode) => {
-          // const dynamicProps = (radio as any).dynamicProps || [];
-          // (radio as any).dynamicProps = [...new Set([...dynamicProps, 'active'])];
-
-          // debugger;
-
           radio.props = {
             ...radio.props,
             name: name,

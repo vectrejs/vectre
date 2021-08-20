@@ -23,9 +23,6 @@ const normalizeOptions = (options: { [label: string]: any } | string[]): Normali
 
 export const FormCheckboxGroup = /*#__PURE__*/ defineComponent({
   name: 'FormCheckboxGroup',
-  model: {
-    event: 'change',
-  },
   props: {
     options: { type: [Array, Object] as PropType<Record<string, unknown> | unknown[]>, default: undefined },
     modelValue: { type: [Array, Object], default: (): any[] => [] },
@@ -34,12 +31,12 @@ export const FormCheckboxGroup = /*#__PURE__*/ defineComponent({
     inline: { type: Boolean },
     disabled: { type: Boolean },
     error: { type: Boolean },
+    onInput: { type: Function, default: undefined },
   },
-  emits: ['input', 'update:modelValue'],
+  emits: ['change', 'update:modelValue'],
   methods: {
-    onChange(value: any): void {
-      if (this.onInput) this.onInput(value);
-      this.$emit('input', value);
+    handleChange(value: any): void {
+      this.$emit('change', value);
       this.$emit('update:modelValue', value);
     },
   },
@@ -57,7 +54,7 @@ export const FormCheckboxGroup = /*#__PURE__*/ defineComponent({
             size={this.size}
             disabled={this.disabled}
             error={this.error}
-            onChange={this.onChange}
+            onChange={this.handleChange}
             modelValue={this.modelValue}
           />
         );
@@ -78,7 +75,7 @@ export const FormCheckboxGroup = /*#__PURE__*/ defineComponent({
             type: this.type || option.props.type,
             inline: this.inline || option.props.inline,
             modelValue: this.modelValue,
-            onChange: this.onChange,
+            onChange: this.handleChange,
           };
 
           return option;

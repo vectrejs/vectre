@@ -46,7 +46,6 @@ export const FormCheckbox = /*#__PURE__*/ defineComponent({
         value = this.modelValue.filter((option: any) => option !== this.value);
       }
 
-      this.onChange && this.onChange(value);
       this.$emit('change', value);
       this.$emit('update:modelValue', value);
     },
