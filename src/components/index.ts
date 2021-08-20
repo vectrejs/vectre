@@ -36,7 +36,7 @@ import FormRadioComponents from './FormRadio';
 import FormSelectComponents from './FormSelect';
 import FormSliderComponents from './FormSlider';
 import FormSwitchComponents from './FormSwitch';
-// import FormTextareaComponents from './FormTextarea';
+import FormTextareaComponents from './FormTextarea';
 
 export * from './Avatar';
 export * from './Accordion';
@@ -76,7 +76,7 @@ export * from './FormRadio';
 export * from './FormSelect';
 export * from './FormSlider';
 export * from './FormSwitch';
-// export * from './FormTextarea';
+export * from './FormTextarea';
 
 // // Default is all components
 export default {
@@ -117,5 +117,5 @@ export default {
   FormSelectComponents,
   FormSliderComponents,
   FormSwitchComponents,
-  // FormTextareaComponents,
+  FormTextareaComponents,
 };

@@ -1,40 +1,39 @@
-import { cachedListeners, cachedAttrs } from '../../mixins/cache';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, PropType, VNode } from 'vue';
 
 export interface FormTextareaEvents {
   onInput: (value: any) => void;
 }
 
-export const FormTextarea = tsx
-  .componentFactoryOf<FormTextareaEvents>()
-  .mixin(cachedListeners)
-  .mixin(cachedAttrs)
-  .create({
-    name: 'FormTextarea',
-    props: {
-      value: { type: String, default: undefined },
-      disabled: { type: Boolean, default: false },
-    },
-    computed: {
-      placeholder(): string | undefined {
-        return this.$attrs.placeholder || (this.$slots.default && this.$slots.default[0].text);
-      },
-    },
-    methods: {
-      onInput({ target: { value } }: any): void {
-        this.$emit('input', value);
-      },
-    },
-    render(h: CreateElement): VNode {
+export const FormTextarea = /*#__PURE__*/ defineComponent({
+  name: 'FormTextarea',
+  props: {
+    modelValue: { type: String, default: undefined },
+    disabled: { type: Boolean, default: false },
+    onInput: { type: Function as PropType<(value: string) => void>, default: undefined },
+  },
+  emits: ['input', 'update:modelValue'],
+  computed: {
+    placeholder(): string | undefined {
       return (
-        <textarea
-          placeholder={this.placeholder}
-          value={this.value}
-          disabled={this.disabled}
-          class="form-input"
-          {...{ attrs: { ...this.__attrs } }}
-          {...{ on: { ...this.__listeners, input: this.onInput } }}
-        />
+        (this.$attrs.placeholder as string) || (this.$slots.default && (this.$slots.default()[0]?.children as string))
       );
     },
-  });
+  },
+  methods: {
+    handleInput({ target: { value } }: any): void {
+      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
+    },
+  },
+  render(): VNode {
+    return (
+      <textarea
+        class="form-input"
+        placeholder={this.placeholder}
+        value={this.modelValue}
+        disabled={this.disabled}
+        onInput={this.handleInput}
+      />
+    );
+  },
+});
