@@ -1,19 +1,17 @@
 import './styles.scss';
-import { CreateElement, VNode } from 'vue';
+import { defineComponent, VNode } from 'vue';
 
-export const FormHint = /*#__PURE__*/ tsx.createComponent({
+export const FormHint = /*#__PURE__*/ defineComponent({
   name: 'FormHint',
-  functional: true,
+
   props: {
     error: { type: Boolean },
     success: { type: Boolean },
   },
-  render(h: CreateElement, { props, children, data }): VNode {
-    const cssClasses = ['form-input-hint', props.error && 'error', props.success && 'success'];
-
+  render(): VNode {
     return (
-      <div class={cssClasses} {...data}>
-        {children}
+      <div class={['form-input-hint', this.$props.error && 'error', this.$props.success && 'success']}>
+        {this.$slots.default && this.$slots.default()}
       </div>
     );
   },

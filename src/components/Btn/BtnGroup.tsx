@@ -3,7 +3,7 @@ import { defineComponent, VNode } from 'vue';
 
 export const BtnGroup = defineComponent({
   name: 'BtnGroup',
-  functional: true,
+
   props: {
     block: { type: Boolean },
   },

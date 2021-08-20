@@ -2,10 +2,6 @@ import { VNode, defineComponent } from 'vue';
 // import { cachedListeners } from '../../mixins/cache';
 import { FormRadioSize, FormRadioSizes } from './Size';
 
-export interface FormRadioEvents {
-  onChange: (value: any) => void;
-}
-
 export const FormRadio = /*#__PURE__*/ defineComponent({
   name: 'FormRadio',
   model: {

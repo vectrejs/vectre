@@ -3,7 +3,6 @@ import { Step } from './Step';
 
 export const Steps = /*#__PURE__*/ defineComponent({
   name: 'Steps',
-
   props: {
     items: { type: [Array, Object], default: (): Record<string, any>[] => [] },
     active: {

@@ -1,5 +1,4 @@
 import { defineComponent, VNode } from 'vue';
-import { flattenListener } from '../../utils/listener';
 import { Tooltip } from '../../directives';
 
 export const FormSlider = /*#__PURE__*/ defineComponent({

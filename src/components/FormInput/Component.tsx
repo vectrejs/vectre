@@ -6,10 +6,6 @@ import { IconContainer, IconSide, IconSides } from './IconContainer';
 import { Loading } from './Loading';
 import { IconType } from '@components/Icon';
 
-export interface FormInputEvents {
-  onInput: (value: any) => void;
-}
-
 export const FormInput = /*#__PURE__*/ defineComponent({
   name: 'FormInput',
   props: {

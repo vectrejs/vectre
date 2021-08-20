@@ -2,7 +2,6 @@ import { VNode, defineComponent, PropType } from 'vue';
 import { flattenListener } from '../../utils/listener';
 import { Tab } from './Tab';
 import { TabAction } from './TabAction';
-// import { TabsEvents } from './Events';
 
 export const Tabs = /*#__PURE__*/ defineComponent({
   name: 'Tabs',

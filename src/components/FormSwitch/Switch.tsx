@@ -1,7 +1,7 @@
 import { defineComponent, VNode } from 'vue';
 import { FormCheckbox } from '../FormCheckbox';
 
-export const FormSwitch = defineComponent({
+export const FormSwitch = /*#__PURE__*/ defineComponent({
   name: 'FormSwitch',
   extends: FormCheckbox,
   emits: ['change', 'update:modelValue'],

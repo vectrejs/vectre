@@ -7,10 +7,6 @@ export interface NormalizedOption {
   value: any;
 }
 
-export interface FormSelectEvents {
-  onInput: (value: string | string[] | number | number[]) => void;
-}
-
 export const FormSelect = /*#__PURE__*/ defineComponent({
   name: 'FormSelect',
   props: {

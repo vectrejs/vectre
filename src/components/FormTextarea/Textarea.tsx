@@ -1,9 +1,5 @@
 import { defineComponent, PropType, VNode } from 'vue';
 
-export interface FormTextareaEvents {
-  onInput: (value: any) => void;
-}
-
 export const FormTextarea = /*#__PURE__*/ defineComponent({
   name: 'FormTextarea',
   props: {

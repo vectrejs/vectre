@@ -4,7 +4,7 @@ import { flattenListener } from '../../utils/listener';
 
 export const Chip = defineComponent({
   name: 'Chip',
-  functional: true,
+
   props: {
     active: { type: Boolean },
     text: { type: String, required: true },
